@@ -3,9 +3,9 @@
     "homeTitle": "Alpha Investor - Portfolio AI (early access)",
     "homeDescription": "Alpha Investor on iOS - clearer portfolio view, AI insights based on your holdings, and five simple scores per stock. Join early access.",
     "privacyTitle": "Privacy",
-    "privacyDescription": "How we handle your data in Alpha Investor early access.",
+    "privacyDescription": "How Alpha Investor collects, uses, stores, and protects personal data for the website, waitlist, and related products.",
     "termsTitle": "Terms",
-    "termsDescription": "Terms of use for the Alpha Investor site."
+    "termsDescription": "Terms of use for the Alpha Investor website, waitlist signup, and related services."
   },
   "Nav": {
     "ai": "AI",
@@ -29,24 +29,20 @@
     "heroImageAlt": "Alpha Investor screen showing five lenses - trend, valuation, risk, growth, momentum.",
     "heroDeckWalletAlt": "Portfolio view with health score and allocation.",
     "heroDeckChartAlt": "Stock detail with chart and performance.",
-
     "aiEyebrow": "Why it feels different",
     "aiProBadge": "Alpha Pro",
     "aiTitle": "AI built around your portfolio - not the noise",
     "aiIntro": "Alpha Pro ignores random takes and focuses on what you actually own - your positions, your weights, your risk. Clear signals - not a trading bot.",
     "aiExplain": "You already invested - the hard part is knowing if your story still holds. Alpha shows where you're concentrated, where you're balanced, and where risk builds up - all from your portfolio.",
     "aiProHook": "No predictions - no hype. Just clarity when markets get messy. Free gives you portfolios and charts - upgrade anytime for full AI insights.",
-
     "aiPricingCta": "See Alpha Pro pricing",
     "aiWaitlistCta": "Join early access",
-
     "aiPillar1Title": "Whole portfolio view",
     "aiPillar1Body": "See your mix instantly - and catch concentration before it becomes a problem.",
     "aiPillar2Title": "Five lenses - one glance",
     "aiPillar2Body": "Trend - valuation - risk - growth - momentum on one simple scale. Clear - fast - consistent.",
     "aiPillar3Title": "Per-stock clarity",
     "aiPillar3Body": "Open any stock - get chart, context, and a short explanation in one place.",
-
     "featuresTitle": "Everything in one place",
     "featuresIntro": "Portfolio, charts, and AI insights in one smooth flow - nothing to learn, nothing to memorize.",
     "feature1Title": "Portfolio health",
@@ -57,7 +53,6 @@
     "feature3Body": "Chart - performance - context - and AI insight in one scroll.",
     "feature4Title": "Private and secure",
     "feature4Body": "Your data stays yours - insights are generated only for your account.",
-
     "stepsTitle": "How it works",
     "step1Title": "Add your portfolio",
     "step1Body": "Enter the positions you already track - no broker connection needed.",
@@ -65,17 +60,14 @@
     "step2Body": "Charts, context, and live prices - all synced automatically.",
     "step3Title": "AI explains it",
     "step3Body": "Quick insights to help you understand your portfolio - fast.",
-
     "pricingEyebrow": "Pricing",
     "pricingTitle": "Start free - upgrade anytime",
     "pricingTagline": "$10/month in the app for full AI insights. Free covers everything else.",
-
     "pricingFreeName": "Free",
     "pricingFreePrice": "$0",
     "pricingFreeBullet1": "Portfolios, live prices, and charts - no AI layer",
     "pricingFreeBullet2": "Same privacy - your data is never used for public models",
     "pricingFreeBullet3": "Upgrade anytime in the app",
-
     "pricingProName": "Alpha Pro",
     "pricingProBadge": "Full AI",
     "pricingProPrice": "$10",
@@ -84,19 +76,16 @@
     "pricingProBullet2": "Five lenses with clear, fast explanations",
     "pricingProBullet3": "Chart, context, and AI combined in one view",
     "pricingProBullet4": "New features available here first",
-
     "pricingCtaWaitlist": "Get early access",
     "pricingCtaAi": "How the AI works",
     "pricingDisclaimerLine": "No promises - no magic returns. Just better understanding of your money.",
     "pricingFootnote": "Subscriptions are handled in the app via Apple In-App Purchase. Price may vary by region. Android billing is coming. Manage or cancel anytime in your device settings.",
-
     "screensTitle": "See it in the app",
     "screensIntro": "Real screens - built for real investing.",
     "screensBullet1": "Full portfolio overview",
     "screensBullet2": "Quick scoring on every holding",
     "screensBullet3": "Stock view with chart and context",
     "screensReassure": "Looks dense? It’s built to scan fast - everything is one tap away.",
-
     "screenSpotlightCaption": "Portfolio value",
     "screenSpotlightDetail": "Same portfolio - different time views. Switch from days to years instantly.",
     "screenWalletCaption": "Portfolio",
@@ -107,7 +96,6 @@
     "screenInstrumentChartDetail": "Timeframes, volume, and key stats - then scroll for context.",
     "screenChartCaption": "Stock view",
     "screenChartDetail": "Signals, lenses, and insights - all in one place.",
-
     "faqTitle": "FAQ",
     "faq1Q": "Is this financial advice?",
     "faq1A": "No - this is a tool to help you understand your portfolio. You make the decisions.",
@@ -123,15 +111,11 @@
     "faq6A": "Free includes portfolios, charts, and data. Alpha Pro adds full AI insights for $10/month.",
     "faq7Q": "Do you train public models on my data?",
     "faq7A": "No - your portfolio is used only to generate your insights.",
-
     "ctaTitle": "Curious?",
     "ctaSub": "Join early access - small group, real feedback. No spam - just useful updates.",
-
     "formConsent": "By joining, you agree we may email you about the product. See",
     "formConsentLink": "Privacy",
-
     "disclaimer": "Not financial, tax, or legal advice - always verify decisions that affect your money.",
-
     "roadmapTitle": "Roadmap - not a promise",
     "roadmapIntro": "High-level direction only - priorities may change based on feedback.",
     "roadmapPhase1Title": "iOS foundation",
@@ -144,7 +128,6 @@
     "roadmapPhase4Title": "Iteration",
     "roadmapPhase4Body": "Continuous improvements driven by real users."
   },
-
   "Form": {
     "title": "Get early access",
     "subtitle": "Leave your email - we’ll let you know when spots open.",
@@ -165,24 +148,228 @@
     "errorCaptcha": "Please complete the check before submitting.",
     "errorRateLimited": "Too many attempts - try again in a few minutes."
   },
-
   "Privacy": {
     "backHome": "Back home",
-    "title": "Privacy",
-    "intro": "This is a placeholder. Replace with your full privacy policy before collecting real user data at scale.",
-    "processing": "Waitlist emails are stored securely with our provider (Resend Contacts) for access management only.",
+    "title": "Privacy policy",
+    "lastUpdated": "Last updated: May 2, 2026",
+    "intro": "This Privacy Policy explains how the operator of Alpha Investor (\"Alpha Investor\", \"we\", \"us\", or \"our\") collects, uses, stores, and shares personal information when you use our website, join an early-access waitlist, or use the Alpha Investor mobile application. If you disagree with this policy, please do not use our services.",
+    "sections": [
+      {
+        "title": "1. Who is responsible for your data?",
+        "paragraphs": [
+          "The controller of your personal data is the legal entity that operates Alpha Investor. For privacy-related requests, contact us using the support or contact options provided in the Alpha Investor app or on this website.",
+          "This policy supplements any just-in-time notices shown in the product (for example, consent prompts or in-app disclosures)."
+        ]
+      },
+      {
+        "title": "2. Scope",
+        "paragraphs": [
+          "This policy covers personal information processed through (a) public marketing pages on this website, (b) early-access or waitlist forms, and (c) the Alpha Investor mobile application when you create or use an account.",
+          "We do not provide brokerage, custody, or order-routing services. We are not your investment adviser or fiduciary."
+        ]
+      },
+      {
+        "title": "3. Information we collect on the website",
+        "paragraphs": [
+          "When you browse our website, we and our hosting providers may process technical data such as IP address, approximate location derived from IP, browser type, device identifiers, pages viewed, referring URLs, and timestamps. We use this information to operate, secure, and improve the site, and to measure basic performance.",
+          "If you enable optional analytics (for example, privacy-preserving web analytics provided by our hosting vendor), we may collect aggregated usage statistics. Depending on configuration, analytics may rely on cookies or similar technologies."
+        ]
+      },
+      {
+        "title": "4. Waitlist and email communications",
+        "paragraphs": [
+          "If you join an early-access waitlist, we collect the information you submit (typically email address, and optionally your name), along with your preferred language where you provide it. We may also process bot-mitigation signals when you complete a challenge (for example, Cloudflare Turnstile).",
+          "Waitlist data is used to manage access, send product updates you have requested or consented to, and improve onboarding. Messages may be delivered through our email delivery provider (for example, Resend), including optional welcome emails when enabled.",
+          "You can unsubscribe from marketing emails using the link in those emails, where applicable. Transactional or service-related messages may still be sent where necessary to operate the service."
+        ]
+      },
+      {
+        "title": "5. Mobile application data",
+        "paragraphs": [
+          "When you use the Alpha Investor app with an account, we process account and authentication data (for example, email and user identifiers), profile preferences, and portfolio-related content you choose to enter (such as positions, watchlists, and notes).",
+          "We retrieve market data and related context from licensed third-party data providers to power charts and information screens. We may generate in-product explanations or AI-assisted insights based on your inputs and retrieved market context. Unless we expressly notify you otherwise in the product, we do not use your portfolio content to train publicly available foundation models.",
+          "If you purchase a subscription, payment is processed by the platform store (for example, Apple App Store). We receive subscription status from our entitlement provider (for example, RevenueCat) rather than your full payment card details."
+        ]
+      },
+      {
+        "title": "6. Purposes and legal bases (EEA, UK, and similar jurisdictions)",
+        "paragraphs": [
+          "Where GDPR or similar laws apply, we rely on one or more of the following legal bases: performance of a contract (providing the service you request), consent (for example, marketing emails or optional analytics, where required), legitimate interests (for example, securing our services, preventing abuse, improving reliability, and understanding aggregate product usage), and legal obligations.",
+          "You may withdraw consent at any time where processing is based on consent. Withdrawal does not affect the lawfulness of processing before withdrawal."
+        ]
+      },
+      {
+        "title": "7. Cookies and similar technologies",
+        "paragraphs": [
+          "Our website may use cookies, local storage, or similar technologies that are strictly necessary for security and core functionality, and (where enabled) analytics technologies as described above.",
+          "Browser or device settings may let you refuse some cookies; refusing strictly necessary cookies can affect site functionality."
+        ]
+      },
+      {
+        "title": "8. How we share information",
+        "paragraphs": [
+          "We share personal information with service providers who process data on our instructions (\"processors\"), including hosting, email delivery, authentication and database providers, bot mitigation, subscription and entitlement management, market data vendors, and AI inference providers. We may also disclose information if required by law, to respond to lawful requests, or to protect rights, safety, and security.",
+          "We do not sell your personal information for money. Where required by applicable U.S. state privacy laws, we honor applicable rights regarding targeted advertising, sale, or sharing as those terms are defined by law."
+        ]
+      },
+      {
+        "title": "9. International transfers",
+        "paragraphs": [
+          "We may process and store information in the European Economic Area and in other countries where we or our providers operate. If we transfer personal data from the EEA, UK, or Switzerland to countries not deemed adequate by the relevant regulator, we use appropriate safeguards such as Standard Contractual Clauses (and UK Addendum where applicable), supplemented by technical and organizational measures where required."
+        ]
+      },
+      {
+        "title": "10. Retention",
+        "paragraphs": [
+          "We retain personal information for as long as needed to provide the service, comply with legal obligations, resolve disputes, and enforce agreements. Waitlist records are generally retained until you unsubscribe or request deletion, or until they are no longer needed for access management, subject to a reasonable cooling-off period for backups and logs.",
+          "Technical logs may be retained for shorter periods in line with security and troubleshooting needs, unless a longer period is required by law."
+        ]
+      },
+      {
+        "title": "11. Security",
+        "paragraphs": [
+          "We implement technical and organizational measures designed to protect personal information, including access controls, encryption in transit where appropriate for the architecture, and vendor due diligence. No method of transmission or storage is completely secure; we cannot guarantee absolute security."
+        ]
+      },
+      {
+        "title": "12. Your rights and choices",
+        "paragraphs": [
+          "Depending on your location, you may have rights to access, rectify, erase, restrict, or object to certain processing, and to data portability. You may also have the right to lodge a complaint with a supervisory authority.",
+          "To exercise rights, contact us using the channels provided in the app or on this website. We may need to verify your request. If you are in the EEA/UK, you may also contact your local data protection authority."
+        ]
+      },
+      {
+        "title": "13. Children",
+        "paragraphs": [
+          "Alpha Investor is not directed to children under 16 (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children. If you believe we have collected information from a child, contact us and we will take appropriate steps to delete it."
+        ]
+      },
+      {
+        "title": "14. Automated decision-making",
+        "paragraphs": [
+          "In-product scores and AI-generated summaries are informational tools intended to help you understand data you already have access to. They are not automated decisions that produce legal or similarly significant effects about you within the meaning of Article 22 GDPR, and they are not individualized investment recommendations."
+        ]
+      },
+      {
+        "title": "15. Changes to this policy",
+        "paragraphs": [
+          "We may update this policy from time to time. We will post the updated version on this page and revise the \"Last updated\" date. Where changes are material and required by law, we will provide additional notice (for example, in-app message or email)."
+        ]
+      }
+    ],
     "localeNote": "You are viewing this page in English."
   },
-
   "Terms": {
     "backHome": "Back home",
     "title": "Terms of use",
-    "intro": "This site and waitlist are provided as-is. Replace with full terms before running campaigns.",
-    "bullet1": "The product is still evolving - features may change.",
-    "bullet2": "Nothing here is an offer to buy or sell securities.",
+    "lastUpdated": "Last updated: May 2, 2026",
+    "intro": "These Terms of Use (\"Terms\") govern your access to and use of the Alpha Investor website, waitlist, and related services operated by the legal entity operating Alpha Investor (\"Alpha Investor\", \"we\", \"us\", or \"our\"). By accessing or using the services, you agree to these Terms.",
+    "sections": [
+      {
+        "title": "1. Agreement to these Terms",
+        "paragraphs": [
+          "If you do not agree to these Terms, do not use our services. If you are using the services on behalf of an organization, you represent that you have authority to bind that organization.",
+          "Additional terms may apply to specific features (for example, third-party data terms, or platform rules for mobile apps distributed through Apple or Google). If there is a conflict, the more specific terms govern only for that feature."
+        ]
+      },
+      {
+        "title": "2. The services",
+        "paragraphs": [
+          "Alpha Investor provides software tools for organizing portfolio information, viewing market context, and receiving educational, informational outputs (including optional AI-assisted explanations). Features may differ between free and paid tiers and may change during early access.",
+          "The website may include a waitlist or marketing forms. Submitting a waitlist request does not guarantee access, timing, or any particular feature set."
+        ]
+      },
+      {
+        "title": "3. Not investment, tax, or legal advice; no brokerage",
+        "paragraphs": [
+          "Alpha Investor is not a broker-dealer, investment adviser, financial planner, tax adviser, attorney, or fiduciary. Nothing in the services constitutes personalized investment advice, an offer to buy or sell any security, or a recommendation to take or refrain from any investment action.",
+          "Market data may be delayed, incomplete, or incorrect. Past performance is not indicative of future results. You are solely responsible for your investment decisions and for verifying information with independent professionals and official sources."
+        ]
+      },
+      {
+        "title": "4. Eligibility",
+        "paragraphs": [
+          "You must be at least the age of majority in your jurisdiction (and at least 16, or higher if required locally) to use the services. If you cannot meet this requirement, do not use the services."
+        ]
+      },
+      {
+        "title": "5. Accounts, authentication, and subscriptions",
+        "paragraphs": [
+          "Certain features require an account. You agree to provide accurate information and to keep your credentials confidential. You are responsible for activity under your account, except where caused by our gross negligence or willful misconduct.",
+          "Paid subscriptions purchased through a platform store are also governed by the applicable store terms. To the maximum extent permitted by the store policies, billing, refunds, and cancellations are handled through the store."
+        ]
+      },
+      {
+        "title": "6. Acceptable use",
+        "paragraphs": [
+          "You agree not to misuse the services, including: probing, scanning, or testing vulnerabilities without authorization; interfering with service operation; attempting to access data that is not yours; reverse engineering except to the extent permitted by law; distributing malware; sending spam; scraping at a rate or scale that harms the service; or using the services to violate law or third-party rights.",
+          "We may investigate violations and cooperate with law enforcement. We may suspend or terminate access for conduct that we reasonably believe violates these Terms or creates risk."
+        ]
+      },
+      {
+        "title": "7. Intellectual property",
+        "paragraphs": [
+          "The services, including software, branding, text, graphics, and layouts, are owned by Alpha Investor or its licensors and are protected by intellectual property laws. Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the services for your personal, non-commercial purposes, unless we agree otherwise in writing.",
+          "You retain rights in content you submit, but you grant us a license to host, process, transmit, and display that content solely to operate and improve the services for you."
+        ]
+      },
+      {
+        "title": "8. Third-party services and data",
+        "paragraphs": [
+          "The services may integrate or link to third-party services, data providers, and websites. Those third parties have their own terms and privacy practices. We are not responsible for third-party services or for the accuracy of third-party data."
+        ]
+      },
+      {
+        "title": "9. Disclaimers",
+        "paragraphs": [
+          "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICES ARE PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.",
+          "Some jurisdictions do not allow certain disclaimers; in those jurisdictions, disclaimers apply to the fullest extent permitted."
+        ]
+      },
+      {
+        "title": "10. Limitation of liability",
+        "paragraphs": [
+          "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL ALPHA INVESTOR OR ITS SUPPLIERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS OPPORTUNITIES, ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICES, EVEN IF ADVISED OF THE POSSIBILITY.",
+          "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR TOTAL LIABILITY FOR ANY CLAIM ARISING OUT OF OR RELATING TO THE SERVICES WILL NOT EXCEED THE GREATER OF (A) THE AMOUNTS YOU PAID TO US FOR THE SERVICES IN THE TWELVE (12) MONTHS BEFORE THE EVENT GIVING RISE TO LIABILITY, OR (B) FIFTY US DOLLARS (USD 50).",
+          "Some jurisdictions do not allow certain limitations; in those jurisdictions, limitations apply to the fullest extent permitted."
+        ]
+      },
+      {
+        "title": "11. Indemnity",
+        "paragraphs": [
+          "You will defend, indemnify, and hold harmless Alpha Investor and its affiliates, directors, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys' fees) arising out of your misuse of the services, your violation of these Terms, or your violation of applicable law or third-party rights."
+        ]
+      },
+      {
+        "title": "12. Changes",
+        "paragraphs": [
+          "We may modify the services or these Terms at any time. If we make material changes, we will provide reasonable notice where required by law (for example, by posting an updated policy or in-app notice). Your continued use after the effective date constitutes acceptance of the updated Terms, except where non-waivable law requires otherwise."
+        ]
+      },
+      {
+        "title": "13. Suspension and termination",
+        "paragraphs": [
+          "We may suspend or discontinue the services, or suspend or terminate your access, at any time with or without notice, including for maintenance, security, legal compliance, or business reasons. You may stop using the services at any time.",
+          "Provisions that by their nature should survive termination (including intellectual property, disclaimers, limitation of liability, indemnity, and governing law) will survive."
+        ]
+      },
+      {
+        "title": "14. Governing law and disputes",
+        "paragraphs": [
+          "Unless mandatory consumer protection laws in your country of residence provide otherwise, these Terms are governed by the laws of Poland, without regard to conflict-of-law rules that would require application of another jurisdiction's laws.",
+          "If you are a consumer habitually resident in the European Economic Area, you may benefit from mandatory protections of the laws of your country of residence, and you may bring proceedings in the courts of your place of residence where those laws so require. For business users, you agree that the courts of Poland have exclusive jurisdiction, subject to non-waivable law."
+        ]
+      },
+      {
+        "title": "15. Miscellaneous",
+        "paragraphs": [
+          "These Terms constitute the entire agreement between you and Alpha Investor regarding the subject matter and supersede prior understandings on the same subject. If any provision is unenforceable, the remaining provisions remain in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms without our consent; we may assign them in connection with a merger, acquisition, or sale of assets.",
+          "Contact us using the support or contact methods available in the Alpha Investor app or on this website for questions about these Terms."
+        ]
+      }
+    ],
     "localeNote": "You are viewing this page in English."
   },
-
   "Footer": {
     "rights": "All rights reserved.",
     "notAdvice": "Not financial advice."

@@ -3,9 +3,9 @@
     "homeTitle": "Alpha Investor - AI do portfela (early access)",
     "homeDescription": "Alpha Investor na iOS - przejrzysty widok portfela, AI oparte na Twoich pozycjach i pięć prostych ocen dla każdej spółki. Dołącz do early access.",
     "privacyTitle": "Prywatność",
-    "privacyDescription": "Jak przetwarzamy dane w Alpha Investor (early access).",
+    "privacyDescription": "Jak Alpha Investor zbiera, wykorzystuje, przechowuje i chroni dane osobowe na stronie, w zapisie na listę oraz w powiązanych produktach.",
     "termsTitle": "Warunki",
-    "termsDescription": "Warunki korzystania ze strony Alpha Investor."
+    "termsDescription": "Warunki korzystania ze strony Alpha Investor, zapisu na listę oczekujących oraz powiązanych usług."
   },
   "Nav": {
     "ai": "AI",
@@ -29,24 +29,20 @@
     "heroImageAlt": "Ekran Alpha Investor pokazujący pięć ocen - trend, wycena, ryzyko, wzrost, momentum.",
     "heroDeckWalletAlt": "Widok portfela z oceną kondycji i alokacją.",
     "heroDeckChartAlt": "Szczegóły spółki z wykresem i wynikami.",
-
     "aiEyebrow": "Dlaczego to działa inaczej",
     "aiProBadge": "Alpha Pro",
     "aiTitle": "AI oparte na Twoim portfelu - nie na szumie",
     "aiIntro": "Alpha Pro skupia się na tym, co naprawdę posiadasz - Twoich pozycjach, wagach i ryzyku. Jasne sygnały - bez zgadywania.",
     "aiExplain": "Już zainwestowałeś - pytanie brzmi: czy Twoja teza nadal ma sens? Alpha pokazuje gdzie masz koncentrację, gdzie balans i gdzie rośnie ryzyko.",
     "aiProHook": "Bez prognoz - bez hype’u. Tylko jasność, gdy rynek robi się chaotyczny. W wersji darmowej masz portfele i wykresy - pełne AI odblokujesz w każdej chwili.",
-
     "aiPricingCta": "Zobacz plany",
     "aiWaitlistCta": "Dołącz do early access",
-
     "aiPillar1Title": "Widok całego portfela",
     "aiPillar1Body": "Zobacz strukturę w sekundę - i wykryj koncentrację zanim stanie się problemem.",
     "aiPillar2Title": "5 ocen - jedno spojrzenie",
     "aiPillar2Body": "Trend - wycena - ryzyko - wzrost - momentum. Jeden prosty system - szybka orientacja.",
     "aiPillar3Title": "Kontekst spółki",
     "aiPillar3Body": "Wykres, dane i krótkie wyjaśnienie - wszystko w jednym miejscu.",
-
     "featuresTitle": "Wszystko w jednym miejscu",
     "featuresIntro": "Portfel, wykresy i AI w jednym przepływie - bez przełączania zakładek.",
     "feature1Title": "Kondycja portfela",
@@ -57,7 +53,6 @@
     "feature3Body": "Wykres - dane - kontekst - i AI w jednym scrollu.",
     "feature4Title": "Prywatność",
     "feature4Body": "Twoje dane należą do Ciebie - nic nie trafia do publicznych modeli.",
-
     "stepsTitle": "Jak to działa",
     "step1Title": "Dodaj portfel",
     "step1Body": "Wprowadź pozycje, które już śledzisz - bez łączenia z brokerem.",
@@ -65,17 +60,14 @@
     "step2Body": "Wykresy, kontekst i ceny - automatycznie w tle.",
     "step3Title": "AI tłumaczy",
     "step3Body": "Szybkie wnioski - żebyś wiedział, co naprawdę posiadasz.",
-
     "pricingEyebrow": "Plany",
     "pricingTitle": "Wybierz plan dla siebie",
     "pricingTagline": "Zacznij za darmo - przejdź na Pro, gdy chcesz więcej jasności.",
-
     "pricingFreeName": "Free",
     "pricingFreePrice": "$0",
     "pricingFreeBullet1": "Portfele, ceny i wykresy - bez AI",
     "pricingFreeBullet2": "Pełna prywatność - Twoje dane są tylko Twoje",
     "pricingFreeBullet3": "Ulepsz kiedy chcesz",
-
     "pricingProName": "Alpha Pro",
     "pricingProBadge": "Pełne AI",
     "pricingProPrice": "$10",
@@ -84,19 +76,16 @@
     "pricingProBullet2": "5 ocen z jasnym wyjaśnieniem",
     "pricingProBullet3": "Wykres, dane i AI w jednym widoku",
     "pricingProBullet4": "Nowe funkcje najpierw tutaj",
-
     "pricingCtaWaitlist": "Uzyskaj dostęp",
     "pricingCtaAi": "Jak działa AI",
     "pricingDisclaimerLine": "Bez obietnic - bez magicznych zysków. Tylko lepsze zrozumienie portfela.",
     "pricingFootnote": "Subskrypcja przez App Store. Cena może się różnić zależnie od regionu. Android w planach.",
-
     "screensTitle": "Zobacz w aplikacji",
     "screensIntro": "Realne ekrany - do realnego użycia.",
     "screensBullet1": "Widok całego portfela",
     "screensBullet2": "Szybkie oceny",
     "screensBullet3": "Widok spółki z kontekstem",
     "screensReassure": "Zaprojektowane do szybkiego skanowania - bez przeciążenia.",
-
     "screenSpotlightCaption": "Wartość portfela",
     "screenSpotlightDetail": "Ten sam portfel - różne zakresy czasu.",
     "screenWalletCaption": "Portfel",
@@ -107,7 +96,6 @@
     "screenInstrumentChartDetail": "Zakresy czasu, wolumen i dane.",
     "screenChartCaption": "Widok spółki",
     "screenChartDetail": "Wszystko w jednym miejscu.",
-
     "faqTitle": "FAQ",
     "faq1Q": "Czy to doradztwo inwestycyjne?",
     "faq1A": "Nie - to narzędzie do zrozumienia portfela.",
@@ -123,15 +111,11 @@
     "faq6A": "Plan Free daje podstawy - Pro dodaje pełne AI.",
     "faq7Q": "Czy trenujecie modele na moich danych?",
     "faq7A": "Nie - Twoje dane są tylko Twoje.",
-
     "ctaTitle": "Ciekawy?",
     "ctaSub": "Dołącz do early access - bez spamu, tylko ważne aktualizacje.",
-
     "formConsent": "Dołączając zgadzasz się na kontakt mailowy. Zobacz",
     "formConsentLink": "Prywatność",
-
     "disclaimer": "To nie jest porada inwestycyjna - zawsze weryfikuj decyzje.",
-
     "roadmapTitle": "Roadmapa - bez obietnic",
     "roadmapIntro": "Kierunek może się zmieniać.",
     "roadmapPhase1Title": "iOS",
@@ -144,7 +128,6 @@
     "roadmapPhase4Title": "Iteracja",
     "roadmapPhase4Body": "Rozwój oparty na użytkownikach."
   },
-
   "Form": {
     "title": "Uzyskaj dostęp",
     "subtitle": "Zostaw email - damy znać gdy pojawią się miejsca.",
@@ -165,24 +148,228 @@
     "errorCaptcha": "Potwierdź zabezpieczenie.",
     "errorRateLimited": "Za dużo prób - spróbuj później."
   },
-
   "Privacy": {
     "backHome": "Powrót",
-    "title": "Prywatność",
-    "intro": "To placeholder - uzupełnij pełną politykę prywatności przed startem.",
-    "processing": "Dane zapisu przechowywane są tylko do obsługi listy oczekujących.",
+    "title": "Polityka prywatności",
+    "lastUpdated": "Ostatnia aktualizacja: 2 maja 2026",
+    "intro": "Niniejsza Polityka prywatności opisuje, w jaki sposób podmiot obsługujący Alpha Investor (\"Alpha Investor\", \"my\", \"nas\" lub \"nasz\") zbiera, wykorzystuje, przechowuje i udostępnia dane osobowe podczas korzystania z naszej strony internetowej, zapisu na listę oczekujących (early access) lub z aplikacji mobilnej Alpha Investor. Jeśli nie akceptujesz niniejszej polityki, prosimy o zaprzestanie korzystania z usług.",
+    "sections": [
+      {
+        "title": "1. Kto odpowiada za Twoje dane?",
+        "paragraphs": [
+          "Administratorem Twoich danych osobowych jest podmiot prawny prowadzący usługę Alpha Investor. W sprawach związanych z ochroną danych skontaktuj się z nami za pomocą kanałów wsparcia lub kontaktu udostępnionych w aplikacji Alpha Investor lub na tej stronie.",
+          "Niniejsza polityka uzupełnia ewentualne komunikaty wyświetlane w produkcie (np. zgody lub informacje w aplikacji)."
+        ]
+      },
+      {
+        "title": "2. Zakres",
+        "paragraphs": [
+          "Polityka obejmuje dane osobowe przetwarzane w ramach (a) publicznych stron marketingowych, (b) formularzy zapisu na listę oczekujących oraz (c) aplikacji mobilnej Alpha Investor po utworzeniu lub użyciu konta.",
+          "Nie świadczymy usług maklerskich, przechowywania instrumentów ani składania zleceń. Nie jesteśmy Twoim doradcą inwestycyjnym ani podmiotem powierniczym."
+        ]
+      },
+      {
+        "title": "3. Dane zbierane na stronie internetowej",
+        "paragraphs": [
+          "Podczas przeglądania strony my oraz nasi dostawcy hostingu możemy przetwarzać dane techniczne, takie jak adres IP, przybliżona lokalizacja z IP, typ przeglądarki, identyfikatory urządzenia, odwiedzane strony, adresy odsyłające oraz znaczniki czasu. Dane te służą prowadzeniu, zabezpieczeniu i ulepszaniu strony oraz podstawowej analityce.",
+          "Jeśli włączysz opcjonalną analitykę (np. narzędzia analityczne hostingu), możemy zbierać zagregowane statystyki użycia. W zależności od konfiguracji mogą być używane pliki cookie lub podobne technologie."
+        ]
+      },
+      {
+        "title": "4. Lista oczekujących i komunikacja e-mail",
+        "paragraphs": [
+          "Po zapisie na listę oczekujących przetwarzamy informacje z formularza (zwykle adres e-mail oraz opcjonalnie imię), a także preferowany język, jeśli go podasz. Możemy przetwarzać sygnały antybotowe po ukończeniu wyzwania (np. Cloudflare Turnstile).",
+          "Dane z listy służą zarządzaniu dostępem, wysyłce aktualizacji o produkcie, o które prosisz lub na które wyrazisz zgodę, oraz ulepszaniu onboardingu. Wiadomości mogą być dostarczane przez dostawcę poczty (np. Resend), w tym opcjonalny e-mail powitalny, jeśli jest włączony.",
+          "Z marketingowych wiadomości możesz się wypisać linkiem w treści e-maila, o ile ma to zastosowanie. Komunikaty transakcyjne lub niezbędne do świadczenia usługi mogą nadal być wysyłane, jeśli jest to konieczne."
+        ]
+      },
+      {
+        "title": "5. Dane z aplikacji mobilnej",
+        "paragraphs": [
+          "Po zalogowaniu przetwarzamy dane konta i uwierzytelniania (np. e-mail i identyfikatory użytkownika), preferencje profilu oraz treści związane z portfelem, które sam wprowadzasz (np. pozycje, listy obserwowanych, notatki).",
+          "Pobieramy dane rynkowe i powiązany kontekst od licencjonowanych dostawców w celu wyświetlania wykresów i informacji. Możemy generować wyjaśnienia w produkcie lub treści wspierane przez AI na podstawie Twoich danych wejściowych i pobranego kontekstu rynkowego. O ile wyraźnie nie poinformujemy Cię inaczej w produkcie, nie wykorzystujemy treści Twojego portfela do trenowania publicznie dostępnych modeli fundamentacyjnych.",
+          "Przy zakupie subskrypcji płatność realizuje sklep platformy (np. Apple App Store). Status subskrypcji otrzymujemy od dostawcy uprawnień (np. RevenueCat), a nie pełne dane karty płatniczej."
+        ]
+      },
+      {
+        "title": "6. Cele i podstawy prawne (RODO i podobne ustawodawstwa)",
+        "paragraphs": [
+          "Tam, gdzie ma zastosowanie RODO lub podobne przepisy, opieramy się na co najmniej jednej z podstaw: wykonanie umowy (świadczenie usługi), zgoda (np. marketing lub opcjonalna analityka, jeśli wymagana), prawnie uzasadniony interes (np. bezpieczeństwo, zapobieganie nadużyciom, niezawodność, zrozumienie zagregowanego użycia produktu) oraz obowiązki prawne.",
+          "Zgodę możesz wycofać w dowolnym momencie, jeśli przetwarzanie na niej się opiera. Wycofanie nie wpływa na zgodność z prawem przetwarzania przed wycofaniem."
+        ]
+      },
+      {
+        "title": "7. Pliki cookie i podobne technologie",
+        "paragraphs": [
+          "Strona może używać plików cookie, pamięci lokalnej lub podobnych technologii niezbędnych do bezpieczeństwa i działania serwisu oraz — jeśli włączone — technologii analitycznych opisanych powyżej.",
+          "Ustawienia przeglądarki lub urządzenia mogą pozwolić na odrzucenie części plików cookie; odrzucenie plików niezbędnych może ograniczyć działanie strony."
+        ]
+      },
+      {
+        "title": "8. Udostępnianie danych",
+        "paragraphs": [
+          "Udostępniamy dane osobowe dostawcom usług przetwarzającym dane na nasze polecenie (\"procesorom\"), m.in. hosting, poczta, uwierzytelnianie i baza danych, ochrona przed botami, subskrypcje i uprawnienia, dostawcy danych rynkowych oraz dostawcy inferencji AI. Możemy ujawniać dane, jeśli wymaga tego prawo, w odpowiedzi na żądania organów lub w celu ochrony praw, bezpieczeństwa i integralności.",
+          "Nie sprzedajemy Twoich danych osobowych za pieniądze. Tam, gdzie wymagają tego obowiązujące ustawy o prywatności w USA, przestrzegamy odpowiednich praw dotyczących reklamy ukierunkowanej, sprzedaży lub udostępniania w rozumieniu tych ustaw."
+        ]
+      },
+      {
+        "title": "9. Transfery międzynarodowe",
+        "paragraphs": [
+          "Dane mogą być przetwarzane i przechowywane w Europejskim Obszarze Gospodarczym oraz w innych krajach, w których działamy my lub nasi dostawcy. Jeśli przekazujemy dane osobowe z EOG, Wielkiej Brytanii lub Szwajcarii do krajów bez decyzji o adekwatności, stosujemy odpowiednie zabezpieczenia, np. Standardowe Klauzule Umowne (oraz dodatek dla UK, jeśli ma zastosowanie), uzupełnione o środki techniczne i organizacyjne tam, gdzie jest to wymagane."
+        ]
+      },
+      {
+        "title": "10. Okres przechowywania",
+        "paragraphs": [
+          "Przechowujemy dane tak długo, jak jest to potrzebne do świadczenia usługi, spełnienia obowiązków prawnych, rozstrzygania sporów i egzekwowania umów. Dane z listy oczekujących zwykle przechowujemy do momentu wypisania się lub żądania usunięcia, albo do momentu, gdy nie są już potrzebne do zarządzania dostępem, z zastrzeżeniem rozsądnego okresu na kopie zapasowe i logi.",
+          "Logi techniczne mogą być przechowywane krócej, zgodnie z potrzebami bezpieczeństwa i diagnostyki, chyba że prawo wymaga dłuższego okresu."
+        ]
+      },
+      {
+        "title": "11. Bezpieczeństwo",
+        "paragraphs": [
+          "Stosujemy środki techniczne i organizacyjne mające na celu ochronę danych osobowych, w tym kontrolę dostępu, szyfrowanie w transmisji tam, gdzie jest to adekwatne do architektury, oraz należytą staranność wobec dostawców. Żadna metoda transmisji lub przechowywania nie jest w pełni bezpieczna; nie możemy zagwarantować bezwzględnego bezpieczeństwa."
+        ]
+      },
+      {
+        "title": "12. Twoje prawa i wybory",
+        "paragraphs": [
+          "W zależności od miejsca zamieszkania możesz mieć prawo dostępu, sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu wobec części przetwarzania oraz przenoszenia danych. Możesz także wnieść skargę do organu nadzorczego.",
+          "Aby skorzystać z praw, skontaktuj się z nami przez kanały w aplikacji lub na stronie. Możemy zweryfikować Twoją tożsamość. Jeśli mieszkasz w EOG/Wielkiej Brytanii, możesz zwrócić się do lokalnego organu ochrony danych."
+        ]
+      },
+      {
+        "title": "13. Dzieci",
+        "paragraphs": [
+          "Alpha Investor nie jest skierowany do dzieci poniżej 16 lat (lub niższego wieku wymaganego lokalnie). Świadomie nie zbieramy danych dzieci. Jeśli uważasz, że zebraliśmy dane dziecka, skontaktuj się z nami — podejmiemy kroki w celu ich usunięcia."
+        ]
+      },
+      {
+        "title": "14. Zautomatyzowane podejmowanie decyzji",
+        "paragraphs": [
+          "Oceny w produkcie i streszczenia generowane przez AI mają charakter informacyjny i pomagają zrozumieć dane, do których i tak masz dostęp. Nie stanowią zautomatyzowanego podejmowania decyzji wywołującego skutki prawne lub w podobny sposób istotnie na Ciebie wpływające w rozumieniu art. 22 RODO ani indywidualnych rekomendacji inwestycyjnych."
+        ]
+      },
+      {
+        "title": "15. Zmiany niniejszej polityki",
+        "paragraphs": [
+          "Możemy okresowo aktualizować niniejszą politykę. Zaktualizowaną wersję opublikujemy na tej stronie i zmienimy datę \"Ostatnia aktualizacja\". Przy istotnych zmianach, jeśli prawo te wymaga, podamy dodatkowy komunikat (np. w aplikacji lub e-mailu)."
+        ]
+      }
+    ],
     "localeNote": "Strona w języku polskim."
   },
-
   "Terms": {
     "backHome": "Powrót",
-    "title": "Warunki",
-    "intro": "Strona w wersji testowej - uzupełnij przed startem.",
-    "bullet1": "Produkt może się zmieniać.",
-    "bullet2": "To nie jest oferta kupna ani sprzedaży papierów wartościowych.",
+    "title": "Warunki korzystania",
+    "lastUpdated": "Ostatnia aktualizacja: 2 maja 2026",
+    "intro": "Niniejsze Warunki korzystania (\"Warunki\") regulują dostęp i korzystanie ze strony internetowej Alpha Investor, zapisu na listę oczekujących oraz powiązanych usług prowadzonych przez podmiot prawny obsługujący Alpha Investor (\"Alpha Investor\", \"my\", \"nas\" lub \"nasz\"). Korzystając z usług, akceptujesz niniejsze Warunki.",
+    "sections": [
+      {
+        "title": "1. Akceptacja Warunków",
+        "paragraphs": [
+          "Jeśli nie akceptujesz Warunków, nie korzystaj z usług. Jeśli korzystasz w imieniu organizacji, oświadczasz, że masz uprawnienia do jej związania niniejszymi postanowieniami.",
+          "Dodatkowe warunki mogą dotyczyć poszczególnych funkcji (np. warunki dostawców danych lub zasady sklepów z aplikacjami). W razie sprzeczności, bardziej szczegółowe postanowienia mają zastosowanie wyłącznie do danej funkcji."
+        ]
+      },
+      {
+        "title": "2. Usługi",
+        "paragraphs": [
+          "Alpha Investor udostępnia narzędzia programowe do organizacji informacji o portfelu, przeglądania kontekstu rynkowego oraz otrzymywania materiałów edukacyjnych i informacyjnych (w tym opcjonalnych wyjaśnień wspieranych przez AI). Zakres funkcji może różnić się między planem darmowym a płatnym i może ulec zmianie w fazie early access.",
+          "Strona może zawierać listę oczekujących lub formularze marketingowe. Zapis na listę nie gwarantuje dostępu, terminu ani konkretnego zestawu funkcji."
+        ]
+      },
+      {
+        "title": "3. Brak doradztwa inwestycyjnego, podatkowego i prawnego; brak działalności maklerskiej",
+        "paragraphs": [
+          "Alpha Investor nie jest domem maklerskim, doradcą inwestycyjnym, planistą finansowym, doradcą podatkowym, adwokatem ani podmiotem powierniczym. Żadne treści w usługach nie stanowią spersonalizowanej porady inwestycyjnej, oferty nabycia lub zbycia papierów wartościowych ani rekomendacji podjęcia lub powstrzymania się od działania inwestycyjnego.",
+          "Dane rynkowe mogą być opóźnione, niekompletne lub błędne. Wyniki historyczne nie gwarantują przyszłych rezultatów. Wyłącznie Ty ponosisz odpowiedzialność za decyzje inwestycyjne oraz za weryfikację informacji u niezależnych specjalistów i w oficjalnych źródłach."
+        ]
+      },
+      {
+        "title": "4. Uprawnienia do korzystania",
+        "paragraphs": [
+          "Musisz mieć ukońty wiek pełności w swojej jurysdykcji (oraz co najmniej 16 lat, lub więcej, jeśli lokalnie wymagane), aby korzystać z usług. Jeśli nie spełniasz tego wymogu, nie korzystaj z usług."
+        ]
+      },
+      {
+        "title": "5. Konta, uwierzytelnianie i subskrypcje",
+        "paragraphs": [
+          "Część funkcji wymaga konta. Zobowiązujesz się podawać prawdziwe informacje i chronić dane logowania. Odpowiadasz za działania na koncie, z wyjątkiem szkód spowodowanych naszym rażącym niedbalstwem lub umyślnym działaniem na szkodę.",
+          "Subskrypcje kupione przez sklep platformy podlegają także warunkom tego sklepu. W maksymalnym zakresie dozwolonym przez zasady sklepu rozliczenia, zwroty i anulowanie odbywają się przez sklep."
+        ]
+      },
+      {
+        "title": "6. Dopuszczalne użycie",
+        "paragraphs": [
+          "Zobowiązujesz się nie nadużywać usług, w tym: nie testować podatności bez autoryzacji; nie zakłócać działania usług; nie uzyskiwać dostępu do cudzych danych; nie dokonywać inżynierii wstecznej poza granicami prawa; nie rozpowszechniać złośliwego oprogramowania; nie wysyłać spamu; nie pobierać danych (scraping) w sposób szkodliwy dla usługi; nie używać usług w sposób sprzeczny z prawem lub prawami osób trzecich.",
+          "Możemy badać naruszenia i współpracować z organami ścigania. Możemy zawiesić lub zakończyć dostęp w przypadku zachowania, co do którego mamy uzasadnione podstawy sądzić, że narusza Warunki lub stwarza ryzyko."
+        ]
+      },
+      {
+        "title": "7. Własność intelektualna",
+        "paragraphs": [
+          "Usługi, w tym oprogramowanie, znaki, teksty, grafiki i układy, stanowią własność Alpha Investor lub licencjodawców i są chronione przepisami o własności intelektualnej. Z zastrzeżeniem Warunków udzielamy ograniczonej, niewyłącznej, niezbywalnej i odwołalnej licencji na dostęp i korzystanie z usług w celach osobistych i niekomercyjnych, o ile nie uzgodniono inaczej na piśmie.",
+          "Prawa do treści, które przesyłasz, zachowujesz, jednak udzielasz nam licencji na hostowanie, przetwarzanie, przesyłanie i wyświetlanie tych treści wyłącznie w celu świadczenia i ulepszania usług dla Ciebie."
+        ]
+      },
+      {
+        "title": "8. Usługi i dane osób trzecich",
+        "paragraphs": [
+          "Usługi mogą integrować lub linkować zewnętrzne serwisy, dostawców danych i strony. Te podmioty mają własne warunki i polityki prywatności. Nie odpowiadamy za usługi osób trzecich ani za poprawność ich danych."
+        ]
+      },
+      {
+        "title": "9. Wyłączenie odpowiedzialności (rękojmi)",
+        "paragraphs": [
+          "W MAKSYMALNYM ZAKRESIE DOZWOLONYM PRZEZ PRAWO USŁUGI SĄ DOSTARCZANE \"W ISTNIEJĄCEJ POSTACI\" ORAZ \"W MIARĘ DOSTĘPNOŚCI\" BEZ JAKICHKOLWIEK GWARANCJI, WYRAŹNYCH, DOROZUMIANYCH ANI WYNIKAJĄCYCH Z USTAWY, W TYM DOROZUMIANYCH GWARANCJI PRZYDATNOŚCI HANDLOWEJ, PRZYDATNOŚCI DO OKREŚLONEGO CELU, TYTUŁU PRAWNEGO I NIENARUSZANIA PRAW.",
+          "W niektórych jurysdykcjach części wyłączeń nie można stosować; w takim przypadku wyłączenia obowiązują w najszerszym dopuszczalnym zakresie."
+        ]
+      },
+      {
+        "title": "10. Ograniczenie odpowiedzialności",
+        "paragraphs": [
+          "W MAKSYMALNYM ZAKRESIE DOZWOLONYM PRZEZ PRAWO ALPHA INVESTOR ORAZ JEGO DOSTAWCY W ŻADNYM PRZYPADKU NIE PONOSZĄ ODPOWIEDZIALNOŚCI ZA SZKODY POŚREDNIE, PRZYPADKOWE, SZCZEGÓLNE, WTÓRNE, EKZEMPLARYCZNE LUB KARY, ANI ZA UTRATĘ ZYSKÓW, DANYCH, DOBREGO IMIENIA LUB OKAZJI BIZNESOWYCH WYNIKAJĄCE Z LUB ZWIĄZANE Z KORZYSTANIEM Z USŁUG, NAWET JEŚLI ZOSTALI O NICH POWIADOMIENI.",
+          "W MAKSYMALNYM ZAKRESIE DOZWOLONYM PRZEZ PRAWO ŁĄCZNA ODPOWIEDZIALNOŚĆ ALPHA INVESTOR Z TYTUŁU ROSZCZEŃ WYNIKAJĄCYCH Z LUB ZWIĄZANYCH Z USŁUGAMI NIE PRZEKROCZY WIĘKSZEJ Z KWOT: (A) OPŁAT ZAPŁACONYCH NAM ZA USŁUGI W CIĄGU DWUNASTU (12) MIESIĘCY PRZED ZDARZENIEM BĘDĄCYM PODSTAWĄ ROSZCZENIA, LUB (B) PIĘĆDZIESIĘCIU DOLARÓW AMERYKAŃSKICH (50 USD).",
+          "W niektórych jurysdykcjach pewnych ograniczeń nie można stosować; w takim przypadku ograniczenia obowiązują w najszerszym dopuszczalnym zakresie."
+        ]
+      },
+      {
+        "title": "11. Odszkodowanie",
+        "paragraphs": [
+          "Zobowiązujesz się chronić Alpha Investor oraz podmioty powiązane, dyrektorów, pracowników i pełnomocników przed roszczeniami, zobowiązaniami, szkodami, stratami i kosztami (w tym uzasadnionymi honorarium adwokackimi) wynikającymi z nadużycia usług, naruszenia Warunków lub naruszenia prawa bądź praw osób trzecich."
+        ]
+      },
+      {
+        "title": "12. Zmiany",
+        "paragraphs": [
+          "Możemy zmieniać usługi lub Warunki w dowolnym momencie. Przy istotnych zmianach zapewnimy rozsądne powiadomienie tam, gdzie prawo te wymaga (np. publikacja zaktualizowanych Warunków lub komunikat w aplikacji). Dalsze korzystanie po dacie wejścia w życie oznacza akceptację, z wyjątkiem przypadków, gdy bezwzględnie obowiązujące przepisy stanowią inaczej."
+        ]
+      },
+      {
+        "title": "13. Zawieszenie i rozwiązanie",
+        "paragraphs": [
+          "Możemy zawiesić lub zakończyć świadczenie usług albo zawiesić lub zakończyć Twój dostęp w dowolnym czasie, z powiadomieniem lub bez, m.in. z powodu konserwacji, bezpieczeństwa, wymogów prawnych lub powodów biznesowych. Możesz zaprzestać korzystania w dowolnym momencie.",
+          "Postanowienia, które ze swej natury powinny obowiązywać po zakończeniu (m.in. własność intelektualna, wyłączenia, ograniczenie odpowiedzialności, odszkodowanie, prawo właściwe), pozostają w mocy."
+        ]
+      },
+      {
+        "title": "14. Prawo właściwe i spory",
+        "paragraphs": [
+          "O ile bezwzględnie obowiązujące przepisy o ochronie konsumentów w kraju Twojego zwykłego pobytu nie stanowią inaczej, Warunki podlegają prawu polskiemu, z pominięciem kolizyjnych norm prawa międzynarodowego prywatnego prowadzących do zastosowania prawa innego państwa.",
+          "Jeśli jesteś konsumentem zwykle zamieszkałym w Europejskim Obszarze Gospodarczym, możesz korzystać z bezwzględnie obowiązujących ochron przewidzianych prawem kraju zamieszkania oraz wnieść sprawę przed sądy tego kraju, jeśli przepisy tak stanowią. W stosunku do użytkowników biznesowych sądy Polski mają wyłączną właściwość, z zastrzeżeniem bezwzględnie obowiązującego prawa."
+        ]
+      },
+      {
+        "title": "15. Postanowienia końcowe",
+        "paragraphs": [
+          "Warunki stanowią całość porozumienia między Tobą a Alpha Investor w zakresie przedmiotu regulacji i zastępują wcześniejsze uzgodnienia w tym zakresie. Jeśli którekolwiek postanowienie jest niewykonalne, pozostałe pozostają w mocy. Brak egzekwowania postanowienia nie stanowi zrzeczenia się. Nie możesz przenieść Warunków bez naszej zgody; my możemy przenieść je w związku z fuzją, przejęciem lub zbyciem majątku.",
+          "W sprawach dotyczących Warunków skontaktuj się z nami za pomocą kanałów wsparcia lub kontaktu w aplikacji Alpha Investor lub na tej stronie."
+        ]
+      }
+    ],
     "localeNote": "Strona w języku polskim."
   },
-
   "Footer": {
     "rights": "Wszelkie prawa zastrzeżone.",
     "notAdvice": "To nie jest porada inwestycyjna."
