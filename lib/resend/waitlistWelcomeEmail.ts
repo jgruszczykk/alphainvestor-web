@@ -1,4 +1,4 @@
-const RESEND_EMAILS = "https://api.resend.com";
+const RESEND_EMAILS = "https://api.resend.com/emails";
 
 const LINK = "#5b9cff";
 
@@ -170,6 +170,20 @@ export async function sendWaitlistWelcomeEmail(opts: {
         // ignore
       }
       console.error("[waitlist welcome email] Resend error:", res.status, detail);
+      return;
+    }
+
+    try {
+      const data = (await res.json()) as { id?: string };
+      if (typeof data.id === "string") {
+        console.info(
+          `[waitlist welcome email] sent id=${data.id} to=${opts.to}`,
+        );
+      } else {
+        console.info("[waitlist welcome email] sent (ok, unexpected body)");
+      }
+    } catch {
+      console.info("[waitlist welcome email] sent (ok, could not parse body)");
     }
   } catch (e) {
     console.error("[waitlist welcome email] fetch failed:", e);
