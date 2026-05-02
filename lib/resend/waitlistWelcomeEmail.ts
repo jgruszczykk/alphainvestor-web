@@ -145,20 +145,26 @@ export async function sendWaitlistWelcomeEmail(opts: {
 }): Promise<void> {
   const m = mail[opts.lang];
   const html = buildHtml(opts.lang, opts.firstName);
+  const replyTo = process.env.RESEND_WELCOME_REPLY_TO?.trim();
 
   try {
+    const payload: Record<string, unknown> = {
+      from: opts.from,
+      to: [opts.to],
+      subject: m.subject,
+      html,
+    };
+    if (replyTo) {
+      payload.reply_to = replyTo;
+    }
+
     const res = await fetch(RESEND_EMAILS, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${opts.apiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        from: opts.from,
-        to: [opts.to],
-        subject: m.subject,
-        html,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
