@@ -1,48 +1,11 @@
 const RESEND_EMAILS = "https://api.resend.com/emails";
 
-const LINK = "#5b9cff";
-
 function escapeHtml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
-}
-
-const DEFAULT_WELCOME_LINKS_ORIGIN = "https://www.alphainvestor.pl";
-
-/** Origin for `/`, `/#waitlist`, `/privacy` in the welcome email only. */
-function welcomeEmailLinksOrigin(): string {
-  const raw =
-    process.env.RESEND_WELCOME_LINKS_ORIGIN?.trim() ||
-    DEFAULT_WELCOME_LINKS_ORIGIN;
-  try {
-    const base = new URL(raw.includes("://") ? raw : `https://${raw}`);
-    if (base.protocol !== "http:" && base.protocol !== "https:") {
-      return DEFAULT_WELCOME_LINKS_ORIGIN;
-    }
-    return `${base.protocol}//${base.host}`;
-  } catch {
-    return DEFAULT_WELCOME_LINKS_ORIGIN;
-  }
-}
-
-function welcomeLink(path: string): string {
-  const origin = welcomeEmailLinksOrigin();
-  const p = path.startsWith("/") ? path : `/${path}`;
-  try {
-    return encodeURI(`${origin}${p}`);
-  } catch {
-    return "";
-  }
-}
-
-function a(href: string, label: string): string {
-  if (!href) {
-    return `<span style="color:#a3a3a3">${escapeHtml(label)}</span>`;
-  }
-  return `<a href="${escapeHtml(href)}" style="color:${LINK};text-decoration:underline">${escapeHtml(label)}</a>`;
 }
 
 type WelcomeLang = "en" | "pl";
@@ -63,11 +26,8 @@ const mail = {
       "We're still early and intentionally small, so your signup on the waitlist genuinely matters. I read these replies myself — not a bot, not a ticket queue.",
     p2italic:
       "When we ship, I want the first-run experience to feel like it <em>just works</em> — no gimmicks, no dark patterns, just honest tooling.",
-    tipsLead: "If you have two minutes, here are three useful links:",
-    tip1: "See what we're building on the site",
-    tip2: "Jump to the early access section",
-    tip3: "Read our privacy page — short, plain language",
-    ps: "P.S.: I'd really like to know — what made you sign up? What should we get right first for someone like you?",
+    closing:
+      'If you have two minutes: take another pass through the site to see what we are building, revisit the early access section when you can, and skim our privacy page — it is short, plain language. <strong style="color:#fafafa">P.S.: I would really like to know — what made you sign up? What should we get right first for someone like you?</strong>',
     reply:
       'Hit <strong style="color:#fafafa">Reply</strong> and tell me. I read and answer every message.',
     signoff: "Cheers,",
@@ -88,11 +48,8 @@ const mail = {
       "Jesteśmy we wczesnej fazie i celowo trzymamy się małego zespołu, więc Twój zapis na listę naprawdę coś znaczy. Te odpowiedzi czytam osobiście — bez bota i bez kolejki ticketów.",
     p2italic:
       "Kiedy tylko wyślemy pierwsze sensowne wersje, chcę, żebyś poczuł, że wszystko <em>po prostu działa</em> — bez sztuczek i bez „innowacji” kosztem przejrzystości.",
-    tipsLead: "Jeśli masz dwie minuty, oto trzy przydatne linki:",
-    tip1: "Zobacz, co budujemy, na stronie",
-    tip2: "Wróć do sekcji wczesnego dostępu",
-    tip3: "Przeczytaj politykę prywatności — krótko i po ludzku",
-    ps: "P.S.: Naprawdę chciałbym wiedzieć — co skłoniło Cię do zapisu? Co mamy zrobić dobrze jako pierwsze dla kogoś takiego jak Ty?",
+    closing:
+      'Jeśli masz dwie minuty: zajrzyj jeszcze na stronę — zobacz, co budujemy, przypomnij sobie sekcję wczesnego dostępu i przeczytaj politykę prywatności; jest krótko i po ludzku. <strong style="color:#fafafa">P.S.: Naprawdę chciałbym wiedzieć — co skłoniło Cię do zapisu? Co mamy zrobić dobrze jako pierwsze dla kogoś takiego jak Ty?</strong>',
     reply:
       'Śmiało kliknij <strong style="color:#fafafa">Odpowiedz</strong> — czytam i odpisuję na każdą wiadomość.',
     signoff: "Pozdrawiam,",
@@ -102,9 +59,6 @@ const mail = {
 
 function buildHtml(lang: WelcomeLang, firstName?: string): string {
   const m = mail[lang];
-  const h = welcomeLink("/");
-  const w = welcomeLink("/#waitlist");
-  const p = welcomeLink("/privacy");
 
   const body = `
 <p style="margin:0 0 20px;font-size:16px;line-height:1.65;color:#e5e5e5">${m.hey(firstName)}</p>
@@ -112,13 +66,7 @@ function buildHtml(lang: WelcomeLang, firstName?: string): string {
 <p style="margin:0 0 18px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.mission}</p>
 <p style="margin:0 0 22px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.bridge}</p>
 <p style="margin:0 0 24px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.p2italic}</p>
-<p style="margin:0 0 12px;font-size:16px;line-height:1.65;color:#e5e5e5">${m.tipsLead}</p>
-<ol style="margin:0 0 24px;padding-left:1.35rem;color:#d4d4d4;font-size:16px;line-height:1.65">
-<li style="margin:10px 0">${a(h, m.tip1)}</li>
-<li style="margin:10px 0">${a(w, m.tip2)}</li>
-<li style="margin:10px 0">${a(p, m.tip3)}</li>
-</ol>
-<p style="margin:0 0 16px;font-size:16px;line-height:1.65;font-weight:700;color:#fafafa">${m.ps}</p>
+<p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.closing}</p>
 <p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.reply}</p>
 <p style="margin:0 0 6px;font-size:16px;line-height:1.65;color:#e5e5e5">${m.signoff}</p>
 <p style="margin:0;font-size:16px;line-height:1.65;color:#e5e5e5">${m.team}</p>`;
