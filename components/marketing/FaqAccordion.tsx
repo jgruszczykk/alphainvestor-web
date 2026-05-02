@@ -25,17 +25,21 @@ export function FaqAccordion() {
               type="button"
               aria-expanded={isOpen}
               aria-controls={panelId}
-              className="flex w-full items-center justify-between gap-3 py-4 text-left text-sm font-semibold text-[var(--heading)] transition-colors duration-200 hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
+              className="flex w-full items-start justify-between gap-3 py-4 text-left text-sm font-semibold text-[var(--heading)] transition-colors duration-200 hover:text-[var(--foreground)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
               onClick={() => setOpen(isOpen ? null : i)}
             >
-              {q}
+              <span className="min-w-0 flex-1 pr-1">{q}</span>
               <span
-                className={`inline-flex min-h-[1.25rem] min-w-[1.25rem] items-center justify-center rounded-md border border-[var(--border)] bg-transparent text-center text-xs font-semibold text-[var(--muted)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
-                  isOpen ? "rotate-45" : "rotate-0"
-                }`}
+                className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[var(--border)] bg-transparent text-[var(--muted)]"
                 aria-hidden
               >
-                +
+                <span
+                  className={`block origin-center text-lg font-light leading-none transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+                    isOpen ? "rotate-45" : "rotate-0"
+                  }`}
+                >
+                  +
+                </span>
               </span>
             </button>
             <div
