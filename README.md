@@ -36,7 +36,8 @@ English strings for the landing page are authored in [`content/landing.ts`](./co
 | `RESEND_API_KEY` | Yes | Resend API key (`re_...`) |
 | `RESEND_SEGMENT_ID` | No | Segment UUID; applied on create via Resend `segments` |
 | `RESEND_SIGNUP_LOCALE_PROPERTY_KEY` | No | Only set after you create the same Contact Property in Resend (e.g. `signup_locale`). If unset, signup locale is not sent, avoiding Resend 422 on unknown properties |
-| `RESEND_WELCOME_FROM` | No | Verified `From` (e.g. `Alpha Investor <hello@alphainvestor.app>`). Sends a welcome email after a **new** signup; links use `NEXT_PUBLIC_SITE_URL`; omitted = no email |
+| `RESEND_WELCOME_FROM` | No | Verified `From` (e.g. `Alpha Investor <hello@alphainvestor.app>`). Sends a welcome email after a **new** signup; omitted = no email |
+| `RESEND_WELCOME_LINKS_ORIGIN` | No | Origin for welcome-email links only (defaults to `https://www.alphainvestor.pl`). Set for staging or if the marketing site moves |
 | `RESEND_WELCOME_REPLY_TO` | No | If set, `Reply-To` for that email (e.g. your Gmail or `kuba@alphainvestor.app`) so answers land in your inbox instead of only the `From` address |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in prod | Origin for canonical URLs, `sitemap.xml`, `robots.txt`, Open Graph, and welcome-email links (e.g. `https://www.alphainvestor.app`) |
 | `WAITLIST_RATE_LIMIT_DATABASE_URL` | No | Neon (or any Postgres) connection string; run [`sql/waitlist_rate_limits.sql`](./sql/waitlist_rate_limits.sql) once. Enables IP + email rate limits on the waitlist API |

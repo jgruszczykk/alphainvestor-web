@@ -10,14 +10,28 @@ function escapeHtml(text: string): string {
     .replace(/"/g, "&quot;");
 }
 
-function attrUrl(path: string): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
-  if (!raw) return "";
+const DEFAULT_WELCOME_LINKS_ORIGIN = "https://www.alphainvestor.pl";
+
+/** Origin for `/`, `/#waitlist`, `/privacy` in the welcome email only. */
+function welcomeEmailLinksOrigin(): string {
+  const raw =
+    process.env.RESEND_WELCOME_LINKS_ORIGIN?.trim() ||
+    DEFAULT_WELCOME_LINKS_ORIGIN;
   try {
     const base = new URL(raw.includes("://") ? raw : `https://${raw}`);
-    if (base.protocol !== "http:" && base.protocol !== "https:") return "";
-    const origin = `${base.protocol}//${base.host}`;
-    const p = path.startsWith("/") ? path : `/${path}`;
+    if (base.protocol !== "http:" && base.protocol !== "https:") {
+      return DEFAULT_WELCOME_LINKS_ORIGIN;
+    }
+    return `${base.protocol}//${base.host}`;
+  } catch {
+    return DEFAULT_WELCOME_LINKS_ORIGIN;
+  }
+}
+
+function welcomeLink(path: string): string {
+  const origin = welcomeEmailLinksOrigin();
+  const p = path.startsWith("/") ? path : `/${path}`;
+  try {
     return encodeURI(`${origin}${p}`);
   } catch {
     return "";
@@ -88,9 +102,9 @@ const mail = {
 
 function buildHtml(lang: WelcomeLang, firstName?: string): string {
   const m = mail[lang];
-  const h = attrUrl("/");
-  const w = attrUrl("/#waitlist");
-  const p = attrUrl("/privacy");
+  const h = welcomeLink("/");
+  const w = welcomeLink("/#waitlist");
+  const p = welcomeLink("/privacy");
 
   const body = `
 <p style="margin:0 0 20px;font-size:16px;line-height:1.65;color:#e5e5e5">${m.hey(firstName)}</p>
