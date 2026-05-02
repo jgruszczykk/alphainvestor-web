@@ -29,7 +29,7 @@ const mail = {
     closing:
       'If you have two minutes: take another pass through the site to see what we are building, revisit the early access section when you can, and skim our privacy page — it is short, plain language. <strong style="color:#fafafa">P.S.: I would really like to know — what made you sign up? What should we get right first for someone like you?</strong>',
     reply:
-      'Hit <strong style="color:#fafafa">Reply</strong> and tell me. I read and answer every message.',
+      'If something here sparked a thought, you can use <strong style="color:#fafafa">Reply</strong> whenever — I would be glad to hear it.',
     signoff: "Cheers,",
     team: "Kuba",
   },
@@ -51,7 +51,7 @@ const mail = {
     closing:
       'Jeśli masz dwie minuty: zajrzyj jeszcze na stronę — zobacz, co budujemy, przypomnij sobie sekcję wczesnego dostępu i przeczytaj politykę prywatności; jest krótko i po ludzku. <strong style="color:#fafafa">P.S.: Naprawdę chciałbym wiedzieć — co skłoniło Cię do zapisu? Co mamy zrobić dobrze jako pierwsze dla kogoś takiego jak Ty?</strong>',
     reply:
-      'Śmiało kliknij <strong style="color:#fafafa">Odpowiedz</strong> — czytam i odpisuję na każdą wiadomość.',
+      'Jeśli coś chcesz dopisać, spokojnie możesz użyć <strong style="color:#fafafa">Odpowiedz</strong> — chętnie to przeczytam.',
     signoff: "Pozdrawiam,",
     team: "Kuba",
   },
