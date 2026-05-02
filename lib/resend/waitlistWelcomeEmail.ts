@@ -19,17 +19,15 @@ const mail = {
         ? `Hey ${escapeHtml(name.trim())},`
         : "Hey,",
     intro:
-      "My name is <strong style=\"color:#fafafa\">Kuba</strong> — I'm the founder of Alpha Investor.",
+      "My name is Kuba — I'm the founder of Alpha Investor.",
     mission:
       "My mission is straightforward: help regular investors see through the noise. Markets love to spike fear and FOMO; I want you to open the app and instead see your portfolio the way you actually built it — your weights, where you're concentrated, and context you can trust. AI can help later, but clarity comes first.",
     bridge:
       "We're still early and intentionally small, so your signup on the waitlist genuinely matters. I read these replies myself — not a bot, not a ticket queue.",
     p2italic:
       "When we ship, I want the first-run experience to feel like it <em>just works</em> — no gimmicks, no dark patterns, just honest tooling.",
-    closing:
-      'If you have two minutes: take another pass through the site to see what we are building, revisit the early access section when you can, and skim our privacy page — it is short, plain language. <strong style="color:#fafafa">P.S.: I would really like to know — what made you sign up? What should we get right first for someone like you?</strong>',
     reply:
-      'If something here sparked a thought, you can use <strong style="color:#fafafa">Reply</strong> whenever — I would be glad to hear it.',
+      "If something here sparked a thought, you can just reply whenever — I'd be glad to hear it.",
     signoff: "Cheers,",
     team: "Kuba",
   },
@@ -41,17 +39,15 @@ const mail = {
         ? `Cześć ${escapeHtml(name.trim())},`
         : "Cześć,",
     intro:
-      'Nazywam się <strong style="color:#fafafa">Kuba</strong> — jestem założycielem Alpha Investor.',
+      "Nazywam się Kuba — jestem założycielem Alpha Investor.",
     mission:
       "Chcę robić jedną rzecz dobrze: pomóc zwykłym inwestorom przeciąć szum. Rynek karmi strachem i FOMO; ja chcę, żebyś po otwarciu aplikacji zobaczył portfel takim, jakim go naprawdę złożyłeś — swoje wagi, koncentrację i kontekst, któremu możesz zaufać. AI może pomóc później, ale najpierw musi być jasno.",
     bridge:
       "Jesteśmy we wczesnej fazie i celowo trzymamy się małego zespołu, więc Twój zapis na listę naprawdę coś znaczy. Te odpowiedzi czytam osobiście — bez bota i bez kolejki ticketów.",
     p2italic:
       "Kiedy tylko wyślemy pierwsze sensowne wersje, chcę, żebyś poczuł, że wszystko <em>po prostu działa</em> — bez sztuczek i bez „innowacji” kosztem przejrzystości.",
-    closing:
-      'Jeśli masz dwie minuty: zajrzyj jeszcze na stronę — zobacz, co budujemy, przypomnij sobie sekcję wczesnego dostępu i przeczytaj politykę prywatności; jest krótko i po ludzku. <strong style="color:#fafafa">P.S.: Naprawdę chciałbym wiedzieć — co skłoniło Cię do zapisu? Co mamy zrobić dobrze jako pierwsze dla kogoś takiego jak Ty?</strong>',
     reply:
-      'Jeśli coś chcesz dopisać, spokojnie możesz użyć <strong style="color:#fafafa">Odpowiedz</strong> — chętnie to przeczytam.',
+      "Jeśli coś chcesz dopisać, spokojnie możesz odpowiedzieć na tego maila — chętnie to przeczytam.",
     signoff: "Pozdrawiam,",
     team: "Kuba",
   },
@@ -65,8 +61,7 @@ function buildHtml(lang: WelcomeLang, firstName?: string): string {
 <p style="margin:0 0 18px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.intro}</p>
 <p style="margin:0 0 18px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.mission}</p>
 <p style="margin:0 0 22px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.bridge}</p>
-<p style="margin:0 0 24px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.p2italic}</p>
-<p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.closing}</p>
+<p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.p2italic}</p>
 <p style="margin:0 0 28px;font-size:16px;line-height:1.65;color:#d4d4d4">${m.reply}</p>
 <p style="margin:0 0 6px;font-size:16px;line-height:1.65;color:#e5e5e5">${m.signoff}</p>
 <p style="margin:0;font-size:16px;line-height:1.65;color:#e5e5e5">${m.team}</p>`;
