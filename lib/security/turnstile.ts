@@ -36,7 +36,12 @@ export async function verifyTurnstileToken(
 
   try {
     const data = (await res.json()) as SiteverifyResponse;
-    return data.success === true;
+    if (data.success === true) {
+      return true;
+    }
+    const codes = data["error-codes"]?.join(", ") ?? "none";
+    console.warn("[turnstile] siteverify failed:", codes);
+    return false;
   } catch {
     return false;
   }

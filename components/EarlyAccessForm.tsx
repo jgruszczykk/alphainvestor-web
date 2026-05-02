@@ -29,6 +29,8 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
   const [state, setState] = useState<FormState>({ status: "idle" });
   const [isPending, startTransition] = useTransition();
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  /** Same token as state; refs update synchronously so submit never races onSuccess. */
+  const turnstileTokenRef = useRef<string | null>(null);
   const turnstileRef = useRef<TurnstileInstance | null>(null);
 
   const embedded = variant === "embedded";
@@ -46,7 +48,8 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
     const name = String(formData.get("name") ?? "");
     const company = String(formData.get("company") ?? "");
 
-    if (requiresTurnstile && !turnstileToken) {
+    const tokenNow = turnstileTokenRef.current ?? turnstileToken;
+    if (requiresTurnstile && !tokenNow?.trim()) {
       setState({
         status: "error",
         message: t("errorCaptcha"),
@@ -56,6 +59,7 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
 
     startTransition(async () => {
       setState({ status: "pending" });
+      const token = (turnstileTokenRef.current ?? turnstileToken)?.trim();
       try {
         const res = await fetch("/api/early-access", {
           method: "POST",
@@ -65,7 +69,7 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
             name: name || undefined,
             company: company || undefined,
             locale: locale === "pl" ? "pl" : "en",
-            turnstileToken: turnstileToken ?? undefined,
+            turnstileToken: token || undefined,
           }),
         });
 
@@ -92,6 +96,7 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
         }
 
         if (!res.ok) {
+          turnstileTokenRef.current = null;
           setTurnstileToken(null);
           turnstileRef.current?.reset();
           setState({
@@ -181,9 +186,18 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
             ref={turnstileRef}
             siteKey={turnstileSiteKey}
             options={{ language: locale === "pl" ? "pl" : "en" }}
-            onSuccess={(token) => setTurnstileToken(token)}
-            onExpire={() => setTurnstileToken(null)}
-            onError={() => setTurnstileToken(null)}
+            onSuccess={(token) => {
+              turnstileTokenRef.current = token;
+              setTurnstileToken(token);
+            }}
+            onExpire={() => {
+              turnstileTokenRef.current = null;
+              setTurnstileToken(null);
+            }}
+            onError={() => {
+              turnstileTokenRef.current = null;
+              setTurnstileToken(null);
+            }}
           />
         </div>
       ) : null}
