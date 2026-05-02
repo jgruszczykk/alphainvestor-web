@@ -12,7 +12,6 @@ type SiteverifyResponse = {
  */
 export async function verifyTurnstileToken(
   token: string | undefined,
-  _remoteip: string,
 ): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY?.trim();
   if (!secret) {

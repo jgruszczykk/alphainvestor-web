@@ -3,6 +3,7 @@ import { ZodError } from "zod";
 import { getClientIp } from "@/lib/client-ip";
 import { earlyAccessRequestSchema } from "@/lib/early-access-schema";
 import { assertWaitlistRateLimits } from "@/lib/rate-limit/waitlist";
+import { sendWaitlistWelcomeEmail } from "@/lib/resend/waitlistWelcomeEmail";
 import { verifyTurnstileToken } from "@/lib/security/turnstile";
 
 const RESEND_API = "https://api.resend.com";
@@ -116,6 +117,7 @@ async function createResendContact(
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const segmentId = process.env.RESEND_SEGMENT_ID?.trim();
+  const welcomeFrom = process.env.RESEND_WELCOME_FROM?.trim();
   const localePropertyKey =
     process.env.RESEND_SIGNUP_LOCALE_PROPERTY_KEY?.trim() ?? "";
 
@@ -168,10 +170,7 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  const turnstileOk = await verifyTurnstileToken(
-    parsed.turnstileToken,
-    ip,
-  );
+  const turnstileOk = await verifyTurnstileToken(parsed.turnstileToken);
   if (!turnstileOk) {
     return NextResponse.json(
       { error: copy[lang].captchaFailed },
@@ -211,6 +210,16 @@ export async function POST(request: Request) {
       });
     }
     return NextResponse.json({ error: copy[lang].serverError }, { status: 502 });
+  }
+
+  if (welcomeFrom) {
+    await sendWaitlistWelcomeEmail({
+      apiKey,
+      from: welcomeFrom,
+      to: parsed.email,
+      lang,
+      firstName: name,
+    });
   }
 
   return NextResponse.json({

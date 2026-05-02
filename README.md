@@ -29,13 +29,14 @@ English strings for the landing page are authored in [`content/landing.ts`](./co
 
 ## Early access (Resend)
 
-`POST /api/early-access` creates a **Resend Contact** and optionally adds a **Segment**. Optional **Turnstile** + **Postgres-backed rate limits** (Neon URL) when env vars are set (see [`.env.example`](./.env.example)).
+`POST /api/early-access` creates a **Resend Contact** and optionally adds a **Segment**, and can send a **short welcome email** when `RESEND_WELCOME_FROM` is set. Optional **Turnstile** + **Postgres-backed rate limits** (Neon URL) when env vars are set (see [`.env.example`](./.env.example)).
 
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `RESEND_API_KEY` | Yes | Resend API key (`re_...`) |
 | `RESEND_SEGMENT_ID` | No | Segment UUID; applied on create via Resend `segments` |
 | `RESEND_SIGNUP_LOCALE_PROPERTY_KEY` | No | Only set after you create the same Contact Property in Resend (e.g. `signup_locale`). If unset, signup locale is not sent, avoiding Resend 422 on unknown properties |
+| `RESEND_WELCOME_FROM` | No | Verified `From` (e.g. `Alpha Investor <hello@yourdomain.com>`). Sends a dark, conversational welcome email after a **new** signup; links use `NEXT_PUBLIC_SITE_URL`; omitted = no email |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in prod | Origin for canonical URLs, `sitemap.xml`, `robots.txt`, Open Graph |
 | `WAITLIST_RATE_LIMIT_DATABASE_URL` | No | Neon (or any Postgres) connection string; run [`sql/waitlist_rate_limits.sql`](./sql/waitlist_rate_limits.sql) once. Enables IP + email rate limits on the waitlist API |
 | `TURNSTILE_SECRET_KEY` / `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | If set, Turnstile is required on submit |
