@@ -1,6 +1,13 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { useLocale, useTranslations } from "next-intl";
+import { useRef, useState, useTransition } from "react";
+
+const turnstileSiteKey =
+  typeof process !== "undefined"
+    ? process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim() || ""
+    : "";
 
 type FormState =
   | { status: "idle" }
@@ -8,15 +15,44 @@ type FormState =
   | { status: "success"; message: string }
   | { status: "error"; message: string };
 
-export function EarlyAccessForm() {
+type Props = {
+  /**
+   * `embedded` - no outer card; use inside `CtaBand` so one bordered container wraps copy + fields.
+   * `card` - standalone bordered block (e.g. future isolated page).
+   */
+  variant?: "card" | "embedded";
+};
+
+export function EarlyAccessForm({ variant = "card" }: Props) {
+  const t = useTranslations("Form");
+  const locale = useLocale();
   const [state, setState] = useState<FormState>({ status: "idle" });
   const [isPending, startTransition] = useTransition();
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
 
-  const disabled = isPending || state.status === "success";
+  const embedded = variant === "embedded";
+  const requiresTurnstile = Boolean(turnstileSiteKey);
+  const turnstileReady = !requiresTurnstile || Boolean(turnstileToken);
+  const disabled =
+    isPending || state.status === "success" || !turnstileReady;
+
+  const fieldBg = embedded
+    ? "bg-transparent dark:bg-white/[0.04]"
+    : "bg-[var(--surface)] dark:bg-white/[0.04]";
 
   function onSubmit(formData: FormData) {
     const email = String(formData.get("email") ?? "");
     const name = String(formData.get("name") ?? "");
+    const company = String(formData.get("company") ?? "");
+
+    if (requiresTurnstile && !turnstileToken) {
+      setState({
+        status: "error",
+        message: t("errorCaptcha"),
+      });
+      return;
+    }
 
     startTransition(async () => {
       setState({ status: "pending" });
@@ -24,7 +60,13 @@ export function EarlyAccessForm() {
         const res = await fetch("/api/early-access", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, name: name || undefined }),
+          body: JSON.stringify({
+            email,
+            name: name || undefined,
+            company: company || undefined,
+            locale: locale === "pl" ? "pl" : "en",
+            turnstileToken: turnstileToken ?? undefined,
+          }),
         });
 
         const data = (await res.json()) as {
@@ -36,66 +78,90 @@ export function EarlyAccessForm() {
         if (res.status === 503) {
           setState({
             status: "error",
-            message:
-              data.error ??
-              "Signups are not available yet. Please try again later.",
+            message: data.error ?? t("errorNotConfigured"),
+          });
+          return;
+        }
+
+        if (res.status === 429) {
+          setState({
+            status: "error",
+            message: data.error ?? t("errorRateLimited"),
           });
           return;
         }
 
         if (!res.ok) {
+          setTurnstileToken(null);
+          turnstileRef.current?.reset();
           setState({
             status: "error",
-            message:
-              data.error ?? "Something went wrong. Please try again.",
+            message: data.error ?? t("errorGeneric"),
           });
           return;
         }
 
         setState({
           status: "success",
-          message: data.message ?? "Thanks — we will be in touch.",
+          message: data.message ?? t("successDefault"),
         });
       } catch {
         setState({
           status: "error",
-          message: "Network error. Please check your connection and retry.",
+          message: t("errorNetwork"),
         });
       }
     });
   }
 
+  const formClass = embedded
+    ? "relative flex w-full max-w-md flex-col gap-4"
+    : "relative flex w-full max-w-md flex-col gap-3 rounded-2xl border border-[var(--border)] bg-transparent p-6 dark:bg-white/[0.02]";
+
   return (
-    <form
-      action={onSubmit}
-      className="flex w-full max-w-md flex-col gap-3 rounded-2xl border border-zinc-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-950/80"
-    >
-      <div className="space-y-1">
-        <h2 className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
-          Request early access
-        </h2>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Leave your email and we will notify you when spots open.
-        </p>
+    <form action={onSubmit} className={formClass}>
+      {!embedded ? (
+        <div className="space-y-1">
+          <h2 className="text-lg font-semibold tracking-tight text-[var(--heading)]">
+            {t("title")}
+          </h2>
+          <p className="text-sm text-[var(--muted)]">{t("subtitle")}</p>
+        </div>
+      ) : null}
+
+      {/* Honeypot - hidden from users */}
+      <div
+        className="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden opacity-0"
+        aria-hidden
+      >
+        <label htmlFor="waitlist-company">Company</label>
+        <input
+          id="waitlist-company"
+          type="text"
+          name="company"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
       </div>
 
-      <label className="flex flex-col gap-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-        Email
+      <label className="flex flex-col gap-1 text-sm font-medium text-[var(--heading)]">
+        {t("email")}
         <input
           required
           type="email"
           name="email"
           autoComplete="email"
           disabled={disabled}
-          placeholder="you@company.com"
-          className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base font-normal text-zinc-900 outline-none ring-zinc-400/40 placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-2 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500"
+          placeholder={t("emailPlaceholder")}
+          className={`rounded-lg border border-[var(--border)] px-3 py-2 text-base font-normal text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--ring)] focus:ring-2 focus:ring-[var(--heading)]/10 disabled:opacity-60 ${fieldBg}`}
         />
       </label>
 
-      <label className="flex flex-col gap-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
-        Name{" "}
-        <span className="font-normal text-zinc-500 dark:text-zinc-500">
-          (optional)
+      <label className="flex flex-col gap-1 text-sm font-medium text-[var(--heading)]">
+        {t("name")}{" "}
+        <span className="font-normal text-[var(--muted)]">
+          {t("nameOptional")}
         </span>
         <input
           type="text"
@@ -103,17 +169,31 @@ export function EarlyAccessForm() {
           autoComplete="name"
           maxLength={120}
           disabled={disabled}
-          placeholder="Ada Lovelace"
-          className="rounded-lg border border-zinc-300 bg-white px-3 py-2 text-base font-normal text-zinc-900 outline-none ring-zinc-400/40 placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-2 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500"
+          placeholder={t("namePlaceholder")}
+          className={`rounded-lg border border-[var(--border)] px-3 py-2 text-base font-normal text-[var(--foreground)] outline-none placeholder:text-[var(--muted)] focus:border-[var(--ring)] focus:ring-2 focus:ring-[var(--heading)]/10 disabled:opacity-60 ${fieldBg}`}
         />
       </label>
+
+      {requiresTurnstile ? (
+        <div className="flex flex-col gap-2">
+          <p className="text-xs text-[var(--muted)]">{t("captchaHint")}</p>
+          <Turnstile
+            ref={turnstileRef}
+            siteKey={turnstileSiteKey}
+            options={{ language: locale === "pl" ? "pl" : "en" }}
+            onSuccess={(token) => setTurnstileToken(token)}
+            onExpire={() => setTurnstileToken(null)}
+            onError={() => setTurnstileToken(null)}
+          />
+        </div>
+      ) : null}
 
       <button
         type="submit"
         disabled={disabled}
-        className="mt-1 inline-flex h-11 items-center justify-center rounded-lg bg-zinc-900 px-4 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white"
+        className="mt-1 inline-flex h-11 items-center justify-center rounded-lg bg-[var(--brand)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-[background-color,opacity] duration-200 hover:bg-[var(--brand-hover)] disabled:cursor-not-allowed disabled:opacity-60"
       >
-        {isPending ? "Submitting…" : "Join the waitlist"}
+        {isPending ? t("submitting") : t("submit")}
       </button>
 
       {state.status === "success" ? (

@@ -1,57 +1,77 @@
-# Alpha Investor — web (early access)
+# Alpha Investor - web (marketing + early access)
 
-Next.js marketing site and early-access waitlist for **Alpha Investor**, deployed on **Vercel**.
+Next.js marketing site with **English** and **Polish** (same split as the Expo app). **Public URLs have no locale prefix** (`/`, `/privacy`, `/terms`); language is chosen via **cookie** + `Accept-Language` and the **EN / PL** control in the header. Deploy on **Vercel**.
 
 ## Related repo
 
-The **mobile app** (Expo) and **Supabase** migrations/functions live in the sibling project:
+The **mobile app** (Expo) and **Supabase** live in the sibling project:
 
 `../alphainvestor` (repository name: **alphainvestor**)
 
-This web repo stays independent: its own `package.json`, CI, and Vercel project.
+This repo stays independent: its own `package.json`, CI, and Vercel project.
 
-## Early access (waitlist)
+## Locales and URLs
 
-Signups are stored via **Resend Contacts** (server-side `POST` from `/api/early-access`). Configure Vercel environment variables:
+- **next-intl** with `localePrefix: 'never'` ([`i18n/routing.ts`](./i18n/routing.ts)): paths stay `/`, `/privacy`, `/terms` while the app still uses `app/[locale]/...` internally.
+- [`proxy.ts`](./proxy.ts) negotiates locale (cookie, `Accept-Language`, default `en`).
+- [`LanguageSwitcher`](./components/LanguageSwitcher.tsx) calls `router.replace(pathname, { locale })` so the **URL does not change** when switching language.
+- Copy lives in [`messages/en.json`](./messages/en.json) and [`messages/pl.json`](./messages/pl.json).
+
+**SEO note:** Google prefers distinct URLs per language; cookie-only locale means weaker `hreflang` coverage. If that becomes a priority, consider subdomains (`en.` / `pl.`) or prefix routing again.
+
+## Brand assets
+
+Icons and splash art live under [`public/brand/`](./public/brand/) (copied from the mobile repo `assets/images/` - `icon`, `splash-icon`, `adaptive-icon`, `favicon`). Re-copy when those files change.
+
+## Marketing copy (English source)
+
+English strings for the landing page are authored in [`content/landing.ts`](./content/landing.ts) as the copy deck. **`messages/en.json`** under `Home` (and related keys) should stay in sync: after editing `landing.ts`, mirror the same text into `messages/en.json`, then translate updates into **`messages/pl.json`**. There is no automated sync script yet; a quick diff between `landingHome` keys and JSON catches drift.
+
+## Early access (Resend)
+
+`POST /api/early-access` creates a **Resend Contact** and optionally adds a **Segment**. Optional **Turnstile** + **Upstash rate limits** when env vars are set (see [`.env.example`](./.env.example)).
 
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `RESEND_API_KEY` | Yes | Resend API key (`re_...`) |
-| `RESEND_SEGMENT_ID` | No | Segment ID to tag waitlist contacts after create |
-
-Copy [`.env.example`](./.env.example) to `.env.local` for local development.
-
-### Other providers
-
-To use Loops, Beehiiv, ConvertKit, etc., replace the implementation in [`app/api/early-access/route.ts`](app/api/early-access/route.ts) with their HTTP APIs; keep **server-only** secrets in Vercel, never `NEXT_PUBLIC_*`.
-
-### Optional: mirror signups into Supabase
-
-If you want emails in the same Postgres as the mobile app, add a migration in **alphainvestor** (e.g. `early_access_signups`) and call Supabase from this route with a **service role** key stored only on Vercel. That couples the two repos operationally—only do it if you need a single warehouse.
+| `RESEND_SEGMENT_ID` | No | Segment ID to tag waitlist contacts |
+| `NEXT_PUBLIC_SITE_URL` | Recommended in prod | Origin for canonical URLs, `sitemap.xml`, `robots.txt`, Open Graph |
+| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | No | If set, enables IP + email rate limits on the waitlist API |
+| `TURNSTILE_SECRET_KEY` / `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | If set, Turnstile is required on submit |
+| `NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS` | No | Set to `1` to enable [@vercel/analytics](https://vercel.com/docs/analytics) in production |
 
 ## Scripts
 
 ```bash
-npm run dev        # local dev
-npm run build      # production build
-npm run start      # run production server locally
+npm run dev        # http://localhost:3000
+npm run build
+npm run start
 npm run lint
 npm run typecheck
 ```
 
 ## Deploy (Vercel)
 
-1. Import this Git repository into Vercel (root directory = repo root).
-2. Set `RESEND_API_KEY` (and optionally `RESEND_SEGMENT_ID`) in **Project → Settings → Environment Variables**.
-3. Deploy; the waitlist form calls `/api/early-access` on the same origin.
+1. Import this repository (root = app root).
+2. Set `RESEND_API_KEY`, optional `RESEND_SEGMENT_ID`, **`NEXT_PUBLIC_SITE_URL`**, (recommended) Upstash + Turnstile keys, and optional `NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS=1` for Web Analytics.
+3. Deploy.
 
 ## Local development
 
 ```bash
 npm install
 cp .env.example .env.local
-# fill RESEND_* then:
 npm run dev
 ```
 
-Without Resend env vars, `POST /api/early-access` returns **503** so you know configuration is missing.
+## Optional: Supabase mirror
+
+To store signups in the same Postgres as the mobile app, add a migration in **alphainvestor** and extend the API route with a server-only Supabase service role key.
+
+## QA checklist
+
+- Open `/`, switch **EN / PL**, confirm **URL unchanged**; refresh keeps language (cookie).
+- Visit `/privacy` and `/terms`; switch language there too.
+- Submit the waitlist form (success, duplicate, 503 without Resend, 429 when rate-limited, Turnstile failure if keys set).
+- Lighthouse on `/` after setting `NEXT_PUBLIC_SITE_URL`.
+- Replace Privacy / Terms placeholders before large-scale email collection.

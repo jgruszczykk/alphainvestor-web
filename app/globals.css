@@ -1,26 +1,152 @@
 @import "tailwindcss";
 
+/*
+  Warm editorial palette (stone family): blue is reserved for primary CTAs and
+  the active locale chip so the page never “fights” between ink and system blue.
+  Brand #0a84ff matches alphainvestor app tint.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --brand: #0a84ff;
+  --brand-hover: #0071e3;
+  --brand-soft: #4d6b8f;
+  --brand-tint: rgba(10, 132, 255, 0.07);
+  --heading: #1c1917;
+  --foreground: #57534e;
+  --muted: #78716c;
+  --surface: #fafaf9;
+  --card: #ffffff;
+  --border: rgba(28, 25, 23, 0.055);
+  --pill-bg: rgba(240, 238, 235, 0.65);
+  --pill-text: #44403c;
+  --ring: #a8a29e;
+  --underline: rgba(87, 83, 78, 0.38);
+  --hero-glow: rgba(168, 162, 158, 0.22);
+  /* Hero halo - anchored to top edge (no “strip” above from parent padding) */
+  --hero-backdrop: radial-gradient(
+    ellipse 115% 58% at 50% 0%,
+    rgba(10, 132, 255, 0.065),
+    transparent 66%
+  );
+  --shadow-elevated: 0 4px 20px -8px rgba(28, 25, 23, 0.07);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --brand-hover: #2b8fff;
+    --brand-soft: #94b4e0;
+    --brand-tint: rgba(96, 165, 250, 0.12);
+    --heading: #f5f5f4;
+    --foreground: #a8a29e;
+    --muted: #78716c;
+    --surface: #0c0a09;
+    --card: #1c1917;
+    --border: rgba(231, 229, 228, 0.08);
+    --pill-bg: rgba(255, 255, 255, 0.045);
+    --pill-text: #e7e5e4;
+    --ring: #57534e;
+    --underline: rgba(168, 162, 158, 0.35);
+    --hero-glow: rgba(120, 113, 108, 0.18);
+    --hero-backdrop: radial-gradient(
+      ellipse 115% 58% at 50% 0%,
+      rgba(10, 132, 255, 0.11),
+      transparent 66%
+    );
+    --shadow-elevated: 0 6px 24px -10px rgba(0, 0, 0, 0.4);
   }
 }
 
+@theme inline {
+  --color-background: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-heading: var(--heading);
+  --color-brand: var(--brand);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  margin: 0;
+}
+
 body {
-  background: var(--background);
+  margin: 0;
+  background: var(--surface);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .anim-header-in,
+  .anim-fade-rise,
+  .anim-fade-only {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .faq-accordion-panel {
+    transition: none !important;
+  }
+}
+
+@keyframes header-enter {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-only {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.anim-header-in {
+  animation: header-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.anim-fade-rise {
+  animation: fade-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/** Opacity-only entrance - use around layered / rotated UI so parent `transform` does not break stacking. */
+.anim-fade-only {
+  animation: fade-only 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

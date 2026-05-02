@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { getLocale } from "next-intl/server";
+import { getSiteUrl } from "@/lib/site-url";
+import { VercelAnalyticsGate } from "@/components/VercelAnalyticsGate";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,32 +16,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: getSiteUrl(),
   title: {
-    default: "Alpha Investor — Early access",
-    template: "%s — Alpha Investor",
+    default: "Alpha Investor",
+    template: "%s - Alpha Investor",
   },
-  description:
-    "Join the waitlist for Alpha Investor: portfolio clarity and market context in one app.",
-  openGraph: {
-    title: "Alpha Investor — Early access",
-    description:
-      "Join the waitlist for Alpha Investor: portfolio clarity and market context in one app.",
-    type: "website",
+  icons: {
+    icon: [{ url: "/brand/favicon-tab.png", sizes: "32x32", type: "image/png" }],
+    apple: "/brand/app-icon.png",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-zinc-50 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50">
+      <body className="min-h-full flex flex-col">
         {children}
+        <VercelAnalyticsGate />
       </body>
     </html>
   );

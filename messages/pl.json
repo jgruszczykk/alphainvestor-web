@@ -1,0 +1,190 @@
+{
+  "Metadata": {
+    "homeTitle": "Alpha Investor - AI do portfela (early access)",
+    "homeDescription": "Alpha Investor na iOS - przejrzysty widok portfela, AI oparte na Twoich pozycjach i pięć prostych ocen dla każdej spółki. Dołącz do early access.",
+    "privacyTitle": "Prywatność",
+    "privacyDescription": "Jak przetwarzamy dane w Alpha Investor (early access).",
+    "termsTitle": "Warunki",
+    "termsDescription": "Warunki korzystania ze strony Alpha Investor."
+  },
+  "Nav": {
+    "ai": "AI",
+    "features": "Funkcje",
+    "pricing": "Plany",
+    "howItWorks": "Jak to działa",
+    "faq": "FAQ",
+    "privacy": "Prywatność",
+    "terms": "Warunki",
+    "joinWaitlist": "Dołącz do listy",
+    "languageEn": "EN",
+    "languagePl": "PL"
+  },
+  "Home": {
+    "skipToContent": "Przejdź do treści",
+    "eyebrow": "Early access - iOS",
+    "headline": "Twój portfel - w końcu jasny i zrozumiały.",
+    "subhead": "Notowania na żywo plus wnioski - zobacz strukturę, wychwyć koncentrację i sprawdź 5 szybkich ocen spółki. Mniej chaosu - więcej jasności.",
+    "heroPrimaryCta": "Uzyskaj dostęp",
+    "heroSecondaryCta": "Zobacz jak działa AI",
+    "heroImageAlt": "Ekran Alpha Investor pokazujący pięć ocen - trend, wycena, ryzyko, wzrost, momentum.",
+    "heroDeckWalletAlt": "Widok portfela z oceną kondycji i alokacją.",
+    "heroDeckChartAlt": "Szczegóły spółki z wykresem i wynikami.",
+
+    "aiEyebrow": "Dlaczego to działa inaczej",
+    "aiProBadge": "Alpha Pro",
+    "aiTitle": "AI oparte na Twoim portfelu - nie na szumie",
+    "aiIntro": "Alpha Pro skupia się na tym, co naprawdę posiadasz - Twoich pozycjach, wagach i ryzyku. Jasne sygnały - bez zgadywania.",
+    "aiExplain": "Już zainwestowałeś - pytanie brzmi: czy Twoja teza nadal ma sens? Alpha pokazuje gdzie masz koncentrację, gdzie balans i gdzie rośnie ryzyko.",
+    "aiProHook": "Bez prognoz - bez hype’u. Tylko jasność, gdy rynek robi się chaotyczny. W wersji darmowej masz portfele i wykresy - pełne AI odblokujesz w każdej chwili.",
+
+    "aiPricingCta": "Zobacz plany",
+    "aiWaitlistCta": "Dołącz do early access",
+
+    "aiPillar1Title": "Widok całego portfela",
+    "aiPillar1Body": "Zobacz strukturę w sekundę - i wykryj koncentrację zanim stanie się problemem.",
+    "aiPillar2Title": "5 ocen - jedno spojrzenie",
+    "aiPillar2Body": "Trend - wycena - ryzyko - wzrost - momentum. Jeden prosty system - szybka orientacja.",
+    "aiPillar3Title": "Kontekst spółki",
+    "aiPillar3Body": "Wykres, dane i krótkie wyjaśnienie - wszystko w jednym miejscu.",
+
+    "featuresTitle": "Wszystko w jednym miejscu",
+    "featuresIntro": "Portfel, wykresy i AI w jednym przepływie - bez przełączania zakładek.",
+    "feature1Title": "Kondycja portfela",
+    "feature1Body": "Proste sygnały o strukturze i koncentracji - bez straszenia.",
+    "feature2Title": "Oceny 5 czynników",
+    "feature2Body": "Ten sam system dla każdej spółki - porównuj natychmiast.",
+    "feature3Title": "Pełny widok spółki",
+    "feature3Body": "Wykres - dane - kontekst - i AI w jednym scrollu.",
+    "feature4Title": "Prywatność",
+    "feature4Body": "Twoje dane należą do Ciebie - nic nie trafia do publicznych modeli.",
+
+    "stepsTitle": "Jak to działa",
+    "step1Title": "Dodaj portfel",
+    "step1Body": "Wprowadź pozycje, które już śledzisz - bez łączenia z brokerem.",
+    "step2Title": "Pobieramy dane",
+    "step2Body": "Wykresy, kontekst i ceny - automatycznie w tle.",
+    "step3Title": "AI tłumaczy",
+    "step3Body": "Szybkie wnioski - żebyś wiedział, co naprawdę posiadasz.",
+
+    "pricingEyebrow": "Plany",
+    "pricingTitle": "Wybierz plan dla siebie",
+    "pricingTagline": "Zacznij za darmo - przejdź na Pro, gdy chcesz więcej jasności.",
+
+    "pricingFreeName": "Free",
+    "pricingFreePrice": "$0",
+    "pricingFreeBullet1": "Portfele, ceny i wykresy - bez AI",
+    "pricingFreeBullet2": "Pełna prywatność - Twoje dane są tylko Twoje",
+    "pricingFreeBullet3": "Ulepsz kiedy chcesz",
+
+    "pricingProName": "Alpha Pro",
+    "pricingProBadge": "Pełne AI",
+    "pricingProPrice": "$10",
+    "pricingProPeriod": "/ miesiąc",
+    "pricingProBullet1": "AI oparte na Twoim portfelu - nie na ogólnych danych",
+    "pricingProBullet2": "5 ocen z jasnym wyjaśnieniem",
+    "pricingProBullet3": "Wykres, dane i AI w jednym widoku",
+    "pricingProBullet4": "Nowe funkcje najpierw tutaj",
+
+    "pricingCtaWaitlist": "Uzyskaj dostęp",
+    "pricingCtaAi": "Jak działa AI",
+    "pricingDisclaimerLine": "Bez obietnic - bez magicznych zysków. Tylko lepsze zrozumienie portfela.",
+    "pricingFootnote": "Subskrypcja przez App Store. Cena może się różnić zależnie od regionu. Android w planach.",
+
+    "screensTitle": "Zobacz w aplikacji",
+    "screensIntro": "Realne ekrany - do realnego użycia.",
+    "screensBullet1": "Widok całego portfela",
+    "screensBullet2": "Szybkie oceny",
+    "screensBullet3": "Widok spółki z kontekstem",
+    "screensReassure": "Zaprojektowane do szybkiego skanowania - bez przeciążenia.",
+
+    "screenSpotlightCaption": "Wartość portfela",
+    "screenSpotlightDetail": "Ten sam portfel - różne zakresy czasu.",
+    "screenWalletCaption": "Portfel",
+    "screenWalletDetail": "Kondycja, alokacja i koncentracja - jasno wyjaśnione.",
+    "screenLensesCaption": "5 ocen",
+    "screenLensesDetail": "Małe liczby - szybkie zrozumienie.",
+    "screenInstrumentChartCaption": "Wykres",
+    "screenInstrumentChartDetail": "Zakresy czasu, wolumen i dane.",
+    "screenChartCaption": "Widok spółki",
+    "screenChartDetail": "Wszystko w jednym miejscu.",
+
+    "faqTitle": "FAQ",
+    "faq1Q": "Czy to doradztwo inwestycyjne?",
+    "faq1A": "Nie - to narzędzie do zrozumienia portfela.",
+    "faq2Q": "Co daje AI?",
+    "faq2A": "Zamienia dane w krótkie, zrozumiałe wnioski.",
+    "faq3Q": "Na jakich platformach działa?",
+    "faq3A": "iOS teraz - Android w planach.",
+    "faq4Q": "Co po zapisie?",
+    "faq4A": "Dostaniesz aktualizacje o dostępie.",
+    "faq5Q": "Skąd dane rynkowe?",
+    "faq5A": "Z licencjonowanych źródeł.",
+    "faq6Q": "Jak działa płatność?",
+    "faq6A": "Plan Free daje podstawy - Pro dodaje pełne AI.",
+    "faq7Q": "Czy trenujecie modele na moich danych?",
+    "faq7A": "Nie - Twoje dane są tylko Twoje.",
+
+    "ctaTitle": "Ciekawy?",
+    "ctaSub": "Dołącz do early access - bez spamu, tylko ważne aktualizacje.",
+
+    "formConsent": "Dołączając zgadzasz się na kontakt mailowy. Zobacz",
+    "formConsentLink": "Prywatność",
+
+    "disclaimer": "To nie jest porada inwestycyjna - zawsze weryfikuj decyzje.",
+
+    "roadmapTitle": "Roadmapa - bez obietnic",
+    "roadmapIntro": "Kierunek może się zmieniać.",
+    "roadmapPhase1Title": "iOS",
+    "roadmapPhase1Badge": "Gotowe",
+    "roadmapPhase1Body": "Portfele, wykresy i AI już działają.",
+    "roadmapPhase2Title": "Lepsze AI",
+    "roadmapPhase2Body": "Więcej wniosków - nadal prosto.",
+    "roadmapPhase3Title": "Android",
+    "roadmapPhase3Body": "Ekspansja na kolejną platformę.",
+    "roadmapPhase4Title": "Iteracja",
+    "roadmapPhase4Body": "Rozwój oparty na użytkownikach."
+  },
+
+  "Form": {
+    "title": "Uzyskaj dostęp",
+    "subtitle": "Zostaw email - damy znać gdy pojawią się miejsca.",
+    "email": "Email",
+    "name": "Imię",
+    "nameOptional": "(opcjonalnie)",
+    "emailPlaceholder": "you@company.com",
+    "namePlaceholder": "Jan Kowalski",
+    "submit": "Dołącz",
+    "submitting": "Wysyłanie…",
+    "errorNotConfigured": "Zapisy chwilowo niedostępne.",
+    "errorGeneric": "Coś poszło nie tak.",
+    "errorNetwork": "Błąd sieci.",
+    "errorInvalidEmail": "Podaj poprawny email.",
+    "successDefault": "Gotowe - odezwiemy się.",
+    "successDuplicate": "Już jesteś na liście.",
+    "captchaHint": "Uzupełnij zabezpieczenie.",
+    "errorCaptcha": "Potwierdź zabezpieczenie.",
+    "errorRateLimited": "Za dużo prób - spróbuj później."
+  },
+
+  "Privacy": {
+    "backHome": "Powrót",
+    "title": "Prywatność",
+    "intro": "To placeholder - uzupełnij pełną politykę prywatności przed startem.",
+    "processing": "Dane zapisu przechowywane są tylko do obsługi listy oczekujących.",
+    "localeNote": "Strona w języku polskim."
+  },
+
+  "Terms": {
+    "backHome": "Powrót",
+    "title": "Warunki",
+    "intro": "Strona w wersji testowej - uzupełnij przed startem.",
+    "bullet1": "Produkt może się zmieniać.",
+    "bullet2": "To nie jest oferta kupna ani sprzedaży papierów wartościowych.",
+    "localeNote": "Strona w języku polskim."
+  },
+
+  "Footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "notAdvice": "To nie jest porada inwestycyjna."
+  }
+}

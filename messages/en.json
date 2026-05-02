@@ -1,0 +1,190 @@
+{
+  "Metadata": {
+    "homeTitle": "Alpha Investor - Portfolio AI (early access)",
+    "homeDescription": "Alpha Investor on iOS - clearer portfolio view, AI insights based on your holdings, and five simple scores per stock. Join early access.",
+    "privacyTitle": "Privacy",
+    "privacyDescription": "How we handle your data in Alpha Investor early access.",
+    "termsTitle": "Terms",
+    "termsDescription": "Terms of use for the Alpha Investor site."
+  },
+  "Nav": {
+    "ai": "AI",
+    "features": "Features",
+    "pricing": "Pricing",
+    "howItWorks": "How it works",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "joinWaitlist": "Join waitlist",
+    "languageEn": "EN",
+    "languagePl": "PL"
+  },
+  "Home": {
+    "skipToContent": "Skip to content",
+    "eyebrow": "Early access - iOS",
+    "headline": "Your portfolio - clear, calm, and easy to understand.",
+    "subhead": "Live prices plus human insights - see your mix, spot concentration, and check five quick scores per stock. Fewer tabs - less guesswork.",
+    "heroPrimaryCta": "Get early access",
+    "heroSecondaryCta": "See how AI helps",
+    "heroImageAlt": "Alpha Investor screen showing five lenses - trend, valuation, risk, growth, momentum.",
+    "heroDeckWalletAlt": "Portfolio view with health score and allocation.",
+    "heroDeckChartAlt": "Stock detail with chart and performance.",
+
+    "aiEyebrow": "Why it feels different",
+    "aiProBadge": "Alpha Pro",
+    "aiTitle": "AI built around your portfolio - not the noise",
+    "aiIntro": "Alpha Pro ignores random takes and focuses on what you actually own - your positions, your weights, your risk. Clear signals - not a trading bot.",
+    "aiExplain": "You already invested - the hard part is knowing if your story still holds. Alpha shows where you're concentrated, where you're balanced, and where risk builds up - all from your portfolio.",
+    "aiProHook": "No predictions - no hype. Just clarity when markets get messy. Free gives you portfolios and charts - upgrade anytime for full AI insights.",
+
+    "aiPricingCta": "See Alpha Pro pricing",
+    "aiWaitlistCta": "Join early access",
+
+    "aiPillar1Title": "Whole portfolio view",
+    "aiPillar1Body": "See your mix instantly - and catch concentration before it becomes a problem.",
+    "aiPillar2Title": "Five lenses - one glance",
+    "aiPillar2Body": "Trend - valuation - risk - growth - momentum on one simple scale. Clear - fast - consistent.",
+    "aiPillar3Title": "Per-stock clarity",
+    "aiPillar3Body": "Open any stock - get chart, context, and a short explanation in one place.",
+
+    "featuresTitle": "Everything in one place",
+    "featuresIntro": "Portfolio, charts, and AI insights in one smooth flow - nothing to learn, nothing to memorize.",
+    "feature1Title": "Portfolio health",
+    "feature1Body": "Simple signals about mix and concentration - built to inform, not stress you out.",
+    "feature2Title": "Five lens scores",
+    "feature2Body": "Same scale on every stock - compare instantly without building your own tools.",
+    "feature3Title": "Stock deep dive",
+    "feature3Body": "Chart - performance - context - and AI insight in one scroll.",
+    "feature4Title": "Private and secure",
+    "feature4Body": "Your data stays yours - insights are generated only for your account.",
+
+    "stepsTitle": "How it works",
+    "step1Title": "Add your portfolio",
+    "step1Body": "Enter the positions you already track - no broker connection needed.",
+    "step2Title": "We fetch the data",
+    "step2Body": "Charts, context, and live prices - all synced automatically.",
+    "step3Title": "AI explains it",
+    "step3Body": "Quick insights to help you understand your portfolio - fast.",
+
+    "pricingEyebrow": "Pricing",
+    "pricingTitle": "Start free - upgrade anytime",
+    "pricingTagline": "$10/month in the app for full AI insights. Free covers everything else.",
+
+    "pricingFreeName": "Free",
+    "pricingFreePrice": "$0",
+    "pricingFreeBullet1": "Portfolios, live prices, and charts - no AI layer",
+    "pricingFreeBullet2": "Same privacy - your data is never used for public models",
+    "pricingFreeBullet3": "Upgrade anytime in the app",
+
+    "pricingProName": "Alpha Pro",
+    "pricingProBadge": "Full AI",
+    "pricingProPrice": "$10",
+    "pricingProPeriod": "/ month",
+    "pricingProBullet1": "AI insights built from your portfolio - not generic watchlists",
+    "pricingProBullet2": "Five lenses with clear, fast explanations",
+    "pricingProBullet3": "Chart, context, and AI combined in one view",
+    "pricingProBullet4": "New features available here first",
+
+    "pricingCtaWaitlist": "Get early access",
+    "pricingCtaAi": "How the AI works",
+    "pricingDisclaimerLine": "No promises - no magic returns. Just better understanding of your money.",
+    "pricingFootnote": "Subscriptions are handled in the app via Apple In-App Purchase. Price may vary by region. Android billing is coming. Manage or cancel anytime in your device settings.",
+
+    "screensTitle": "See it in the app",
+    "screensIntro": "Real screens - built for real investing.",
+    "screensBullet1": "Full portfolio overview",
+    "screensBullet2": "Quick scoring on every holding",
+    "screensBullet3": "Stock view with chart and context",
+    "screensReassure": "Looks dense? It’s built to scan fast - everything is one tap away.",
+
+    "screenSpotlightCaption": "Portfolio value",
+    "screenSpotlightDetail": "Same portfolio - different time views. Switch from days to years instantly.",
+    "screenWalletCaption": "Portfolio",
+    "screenWalletDetail": "Health signal, allocation, and concentration - explained simply.",
+    "screenLensesCaption": "Five lenses",
+    "screenLensesDetail": "Small scores + short explanation - quick decisions, not homework.",
+    "screenInstrumentChartCaption": "Price chart",
+    "screenInstrumentChartDetail": "Timeframes, volume, and key stats - then scroll for context.",
+    "screenChartCaption": "Stock view",
+    "screenChartDetail": "Signals, lenses, and insights - all in one place.",
+
+    "faqTitle": "FAQ",
+    "faq1Q": "Is this financial advice?",
+    "faq1A": "No - this is a tool to help you understand your portfolio. You make the decisions.",
+    "faq2Q": "What does the AI add?",
+    "faq2A": "It turns your data into short, clear insights - so you spend less time analyzing.",
+    "faq3Q": "Which platforms are supported?",
+    "faq3A": "iOS today - Android is on the way.",
+    "faq4Q": "What happens after I join the waitlist?",
+    "faq4A": "You’ll get occasional updates about access and new releases. You can unsubscribe anytime.",
+    "faq5Q": "Where does market data come from?",
+    "faq5A": "Licensed providers - never other users.",
+    "faq6Q": "How does pricing work?",
+    "faq6A": "Free includes portfolios, charts, and data. Alpha Pro adds full AI insights for $10/month.",
+    "faq7Q": "Do you train public models on my data?",
+    "faq7A": "No - your portfolio is used only to generate your insights.",
+
+    "ctaTitle": "Curious?",
+    "ctaSub": "Join early access - small group, real feedback. No spam - just useful updates.",
+
+    "formConsent": "By joining, you agree we may email you about the product. See",
+    "formConsentLink": "Privacy",
+
+    "disclaimer": "Not financial, tax, or legal advice - always verify decisions that affect your money.",
+
+    "roadmapTitle": "Roadmap - not a promise",
+    "roadmapIntro": "High-level direction only - priorities may change based on feedback.",
+    "roadmapPhase1Title": "iOS foundation",
+    "roadmapPhase1Badge": "Shipped",
+    "roadmapPhase1Body": "Live today - portfolios, charts, and first AI insights.",
+    "roadmapPhase2Title": "Deeper intelligence",
+    "roadmapPhase2Body": "Stronger models and better portfolio insights - still simple to use.",
+    "roadmapPhase3Title": "Android",
+    "roadmapPhase3Body": "Same experience - expanded to a new platform.",
+    "roadmapPhase4Title": "Iteration",
+    "roadmapPhase4Body": "Continuous improvements driven by real users."
+  },
+
+  "Form": {
+    "title": "Get early access",
+    "subtitle": "Leave your email - we’ll let you know when spots open.",
+    "email": "Email",
+    "name": "Name",
+    "nameOptional": "(optional)",
+    "emailPlaceholder": "you@company.com",
+    "namePlaceholder": "Ada Lovelace",
+    "submit": "Join waitlist",
+    "submitting": "Submitting…",
+    "errorNotConfigured": "Signups are not available yet. Try again later.",
+    "errorGeneric": "Something went wrong. Try again.",
+    "errorNetwork": "Network error - check your connection.",
+    "errorInvalidEmail": "Enter a valid email address.",
+    "successDefault": "You're in - we’ll be in touch.",
+    "successDuplicate": "You're already on the list.",
+    "captchaHint": "Complete the check below.",
+    "errorCaptcha": "Please complete the check before submitting.",
+    "errorRateLimited": "Too many attempts - try again in a few minutes."
+  },
+
+  "Privacy": {
+    "backHome": "Back home",
+    "title": "Privacy",
+    "intro": "This is a placeholder. Replace with your full privacy policy before collecting real user data at scale.",
+    "processing": "Waitlist emails are stored securely with our provider (Resend Contacts) for access management only.",
+    "localeNote": "You are viewing this page in English."
+  },
+
+  "Terms": {
+    "backHome": "Back home",
+    "title": "Terms of use",
+    "intro": "This site and waitlist are provided as-is. Replace with full terms before running campaigns.",
+    "bullet1": "The product is still evolving - features may change.",
+    "bullet2": "Nothing here is an offer to buy or sell securities.",
+    "localeNote": "You are viewing this page in English."
+  },
+
+  "Footer": {
+    "rights": "All rights reserved.",
+    "notAdvice": "Not financial advice."
+  }
+}
