@@ -2,6 +2,10 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { HeaderLogoLink } from "@/components/marketing/HeaderLogoLink";
+import {
+  HeaderMarketingSectionLinks,
+  HeaderMarketingWaitlistCta,
+} from "@/components/marketing/HeaderMarketingLinks";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export async function SiteHeader() {
@@ -25,36 +29,13 @@ export async function SiteHeader() {
         </HeaderLogoLink>
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-[var(--muted)] md:flex">
-          <a
-            href="#ai"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("ai")}
-          </a>
-          <a
-            href="#features"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("features")}
-          </a>
-          <a
-            href="#pricing"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("pricing")}
-          </a>
-          <a
-            href="#how"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("howItWorks")}
-          </a>
-          <a
-            href="#faq"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("faq")}
-          </a>
+          <HeaderMarketingSectionLinks
+            ai={t("ai")}
+            features={t("features")}
+            pricing={t("pricing")}
+            howItWorks={t("howItWorks")}
+            faq={t("faq")}
+          />
           <Link
             href="/privacy"
             className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
@@ -71,12 +52,7 @@ export async function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
-          <a
-            href="#waitlist"
-            className="inline-flex h-9 items-center justify-center rounded-lg bg-[var(--brand)] px-3 text-xs font-semibold text-white shadow-[var(--shadow-elevated)] transition-[transform,background-color,box-shadow] duration-200 hover:bg-[var(--brand-hover)] hover:shadow-md active:scale-[0.98] sm:px-4 sm:text-sm"
-          >
-            {t("joinWaitlist")}
-          </a>
+          <HeaderMarketingWaitlistCta>{t("joinWaitlist")}</HeaderMarketingWaitlistCta>
         </div>
       </div>
     </header>

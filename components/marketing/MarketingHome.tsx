@@ -10,6 +10,7 @@ import { StepTimeline } from "@/components/marketing/StepTimeline";
 import { RoadmapBand } from "@/components/marketing/RoadmapBand";
 import { CtaBand } from "@/components/marketing/CtaBand";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { HomeHashScroll } from "@/components/marketing/HomeHashScroll";
 
 type Props = { locale: string };
 
@@ -18,6 +19,7 @@ export async function MarketingHome({ locale }: Props) {
 
   return (
     <div className="relative flex min-h-full flex-1 flex-col">
+      <HomeHashScroll />
       <JsonLd locale={locale} />
       <a
         href="#main"
