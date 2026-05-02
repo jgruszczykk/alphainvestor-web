@@ -12,6 +12,13 @@ const MAX_BODY_BYTES = 8192;
 
 type ResendErrorBody = { message?: string; name?: string };
 
+type CreateContactFailure = {
+  ok: false;
+  status: number;
+  message: string;
+  errorName?: string;
+};
+
 const copy = {
   en: {
     thanks: "Thanks - we will be in touch.",
@@ -41,26 +48,48 @@ function langOf(locale: unknown): "en" | "pl" {
   return locale === "pl" ? "pl" : "en";
 }
 
+/**
+ * Resend uses 422 for validation errors (e.g. unknown contact property), not only
+ * duplicates. Treat duplicate only when status/message/name indicates it.
+ */
+function resendContactIsDuplicate(failure: CreateContactFailure): boolean {
+  if (failure.status === 409) return true;
+  const name = failure.errorName?.toLowerCase() ?? "";
+  if (name.includes("duplicate")) return true;
+  const m = failure.message.toLowerCase();
+  return /already exists|duplicate contact|already been taken|already registered|contact with this email|contact already exists/i.test(
+    m,
+  );
+}
+
 async function createResendContact(
   apiKey: string,
   email: string,
-  firstName?: string,
-  properties?: Record<string, string>,
-): Promise<{ ok: true } | { ok: false; status: number; message: string }> {
+  opts: {
+    firstName?: string;
+    properties?: Record<string, string>;
+    segmentId?: string;
+  } = {},
+): Promise<{ ok: true } | CreateContactFailure> {
+  const body: Record<string, unknown> = {
+    email,
+    first_name: opts.firstName || undefined,
+    unsubscribed: false,
+  };
+  if (opts.properties && Object.keys(opts.properties).length > 0) {
+    body.properties = opts.properties;
+  }
+  if (opts.segmentId) {
+    body.segments = [{ id: opts.segmentId }];
+  }
+
   const res = await fetch(`${RESEND_API}/contacts`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
-      email,
-      first_name: firstName || undefined,
-      unsubscribed: false,
-      ...(properties && Object.keys(properties).length > 0
-        ? { properties }
-        : {}),
-    }),
+    body: JSON.stringify(body),
   });
 
   if (res.ok) {
@@ -68,55 +97,27 @@ async function createResendContact(
   }
 
   let message = `Upstream error (${res.status})`;
+  let errorName: string | undefined;
   try {
     const data = (await res.json()) as ResendErrorBody;
     if (typeof data.message === "string") {
       message = data.message;
+    }
+    if (typeof data.name === "string") {
+      errorName = data.name;
     }
   } catch {
     // ignore parse errors
   }
 
-  return { ok: false, status: res.status, message };
-}
-
-async function addContactToSegment(
-  apiKey: string,
-  email: string,
-  segmentId: string,
-): Promise<{ ok: true } | { ok: false; status: number; message: string }> {
-  const pathEmail = encodeURIComponent(email);
-  const res = await fetch(
-    `${RESEND_API}/contacts/${pathEmail}/segments/${segmentId}`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-    },
-  );
-
-  if (res.ok) {
-    return { ok: true };
-  }
-
-  let message = `Upstream error (${res.status})`;
-  try {
-    const data = (await res.json()) as ResendErrorBody;
-    if (typeof data.message === "string") {
-      message = data.message;
-    }
-  } catch {
-    // ignore
-  }
-
-  return { ok: false, status: res.status, message };
+  return { ok: false, status: res.status, message, errorName };
 }
 
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const segmentId = process.env.RESEND_SEGMENT_ID?.trim();
+  const localePropertyKey =
+    process.env.RESEND_SIGNUP_LOCALE_PROPERTY_KEY?.trim() ?? "";
 
   const len = request.headers.get("content-length");
   if (len) {
@@ -189,53 +190,27 @@ export async function POST(request: Request) {
   const name =
     parsed.name && parsed.name.length > 0 ? parsed.name : undefined;
 
+  /** Resend rejects unknown property keys unless defined under Audience → Contact properties. */
   const properties =
-    parsed.locale === "en" || parsed.locale === "pl"
-      ? { signup_locale: parsed.locale }
+    localePropertyKey.length > 0 &&
+    (parsed.locale === "en" || parsed.locale === "pl")
+      ? { [localePropertyKey]: parsed.locale }
       : undefined;
 
-  const created = await createResendContact(
-    apiKey,
-    parsed.email,
-    name,
+  const created = await createResendContact(apiKey, parsed.email, {
+    firstName: name,
     properties,
-  );
+    segmentId: segmentId || undefined,
+  });
 
-  const duplicate =
-    !created.ok &&
-    (created.status === 422 ||
-      created.status === 409 ||
-      /already exists|duplicate|already been taken/i.test(created.message));
-
-  if (!created.ok && !duplicate) {
-    return NextResponse.json({ error: copy[lang].serverError }, { status: 502 });
-  }
-
-  if (segmentId) {
-    const segmentResult = await addContactToSegment(
-      apiKey,
-      parsed.email,
-      segmentId,
-    );
-    if (!segmentResult.ok && !duplicate) {
-      const segDup =
-        segmentResult.status === 422 ||
-        segmentResult.status === 409 ||
-        /already/i.test(segmentResult.message);
-      if (!segDup) {
-        return NextResponse.json(
-          { error: copy[lang].serverError },
-          { status: 502 },
-        );
-      }
+  if (!created.ok) {
+    if (resendContactIsDuplicate(created)) {
+      return NextResponse.json({
+        ok: true,
+        message: copy[lang].duplicate,
+      });
     }
-  }
-
-  if (duplicate) {
-    return NextResponse.json({
-      ok: true,
-      message: copy[lang].duplicate,
-    });
+    return NextResponse.json({ error: copy[lang].serverError }, { status: 502 });
   }
 
   return NextResponse.json({
