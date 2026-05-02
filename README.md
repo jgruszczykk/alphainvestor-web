@@ -29,14 +29,14 @@ English strings for the landing page are authored in [`content/landing.ts`](./co
 
 ## Early access (Resend)
 
-`POST /api/early-access` creates a **Resend Contact** and optionally adds a **Segment**. Optional **Turnstile** + **Upstash rate limits** when env vars are set (see [`.env.example`](./.env.example)).
+`POST /api/early-access` creates a **Resend Contact** and optionally adds a **Segment**. Optional **Turnstile** + **Postgres-backed rate limits** (Neon URL) when env vars are set (see [`.env.example`](./.env.example)).
 
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `RESEND_API_KEY` | Yes | Resend API key (`re_...`) |
 | `RESEND_SEGMENT_ID` | No | Segment ID to tag waitlist contacts |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in prod | Origin for canonical URLs, `sitemap.xml`, `robots.txt`, Open Graph |
-| `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | No | If set, enables IP + email rate limits on the waitlist API |
+| `WAITLIST_RATE_LIMIT_DATABASE_URL` | No | Neon (or any Postgres) connection string; run [`sql/waitlist_rate_limits.sql`](./sql/waitlist_rate_limits.sql) once. Enables IP + email rate limits on the waitlist API |
 | `TURNSTILE_SECRET_KEY` / `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | No | If set, Turnstile is required on submit |
 | `NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS` | No | Set to `1` to enable [@vercel/analytics](https://vercel.com/docs/analytics) in production |
 
@@ -53,7 +53,7 @@ npm run typecheck
 ## Deploy (Vercel)
 
 1. Import this repository (root = app root).
-2. Set `RESEND_API_KEY`, optional `RESEND_SEGMENT_ID`, **`NEXT_PUBLIC_SITE_URL`**, (recommended) Upstash + Turnstile keys, and optional `NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS=1` for Web Analytics.
+2. Set `RESEND_API_KEY`, optional `RESEND_SEGMENT_ID`, **`NEXT_PUBLIC_SITE_URL`**, (recommended) `WAITLIST_RATE_LIMIT_DATABASE_URL` (Neon) + Turnstile keys, and optional `NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS=1` for Web Analytics.
 3. Deploy.
 
 ## Local development

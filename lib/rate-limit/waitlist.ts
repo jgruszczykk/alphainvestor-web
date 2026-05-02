@@ -1,64 +1,83 @@
-import { Ratelimit } from "@upstash/ratelimit";
-import { Redis } from "@upstash/redis";
+import { neon } from "@neondatabase/serverless";
 
-function getRedis(): Redis | null {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url?.trim() || !token?.trim()) return null;
-  return new Redis({ url, token });
-}
+/** 15 minutes in seconds (IP window, same as former Upstash sliding window target). */
+const IP_BUCKET_SEC = 15 * 60;
+/** 24 hours in seconds (email window). */
+const EMAIL_BUCKET_SEC = 24 * 60 * 60;
 
-let ipLimit: Ratelimit | null | undefined;
-let emailLimit: Ratelimit | null | undefined;
+const MAX_IP_HITS = 8;
+const MAX_EMAIL_HITS = 3;
 
-function getIpLimiter(): Ratelimit | null {
-  if (ipLimit !== undefined) return ipLimit;
-  const redis = getRedis();
-  if (!redis) {
-    ipLimit = null;
+type Sql = ReturnType<typeof neon>;
+
+let sql: Sql | null | undefined;
+
+function getSql(): Sql | null {
+  if (sql !== undefined) return sql;
+  const url = process.env.WAITLIST_RATE_LIMIT_DATABASE_URL?.trim();
+  if (!url) {
+    sql = null;
     return null;
   }
-  ipLimit = new Ratelimit({
-    redis,
-    limiter: Ratelimit.slidingWindow(8, "15 m"),
-    prefix: "ratelimit:waitlist:ip",
-  });
-  return ipLimit;
+  sql = neon(url);
+  return sql;
 }
 
-function getEmailLimiter(): Ratelimit | null {
-  if (emailLimit !== undefined) return emailLimit;
-  const redis = getRedis();
-  if (!redis) {
-    emailLimit = null;
-    return null;
-  }
-  emailLimit = new Ratelimit({
-    redis,
-    limiter: Ratelimit.slidingWindow(3, "24 h"),
-    prefix: "ratelimit:waitlist:email",
-  });
-  return emailLimit;
+function ipBucketEpoch(): number {
+  const s = Math.floor(Date.now() / 1000);
+  return Math.floor(s / IP_BUCKET_SEC) * IP_BUCKET_SEC;
 }
 
-/** No-op when Upstash env is missing (local dev / CI). */
+function emailBucketEpoch(): number {
+  const s = Math.floor(Date.now() / 1000);
+  return Math.floor(s / EMAIL_BUCKET_SEC) * EMAIL_BUCKET_SEC;
+}
+
+async function incrementAndReadHits(
+  q: Sql,
+  scope: "ip" | "email",
+  subject: string,
+  bucketEpoch: number,
+): Promise<number> {
+  const rows = (await q`
+    INSERT INTO waitlist_rate_limits (scope, subject, bucket_epoch, hits)
+    VALUES (${scope}, ${subject}, ${bucketEpoch}, 1)
+    ON CONFLICT (scope, subject, bucket_epoch)
+    DO UPDATE SET hits = waitlist_rate_limits.hits + 1
+    RETURNING hits
+  `) as { hits: number }[];
+  const row = rows[0];
+  return Number(row?.hits ?? 0);
+}
+
+/**
+ * Fixed-window counters in Postgres (e.g. Neon — free tier, no card for signup).
+ * No-op when `WAITLIST_RATE_LIMIT_DATABASE_URL` is unset.
+ */
 export async function assertWaitlistRateLimits(
   ip: string,
   emailNormalized: string,
 ): Promise<{ ok: true } | { ok: false }> {
-  const ipLimiter = getIpLimiter();
-  const emailLimiter = getEmailLimiter();
-  if (!ipLimiter || !emailLimiter) {
+  const q = getSql();
+  if (!q) {
     return { ok: true };
   }
 
-  const [ipResult, emailResult] = await Promise.all([
-    ipLimiter.limit(ip.slice(0, 128)),
-    emailLimiter.limit(emailNormalized.slice(0, 256)),
-  ]);
+  const ipKey = ip.slice(0, 128);
+  const emailKey = emailNormalized.slice(0, 256);
 
-  if (!ipResult.success || !emailResult.success) {
-    return { ok: false };
+  try {
+    const [ipHits, emailHits] = await Promise.all([
+      incrementAndReadHits(q, "ip", ipKey, ipBucketEpoch()),
+      incrementAndReadHits(q, "email", emailKey, emailBucketEpoch()),
+    ]);
+
+    if (ipHits > MAX_IP_HITS || emailHits > MAX_EMAIL_HITS) {
+      return { ok: false };
+    }
+    return { ok: true };
+  } catch (e) {
+    console.error("[waitlist rate limit] database error:", e);
+    return { ok: true };
   }
-  return { ok: true };
 }

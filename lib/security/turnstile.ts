@@ -3,10 +3,16 @@ type SiteverifyResponse = {
   "error-codes"?: string[];
 };
 
-/** When `TURNSTILE_SECRET_KEY` is unset, verification is skipped (dev/CI). */
+/**
+ * When `TURNSTILE_SECRET_KEY` is unset, verification is skipped (dev/CI).
+ *
+ * We intentionally do **not** send `remoteip` to siteverify: behind Vercel +
+ * Cloudflare (or other proxies), inferred IPs often mismatch the challenge IP
+ * and Cloudflare returns `success: false`, causing spurious 400s.
+ */
 export async function verifyTurnstileToken(
   token: string | undefined,
-  remoteip: string,
+  _remoteip: string,
 ): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY?.trim();
   if (!secret) {
@@ -19,9 +25,6 @@ export async function verifyTurnstileToken(
   const body = new URLSearchParams();
   body.set("secret", secret);
   body.set("response", token.trim());
-  if (remoteip && remoteip !== "unknown") {
-    body.set("remoteip", remoteip);
-  }
 
   const res = await fetch(
     "https://challenges.cloudflare.com/turnstile/v0/siteverify",
