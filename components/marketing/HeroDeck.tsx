@@ -27,9 +27,7 @@ function PhoneFace({
         "relative mx-auto aspect-[532/1024] w-auto overflow-hidden rounded-2xl border border-[var(--border)] bg-black",
         "shadow-[0_22px_52px_-12px_rgba(0,0,0,0.52)]",
         "ring-1 ring-black/15 dark:ring-white/[0.08]",
-        "h-[clamp(168px,min(38vmin,40dvh),300px)]",
-        "sm:h-[clamp(188px,min(42vmin,44dvh),360px)]",
-        "lg:h-[clamp(220px,min(46vmin,52dvh),520px)] lg:rounded-3xl",
+        "h-[252px] sm:h-[308px] lg:h-[372px] xl:h-[396px] lg:rounded-3xl",
       ].join(" ")}
     >
       <div className="absolute inset-y-0 -left-1 -right-1 z-0">
@@ -39,7 +37,7 @@ function PhoneFace({
           fill
           priority={priority}
           quality={90}
-          sizes="(max-width: 640px) 32vw, (max-width: 1023px) 28vw, min(36vw, 440px)"
+          sizes="(max-width: 640px) 170px, (max-width: 1023px) 220px, 260px"
           className="object-cover object-top"
         />
       </div>
@@ -57,17 +55,18 @@ function PhoneFace({
 
 /**
  * Three screenshots: chart (back) · wallet (front) · lenses (mid).
- * Height uses clamp + vmin + dvh so the deck scales smoothly; width follows 532×1024 aspect.
+ * Fixed pixel heights per breakpoint (width from 532×1024 aspect): compact
+ * on small screens, larger from `lg` up for desktop.
  */
 export function HeroDeck({ walletAlt, chartAlt, frontAlt }: DeckProps) {
   return (
-    <div className="relative isolate mx-auto w-full max-w-none select-none">
+    <div className="relative isolate mx-auto w-full max-w-none select-none px-2 sm:px-0">
       <div className="mx-auto flex w-full max-w-6xl items-end justify-center gap-0">
         <div className="z-10 shrink-0 origin-bottom -rotate-[5deg]">
           <PhoneFace src={SRC.chart} alt={chartAlt} />
         </div>
 
-        <div className="z-30 -mx-10 shrink-0 -translate-y-[2px] sm:-mx-12 lg:-mx-14">
+        <div className="z-30 -mx-6 shrink-0 -translate-y-[2px] sm:-mx-10 lg:-mx-12 xl:-mx-14">
           <PhoneFace src={SRC.wallet} alt={walletAlt} priority />
         </div>
 

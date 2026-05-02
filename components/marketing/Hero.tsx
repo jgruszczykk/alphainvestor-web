@@ -47,7 +47,7 @@ export async function Hero() {
         </div>
 
         <div
-          className="anim-fade-only flex min-h-[clamp(240px,min(48vmin,52dvh),420px)] min-w-0 justify-center sm:min-h-[clamp(260px,min(52vmin,56dvh),480px)] lg:min-h-[clamp(280px,min(56vmin,60dvh),560px)]"
+          className="anim-fade-only flex min-h-[276px] min-w-0 justify-center sm:min-h-[336px] lg:min-h-[400px] xl:min-h-[424px]"
           style={{ animationDelay: "280ms" }}
         >
           <HeroDeck
