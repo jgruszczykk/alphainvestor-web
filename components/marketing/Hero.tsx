@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
+import { AppStoreBadge } from "@/components/marketing/AppStoreBadge";
 import { HeroDeck } from "@/components/marketing/HeroDeck";
 
 export async function Hero() {
@@ -43,6 +44,16 @@ export async function Hero() {
             >
               {t("heroSecondaryCta")}
             </a>
+          </div>
+          <div
+            className="anim-fade-rise flex justify-center lg:justify-start"
+            style={{ animationDelay: "260ms" }}
+          >
+            <AppStoreBadge
+              smallLabel={t("appStoreBadgeSmall")}
+              largeLabel={t("appStoreBadgeLarge")}
+              ariaLabel={t("appStoreBadgeAria")}
+            />
           </div>
         </div>
 

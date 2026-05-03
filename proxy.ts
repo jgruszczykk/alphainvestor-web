@@ -9,5 +9,7 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  // Exclude static files (`.*\\..*`) and Apple / security well-known paths
+  // from locale middleware so `/.well-known/*` stays on the exact URL iOS expects.
+  matcher: ["/((?!api|_next|_vercel|\\.well-known|.*\\..*).*)"],
 };

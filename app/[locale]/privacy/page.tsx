@@ -2,25 +2,24 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { LegalDocument, type LegalSection } from "@/components/marketing/LegalDocument";
-import { getSiteUrl } from "@/lib/site-url";
+import { buildHreflangAlternates } from "@/lib/hreflang";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
-  const base = getSiteUrl();
+  const alternates = buildHreflangAlternates(locale, "/privacy");
+  const canonical = alternates.canonical as string;
 
   return {
     title: t("privacyTitle"),
     description: t("privacyDescription"),
-    alternates: {
-      canonical: `${base.origin}/privacy`,
-    },
+    alternates,
     openGraph: {
       title: t("privacyTitle"),
       description: t("privacyDescription"),
-      url: `${base.origin}/privacy`,
+      url: canonical,
     },
   };
 }

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "security:audit": "npm audit --audit-level=high"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.5.1",

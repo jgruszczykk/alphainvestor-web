@@ -1,6 +1,6 @@
 # Alpha Investor - web (marketing + early access)
 
-Next.js marketing site with **English** and **Polish** (same split as the Expo app). **Public URLs have no locale prefix** (`/`, `/privacy`, `/terms`); language is chosen via **cookie** + `Accept-Language` and the **EN / PL** control in the header. Deploy on **Vercel**.
+Next.js marketing site with **English** and **Polish** (same split as the Expo app). **English (default) has no URL prefix** (`/`, `/privacy`, `/terms`); **Polish** is served at **`/pl`**, `/pl/privacy`, `/pl/terms`. Locale is still negotiated via cookie + `Accept-Language` when visiting unprefixed URLs. Deploy on **Vercel**.
 
 ## Related repo
 
@@ -12,12 +12,13 @@ This repo stays independent: its own `package.json`, CI, and Vercel project.
 
 ## Locales and URLs
 
-- **next-intl** with `localePrefix: 'never'` ([`i18n/routing.ts`](./i18n/routing.ts)): paths stay `/`, `/privacy`, `/terms` while the app still uses `app/[locale]/...` internally.
-- [`proxy.ts`](./proxy.ts) negotiates locale (cookie, `Accept-Language`, default `en`).
-- [`LanguageSwitcher`](./components/LanguageSwitcher.tsx) calls `router.replace(pathname, { locale })` so the **URL does not change** when switching language.
+- **next-intl** with `localePrefix: 'as-needed'` ([`i18n/routing.ts`](./i18n/routing.ts)): default locale (English) stays unprefixed; Polish gains a `/pl` prefix. `alternateLinks: true` adds `Link: rel="alternate"` headers from the middleware.
+- [`proxy.ts`](./proxy.ts) negotiates locale (cookie, `Accept-Language`, default `en`) and excludes `/.well-known/*` so Apple’s AASA file is not rewritten.
+- [`LanguageSwitcher`](./components/LanguageSwitcher.tsx) uses `next-intl` navigation so switching **EN ↔ PL** updates the visible path (`/` ↔ `/pl`, etc.).
 - Copy lives in [`messages/en.json`](./messages/en.json) and [`messages/pl.json`](./messages/pl.json).
+- **hreflang:** [`lib/hreflang.ts`](./lib/hreflang.ts) feeds `alternates.canonical` + `alternates.languages` on the home, privacy, and terms metadata generators.
 
-**SEO note:** Google prefers distinct URLs per language; cookie-only locale means weaker `hreflang` coverage. If that becomes a priority, consider subdomains (`en.` / `pl.`) or prefix routing again.
+**Universal Links / App Store fallback:** `/i/[symbol]` and `/p/[id]` redirect to `NEXT_PUBLIC_APP_STORE_URL` when set (see [`docs/universal-links.md`](../alphainvestor/docs/universal-links.md) in the mobile repo for the full iOS checklist).
 
 ## Brand assets
 
@@ -77,4 +78,12 @@ To store signups in the same Postgres as the mobile app, add a migration in **al
 - Visit `/privacy` and `/terms`; switch language there too.
 - Submit the waitlist form (success, duplicate, 503 without Resend, 429 when rate-limited, Turnstile failure if keys set).
 - Lighthouse on `/` after setting `NEXT_PUBLIC_SITE_URL`.
-- Replace Privacy / Terms placeholders before large-scale email collection.
+
+## Legal copy
+
+Privacy and Terms drafts live in `messages/{en,pl}.json` under the `Privacy`
+and `Terms` keys. They cover the standard items (controllership, scope,
+GDPR bases, retention, security, rights, children, automated decisions,
+disclaimers, liability, governing law) but generic "operator" placeholders
+must be replaced and the whole text signed off by qualified counsel before
+public launch. Tracking checklist: [`LEGAL_REVIEW.md`](./LEGAL_REVIEW.md).

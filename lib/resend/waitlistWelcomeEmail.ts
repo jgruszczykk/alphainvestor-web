@@ -12,14 +12,14 @@ type WelcomeLang = "en" | "pl";
 
 const mail = {
   en: {
-    headerLabel: "Alpha Investor · from Kuba",
-    subject: "Welcome to Alpha Investor — a note from Kuba",
+    headerLabel: "Alpha Investor · from Jacob",
+    subject: "Welcome to Alpha Investor — a note from Jacob",
     hey: (name?: string) =>
       name?.trim()
         ? `Hey ${escapeHtml(name.trim())},`
         : "Hey,",
     intro:
-      "My name is Kuba — I'm the founder of Alpha Investor.",
+      "My name is Jacob — I'm the founder of Alpha Investor.",
     mission:
       "My mission is straightforward: help regular investors see through the noise. Markets love to spike fear and FOMO; I want you to open the app and instead see your portfolio the way you actually built it — your weights, where you're concentrated, and context you can trust. AI can help later, but clarity comes first.",
     bridge:
@@ -29,27 +29,28 @@ const mail = {
     reply:
       "If something here sparked a thought, you can just reply whenever — I'd be glad to hear it.",
     signoff: "Cheers,",
-    team: "Kuba",
+    team: "Jacob",
   },
+
   pl: {
-    headerLabel: "Alpha Investor · od Kuby",
-    subject: "Witaj w Alpha Investor — krótka notka od Kuby",
+    headerLabel: "Alpha Investor · od Jakuba",
+    subject: "Witaj w Alpha Investor — kilka słów od Jakuba",
     hey: (name?: string) =>
       name?.trim()
         ? `Cześć ${escapeHtml(name.trim())},`
         : "Cześć,",
     intro:
-      "Nazywam się Kuba — jestem założycielem Alpha Investor.",
+      "Nazywam się Jakub — jestem założycielem Alpha Investor.",
     mission:
-      "Chcę robić jedną rzecz dobrze: pomóc zwykłym inwestorom przeciąć szum. Rynek karmi strachem i FOMO; ja chcę, żebyś po otwarciu aplikacji zobaczył portfel takim, jakim go naprawdę złożyłeś — swoje wagi, koncentrację i kontekst, któremu możesz zaufać. AI może pomóc później, ale najpierw musi być jasno.",
+      "Chcę zrobić jedną rzecz dobrze: pomóc zwykłym inwestorom zobaczyć, co naprawdę mają w portfelu — bez szumu. Rynek łatwo podbija strach i FOMO; ja chcę, żebyś po otwarciu aplikacji widział swój portfel tak, jak go zbudowałeś — swoje wagi, miejsca koncentracji i kontekst, któremu możesz zaufać. AI może pomóc później, ale najpierw musi być jasność.",
     bridge:
-      "Jesteśmy we wczesnej fazie i celowo trzymamy się małego zespołu, więc Twój zapis na listę naprawdę coś znaczy. Te odpowiedzi czytam osobiście — bez bota i bez kolejki ticketów.",
+      "Jesteśmy na wczesnym etapie i celowo działamy w małej skali, więc Twój zapis na listę naprawdę ma znaczenie. Odpowiedzi czytam osobiście — bez botów i bez ticketów.",
     p2italic:
-      "Kiedy tylko wyślemy pierwsze sensowne wersje, chcę, żebyś poczuł, że wszystko <em>po prostu działa</em> — bez sztuczek i bez „innowacji” kosztem przejrzystości.",
+      "Kiedy wypuścimy pierwszą wersję, chcę, żeby od początku było poczucie, że to <em>po prostu działa</em> — bez sztuczek i bez kombinowania.",
     reply:
-      "Jeśli coś chcesz dopisać, spokojnie możesz odpowiedzieć na tego maila — chętnie to przeczytam.",
+      "Jeśli coś przyszło Ci do głowy, możesz po prostu odpisać — chętnie przeczytam.",
     signoff: "Pozdrawiam,",
-    team: "Kuba",
+    team: "Jakub",
   },
 } as const;
 

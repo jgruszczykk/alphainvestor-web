@@ -210,16 +210,31 @@ export function EarlyAccessForm({ variant = "card" }: Props) {
         {isPending ? t("submitting") : t("submit")}
       </button>
 
-      {state.status === "success" ? (
-        <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
-          {state.message}
-        </p>
-      ) : null}
-      {state.status === "error" ? (
-        <p className="text-sm font-medium text-red-700 dark:text-red-400">
-          {state.message}
-        </p>
-      ) : null}
+      {/*
+        Single live region: success uses `polite` so it doesn't interrupt,
+        error uses `assertive` so screen readers announce immediately. Both
+        are also `role`d so VoiceOver/NVDA pick them up even when the
+        underlying assistive-tech setting ignores `aria-live`.
+      */}
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        role="status"
+        className="min-h-[1.25rem]"
+      >
+        {state.status === "success" ? (
+          <p className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
+            {state.message}
+          </p>
+        ) : null}
+      </div>
+      <div aria-live="assertive" aria-atomic="true" role="alert">
+        {state.status === "error" ? (
+          <p className="text-sm font-medium text-red-700 dark:text-red-400">
+            {state.message}
+          </p>
+        ) : null}
+      </div>
     </form>
   );
 }

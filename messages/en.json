@@ -17,7 +17,8 @@
     "terms": "Terms",
     "joinWaitlist": "Join waitlist",
     "languageEn": "EN",
-    "languagePl": "PL"
+    "languagePl": "PL",
+    "menuToggle": "Toggle navigation menu"
   },
   "Home": {
     "skipToContent": "Skip to content",
@@ -26,6 +27,9 @@
     "subhead": "Live prices plus human insights - see your mix, spot concentration, and check five quick scores per stock. Fewer tabs - less guesswork.",
     "heroPrimaryCta": "Get early access",
     "heroSecondaryCta": "See how AI helps",
+    "appStoreBadgeSmall": "Download on the",
+    "appStoreBadgeLarge": "App Store",
+    "appStoreBadgeAria": "Download Alpha Investor on the App Store",
     "heroImageAlt": "Alpha Investor screen showing five lenses - trend, valuation, risk, growth, momentum.",
     "heroDeckWalletAlt": "Portfolio view with health score and allocation.",
     "heroDeckChartAlt": "Stock detail with chart and performance.",
@@ -370,8 +374,25 @@
     ],
     "localeNote": "You are viewing this page in English."
   },
+  "NotFound": {
+    "title": "Page not found",
+    "code": "404",
+    "body": "We could not find the page you were looking for. It may have moved, or the link may be wrong.",
+    "homeCta": "Back to home",
+    "languageHint": "Use the EN / PL switch in the header if you need another language - the URL stays the same."
+  },
   "Footer": {
     "rights": "All rights reserved.",
-    "notAdvice": "Not financial advice."
+    "notAdvice": "Not financial advice.",
+    "legalHeading": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "navHeading": "Navigation",
+    "ai": "AI",
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contactHeading": "Contact",
+    "contactWaitlist": "Join the waitlist"
   }
 }

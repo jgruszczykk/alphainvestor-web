@@ -7,6 +7,7 @@ import {
   HeaderMarketingWaitlistCta,
 } from "@/components/marketing/HeaderMarketingLinks";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { MobileNavDrawer } from "@/components/marketing/MobileNavDrawer";
 
 export async function SiteHeader() {
   const t = await getTranslations("Nav");
@@ -50,9 +51,24 @@ export async function SiteHeader() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
-          <HeaderMarketingWaitlistCta>{t("joinWaitlist")}</HeaderMarketingWaitlistCta>
+          <div className="hidden md:block">
+            <HeaderMarketingWaitlistCta>{t("joinWaitlist")}</HeaderMarketingWaitlistCta>
+          </div>
+          <MobileNavDrawer
+            labels={{
+              toggle: t("menuToggle"),
+              ai: t("ai"),
+              features: t("features"),
+              pricing: t("pricing"),
+              howItWorks: t("howItWorks"),
+              faq: t("faq"),
+              privacy: t("privacy"),
+              terms: t("terms"),
+              joinWaitlist: t("joinWaitlist"),
+            }}
+          />
         </div>
       </div>
     </header>
