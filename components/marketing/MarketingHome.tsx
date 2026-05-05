@@ -38,29 +38,35 @@ export async function MarketingHome({ locale }: Props) {
 
       <main
         id="main"
-        className="relative z-10 flex flex-1 flex-col px-4 pb-24 pt-0 sm:px-6"
+        className="relative z-10 flex flex-1 flex-col pb-24 pt-0"
       >
-        <Hero />
+        <div className="px-4 sm:px-6">
+          <Hero />
+        </div>
+
         <ScreenshotShowcase />
-        <StepTimeline />
-        <AiHighlights />
-        <PricingBand />
 
-        <section
-          id="faq"
-          className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl scroll-mt-24 lg:mt-28"
-          style={{ animationDelay: "680ms" }}
-        >
-          <h2 className="text-center text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--heading)] sm:text-3xl">
-            {t("faqTitle")}
-          </h2>
-          <div className="mt-10">
-            <FaqAccordion />
-          </div>
-        </section>
+        <div className="px-4 sm:px-6">
+          <StepTimeline />
+          <AiHighlights />
+          <PricingBand />
 
-        <RoadmapBand />
-        <CtaBand />
+          <section
+            id="faq"
+            className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl scroll-mt-24 lg:mt-28"
+            style={{ animationDelay: "680ms" }}
+          >
+            <h2 className="text-center text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--heading)] sm:text-3xl">
+              {t("faqTitle")}
+            </h2>
+            <div className="mt-10">
+              <FaqAccordion />
+            </div>
+          </section>
+
+          <RoadmapBand />
+          <CtaBand />
+        </div>
       </main>
 
       <SiteFooter />

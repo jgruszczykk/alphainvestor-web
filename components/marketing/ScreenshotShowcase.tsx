@@ -68,7 +68,7 @@ function PhoneFrame({
     <div className={["relative mx-auto w-full max-w-[190px] sm:max-w-[250px]", tintClass].join(" ")}>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-[-8%] -z-10 rounded-4xl bg-[radial-gradient(circle_at_50%_42%,var(--glow-tint)_0%,transparent_70%)] opacity-50 blur-2xl"
+        className="pointer-events-none absolute inset-[-8%] -z-10 hidden rounded-4xl bg-[radial-gradient(circle_at_50%_42%,var(--glow-tint)_0%,transparent_70%)] opacity-50 blur-2xl sm:block"
       />
       <div className="relative overflow-hidden rounded-[1.65rem] border border-white/20 bg-[#030712] shadow-[0_16px_30px_-22px_rgba(2,6,23,0.7)] ring-1 ring-white/12">
         <div className="relative aspect-[1179/2556] w-full">
@@ -76,8 +76,9 @@ function PhoneFrame({
             src={src}
             alt={alt}
             fill
-            quality={90}
-            sizes="(max-width: 640px) 210px, 250px"
+            quality={75}
+            loading="lazy"
+            sizes="(max-width: 640px) 190px, 250px"
             className="object-cover object-top"
           />
         </div>
