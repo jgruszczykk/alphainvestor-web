@@ -36,8 +36,10 @@ function PhoneFace({
           alt={alt}
           fill
           priority={priority}
-          quality={90}
-          sizes="(max-width: 640px) 170px, (max-width: 1023px) 220px, 260px"
+          quality={78}
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "low"}
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover object-top"
         />
       </div>

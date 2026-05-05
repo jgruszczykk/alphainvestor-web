@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { memo, useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 const GALLERY = [
@@ -55,20 +55,29 @@ const GALLERY = [
   },
 ] as const;
 
-function PhoneFrame({
+const PhoneFrame = memo(function PhoneFrame({
   src,
   alt,
   tintClass,
+  prioritize,
+  isActive,
 }: {
   src: string;
   alt: string;
   tintClass: string;
+  prioritize?: boolean;
+  isActive: boolean;
 }) {
   return (
     <div className={["relative mx-auto w-full max-w-[190px] sm:max-w-[250px]", tintClass].join(" ")}>
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-[-8%] -z-10 hidden rounded-4xl bg-[radial-gradient(circle_at_50%_42%,var(--glow-tint)_0%,transparent_70%)] opacity-50 blur-2xl sm:block"
+        className={[
+          "pointer-events-none absolute inset-[-8%] -z-10 hidden rounded-4xl",
+          "bg-[radial-gradient(circle_at_50%_42%,var(--glow-tint)_0%,transparent_70%)]",
+          "transition-opacity duration-300 sm:block",
+          isActive ? "opacity-45 blur-[36px]" : "opacity-0 blur-[30px]",
+        ].join(" ")}
       />
       <div className="relative overflow-hidden rounded-[1.65rem] border border-white/20 bg-[#030712] shadow-[0_16px_30px_-22px_rgba(2,6,23,0.7)] ring-1 ring-white/12">
         <div className="relative aspect-[1179/2556] w-full">
@@ -76,16 +85,18 @@ function PhoneFrame({
             src={src}
             alt={alt}
             fill
-            quality={75}
-            loading="lazy"
-            sizes="(max-width: 640px) 190px, 250px"
+            quality={72}
+            priority={prioritize}
+            loading={prioritize ? "eager" : "lazy"}
+            fetchPriority={prioritize ? "high" : "low"}
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-top"
           />
         </div>
       </div>
     </div>
   );
-}
+});
 
 export function ScreenshotShowcase() {
   const t = useTranslations("Home");
@@ -97,8 +108,16 @@ export function ScreenshotShowcase() {
   const [stride, setStride] = useState(380);
   const [index, setIndex] = useState(0);
   const [maxStepIndex, setMaxStepIndex] = useState(GALLERY.length - 1);
+  const [isMobile, setIsMobile] = useState(false);
   const canPrev = index > 0;
   const canNext = index < maxStepIndex;
+
+  useLayoutEffect(() => {
+    const updateMobile = () => setIsMobile(window.innerWidth <= 768);
+    updateMobile();
+    window.addEventListener("resize", updateMobile);
+    return () => window.removeEventListener("resize", updateMobile);
+  }, []);
 
   useLayoutEffect(() => {
     const updateMaxStepIndex = () => {
@@ -205,22 +224,26 @@ export function ScreenshotShowcase() {
                 className="relative z-10 flex gap-4 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform sm:gap-5"
                 style={{ transform: `translateX(-${index * stride}px)` }}
               >
-              {GALLERY.map((item, index) => {
+              {GALLERY.map((item, itemIndex) => {
                 const title = t(item.titleKey);
                 const kicker = t(item.kickerKey);
                 const alt = title;
+                const prioritize = itemIndex === 0;
+                const isActive = itemIndex === index;
 
                 return (
                   <article
                     key={item.src}
-                    ref={index === 0 ? firstCardRef : undefined}
+                    ref={itemIndex === 0 ? firstCardRef : undefined}
                     className={[
                       "anim-fade-rise w-[68vw] max-w-[272px] shrink-0 overflow-hidden rounded-3xl border border-white/12 p-4 text-white shadow-[0_8px_20px_-16px_rgba(2,6,23,0.55)]",
                       "bg-[linear-gradient(180deg,var(--card-tint)_0%,rgba(255,255,255,0.02)_44%,rgba(255,255,255,0.012)_100%)]",
                       "sm:w-[340px] sm:max-w-none sm:p-6 lg:w-[360px]",
                       item.tintClass,
                     ].join(" ")}
-                    style={{ animationDelay: `${index * 70}ms` }}
+                    style={{
+                      animationDelay: isMobile ? "0ms" : `${itemIndex * 70}ms`,
+                    }}
                   >
                     <p className="text-[0.72rem] font-medium uppercase tracking-[0.14em] text-white/58">
                       {kicker}
@@ -229,7 +252,13 @@ export function ScreenshotShowcase() {
                       {title}
                     </h3>
                     <div className="mt-4 flex justify-center">
-                      <PhoneFrame src={item.src} alt={alt} tintClass={item.tintClass} />
+                      <PhoneFrame
+                        src={item.src}
+                        alt={alt}
+                        tintClass={item.tintClass}
+                        prioritize={prioritize}
+                        isActive={isActive}
+                      />
                     </div>
                   </article>
                 );
