@@ -11,7 +11,7 @@ export async function RoadmapBand() {
       className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl lg:mt-28"
       style={{ animationDelay: "760ms" }}
     >
-      <div className="rounded-2xl border border-dashed border-[var(--border)] bg-transparent px-5 py-8 sm:px-8 sm:py-10 dark:bg-white/[0.02]">
+      <div className="rounded-2xl border border-[var(--border)] bg-transparent px-5 py-8 sm:px-8 sm:py-10 dark:bg-white/[0.02]">
         <h2 className="text-center text-sm font-semibold uppercase tracking-wide text-[var(--muted)]">
           {t("roadmapTitle")}
         </h2>
