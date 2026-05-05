@@ -1,11 +1,11 @@
 {
   "Metadata": {
-    "homeTitle": "Alpha Investor - Portfolio AI (early access)",
-    "homeDescription": "Alpha Investor on iOS - clearer portfolio view, AI insights based on your holdings, and five simple scores per stock. Join early access.",
+    "homeTitle": "Alpha Investor — Know what to do",
+    "homeDescription": "Know what to do with your portfolio. Clear signals with context.",
     "privacyTitle": "Privacy",
-    "privacyDescription": "How Alpha Investor collects, uses, stores, and protects personal data for the website, waitlist, and related products.",
+    "privacyDescription": "How Alpha Investor collects and protects your data.",
     "termsTitle": "Terms",
-    "termsDescription": "Terms of use for the Alpha Investor website, waitlist signup, and related services."
+    "termsDescription": "Terms of use for Alpha Investor."
   },
   "Nav": {
     "ai": "AI",
@@ -18,75 +18,101 @@
     "joinWaitlist": "Get access",
     "languageEn": "EN",
     "languagePl": "PL",
-    "menuToggle": "Toggle navigation menu"
+    "menuToggle": "Toggle navigation"
   },
   "Home": {
     "skipToContent": "Skip to content",
     "eyebrow": "Alpha Investor",
-    "headline": "Know what to do with your portfolio.",
-    "subhead": "Signals with context - not just data. Alpha Investor turns portfolio data into clear signals you can act on.",
+
+    "headline": "Know what to do.",
+    "subhead": "Signals with context. Not just data.",
+
     "heroPrimaryCta": "Get access",
     "heroSecondaryCta": "See how it works",
+
     "appStoreBadgeSmall": "Download on the",
     "appStoreBadgeLarge": "App Store",
     "appStoreBadgeAria": "Download Alpha Investor on the App Store",
-    "heroImageAlt": "Alpha Investor screen showing five lenses - trend, valuation, risk, growth, momentum.",
-    "heroDeckWalletAlt": "Portfolio view with health score and allocation.",
-    "heroDeckChartAlt": "Stock detail with chart and performance.",
+
+    "heroImageAlt": "Five lenses view — trend, valuation, risk, growth, momentum.",
+    "heroDeckWalletAlt": "Portfolio view with allocation.",
+    "heroDeckChartAlt": "Stock chart and performance.",
+
     "aiEyebrow": "Decision layer",
     "aiProBadge": "Alpha Pro",
-    "aiTitle": "A decision layer for your portfolio.",
-    "aiIntro": "This app turns portfolio data into clear signals you can act on.",
-    "aiExplain": "You see what changed, why it matters, and where to focus next.",
-    "aiProHook": "No black box. Every signal is explained so you can decide with confidence.",
+
+    "aiTitle": "A decision layer.",
+    "aiIntro": "Clear signals from your portfolio.",
+    "aiExplain": "What changed. Why it matters. What to do next.",
+    "aiProHook": "No black box. Every signal explained.",
+
     "aiPricingCta": "Get access",
     "aiWaitlistCta": "See how it works",
+
     "aiPillar1Title": "What is this?",
-    "aiPillar1Body": "A decision layer on top of your portfolio.",
+    "aiPillar1Body": "A layer on top of your portfolio.",
+
     "aiPillar2Title": "Why it matters",
-    "aiPillar2Body": "You get context, not isolated numbers.",
+    "aiPillar2Body": "Context, not isolated numbers.",
+
     "aiPillar3Title": "What should I do?",
-    "aiPillar3Body": "Use each explained signal to choose your next step.",
+    "aiPillar3Body": "Use signals to decide what to do.",
+
     "featuresTitle": "Everything in one place",
-    "featuresIntro": "Portfolio, charts, and AI insights in one smooth flow - nothing to learn, nothing to memorize.",
+    "featuresIntro": "Portfolio, charts, and signals. One flow.",
+
     "feature1Title": "Portfolio health",
-    "feature1Body": "Simple signals about mix and concentration - built to inform, not stress you out.",
+    "feature1Body": "Simple signals about mix and concentration.",
+
     "feature2Title": "Five lens scores",
-    "feature2Body": "Same scale on every stock - compare instantly without building your own tools.",
+    "feature2Body": "Same scale on every stock.",
+
     "feature3Title": "Stock deep dive",
-    "feature3Body": "Chart - performance - context - and AI insight in one scroll.",
+    "feature3Body": "Chart, context, and signals in one view.",
+
     "feature4Title": "Private and secure",
-    "feature4Body": "Your data stays yours - insights are generated only for your account.",
+    "feature4Body": "Your data stays yours.",
+
     "stepsTitle": "How it works",
+
     "step1Title": "Add your portfolio",
-    "step1Body": "Enter the positions you already track - no broker connection needed.",
+    "step1Body": "Enter your positions.",
+
     "step2Title": "We fetch the data",
-    "step2Body": "Charts, context, and live prices - all synced automatically.",
-    "step3Title": "AI explains it",
-    "step3Body": "Quick insights to help you understand your portfolio - fast.",
+    "step2Body": "Charts, prices, and context.",
+
+    "step3Title": "Signals explain it",
+    "step3Body": "Clear insight, fast.",
+
     "pricingEyebrow": "Pricing",
-    "pricingTitle": "Start simple. Upgrade when you need more.",
-    "pricingTagline": "$10/month for the full decision layer for your portfolio.",
+    "pricingTitle": "Start simple. Upgrade anytime.",
+    "pricingTagline": "$10/month. Full decision layer.",
+
     "pricingFreeName": "Free",
     "pricingFreePrice": "$0",
-    "pricingFreeBullet1": "Portfolios, live prices, and charts - no AI layer",
-    "pricingFreeBullet2": "Same privacy - your data is never used for public models",
-    "pricingFreeBullet3": "Upgrade anytime in the app",
+    "pricingFreeBullet1": "Portfolios, prices, and charts",
+    "pricingFreeBullet2": "Same privacy",
+    "pricingFreeBullet3": "Upgrade anytime",
+
     "pricingProName": "Alpha Pro",
     "pricingProBadge": "Full AI",
     "pricingProPrice": "$10",
     "pricingProPeriod": "/ month",
-    "pricingProBullet1": "AI insights built from your portfolio - not generic watchlists",
-    "pricingProBullet2": "Five lenses with clear, fast explanations",
-    "pricingProBullet3": "Chart, context, and AI combined in one view",
-    "pricingProBullet4": "New features available here first",
+    "pricingProBullet1": "Signals from your portfolio",
+    "pricingProBullet2": "Five lenses, explained",
+    "pricingProBullet3": "Chart, context, and signals",
+    "pricingProBullet4": "New features first",
+
     "pricingCtaWaitlist": "Get access",
     "pricingCtaAi": "See how it works",
-    "pricingDisclaimerLine": "No promises - no magic returns. Just better understanding of your money.",
-    "pricingFootnote": "Subscriptions are handled in the app via Apple In-App Purchase. Price may vary by region. Android billing is coming. Manage or cancel anytime in your device settings.",
-    "screensTitle": "A decision layer for your portfolio.",
-    "screensIntro": "Know what changed. Know why it matters. Know what to do next.",
-    "galleryPortfolioInsightKicker": "No black box. Every signal explained.",
+
+    "pricingDisclaimerLine": "No promises. No magic returns.",
+    "pricingFootnote": "Subscriptions handled in-app. Cancel anytime.",
+
+    "screensTitle": "A decision layer.",
+    "screensIntro": "Know what changed. Know why it matters. Know what to do.",
+
+    "galleryPortfolioInsightKicker": "No black box",
     "galleryWalletValueKicker": "Performance",
     "galleryWalletAllocationKicker": "Allocation",
     "galleryChartKicker": "Momentum",
@@ -94,57 +120,82 @@
     "galleryFundamentalsKicker": "Valuation",
     "galleryOptimizerKicker": "Scenario",
     "galleryNewsKicker": "News",
-    "galleryWalletValueTitle": "See if your plan is working",
-    "galleryWalletValueBody": "Portfolio value over time with simple range controls—see the arc without jumping between tools.",
+
+    "galleryWalletValueTitle": "See if it’s working",
+    "galleryWalletValueBody": "Track your portfolio over time.",
+
     "galleryWalletAllocationTitle": "Understand what you own.",
-    "galleryWalletAllocationBody": "See allocation, exposure and performance in one place.",
+    "galleryWalletAllocationBody": "See allocation and exposure.",
+
     "galleryPortfolioInsightTitle": "Know what to do.",
-    "galleryPortfolioInsightBody": "Not just data. Clear signals with context. No black box. Every signal explained.",
+    "galleryPortfolioInsightBody": "Clear signals with context. No black box.",
+
     "galleryChartTitle": "Read the market.",
     "galleryChartBody": "Charts and signals, simplified.",
+
     "galleryFiveLensesTitle": "Break it down.",
-    "galleryFiveLensesBody": "Trend, valuation, growth, risk and momentum - in one view.",
+    "galleryFiveLensesBody": "Trend, valuation, growth, risk and momentum.",
+
     "galleryFundamentalsTitle": "See the reasoning.",
-    "galleryFundamentalsBody": "Every signal links to the factors behind it.",
+    "galleryFundamentalsBody": "Every signal links to its factors.",
+
     "galleryOptimizerTitle": "Plan your next move.",
-    "galleryOptimizerBody": "Test changes before you act on your portfolio.",
+    "galleryOptimizerBody": "Test changes before acting.",
+
     "galleryNewsTitle": "Track what matters.",
-    "galleryNewsBody": "Use market context to filter noise and focus on decisions.",
+    "galleryNewsBody": "Focus on signals, not noise.",
+
     "faqTitle": "FAQ",
+
     "faq1Q": "Is this financial advice?",
-    "faq1A": "No - this is a tool to help you understand your portfolio. You make the decisions.",
+    "faq1A": "No. You make the decisions.",
+
     "faq2Q": "What does the AI add?",
-    "faq2A": "It adds a decision layer for your portfolio, with signals and reasoning.",
+    "faq2A": "Signals with context.",
+
     "faq3Q": "Which platforms are supported?",
-    "faq3A": "iOS today - Android is on the way.",
-    "faq4Q": "What happens after I join the waitlist?",
-    "faq4A": "You’ll get occasional updates about access and new releases. You can unsubscribe anytime.",
-    "faq5Q": "Where does market data come from?",
-    "faq5A": "Licensed providers - never other users.",
+    "faq3A": "iOS today. Android coming.",
+
+    "faq4Q": "What happens after I join?",
+    "faq4A": "We’ll email you updates.",
+
+    "faq5Q": "Where does data come from?",
+    "faq5A": "Licensed providers.",
+
     "faq6Q": "How does pricing work?",
-    "faq6A": "Free includes portfolios, charts, and data. Alpha Pro adds full AI insights for $10/month.",
-    "faq7Q": "Do you train public models on my data?",
-    "faq7A": "No - your portfolio is used only to generate your insights.",
+    "faq6A": "Free + Pro ($10/month).",
+
+    "faq7Q": "Do you train models on my data?",
+    "faq7A": "No.",
+
     "ctaTitle": "Not a black box.",
-    "ctaSub": "Every signal is backed by clear reasoning. No predictions. No hype. Just structured insight.",
-    "formConsent": "By joining, you agree we may email you about the product. See",
+    "ctaSub": "Clear reasoning. No predictions. No hype.",
+
+    "formConsent": "By joining, you agree we may email you. See",
     "formConsentLink": "Privacy",
-    "disclaimer": "Not financial, tax, or legal advice - always verify decisions that affect your money.",
-    "roadmapTitle": "Roadmap - not a promise",
-    "roadmapIntro": "High-level direction only - priorities may change based on feedback.",
+
+    "disclaimer": "Not financial advice.",
+
+    "roadmapTitle": "Roadmap",
+    "roadmapIntro": "Direction only. May change.",
+
     "roadmapPhase1Title": "iOS foundation",
     "roadmapPhase1Badge": "Shipped",
-    "roadmapPhase1Body": "Live today - portfolios, charts, and first AI insights.",
+    "roadmapPhase1Body": "Portfolios, charts, first signals.",
+
     "roadmapPhase2Title": "Deeper intelligence",
-    "roadmapPhase2Body": "Stronger models and better portfolio insights - still simple to use.",
+    "roadmapPhase2Body": "Better insights. Same simplicity.",
+
     "roadmapPhase3Title": "Android",
-    "roadmapPhase3Body": "Same experience - expanded to a new platform.",
+    "roadmapPhase3Body": "Same experience.",
+
     "roadmapPhase4Title": "Iteration",
-    "roadmapPhase4Body": "Continuous improvements driven by real users."
+    "roadmapPhase4Body": "Continuous improvement."
   },
+
   "Form": {
     "title": "Get access",
-    "subtitle": "Leave your email - we’ll let you know when spots open.",
+    "subtitle": "Leave your email — we’ll let you know.",
     "email": "Email",
     "name": "Name",
     "nameOptional": "(optional)",
@@ -152,15 +203,15 @@
     "namePlaceholder": "Ada Lovelace",
     "submit": "Get access",
     "submitting": "Submitting…",
-    "errorNotConfigured": "Signups are not available yet. Try again later.",
-    "errorGeneric": "Something went wrong. Try again.",
-    "errorNetwork": "Network error - check your connection.",
-    "errorInvalidEmail": "Enter a valid email address.",
-    "successDefault": "You're in - we’ll be in touch.",
-    "successDuplicate": "You're already on the list.",
-    "captchaHint": "Complete the check below.",
-    "errorCaptcha": "Please complete the check before submitting.",
-    "errorRateLimited": "Too many attempts - try again in a few minutes."
+    "errorNotConfigured": "Try again later.",
+    "errorGeneric": "Something went wrong.",
+    "errorNetwork": "Check your connection.",
+    "errorInvalidEmail": "Enter a valid email.",
+    "successDefault": "You're in.",
+    "successDuplicate": "Already on the list.",
+    "captchaHint": "Complete the check.",
+    "errorCaptcha": "Complete the check.",
+    "errorRateLimited": "Try again in a few minutes."
   },
   "Privacy": {
     "backHome": "Back home",
@@ -387,10 +438,11 @@
   "NotFound": {
     "title": "Page not found",
     "code": "404",
-    "body": "We could not find the page you were looking for. It may have moved, or the link may be wrong.",
-    "homeCta": "Back to home",
-    "languageHint": "Use the EN / PL switch in the header if you need another language - the URL stays the same."
+    "body": "This page doesn’t exist.",
+    "homeCta": "Back home",
+    "languageHint": "Use EN / PL in the header."
   },
+
   "Footer": {
     "rights": "All rights reserved.",
     "notAdvice": "Not financial advice.",
@@ -403,6 +455,6 @@
     "pricing": "Pricing",
     "faq": "FAQ",
     "contactHeading": "Contact",
-    "contactWaitlist": "Join the waitlist"
+    "contactWaitlist": "Get access"
   }
 }

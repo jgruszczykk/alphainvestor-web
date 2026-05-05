@@ -1,12 +1,13 @@
 {
   "Metadata": {
-    "homeTitle": "Alpha Investor - AI dla Twojego portfela (early access)",
-    "homeDescription": "Alpha Investor na iOS — przejrzysty widok portfela, AI oparte na Twoich pozycjach i pięć prostych ocen dla każdej spółki. Dołącz do early access.",
+    "homeTitle": "Alpha Investor — Wiedz, co robić",
+    "homeDescription": "Wiedz, co robić z portfelem. Jasne sygnały, nie same dane.",
     "privacyTitle": "Prywatność",
-    "privacyDescription": "Jak Alpha Investor zbiera, wykorzystuje, przechowuje i chroni dane osobowe na stronie, liście oczekujących i w produktach.",
+    "privacyDescription": "Jak Alpha Investor przetwarza i chroni Twoje dane.",
     "termsTitle": "Warunki",
-    "termsDescription": "Warunki korzystania ze strony Alpha Investor, listy oczekujących i powiązanych usług."
+    "termsDescription": "Zasady korzystania z Alpha Investor."
   },
+
   "Nav": {
     "ai": "AI",
     "features": "Funkcje",
@@ -18,84 +19,102 @@
     "joinWaitlist": "Uzyskaj dostęp",
     "languageEn": "EN",
     "languagePl": "PL",
-    "menuToggle": "Przełącz menu"
+    "menuToggle": "Menu"
   },
+
   "Home": {
     "skipToContent": "Przejdź do treści",
     "eyebrow": "Alpha Investor",
-    "headline": "Wiedz, co zrobić ze swoim portfelem.",
-    "subhead": "Sygnały z kontekstem - nie same dane. Alpha Investor zamienia dane portfela w jasne sygnały, na których możesz działać.",
+
+    "headline": "Wiedz, co robić.",
+    "subhead": "Jasne sygnały. Nie same dane.",
+
     "heroPrimaryCta": "Uzyskaj dostęp",
     "heroSecondaryCta": "Zobacz, jak to działa",
+
     "appStoreBadgeSmall": "Pobierz w",
     "appStoreBadgeLarge": "App Store",
     "appStoreBadgeAria": "Pobierz Alpha Investor z App Store",
-    "heroImageAlt": "Ekran Alpha Investor pokazujący pięć ocen: trend, wycena, ryzyko, wzrost, momentum.",
-    "heroDeckWalletAlt": "Widok portfela z oceną kondycji i alokacją.",
-    "heroDeckChartAlt": "Szczegóły spółki z wykresem i wynikami.",
 
-    "aiEyebrow": "Warstwa decyzyjna",
+    "heroImageAlt": "Widok ocen: trend, wycena, ryzyko, wzrost, momentum.",
+    "heroDeckWalletAlt": "Widok portfela i alokacji.",
+    "heroDeckChartAlt": "Wykres i wyniki spółki.",
+
+    "aiEyebrow": "Warstwa decyzji",
     "aiProBadge": "Alpha Pro",
-    "aiTitle": "Warstwa decyzyjna dla Twojego portfela.",
-    "aiIntro": "Ta aplikacja zamienia dane portfela w jasne sygnały, na których możesz działać.",
-    "aiExplain": "Widzisz, co się zmieniło, dlaczego to ważne i gdzie skupić uwagę.",
-    "aiProHook": "To nie jest czarna skrzynka. Każdy sygnał jest wyjaśniony, żebyś mógł podejmować decyzje świadomie.",
+
+    "aiTitle": "Warstwa decyzji.",
+    "aiIntro": "Sygnały z Twojego portfela.",
+    "aiExplain": "Co się zmieniło. Dlaczego to ważne. Co dalej.",
+    "aiProHook": "Bez czarnej skrzynki. Każdy sygnał ma uzasadnienie.",
+
     "aiPricingCta": "Uzyskaj dostęp",
     "aiWaitlistCta": "Zobacz, jak to działa",
 
     "aiPillar1Title": "Co to jest?",
-    "aiPillar1Body": "Warstwa decyzyjna nałożona na Twój portfel.",
+    "aiPillar1Body": "Warstwa nałożona na portfel.",
+
     "aiPillar2Title": "Dlaczego to ważne?",
-    "aiPillar2Body": "Dostajesz kontekst, a nie pojedyncze liczby.",
-    "aiPillar3Title": "Co mam zrobić?",
-    "aiPillar3Body": "Użyj wyjaśnionych sygnałów, by wybrać kolejny krok.",
+    "aiPillar2Body": "Kontekst zamiast suchych liczb.",
+
+    "aiPillar3Title": "Co dalej?",
+    "aiPillar3Body": "Sygnały pomagają podjąć decyzję.",
 
     "featuresTitle": "Wszystko w jednym miejscu",
-    "featuresIntro": "Portfel, wykresy i AI w jednym spójnym widoku — bez nauki, bez kombinowania.",
+    "featuresIntro": "Portfel, wykresy i sygnały. Jeden widok.",
+
     "feature1Title": "Kondycja portfela",
-    "feature1Body": "Proste sygnały o strukturze i koncentracji — stworzone, żeby pomagać, nie stresować.",
+    "feature1Body": "Proste sygnały o strukturze i koncentracji.",
+
     "feature2Title": "Oceny 5 czynników",
-    "feature2Body": "Ten sam system dla każdej spółki — porównuj natychmiast, bez własnych narzędzi.",
-    "feature3Title": "Pełny widok spółki",
-    "feature3Body": "Wykres, wyniki, kontekst i AI — wszystko w jednym miejscu.",
+    "feature2Body": "Ten sam system dla każdej spółki.",
+
+    "feature3Title": "Widok spółki",
+    "feature3Body": "Wykres, kontekst i sygnały razem.",
+
     "feature4Title": "Prywatność",
-    "feature4Body": "Twoje dane należą do Ciebie — nie są wykorzystywane do trenowania publicznych modeli.",
+    "feature4Body": "Twoje dane zostają Twoje.",
 
     "stepsTitle": "Jak to działa",
+
     "step1Title": "Dodaj portfel",
-    "step1Body": "Wprowadź pozycje, które już śledzisz — bez łączenia z brokerem.",
+    "step1Body": "Wprowadź swoje pozycje.",
+
     "step2Title": "Pobieramy dane",
-    "step2Body": "Wykresy, kontekst i ceny — wszystko aktualizuje się automatycznie.",
-    "step3Title": "AI wyjaśnia",
-    "step3Body": "Krótkie wnioski, które pomagają szybko zrozumieć Twój portfel.",
+    "step2Body": "Wykresy, ceny i kontekst.",
+
+    "step3Title": "Sygnały wyjaśniają",
+    "step3Body": "Jasny obraz Twojego portfela.",
 
     "pricingEyebrow": "Plany",
-    "pricingTitle": "Zacznij prosto. Rozszerz, gdy potrzebujesz więcej.",
-    "pricingTagline": "$10 miesięcznie za pełną warstwę decyzyjną dla Twojego portfela.",
+    "pricingTitle": "Zacznij prosto. Rozszerz później.",
+    "pricingTagline": "$10 miesięcznie. Pełna warstwa decyzji.",
 
     "pricingFreeName": "Free",
     "pricingFreePrice": "$0",
-    "pricingFreeBullet1": "Portfele, ceny na żywo i wykresy — bez warstwy AI",
-    "pricingFreeBullet2": "Ta sama prywatność — Twoje dane nie trafiają do publicznych modeli",
-    "pricingFreeBullet3": "Możesz przejść na Pro w dowolnym momencie",
+    "pricingFreeBullet1": "Portfele, ceny i wykresy",
+    "pricingFreeBullet2": "Pełna prywatność",
+    "pricingFreeBullet3": "Możesz przejść na Pro w każdej chwili",
 
     "pricingProName": "Alpha Pro",
     "pricingProBadge": "Pełne AI",
     "pricingProPrice": "$10",
     "pricingProPeriod": "/ miesiąc",
-    "pricingProBullet1": "AI oparte na Twoim portfelu — nie na ogólnych watchlistach",
-    "pricingProBullet2": "5 ocen z krótkim, jasnym wyjaśnieniem",
-    "pricingProBullet3": "Wykres, kontekst i AI w jednym widoku",
-    "pricingProBullet4": "Nowe funkcje trafiają tu najpierw",
+    "pricingProBullet1": "Sygnały oparte na Twoim portfelu",
+    "pricingProBullet2": "5 ocen z wyjaśnieniem",
+    "pricingProBullet3": "Wykres, kontekst i sygnały",
+    "pricingProBullet4": "Nowe funkcje najpierw tutaj",
 
     "pricingCtaWaitlist": "Uzyskaj dostęp",
     "pricingCtaAi": "Zobacz, jak to działa",
-    "pricingDisclaimerLine": "Bez obietnic — bez magicznych zwrotów. Po prostu lepsze zrozumienie swoich pieniędzy.",
-    "pricingFootnote": "Subskrypcja przez Apple In-App Purchase. Cena może różnić się w zależności od regionu. Android w przygotowaniu. Zarządzaj lub anuluj w ustawieniach urządzenia.",
 
-    "screensTitle": "Warstwa decyzyjna dla Twojego portfela.",
-    "screensIntro": "Wiedz, co się zmieniło. Wiedz, dlaczego to ważne. Wiedz, co zrobić dalej.",
-    "galleryPortfolioInsightKicker": "To nie czarna skrzynka. Każdy sygnał jest wyjaśniony.",
+    "pricingDisclaimerLine": "Bez obietnic. Bez magii.",
+    "pricingFootnote": "Subskrypcja w aplikacji. Anuluj w dowolnym momencie.",
+
+    "screensTitle": "Warstwa decyzji.",
+    "screensIntro": "Wiedz, co się zmieniło. Wiedz dlaczego. Wiedz, co dalej.",
+
+    "galleryPortfolioInsightKicker": "Bez czarnej skrzynki",
     "galleryWalletValueKicker": "Wynik",
     "galleryWalletAllocationKicker": "Alokacja",
     "galleryChartKicker": "Momentum",
@@ -103,62 +122,81 @@
     "galleryFundamentalsKicker": "Wycena",
     "galleryOptimizerKicker": "Scenariusz",
     "galleryNewsKicker": "Wiadomości",
-    "galleryWalletValueTitle": "Sprawdź, czy plan działa",
-    "galleryWalletValueBody": "Wartość portfela w czasie z prostym wyborem zakresu — widzisz przebieg bez skakania między narzędziami.",
-    "galleryWalletAllocationTitle": "Zrozum, co posiadasz.",
-    "galleryWalletAllocationBody": "Zobacz alokację, ekspozycję i wynik w jednym miejscu.",
-    "galleryPortfolioInsightTitle": "Wiedz, co zrobić.",
-    "galleryPortfolioInsightBody": "Nie same dane. Jasne sygnały z kontekstem. To nie czarna skrzynka. Każdy sygnał jest wyjaśniony.",
-    "galleryChartTitle": "Czytaj rynek.",
-    "galleryChartBody": "Wykresy i sygnały, uproszczone.",
-    "galleryFiveLensesTitle": "Rozłóż to na czynniki.",
-    "galleryFiveLensesBody": "Trend, wycena, wzrost, ryzyko i momentum - w jednym widoku.",
-    "galleryFundamentalsTitle": "Zobacz uzasadnienie.",
-    "galleryFundamentalsBody": "Każdy sygnał pokazuje czynniki, które za nim stoją.",
-    "galleryOptimizerTitle": "Zaplanuj kolejny ruch.",
-    "galleryOptimizerBody": "Sprawdź zmiany, zanim podejmiesz decyzję dla portfela.",
-    "galleryNewsTitle": "Śledź to, co ważne.",
-    "galleryNewsBody": "Użyj kontekstu rynkowego, by odsiać szum i skupić się na decyzjach.",
+
+    "galleryWalletValueTitle": "Czy to działa?",
+    "galleryWalletValueBody": "Zobacz, jak zmienia się portfel.",
+
+    "galleryWalletAllocationTitle": "Co masz.",
+    "galleryWalletAllocationBody": "Alokacja i ekspozycja.",
+
+    "galleryPortfolioInsightTitle": "Co zrobić.",
+    "galleryPortfolioInsightBody": "Jasne sygnały z kontekstem.",
+
+    "galleryChartTitle": "Co robi rynek.",
+    "galleryChartBody": "Wykresy bez szumu.",
+
+    "galleryFiveLensesTitle": "Rozbij to.",
+    "galleryFiveLensesBody": "Trend, wycena, wzrost, ryzyko i momentum.",
+
+    "galleryFundamentalsTitle": "Dlaczego.",
+    "galleryFundamentalsBody": "Każdy sygnał ma podstawy.",
+
+    "galleryOptimizerTitle": "Co dalej.",
+    "galleryOptimizerBody": "Sprawdź scenariusze przed decyzją.",
+
+    "galleryNewsTitle": "Co ważne.",
+    "galleryNewsBody": "Oddziel sygnał od szumu.",
 
     "faqTitle": "FAQ",
+
     "faq1Q": "Czy to doradztwo inwestycyjne?",
-    "faq1A": "Nie — to narzędzie, które pomaga zrozumieć Twój portfel. Decyzje należą do Ciebie.",
+    "faq1A": "Nie. Decyzje należą do Ciebie.",
+
     "faq2Q": "Co daje AI?",
-    "faq2A": "Dodaje warstwę decyzyjną dla portfela: sygnały i uzasadnienie.",
+    "faq2A": "Sygnały z kontekstem.",
+
     "faq3Q": "Na jakich platformach działa?",
-    "faq3A": "iOS teraz — Android w przygotowaniu.",
+    "faq3A": "iOS teraz. Android wkrótce.",
+
     "faq4Q": "Co po zapisie?",
-    "faq4A": "Dostaniesz okazjonalne aktualizacje o dostępie i nowych funkcjach. Możesz się wypisać w każdej chwili.",
-    "faq5Q": "Skąd dane rynkowe?",
-    "faq5A": "Z licencjonowanych dostawców — nigdy od innych użytkowników.",
+    "faq4A": "Damy znać mailowo.",
+
+    "faq5Q": "Skąd dane?",
+    "faq5A": "Z licencjonowanych źródeł.",
+
     "faq6Q": "Jak działa płatność?",
-    "faq6A": "Wersja darmowa obejmuje portfele, dane i wykresy. Alpha Pro dodaje pełne AI za $10 miesięcznie.",
-    "faq7Q": "Czy trenujecie modele na moich danych?",
-    "faq7A": "Nie — Twoje dane są wykorzystywane tylko do generowania Twoich wniosków.",
+    "faq6A": "Free + Pro ($10/mies.).",
+
+    "faq7Q": "Czy używacie moich danych do trenowania?",
+    "faq7A": "Nie.",
 
     "ctaTitle": "To nie czarna skrzynka.",
-    "ctaSub": "Każdy sygnał ma jasne uzasadnienie. Bez prognoz. Bez hype'u. Tylko uporządkowany wgląd.",
-    "formConsent": "Dołączając, zgadzasz się na kontakt mailowy. Zobacz",
+    "ctaSub": "Jasne uzasadnienie. Bez prognoz. Bez hype'u.",
+
+    "formConsent": "Zapisując się, zgadzasz się na kontakt mailowy. Zobacz",
     "formConsentLink": "Prywatność",
 
-    "disclaimer": "To nie jest porada inwestycyjna — zawsze weryfikuj decyzje dotyczące Twoich pieniędzy.",
+    "disclaimer": "To nie jest porada inwestycyjna.",
 
-    "roadmapTitle": "Roadmapa — bez obietnic",
-    "roadmapIntro": "Ogólny kierunek — priorytety mogą się zmieniać na podstawie feedbacku.",
+    "roadmapTitle": "Roadmapa",
+    "roadmapIntro": "Kierunek, nie obietnica.",
+
     "roadmapPhase1Title": "iOS",
     "roadmapPhase1Badge": "Dostępne",
-    "roadmapPhase1Body": "Portfele, wykresy i pierwsze AI już działają.",
-    "roadmapPhase2Title": "Lepsze AI",
-    "roadmapPhase2Body": "Mocniejsze modele i lepsze wnioski — nadal proste w użyciu.",
-    "roadmapPhase3Title": "Android",
-    "roadmapPhase3Body": "To samo doświadczenie na nowej platformie.",
-    "roadmapPhase4Title": "Iteracja",
-    "roadmapPhase4Body": "Ciągłe ulepszenia na podstawie użytkowników."
-  },
+    "roadmapPhase1Body": "Portfele, wykresy i pierwsze sygnały.",
 
+    "roadmapPhase2Title": "Lepsze AI",
+    "roadmapPhase2Body": "Więcej wniosków. Ta sama prostota.",
+
+    "roadmapPhase3Title": "Android",
+    "roadmapPhase3Body": "To samo doświadczenie.",
+
+    "roadmapPhase4Title": "Iteracja",
+    "roadmapPhase4Body": "Stałe ulepszenia."
+  },
   "Form": {
     "title": "Uzyskaj dostęp",
-    "subtitle": "Zostaw email — damy znać, gdy pojawią się miejsca.",
+    "subtitle": "Zostaw email — damy znać.",
     "email": "Email",
     "name": "Imię",
     "nameOptional": "(opcjonalnie)",
@@ -166,14 +204,220 @@
     "namePlaceholder": "Jan Kowalski",
     "submit": "Uzyskaj dostęp",
     "submitting": "Wysyłanie…",
-    "errorNotConfigured": "Zapisy są chwilowo niedostępne. Spróbuj później.",
-    "errorGeneric": "Coś poszło nie tak. Spróbuj ponownie.",
-    "errorNetwork": "Błąd sieci — sprawdź połączenie.",
-    "errorInvalidEmail": "Podaj poprawny adres email.",
-    "successDefault": "Jesteś na liście — odezwiemy się.",
-    "successDuplicate": "Jesteś już zapisany.",
-    "captchaHint": "Uzupełnij weryfikację poniżej.",
-    "errorCaptcha": "Potwierdź weryfikację przed wysłaniem.",
-    "errorRateLimited": "Za dużo prób — spróbuj ponownie za kilka minut."
+    "errorNotConfigured": "Spróbuj później.",
+    "errorGeneric": "Coś poszło nie tak.",
+    "errorNetwork": "Sprawdź połączenie.",
+    "errorInvalidEmail": "Podaj poprawny email.",
+    "successDefault": "Gotowe.",
+    "successDuplicate": "Już jesteś zapisany.",
+    "captchaHint": "Uzupełnij weryfikację.",
+    "errorCaptcha": "Potwierdź weryfikację.",
+    "errorRateLimited": "Spróbuj za chwilę."
+  },
+  "Privacy": {
+      "backHome": "Powrót",
+      "title": "Polityka prywatności",
+      "lastUpdated": "Ostatnia aktualizacja: 2 maja 2026",
+      "intro": "Ta Polityka prywatności opisuje, w jaki sposób Alpha Investor zbiera, wykorzystuje i chroni dane osobowe podczas korzystania ze strony, listy oczekujących oraz aplikacji mobilnej. Jeśli nie zgadzasz się z tą polityką, nie korzystaj z naszych usług.",
+      "sections": [
+        {
+          "title": "1. Administrator danych",
+          "paragraphs": [
+            "Administratorem danych osobowych jest podmiot prowadzący Alpha Investor.",
+            "W sprawach dotyczących prywatności możesz skontaktować się z nami przez aplikację lub stronę."
+          ]
+        },
+        {
+          "title": "2. Zakres",
+          "paragraphs": [
+            "Polityka obejmuje dane przetwarzane na stronie, w formularzu waitlisty oraz w aplikacji mobilnej.",
+            "Nie świadczymy usług brokerskich ani doradztwa inwestycyjnego."
+          ]
+        },
+        {
+          "title": "3. Dane zbierane na stronie",
+          "paragraphs": [
+            "Możemy przetwarzać dane techniczne, takie jak adres IP, przeglądarka, urządzenie i odwiedzane strony.",
+            "Dane te służą do działania i poprawy serwisu."
+          ]
+        },
+        {
+          "title": "4. Lista oczekujących",
+          "paragraphs": [
+            "Zbieramy dane podane w formularzu (np. email, imię).",
+            "Używamy ich do kontaktu i informowania o dostępie do produktu.",
+            "Możesz zrezygnować z maili w dowolnym momencie."
+          ]
+        },
+        {
+          "title": "5. Dane w aplikacji",
+          "paragraphs": [
+            "W aplikacji przetwarzamy dane konta oraz informacje o portfelu, które sam wprowadzasz.",
+            "Dane rynkowe pochodzą od zewnętrznych dostawców.",
+            "Nie używamy Twojego portfela do trenowania publicznych modeli AI."
+          ]
+        },
+        {
+          "title": "6. Cel przetwarzania",
+          "paragraphs": [
+            "Dane wykorzystujemy do działania usługi, poprawy jakości i komunikacji.",
+            "Podstawą przetwarzania może być umowa, zgoda lub uzasadniony interes."
+          ]
+        },
+        {
+          "title": "7. Cookies",
+          "paragraphs": [
+            "Strona może używać cookies niezbędnych do działania oraz opcjonalnych narzędzi analitycznych.",
+            "Możesz je kontrolować w ustawieniach przeglądarki."
+          ]
+        },
+        {
+          "title": "8. Udostępnianie danych",
+          "paragraphs": [
+            "Dane mogą być przekazywane dostawcom usług (hosting, email, analityka).",
+            "Nie sprzedajemy danych użytkowników."
+          ]
+        },
+        {
+          "title": "9. Przekazywanie danych",
+          "paragraphs": [
+            "Dane mogą być przetwarzane poza EOG z odpowiednimi zabezpieczeniami."
+          ]
+        },
+        {
+          "title": "10. Okres przechowywania",
+          "paragraphs": [
+            "Dane przechowujemy tak długo, jak jest to potrzebne do działania usługi.",
+            "Możesz zażądać ich usunięcia."
+          ]
+        },
+        {
+          "title": "11. Bezpieczeństwo",
+          "paragraphs": [
+            "Stosujemy środki techniczne i organizacyjne chroniące dane.",
+            "Nie możemy jednak zagwarantować pełnego bezpieczeństwa."
+          ]
+        },
+        {
+          "title": "12. Twoje prawa",
+          "paragraphs": [
+            "Masz prawo dostępu do danych, ich poprawienia, usunięcia lub ograniczenia przetwarzania.",
+            "Możesz również złożyć skargę do organu nadzorczego."
+          ]
+        },
+        {
+          "title": "13. Dzieci",
+          "paragraphs": [
+            "Usługa nie jest przeznaczona dla osób poniżej 16 roku życia."
+          ]
+        },
+        {
+          "title": "14. Automatyczne decyzje",
+          "paragraphs": [
+            "Wyniki i analizy mają charakter informacyjny.",
+            "Nie są decyzjami w rozumieniu prawa ani rekomendacją inwestycyjną."
+          ]
+        },
+        {
+          "title": "15. Zmiany",
+          "paragraphs": [
+            "Polityka może być aktualizowana.",
+            "Aktualna wersja zawsze dostępna jest na stronie."
+          ]
+        }
+      ],
+      "localeNote": "Czytasz wersję polską."
+    },
+"Terms": {
+    "backHome": "Powrót",
+    "title": "Warunki korzystania",
+    "lastUpdated": "Ostatnia aktualizacja: 2 maja 2026",
+    "intro": "Te warunki określają zasady korzystania z Alpha Investor. Korzystając z usługi, akceptujesz te zasady.",
+    "sections": [
+      {
+        "title": "1. Akceptacja",
+        "paragraphs": [
+          "Jeśli nie zgadzasz się z warunkami, nie korzystaj z usługi.",
+          "Korzystając z niej, potwierdzasz ich akceptację."
+        ]
+      },
+      {
+        "title": "2. Usługa",
+        "paragraphs": [
+          "Alpha Investor to narzędzie do analizy portfela i danych rynkowych.",
+          "Funkcje mogą się zmieniać, szczególnie w fazie early access."
+        ]
+      },
+      {
+        "title": "3. Brak doradztwa",
+        "paragraphs": [
+          "Nie jesteśmy doradcą inwestycyjnym.",
+          "Nie udzielamy rekomendacji finansowych.",
+          "Decyzje podejmujesz sam."
+        ]
+      },
+      {
+        "title": "4. Konto",
+        "paragraphs": [
+          "Odpowiadasz za bezpieczeństwo swojego konta.",
+          "Podawaj prawdziwe dane."
+        ]
+      },
+      {
+        "title": "5. Subskrypcja",
+        "paragraphs": [
+          "Płatności obsługiwane są przez App Store.",
+          "Zarządzanie subskrypcją odbywa się w ustawieniach urządzenia."
+        ]
+      },
+      {
+        "title": "6. Zasady korzystania",
+        "paragraphs": [
+          "Nie używaj usługi w sposób niezgodny z prawem.",
+          "Nie próbuj uzyskać nieautoryzowanego dostępu do danych."
+        ]
+      },
+      {
+        "title": "7. Własność",
+        "paragraphs": [
+          "Oprogramowanie i treści należą do Alpha Investor.",
+          "Możesz korzystać z nich wyłącznie prywatnie."
+        ]
+      },
+      {
+        "title": "8. Usługi zewnętrzne",
+        "paragraphs": [
+          "Korzystamy z danych i usług firm trzecich.",
+          "Nie odpowiadamy za ich dokładność."
+        ]
+      },
+      {
+        "title": "9. Odpowiedzialność",
+        "paragraphs": [
+          "Usługa dostarczana jest „tak jak jest”.",
+          "Nie gwarantujemy jej działania bez błędów."
+        ]
+      },
+      {
+        "title": "10. Ograniczenie odpowiedzialności",
+        "paragraphs": [
+          "Nie ponosimy odpowiedzialności za straty finansowe wynikające z korzystania z usługi."
+        ]
+      },
+      {
+        "title": "11. Zmiany",
+        "paragraphs": [
+          "Możemy zmieniać warunki w dowolnym momencie.",
+          "Aktualna wersja jest dostępna na stronie."
+        ]
+      },
+      {
+        "title": "12. Prawo",
+        "paragraphs": [
+          "Warunki podlegają prawu polskiemu."
+        ]
+      }
+    ],
+    "localeNote": "Czytasz wersję polską."
   }
 }
