@@ -18,7 +18,7 @@ This repo stays independent: its own `package.json`, CI, and Vercel project.
 - Copy lives in [`messages/en.json`](./messages/en.json) and [`messages/pl.json`](./messages/pl.json).
 - **hreflang:** [`lib/hreflang.ts`](./lib/hreflang.ts) feeds `alternates.canonical` + `alternates.languages` on the home, privacy, and terms metadata generators.
 
-**Universal Links / App Store fallback:** `/i/[symbol]` and `/p/[id]` redirect to `NEXT_PUBLIC_APP_STORE_URL` when set (see [`docs/universal-links.md`](../alphainvestor/docs/universal-links.md) in the mobile repo for the full iOS checklist).
+**Universal Links:** AASA is served from [`app/.well-known/apple-app-site-association/route.ts`](./app/.well-known/apple-app-site-association/route.ts); hosted path prefixes are currently empty (see [`docs/universal-links.md`](../alphainvestor/docs/universal-links.md) in the mobile repo).
 
 ## Brand assets
 

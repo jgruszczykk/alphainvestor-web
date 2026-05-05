@@ -1,58 +1,28 @@
 @import "tailwindcss";
 
-/*
-  Warm editorial palette (stone family): blue is reserved for primary CTAs and
-  the active locale chip so the page never “fights” between ink and system blue.
-  Brand #0a84ff matches alphainvestor app tint.
-*/
 :root {
   --brand: #0a84ff;
-  --brand-hover: #0071e3;
-  --brand-soft: #4d6b8f;
-  --brand-tint: rgba(10, 132, 255, 0.07);
-  --heading: #1c1917;
-  --foreground: #57534e;
-  --muted: #78716c;
-  --surface: #fafaf9;
-  --card: #ffffff;
-  --border: rgba(28, 25, 23, 0.055);
-  --pill-bg: rgba(240, 238, 235, 0.65);
-  --pill-text: #44403c;
-  --ring: #a8a29e;
-  --underline: rgba(87, 83, 78, 0.38);
-  --hero-glow: rgba(168, 162, 158, 0.22);
-  /* Hero halo - anchored to top edge (no “strip” above from parent padding) */
+  --brand-hover: #2493ff;
+  --brand-soft: #94b4e0;
+  --brand-tint: rgba(96, 165, 250, 0.14);
+  --heading: #f8fafc;
+  --foreground: #cbd5e1;
+  --muted: #94a3b8;
+  --surface: #020617;
+  --card: #0b1222;
+  --border: rgba(226, 232, 240, 0.13);
+  --pill-bg: rgba(148, 163, 184, 0.14);
+  --pill-text: #f1f5f9;
+  --ring: #64748b;
+  --underline: rgba(148, 163, 184, 0.46);
+  --hero-glow: rgba(59, 130, 246, 0.28);
   --hero-backdrop: radial-gradient(
-    ellipse 115% 58% at 50% 0%,
-    rgba(10, 132, 255, 0.065),
-    transparent 66%
+    ellipse 100% 64% at 50% 0%,
+    rgba(10, 132, 255, 0.17),
+    rgba(59, 130, 246, 0.06) 35%,
+    transparent 72%
   );
-  --shadow-elevated: 0 4px 20px -8px rgba(28, 25, 23, 0.07);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --brand-hover: #2b8fff;
-    --brand-soft: #94b4e0;
-    --brand-tint: rgba(96, 165, 250, 0.12);
-    --heading: #f5f5f4;
-    --foreground: #a8a29e;
-    --muted: #78716c;
-    --surface: #0c0a09;
-    --card: #1c1917;
-    --border: rgba(231, 229, 228, 0.08);
-    --pill-bg: rgba(255, 255, 255, 0.045);
-    --pill-text: #e7e5e4;
-    --ring: #57534e;
-    --underline: rgba(168, 162, 158, 0.35);
-    --hero-glow: rgba(120, 113, 108, 0.18);
-    --hero-backdrop: radial-gradient(
-      ellipse 115% 58% at 50% 0%,
-      rgba(10, 132, 255, 0.11),
-      transparent 66%
-    );
-    --shadow-elevated: 0 6px 24px -10px rgba(0, 0, 0, 0.4);
-  }
+  --shadow-elevated: 0 16px 42px -24px rgba(15, 23, 42, 0.85);
 }
 
 @theme inline {

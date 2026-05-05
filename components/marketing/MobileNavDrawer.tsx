@@ -1,22 +1,18 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { Link, usePathname } from "@/i18n/navigation";
+import { usePathname } from "@/i18n/navigation";
 
 export type MobileNavDrawerLabels = {
   toggle: string;
-  ai: string;
   features: string;
   pricing: string;
   howItWorks: string;
   faq: string;
-  privacy: string;
-  terms: string;
   joinWaitlist: string;
 };
 
 const sectionAnchors = [
-  { id: "ai", labelKey: "ai" as const },
   { id: "features", labelKey: "features" as const },
   { id: "pricing", labelKey: "pricing" as const },
   { id: "how", labelKey: "howItWorks" as const },
@@ -25,8 +21,7 @@ const sectionAnchors = [
 
 /**
  * Mobile nav drawer: visible on screens < md, sealed by an overlay, focus-trapped
- * via the close button. Holds section anchors AND legal links so users on phones
- * can reach Privacy / Terms (previously hidden behind `md:flex`).
+ * via the close button. Mirrors the compact landing navigation.
  */
 export function MobileNavDrawer({ labels }: { labels: MobileNavDrawerLabels }) {
   const [open, setOpen] = useState(false);
@@ -34,11 +29,6 @@ export function MobileNavDrawer({ labels }: { labels: MobileNavDrawerLabels }) {
   const onHome = pathname === "/" || pathname === "";
   const panelId = useId();
   const closeBtnRef = useRef<HTMLButtonElement>(null);
-
-  // Close on route change.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   // Lock body scroll while open and focus the close button.
   useEffect(() => {
@@ -121,19 +111,6 @@ export function MobileNavDrawer({ labels }: { labels: MobileNavDrawerLabels }) {
                   {labels[s.labelKey]}
                 </a>
               ))}
-              <div className="my-2 border-t border-[var(--border)]" />
-              <Link
-                href="/privacy"
-                className="rounded-md px-3 py-3 text-sm text-[var(--muted)] transition-colors hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-              >
-                {labels.privacy}
-              </Link>
-              <Link
-                href="/terms"
-                className="rounded-md px-3 py-3 text-sm text-[var(--muted)] transition-colors hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-              >
-                {labels.terms}
-              </Link>
               <a
                 href={onHome ? "#waitlist" : "/#waitlist"}
                 onClick={() => setOpen(false)}

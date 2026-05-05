@@ -79,9 +79,41 @@ export const landingHome = {
     "Educational software only - markets stay risky. We sell clarity on your own data, not promises of returns.",
   pricingFootnote:
     "Purchases run inside the Alpha Investor app. Today that is Apple In-App Purchase on iOS (price may vary by region or App Store offer). Google Play billing is on the roadmap. Cancel or change plans from your device’s subscription settings.",
-  screensTitle: "Where you’ll see it in the app",
+  screensTitle: "Make better investment decisions.",
   screensIntro:
-    "Five real screens from the product - wallet, lenses, and instrument views you will actually use.",
+    "Alpha Investor turns your holdings into clear signals, so you can decide what to keep, trim, or review next.",
+  galleryPortfolioInsightKicker: "Signal",
+  galleryWalletValueKicker: "Performance",
+  galleryWalletAllocationKicker: "Allocation",
+  galleryChartKicker: "Momentum",
+  galleryFiveLensesKicker: "Comparison",
+  galleryFundamentalsKicker: "Valuation",
+  galleryOptimizerKicker: "Scenario",
+  galleryNewsKicker: "News",
+  galleryWalletValueTitle: "See if your plan is working",
+  galleryWalletValueBody:
+    "Portfolio value over time with simple range controls—see the arc without jumping between tools.",
+  galleryWalletAllocationTitle: "Spot concentration risk early",
+  galleryWalletAllocationBody:
+    "Health, sectors, and largest lines in one quiet layout—structure first, detail on demand.",
+  galleryPortfolioInsightTitle: "Know what needs attention",
+  galleryPortfolioInsightBody:
+    "Signal readout and five-lens context in everyday language—insight, not another dense dashboard.",
+  galleryChartTitle: "Read momentum before you act",
+  galleryChartBody:
+    "Intervals, price action, volume, RSI, and MACD together—then scroll for the short readout below.",
+  galleryFiveLensesTitle: "Compare conviction across holdings",
+  galleryFiveLensesBody:
+    "Trend through momentum on the same scale—scan a holding in seconds, compare the next just as fast.",
+  galleryFundamentalsTitle: "Check valuation before adding",
+  galleryFundamentalsBody:
+    "Key fundamentals plus a concise take—context beside the chart, not a wall of tables.",
+  galleryOptimizerTitle: "Test changes before trading",
+  galleryOptimizerBody:
+    "Explore rebalance steps and see how concentration shifts—illustrative simulation, not a trade instruction.",
+  galleryNewsTitle: "Use headlines with context",
+  galleryNewsBody:
+    "Market stories in a dark, readable feed—stay current without the usual finance-site noise.",
   screensBullet1: "Wallet for the whole-portfolio picture",
   screensBullet2: "Five lenses on each holding",
   screensBullet3: "Instrument screens for charts and context together",

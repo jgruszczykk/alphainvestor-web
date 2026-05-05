@@ -7,9 +7,9 @@ type DeckProps = {
 };
 
 const SRC = {
-  chart: "/marketing/screens/instrument-chart.jpeg",
-  wallet: "/marketing/screens/wallet-overview.jpeg",
-  lenses: "/marketing/screens/five-lenses.jpeg",
+  chart: "/marketing/screens/instrument-chart.png",
+  wallet: "/marketing/screens/wallet-allocation.png",
+  lenses: "/marketing/screens/five-lenses.png",
 } as const;
 
 function PhoneFace({
@@ -24,13 +24,13 @@ function PhoneFace({
   return (
     <div
       className={[
-        "relative mx-auto aspect-[532/1024] w-auto overflow-hidden rounded-2xl border border-[var(--border)] bg-black",
-        "shadow-[0_22px_52px_-12px_rgba(0,0,0,0.52)]",
+        "relative mx-auto aspect-[1179/2556] w-auto overflow-hidden rounded-2xl border border-[var(--border)] bg-black",
+        "shadow-[0_22px_52px_-20px_rgba(15,23,42,0.85)]",
         "ring-1 ring-black/15 dark:ring-white/[0.08]",
         "h-[252px] sm:h-[308px] lg:h-[372px] xl:h-[396px] lg:rounded-3xl",
       ].join(" ")}
     >
-      <div className="absolute inset-y-0 -left-1 -right-1 z-0">
+      <div className="absolute inset-0 z-0">
         <Image
           src={src}
           alt={alt}
@@ -55,7 +55,8 @@ function PhoneFace({
 
 /**
  * Three screenshots: chart (back) · wallet (front) · lenses (mid).
- * Fixed pixel heights per breakpoint (width from 532×1024 aspect): compact
+ * Fixed pixel heights per breakpoint (width from screenshot aspect ratio):
+ * compact
  * on small screens, larger from `lg` up for desktop.
  */
 export function HeroDeck({ walletAlt, chartAlt, frontAlt }: DeckProps) {

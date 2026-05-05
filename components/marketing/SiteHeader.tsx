@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { HeaderLogoLink } from "@/components/marketing/HeaderLogoLink";
 import {
   HeaderMarketingSectionLinks,
@@ -31,24 +30,11 @@ export async function SiteHeader() {
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-[var(--muted)] md:flex">
           <HeaderMarketingSectionLinks
-            ai={t("ai")}
             features={t("features")}
             pricing={t("pricing")}
             howItWorks={t("howItWorks")}
             faq={t("faq")}
           />
-          <Link
-            href="/privacy"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("privacy")}
-          </Link>
-          <Link
-            href="/terms"
-            className="rounded-md transition-colors duration-200 hover:text-[var(--heading)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--ring)]"
-          >
-            {t("terms")}
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -59,13 +45,10 @@ export async function SiteHeader() {
           <MobileNavDrawer
             labels={{
               toggle: t("menuToggle"),
-              ai: t("ai"),
               features: t("features"),
               pricing: t("pricing"),
               howItWorks: t("howItWorks"),
               faq: t("faq"),
-              privacy: t("privacy"),
-              terms: t("terms"),
               joinWaitlist: t("joinWaitlist"),
             }}
           />

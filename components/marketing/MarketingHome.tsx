@@ -4,13 +4,13 @@ import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { FaqAccordion } from "@/components/marketing/FaqAccordion";
 import { Hero } from "@/components/marketing/Hero";
 import { AiHighlights } from "@/components/marketing/AiHighlights";
-import { FeatureGrid } from "@/components/marketing/FeatureGrid";
 import { PricingBand } from "@/components/marketing/PricingBand";
 import { StepTimeline } from "@/components/marketing/StepTimeline";
 import { RoadmapBand } from "@/components/marketing/RoadmapBand";
 import { CtaBand } from "@/components/marketing/CtaBand";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { HomeHashScroll } from "@/components/marketing/HomeHashScroll";
+import { ScreenshotShowcase } from "@/components/marketing/ScreenshotShowcase";
 
 type Props = { locale: string };
 
@@ -41,9 +41,9 @@ export async function MarketingHome({ locale }: Props) {
         className="relative z-10 flex flex-1 flex-col px-4 pb-24 pt-0 sm:px-6"
       >
         <Hero />
+        <ScreenshotShowcase />
         <StepTimeline />
         <AiHighlights />
-        <FeatureGrid />
         <PricingBand />
 
         <section
