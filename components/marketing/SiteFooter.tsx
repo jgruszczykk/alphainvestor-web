@@ -11,7 +11,7 @@ export async function SiteFooter() {
       style={{ animationDelay: "920ms" }}
     >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="grid gap-8 sm:grid-cols-3 sm:gap-6">
+        <div className="grid grid-cols-2 gap-6">
           <FooterColumn heading={tFooter("legalHeading")}>
             <FooterLink href="/privacy">{tFooter("privacy")}</FooterLink>
             <FooterLink href="/terms">{tFooter("terms")}</FooterLink>
@@ -24,9 +24,6 @@ export async function SiteFooter() {
             <FooterAnchor href="/#faq">{tFooter("faq")}</FooterAnchor>
           </FooterColumn>
 
-          <FooterColumn heading={tFooter("contactHeading")}>
-            <FooterAnchor href="/#waitlist">{tFooter("contactWaitlist")}</FooterAnchor>
-          </FooterColumn>
         </div>
 
         <div className="mt-8 border-t border-[var(--border)] pt-6 text-center">
