@@ -192,7 +192,6 @@ export function ScreenshotShowcase() {
                 const deltaX = event.clientX - dragStartXRef.current;
                 dragStartXRef.current = null;
                 if (Math.abs(deltaX) < 30) return;
-                // Swipe left -> next card, swipe right -> previous card.
                 if (deltaX < 0) step(1);
                 else step(-1);
               }}
