@@ -34,7 +34,6 @@ export async function SiteFooter() {
             © {new Date().getFullYear()} Alpha Investor. {tFooter("rights")}
           </p>
           <p className="mx-auto mt-2 max-w-xl">{t("disclaimer")}</p>
-          <p className="mt-1 text-[10px] opacity-80">{tFooter("notAdvice")}</p>
         </div>
       </div>
     </footer>

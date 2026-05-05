@@ -419,5 +419,19 @@
       }
     ],
     "localeNote": "Czytasz wersję polską."
+  },
+  "Footer": {
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "notAdvice": "To nie jest porada inwestycyjna.",
+    "legalHeading": "Informacje prawne",
+    "privacy": "Prywatność",
+    "terms": "Warunki",
+    "navHeading": "Nawigacja",
+    "ai": "AI",
+    "features": "Funkcje",
+    "pricing": "Cennik",
+    "faq": "FAQ",
+    "contactHeading": "Kontakt",
+    "contactWaitlist": "Uzyskaj dostęp"
   }
 }
