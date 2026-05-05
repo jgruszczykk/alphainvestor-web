@@ -123,29 +123,29 @@
     "galleryOptimizerKicker": "Scenariusz",
     "galleryNewsKicker": "Wiadomości",
 
-    "galleryWalletValueTitle": "Czy to działa?",
-    "galleryWalletValueBody": "Zobacz, jak zmienia się wartość portfela.",
+    "galleryWalletValueTitle": "Zobacz, czy to działa",
+    "galleryWalletValueBody": "Zobacz, jak zmienia się portfel.",
   
-    "galleryWalletAllocationTitle": "Struktura portfela",
+    "galleryWalletAllocationTitle": "Zobacz, co masz",
     "galleryWalletAllocationBody": "Alokacja i ekspozycja w jednym miejscu.",
   
-    "galleryPortfolioInsightTitle": "Decyzja",
-    "galleryPortfolioInsightBody": "Jasne sygnały wraz z wyjaśnieniem.",
+    "galleryPortfolioInsightTitle": "Co zrobić dalej",
+    "galleryPortfolioInsightBody": "Jasne sygnały z kontekstem. Bez czarnej skrzynki.",
   
-    "galleryChartTitle": "Rynek",
-    "galleryChartBody": "Wykresy i sygnały bez zbędnego szumu.",
+    "galleryChartTitle": "Rynek w prosty sposób",
+    "galleryChartBody": "Wykresy i sygnały, bez zbędnego szumu.",
   
-    "galleryFiveLensesTitle": "5 czynników",
+    "galleryFiveLensesTitle": "Rozłóż to na czynniki",
     "galleryFiveLensesBody": "Trend, wycena, wzrost, ryzyko i momentum.",
   
-    "galleryFundamentalsTitle": "Uzasadnienie",
-    "galleryFundamentalsBody": "Zobacz, co stoi za każdym sygnałem.",
+    "galleryFundamentalsTitle": "Zobacz, dlaczego",
+    "galleryFundamentalsBody": "Każdy sygnał pokazuje, z czego wynika.",
   
-    "galleryOptimizerTitle": "Scenariusze",
-    "galleryOptimizerBody": "Sprawdź różne warianty przed decyzją.",
+    "galleryOptimizerTitle": "Zaplanuj kolejny ruch",
+    "galleryOptimizerBody": "Sprawdź zmiany przed decyzją.",
   
-    "galleryNewsTitle": "Kontekst",
-    "galleryNewsBody": "Najważniejsze informacje, bez szumu.",
+    "galleryNewsTitle": "To, co ma znaczenie",
+    "galleryNewsBody": "Skup się na sygnałach, nie na szumie.",
 
     "faqTitle": "FAQ",
 
