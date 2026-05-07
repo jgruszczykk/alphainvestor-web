@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Link } from "@/i18n/navigation";
 
 const COOKIE_CONSENT_KEY = "ai_cookie_consent";
@@ -24,13 +24,13 @@ export function CookieConsentBanner() {
   const [consent, setConsent] = useState<"accepted" | "rejected" | null>(() =>
     readConsent(),
   );
-  const [isConsentLoaded, setIsConsentLoaded] = useState(false);
+  const isConsentLoaded = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
   const analyticsEnabled =
     process.env.NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS === "1";
-
-  useEffect(() => {
-    setIsConsentLoaded(true);
-  }, []);
 
   function setConsentValue(value: "accepted" | "rejected") {
     window.localStorage.setItem(COOKIE_CONSENT_KEY, value);
