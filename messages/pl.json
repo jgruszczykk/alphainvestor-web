@@ -217,20 +217,20 @@
   "Privacy": {
       "backHome": "Powrót",
       "title": "Polityka prywatności",
-      "lastUpdated": "Ostatnia aktualizacja: 2 maja 2026",
-      "intro": "Ta Polityka prywatności opisuje, w jaki sposób Alpha Investor zbiera, wykorzystuje i chroni dane osobowe podczas korzystania ze strony, listy oczekujących oraz aplikacji mobilnej. Jeśli nie zgadzasz się z tą polityką, nie korzystaj z naszych usług.",
+      "lastUpdated": "Ostatnia aktualizacja: 7 maja 2026",
+      "intro": "Ta Polityka prywatności opisuje, w jaki sposób Jakub Gruszczyk QBKSHOP (NIP 6423222018), z adresem rejestrowym: 44-266 Swierklany, ul. Borynska 70 (\"Alpha Investor\", \"my\", \"nas\", \"nasze\"), zbiera, wykorzystuje i chroni dane osobowe podczas korzystania ze strony internetowej oraz listy oczekujących. Jeśli nie zgadzasz się z tą polityką, nie korzystaj z naszych usług.",
       "sections": [
         {
           "title": "1. Administrator danych",
           "paragraphs": [
-            "Administratorem danych osobowych jest podmiot prowadzący Alpha Investor.",
-            "W sprawach dotyczących prywatności możesz skontaktować się z nami przez aplikację lub stronę."
+            "Administratorem danych osobowych jest Jakub Gruszczyk QBKSHOP (NIP 6423222018), z adresem rejestrowym: 44-266 Swierklany, ul. Borynska 70.",
+            "W sprawach dotyczących prywatności skontaktuj się z nami pod adresem privacy@alphainvestor.app."
           ]
         },
         {
           "title": "2. Zakres",
           "paragraphs": [
-            "Polityka obejmuje dane przetwarzane na stronie, w formularzu waitlisty oraz w aplikacji mobilnej.",
+            "Polityka obejmuje dane przetwarzane na stronie internetowej oraz w formularzu waitlisty.",
             "Nie świadczymy usług brokerskich ani doradztwa inwestycyjnego."
           ]
         },
@@ -250,11 +250,10 @@
           ]
         },
         {
-          "title": "5. Dane w aplikacji",
+          "title": "5. Dane produktowe i AI",
           "paragraphs": [
-            "W aplikacji przetwarzamy dane konta oraz informacje o portfelu, które sam wprowadzasz.",
-            "Dane rynkowe pochodzą od zewnętrznych dostawców.",
-            "Nie używamy Twojego portfela do trenowania publicznych modeli AI."
+            "Na ten moment polityka obejmuje wyłącznie stronę internetową i proces zapisu na waitlistę.",
+            "Nie używamy danych osobowych przekazanych przez stronę lub waitlistę do trenowania publicznie dostępnych modeli AI."
           ]
         },
         {
@@ -274,7 +273,7 @@
         {
           "title": "8. Udostępnianie danych",
           "paragraphs": [
-            "Dane mogą być przekazywane dostawcom usług (hosting, email, analityka).",
+            "Dane mogą być przekazywane podmiotom przetwarzającym działającym na nasze zlecenie, w tym: hosting i analityka (Vercel), email i obsługa waitlisty (Resend), ochrona antybotowa (Cloudflare Turnstile) oraz baza danych do ograniczania nadużyć/rate limiting (Neon/Postgres).",
             "Nie sprzedajemy danych użytkowników."
           ]
         },
@@ -314,8 +313,7 @@
         {
           "title": "14. Automatyczne decyzje",
           "paragraphs": [
-            "Wyniki i analizy mają charakter informacyjny.",
-            "Nie są decyzjami w rozumieniu prawa ani rekomendacją inwestycyjną."
+            "Strona i waitlista nie podejmują wobec Ciebie zautomatyzowanych decyzji wywołujących skutki prawne lub podobnie istotne w rozumieniu art. 22 RODO."
           ]
         },
         {
@@ -331,8 +329,8 @@
 "Terms": {
     "backHome": "Powrót",
     "title": "Warunki korzystania",
-    "lastUpdated": "Ostatnia aktualizacja: 2 maja 2026",
-    "intro": "Te warunki określają zasady korzystania z Alpha Investor. Korzystając z usługi, akceptujesz te zasady.",
+      "lastUpdated": "Ostatnia aktualizacja: 7 maja 2026",
+      "intro": "Te warunki określają zasady korzystania ze strony i listy oczekujących Alpha Investor, prowadzonych przez Jakub Gruszczyk QBKSHOP (NIP 6423222018), z adresem rejestrowym: 44-266 Swierklany, ul. Borynska 70. Korzystając z usługi, akceptujesz te zasady.",
     "sections": [
       {
         "title": "1. Akceptacja",
@@ -344,7 +342,7 @@
       {
         "title": "2. Usługa",
         "paragraphs": [
-          "Alpha Investor to narzędzie do analizy portfela i danych rynkowych.",
+          "Alpha Investor obecnie udostępnia stronę marketingową i formularz waitlisty dla osób zainteresowanych wczesnym dostępem.",
           "Funkcje mogą się zmieniać, szczególnie w fazie early access."
         ]
       },
@@ -357,68 +355,67 @@
         ]
       },
       {
-        "title": "4. Konto",
+        "title": "4. Waitlista",
         "paragraphs": [
-          "Odpowiadasz za bezpieczeństwo swojego konta.",
-          "Podawaj prawdziwe dane."
+          "Wysyłając formularz waitlisty, zobowiązujesz się podawać prawdziwe dane.",
+          "Dołączenie do waitlisty nie tworzy konta użytkownika ani prawa do natychmiastowego dostępu."
         ]
       },
       {
-        "title": "5. Subskrypcja",
-        "paragraphs": [
-          "Płatności obsługiwane są przez App Store.",
-          "Zarządzanie subskrypcją odbywa się w ustawieniach urządzenia."
-        ]
-      },
-      {
-        "title": "6. Zasady korzystania",
+        "title": "5. Zasady korzystania",
         "paragraphs": [
           "Nie używaj usługi w sposób niezgodny z prawem.",
           "Nie próbuj uzyskać nieautoryzowanego dostępu do danych."
         ]
       },
       {
-        "title": "7. Własność",
+        "title": "6. Własność",
         "paragraphs": [
           "Oprogramowanie i treści należą do Alpha Investor.",
           "Możesz korzystać z nich wyłącznie prywatnie."
         ]
       },
       {
-        "title": "8. Usługi zewnętrzne",
+        "title": "7. Usługi zewnętrzne",
         "paragraphs": [
-          "Korzystamy z danych i usług firm trzecich.",
-          "Nie odpowiadamy za ich dokładność."
+          "Korzystamy z usług podmiotów trzecich (m.in. Vercel, Resend, Cloudflare Turnstile, Neon/Postgres).",
+          "Nie odpowiadamy za niedostępność lub błędy po stronie tych dostawców."
         ]
       },
       {
-        "title": "9. Odpowiedzialność",
+        "title": "8. Odpowiedzialność",
         "paragraphs": [
           "Usługa dostarczana jest „tak jak jest”.",
           "Nie gwarantujemy jej działania bez błędów."
         ]
       },
       {
-        "title": "10. Ograniczenie odpowiedzialności",
+        "title": "9. Ograniczenie odpowiedzialności",
         "paragraphs": [
           "Nie ponosimy odpowiedzialności za straty finansowe wynikające z korzystania z usługi."
         ]
       },
       {
-        "title": "11. Zmiany",
+        "title": "10. Zmiany",
         "paragraphs": [
           "Możemy zmieniać warunki w dowolnym momencie.",
           "Aktualna wersja jest dostępna na stronie."
         ]
       },
       {
-        "title": "12. Prawo",
+        "title": "11. Prawo",
         "paragraphs": [
           "Warunki podlegają prawu polskiemu."
         ]
       }
     ],
     "localeNote": "Czytasz wersję polską."
+  },
+  "CookieConsent": {
+    "message": "Używamy opcjonalnych cookies analitycznych, aby mierzyć działanie strony i ją ulepszać.",
+    "privacyLink": "Polityka prywatności",
+    "reject": "Odrzuć",
+    "accept": "Akceptuj"
   },
   "Footer": {
     "rights": "Wszelkie prawa zastrzeżone.",

@@ -216,20 +216,21 @@
   "Privacy": {
     "backHome": "Back home",
     "title": "Privacy policy",
-    "lastUpdated": "Last updated: May 2, 2026",
-    "intro": "This Privacy Policy explains how the operator of Alpha Investor (\"Alpha Investor\", \"we\", \"us\", or \"our\") collects, uses, stores, and shares personal information when you use our website, join an early-access waitlist, or use the Alpha Investor mobile application. If you disagree with this policy, please do not use our services.",
+    "lastUpdated": "Last updated: May 7, 2026",
+    "intro": "This Privacy Policy explains how Jakub Gruszczyk QBKSHOP (NIP 6423222018), with registered address at 44-266 Swierklany, ul. Borynska 70 (\"Alpha Investor\", \"we\", \"us\", or \"our\"), collects, uses, stores, and shares personal information when you use our website or join our early-access waitlist. If you disagree with this policy, please do not use our services.",
     "sections": [
       {
         "title": "1. Who is responsible for your data?",
         "paragraphs": [
-          "The controller of your personal data is the legal entity that operates Alpha Investor. For privacy-related requests, contact us using the support or contact options provided in the Alpha Investor app or on this website.",
-          "This policy supplements any just-in-time notices shown in the product (for example, consent prompts or in-app disclosures)."
+          "The controller of your personal data is Jakub Gruszczyk QBKSHOP (NIP 6423222018), with registered address at 44-266 Swierklany, ul. Borynska 70.",
+          "For privacy-related requests, contact us at privacy@alphainvestor.app.",
+          "This policy supplements notices shown on this website (for example, cookie consent prompts)."
         ]
       },
       {
         "title": "2. Scope",
         "paragraphs": [
-          "This policy covers personal information processed through (a) public marketing pages on this website, (b) early-access or waitlist forms, and (c) the Alpha Investor mobile application when you create or use an account.",
+          "This policy covers personal information processed through (a) public marketing pages on this website and (b) early-access or waitlist forms.",
           "We do not provide brokerage, custody, or order-routing services. We are not your investment adviser or fiduciary."
         ]
       },
@@ -249,11 +250,10 @@
         ]
       },
       {
-        "title": "5. Mobile application data",
+        "title": "5. Product data and AI usage",
         "paragraphs": [
-          "When you use the Alpha Investor app with an account, we process account and authentication data (for example, email and user identifiers), profile preferences, and portfolio-related content you choose to enter (such as positions, watchlists, and notes).",
-          "We retrieve market data and related context from licensed third-party data providers to power charts and information screens. We may generate in-product explanations or AI-assisted insights based on your inputs and retrieved market context. Unless we expressly notify you otherwise in the product, we do not use your portfolio content to train publicly available foundation models.",
-          "If you purchase a subscription, payment is processed by the platform store (for example, Apple App Store). We receive subscription status from our entitlement provider (for example, RevenueCat) rather than your full payment card details."
+          "At this time, this policy applies only to the website and waitlist flows described above.",
+          "We do not use your personal data submitted through the website or waitlist to train publicly available foundation models."
         ]
       },
       {
@@ -273,7 +273,7 @@
       {
         "title": "8. How we share information",
         "paragraphs": [
-          "We share personal information with service providers who process data on our instructions (\"processors\"), including hosting, email delivery, authentication and database providers, bot mitigation, subscription and entitlement management, market data vendors, and AI inference providers. We may also disclose information if required by law, to respond to lawful requests, or to protect rights, safety, and security.",
+          "We share personal information with service providers who process data on our instructions (\"processors\"), including hosting and analytics (Vercel), email delivery and waitlist management (Resend), bot mitigation (Cloudflare Turnstile), and database infrastructure for anti-abuse/rate limiting (Neon/Postgres). We may also disclose information if required by law, to respond to lawful requests, or to protect rights, safety, and security.",
           "We do not sell your personal information for money. Where required by applicable U.S. state privacy laws, we honor applicable rights regarding targeted advertising, sale, or sharing as those terms are defined by law."
         ]
       },
@@ -300,7 +300,7 @@
         "title": "12. Your rights and choices",
         "paragraphs": [
           "Depending on your location, you may have rights to access, rectify, erase, restrict, or object to certain processing, and to data portability. You may also have the right to lodge a complaint with a supervisory authority.",
-          "To exercise rights, contact us using the channels provided in the app or on this website. We may need to verify your request. If you are in the EEA/UK, you may also contact your local data protection authority."
+          "To exercise rights, contact us at privacy@alphainvestor.app. We may need to verify your request. If you are in the EEA/UK, you may also contact your local data protection authority."
         ]
       },
       {
@@ -312,13 +312,13 @@
       {
         "title": "14. Automated decision-making",
         "paragraphs": [
-          "In-product scores and AI-generated summaries are informational tools intended to help you understand data you already have access to. They are not automated decisions that produce legal or similarly significant effects about you within the meaning of Article 22 GDPR, and they are not individualized investment recommendations."
+          "Our website and waitlist do not make automated decisions that produce legal or similarly significant effects about you within the meaning of Article 22 GDPR."
         ]
       },
       {
         "title": "15. Changes to this policy",
         "paragraphs": [
-          "We may update this policy from time to time. We will post the updated version on this page and revise the \"Last updated\" date. Where changes are material and required by law, we will provide additional notice (for example, in-app message or email)."
+          "We may update this policy from time to time. We will post the updated version on this page and revise the \"Last updated\" date. Where changes are material and required by law, we will provide additional notice (for example, on-site message or email)."
         ]
       }
     ],
@@ -327,20 +327,20 @@
   "Terms": {
     "backHome": "Back home",
     "title": "Terms of use",
-    "lastUpdated": "Last updated: May 2, 2026",
-    "intro": "These Terms of Use (\"Terms\") govern your access to and use of the Alpha Investor website, waitlist, and related services operated by the legal entity operating Alpha Investor (\"Alpha Investor\", \"we\", \"us\", or \"our\"). By accessing or using the services, you agree to these Terms.",
+    "lastUpdated": "Last updated: May 7, 2026",
+    "intro": "These Terms of Use (\"Terms\") govern your access to and use of the Alpha Investor website and waitlist, operated by Jakub Gruszczyk QBKSHOP (NIP 6423222018), with registered address at 44-266 Swierklany, ul. Borynska 70 (\"Alpha Investor\", \"we\", \"us\", or \"our\"). By accessing or using the services, you agree to these Terms.",
     "sections": [
       {
         "title": "1. Agreement to these Terms",
         "paragraphs": [
           "If you do not agree to these Terms, do not use our services. If you are using the services on behalf of an organization, you represent that you have authority to bind that organization.",
-          "Additional terms may apply to specific features (for example, third-party data terms, or platform rules for mobile apps distributed through Apple or Google). If there is a conflict, the more specific terms govern only for that feature."
+          "Additional terms may apply to specific features (for example, third-party data terms). If there is a conflict, the more specific terms govern only for that feature."
         ]
       },
       {
         "title": "2. The services",
         "paragraphs": [
-          "Alpha Investor provides software tools for organizing portfolio information, viewing market context, and receiving educational, informational outputs (including optional AI-assisted explanations). Features may differ between free and paid tiers and may change during early access.",
+          "Alpha Investor currently provides a marketing website and a waitlist flow for early access updates. Features and availability may change during early access.",
           "The website may include a waitlist or marketing forms. Submitting a waitlist request does not guarantee access, timing, or any particular feature set."
         ]
       },
@@ -358,10 +358,10 @@
         ]
       },
       {
-        "title": "5. Accounts, authentication, and subscriptions",
+        "title": "5. Waitlist communications",
         "paragraphs": [
-          "Certain features require an account. You agree to provide accurate information and to keep your credentials confidential. You are responsible for activity under your account, except where caused by our gross negligence or willful misconduct.",
-          "Paid subscriptions purchased through a platform store are also governed by the applicable store terms. To the maximum extent permitted by the store policies, billing, refunds, and cancellations are handled through the store."
+          "If you submit your details through the waitlist form, you agree to provide accurate information.",
+          "Joining the waitlist does not create a user account, subscription, or entitlement to immediate access."
         ]
       },
       {
@@ -429,11 +429,17 @@
         "title": "15. Miscellaneous",
         "paragraphs": [
           "These Terms constitute the entire agreement between you and Alpha Investor regarding the subject matter and supersede prior understandings on the same subject. If any provision is unenforceable, the remaining provisions remain in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms without our consent; we may assign them in connection with a merger, acquisition, or sale of assets.",
-          "Contact us using the support or contact methods available in the Alpha Investor app or on this website for questions about these Terms."
+          "Contact us at privacy@alphainvestor.app for questions about these Terms."
         ]
       }
     ],
     "localeNote": "You are viewing this page in English."
+  },
+  "CookieConsent": {
+    "message": "We use optional analytics cookies to measure site performance and improve the experience.",
+    "privacyLink": "Privacy policy",
+    "reject": "Reject",
+    "accept": "Accept"
   },
   "NotFound": {
     "title": "Page not found",
