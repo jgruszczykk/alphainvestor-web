@@ -29,7 +29,7 @@ actual operator details below, in BOTH `en.json` and `pl.json` under the
 
 ```
 Operator legal name:        Jakub Gruszczyk QBKSHOP
-Registered address:         44-266 Swierklany, ul. Borynska 70
+Registered address:         Not listed (owner requested no address in public legal copy)
 Registration number / NIP:  6423222018
 Privacy contact:            privacy@alphainvestor.app
 General contact:            privacy@alphainvestor.app
