@@ -21,13 +21,14 @@ function readConsent(): "accepted" | "rejected" | null {
 
 export function CookieConsentBanner() {
   const t = useTranslations("CookieConsent");
-  const [consent, setConsent] = useState<"accepted" | "rejected" | null>(null);
+  const [consent, setConsent] = useState<"accepted" | "rejected" | null>(() =>
+    readConsent(),
+  );
   const [isConsentLoaded, setIsConsentLoaded] = useState(false);
   const analyticsEnabled =
     process.env.NEXT_PUBLIC_ENABLE_VERCEL_ANALYTICS === "1";
 
   useEffect(() => {
-    setConsent(readConsent());
     setIsConsentLoaded(true);
   }, []);
 
