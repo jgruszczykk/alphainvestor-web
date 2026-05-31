@@ -27,10 +27,10 @@ export async function WhyInvestorsBand() {
       </div>
       <div className="mt-8 text-center">
         <a
-          href="#waitlist"
+          href="#imports"
           className="inline-flex h-12 items-center justify-center rounded-xl border border-[var(--border)] bg-transparent px-7 text-sm font-semibold text-[var(--heading)] transition-[transform,background-color] duration-200 hover:bg-[var(--pill-bg)] active:scale-[0.98]"
         >
-          {t("benefitsCtaWaitlist")}
+          {t("benefitsCta")}
         </a>
       </div>
     </MarketingSection>

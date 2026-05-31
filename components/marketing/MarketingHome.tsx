@@ -4,13 +4,14 @@ import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { FaqAccordion } from "@/components/marketing/FaqAccordion";
 import { Hero } from "@/components/marketing/Hero";
 import { TrustBar } from "@/components/marketing/TrustBar";
+import { PortfolioImports } from "@/components/marketing/PortfolioImports";
+import { WhyNowBand } from "@/components/marketing/WhyNowBand";
 import { PlatformPillars } from "@/components/marketing/PlatformPillars";
 import { DataInfrastructure } from "@/components/marketing/DataInfrastructure";
-import { BrokerConnectivity } from "@/components/marketing/BrokerConnectivity";
 import { IntelligenceEngine } from "@/components/marketing/IntelligenceEngine";
 import { ScreenshotShowcase } from "@/components/marketing/ScreenshotShowcase";
 import { WhyInvestorsBand } from "@/components/marketing/WhyInvestorsBand";
-import { SecurityBand } from "@/components/marketing/SecurityBand";
+import { TrustLayer } from "@/components/marketing/TrustLayer";
 import { BuiltForScale } from "@/components/marketing/BuiltForScale";
 import { StepTimeline } from "@/components/marketing/StepTimeline";
 import { PricingBand } from "@/components/marketing/PricingBand";
@@ -50,9 +51,10 @@ export async function MarketingHome({ locale }: Props) {
         <div className="px-4 sm:px-6">
           <Hero />
           <TrustBar />
+          <PortfolioImports />
+          <WhyNowBand />
           <PlatformPillars />
           <DataInfrastructure />
-          <BrokerConnectivity />
           <IntelligenceEngine />
         </div>
 
@@ -60,15 +62,14 @@ export async function MarketingHome({ locale }: Props) {
 
         <div className="px-4 sm:px-6">
           <WhyInvestorsBand />
-          <SecurityBand />
+          <TrustLayer />
           <BuiltForScale />
           <StepTimeline />
           <PricingBand />
 
           <section
             id="faq"
-            className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl scroll-mt-24 lg:mt-28"
-            style={{ animationDelay: "680ms" }}
+            className="mx-auto mt-20 w-full max-w-6xl scroll-mt-24 lg:mt-28"
           >
             <h2 className="text-center text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--heading)] sm:text-3xl">
               {t("faqTitle")}

@@ -7,23 +7,24 @@ export function JsonLd({ locale }: Props) {
   const isPl = locale === "pl";
 
   const description = isPl
-    ? "Śledzenie i analiza portfela akcji u wielu brokerów. Import pozycji, analityka portfela, dane na żywo i wyjaśnione AI na iOS."
-    : "Track and analyze your stock portfolio across brokers. Import holdings, portfolio analytics, live market data, and explained AI insights on iOS.";
+    ? "Śledzenie portfela akcji z importem brokerów, analityką portfela i investment intelligence na iOS."
+    : "Stock portfolio tracker with broker imports, portfolio analysis, and investment intelligence on iOS.";
 
   const featureList = isPl
     ? [
         "Śledzenie portfela inwestycyjnego",
-        "Import z brokerów",
         "Analityka portfela",
-        "Dane rynkowe na żywo",
-        "Wyjaśnione AI",
+        "Investment intelligence",
+        "Import z brokerów",
+        "Zarządzanie portfelem inwestycyjnym",
       ]
     : [
-        "Investment portfolio tracking",
+        "Portfolio tracker",
+        "Portfolio analytics",
+        "Investment intelligence",
+        "Investment portfolio management",
+        "Portfolio analysis",
         "Multi-broker file imports",
-        "Portfolio analysis and analytics",
-        "Live market data",
-        "Explained AI investment insights",
       ];
 
   const software = {
@@ -51,8 +52,8 @@ export function JsonLd({ locale }: Props) {
     url: `${base}/`,
     email: "privacy@alphainvestor.app",
     description: isPl
-      ? "Platforma analizy portfela dla inwestorów detalicznych."
-      : "Portfolio intelligence platform for retail investors.",
+      ? "Platforma portfolio intelligence i analityki inwestycyjnej."
+      : "Portfolio intelligence and investment analytics platform.",
   };
 
   return (

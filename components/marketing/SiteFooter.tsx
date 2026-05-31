@@ -19,10 +19,10 @@ export async function SiteFooter() {
           </FooterColumn>
 
           <FooterColumn heading={tFooter("navHeading")}>
-            <FooterAnchor href="/#platform">{tFooter("platform")}</FooterAnchor>
+            <FooterAnchor href="/#imports">{tFooter("imports")}</FooterAnchor>
+            <FooterAnchor href="/#engine">{tFooter("intelligence")}</FooterAnchor>
             <FooterAnchor href="/#data">{tFooter("data")}</FooterAnchor>
-            <FooterAnchor href="/#brokers">{tFooter("brokers")}</FooterAnchor>
-            <FooterAnchor href="/#security">{tFooter("security")}</FooterAnchor>
+            <FooterAnchor href="/#trust">{tFooter("security")}</FooterAnchor>
             <FooterAnchor href="/#product-proof">{tFooter("product")}</FooterAnchor>
             <FooterAnchor href="/#pricing">{tFooter("pricing")}</FooterAnchor>
             <FooterAnchor href="/#faq">{tFooter("faq")}</FooterAnchor>

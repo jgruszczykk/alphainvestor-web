@@ -32,6 +32,20 @@ export async function StepTimeline() {
           </li>
         ))}
       </ol>
+      <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a
+          href="#waitlist"
+          className="inline-flex h-12 items-center justify-center rounded-xl bg-[var(--brand)] px-7 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-colors hover:bg-[var(--brand-hover)]"
+        >
+          {t("stepsCta")}
+        </a>
+        <a
+          href="#waitlist"
+          className="inline-flex h-12 items-center justify-center rounded-xl border border-[var(--border)] px-7 text-sm font-semibold text-[var(--heading)] transition-colors hover:bg-[var(--pill-bg)]"
+        >
+          {t("stepsCtaSecondary")}
+        </a>
+      </div>
     </section>
   );
 }

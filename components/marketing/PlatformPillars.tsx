@@ -30,7 +30,7 @@ export async function PlatformPillars() {
       </div>
       <div className="mt-8 text-center">
         <a
-          href="#brokers"
+          href="#imports"
           className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px] transition-colors hover:text-[var(--brand-hover)]"
         >
           {t("platformCta")}

@@ -88,13 +88,13 @@ export async function PricingBand() {
           href="#waitlist"
           className="inline-flex h-12 items-center justify-center rounded-xl bg-[var(--brand)] px-7 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-[transform,background-color] duration-200 hover:bg-[var(--brand-hover)] active:scale-[0.98] sm:h-13 sm:min-w-[200px] sm:text-base"
         >
-          {t("pricingCtaWaitlist")}
+          {t("pricingCtaPrimary")}
         </a>
         <a
           href="#product-proof"
           className="inline-flex h-12 items-center justify-center rounded-xl border border-[var(--border)] bg-transparent px-7 text-sm font-medium text-[var(--heading)] transition-[transform,background-color] duration-200 hover:bg-[var(--pill-bg)] active:scale-[0.98] sm:h-13 sm:min-w-[180px] sm:text-base"
         >
-          {t("pricingCtaProduct")}
+          {t("pricingCtaSecondary")}
         </a>
       </div>
 

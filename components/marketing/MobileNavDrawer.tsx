@@ -5,8 +5,8 @@ import { usePathname } from "@/i18n/navigation";
 
 export type MobileNavDrawerLabels = {
   toggle: string;
-  platform: string;
-  brokers: string;
+  imports: string;
+  intelligence: string;
   product: string;
   pricing: string;
   faq: string;
@@ -14,8 +14,8 @@ export type MobileNavDrawerLabels = {
 };
 
 const sectionAnchors = [
-  { id: "platform", labelKey: "platform" as const },
-  { id: "brokers", labelKey: "brokers" as const },
+  { id: "imports", labelKey: "imports" as const },
+  { id: "engine", labelKey: "intelligence" as const },
   { id: "product-proof", labelKey: "product" as const },
   { id: "pricing", labelKey: "pricing" as const },
   { id: "faq", labelKey: "faq" as const },

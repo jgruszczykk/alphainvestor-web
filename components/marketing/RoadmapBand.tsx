@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-const PHASE_IDS = [1, 2, 3, 4] as const;
+const PHASE_IDS = [1, 2, 3, 4, 5] as const;
 
 export async function RoadmapBand() {
   const t = await getTranslations("Home");
@@ -8,8 +8,9 @@ export async function RoadmapBand() {
 
   return (
     <section
-      className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl lg:mt-28"
-      style={{ animationDelay: "760ms" }}
+      id="roadmap"
+      className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl scroll-mt-24 lg:mt-28"
+      style={{ animationDelay: "0ms" }}
     >
       <div className="rounded-2xl border border-[var(--border)] bg-transparent px-5 py-8 sm:px-8 sm:py-10 dark:bg-white/[0.02]">
         <h2 className="text-center text-sm font-semibold uppercase tracking-wide text-[var(--muted)]">
@@ -67,6 +68,15 @@ export async function RoadmapBand() {
             </li>
           ))}
         </ol>
+
+        <p className="mt-8 text-center">
+          <a
+            href="#waitlist"
+            className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px]"
+          >
+            {t("roadmapCta")}
+          </a>
+        </p>
       </div>
     </section>
   );

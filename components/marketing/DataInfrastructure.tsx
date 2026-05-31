@@ -1,50 +1,62 @@
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import {
+  MarketingCard,
   MarketingSection,
-  MarketingSectionHeader,
 } from "@/components/marketing/MarketingSection";
 
-const BULLET_IDS = [1, 2, 3, 4] as const;
+const GRID_IDS = [1, 2, 3, 4, 5, 6] as const;
 const PARTNERS_EMAIL = "partners@alphainvestor.app";
 
 export async function DataInfrastructure() {
   const t = await getTranslations("Home");
 
   return (
-    <MarketingSection id="data" className="mt-20 lg:mt-24" animationDelay="380ms">
-      <MarketingSectionHeader title={t("dataTitle")} intro={t("dataIntro")} />
-      <ul className="mx-auto mt-10 max-w-2xl space-y-4">
-        {BULLET_IDS.map((id) => (
-          <li
-            key={id}
-            className="flex gap-3 text-sm leading-relaxed text-[var(--foreground)] sm:text-[0.9375rem]"
-          >
-            <span
-              className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[var(--brand)]/30 bg-[var(--brand)]/90 text-[10px] font-bold text-white"
-              aria-hidden
-            >
-              ✓
-            </span>
-            <span>{t(`dataBullet${id}`)}</span>
-          </li>
+    <MarketingSection id="data" className="mt-20 lg:mt-24" animationDelay="0ms">
+      <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+        {t("dataEyebrow")}
+      </p>
+      <h2 className="mx-auto mt-3 max-w-2xl text-center text-balance text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--heading)] sm:text-3xl">
+        {t("dataTitle")}
+      </h2>
+      <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+        {t("dataIntro")}
+      </p>
+      <p className="mx-auto mt-4 max-w-2xl text-center text-xs font-medium text-[var(--foreground)]">
+        {t("dataStatLine")}
+      </p>
+
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {GRID_IDS.map((id) => (
+          <MarketingCard key={id}>
+            <h3 className="text-sm font-semibold tracking-[-0.01em] text-[var(--heading)]">
+              {t(`dataGrid${id}Title`)}
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+              {t(`dataGrid${id}Body`)}
+            </p>
+          </MarketingCard>
         ))}
-      </ul>
-      <div
-        className="mx-auto mt-10 max-w-3xl rounded-2xl border border-dashed border-[var(--border)] bg-[var(--brand-tint)]/40 px-5 py-4 text-center dark:bg-white/[0.03]"
-        aria-hidden
-      >
-        <p className="text-xs font-medium uppercase tracking-wider text-[var(--muted)]">
-          Broker file → Portfolio engine → Market data APIs → Analytics & AI
-        </p>
       </div>
-      <p className="mt-8 text-center">
+
+      <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-[var(--muted)]">
+        {t("dataFooterLine")}
+      </p>
+
+      <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold">
         <a
           href={`mailto:${PARTNERS_EMAIL}`}
-          className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px] transition-colors hover:text-[var(--brand-hover)]"
+          className="text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px] transition-colors hover:text-[var(--brand-hover)]"
         >
           {t("dataPartnerCta")}
         </a>
-      </p>
+        <Link
+          href="/partners"
+          className="text-[var(--muted)] underline decoration-[var(--underline)] underline-offset-[3px] transition-colors hover:text-[var(--heading)]"
+        >
+          {t("dataVendorsLink")}
+        </Link>
+      </div>
     </MarketingSection>
   );
 }

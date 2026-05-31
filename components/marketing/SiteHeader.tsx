@@ -30,8 +30,8 @@ export async function SiteHeader() {
 
         <nav className="hidden items-center gap-5 text-sm font-medium text-[var(--muted)] lg:flex">
           <HeaderMarketingSectionLinks
-            platform={t("platform")}
-            brokers={t("brokers")}
+            imports={t("imports")}
+            intelligence={t("intelligence")}
             product={t("product")}
             pricing={t("pricing")}
             faq={t("faq")}
@@ -46,8 +46,8 @@ export async function SiteHeader() {
           <MobileNavDrawer
             labels={{
               toggle: t("menuToggle"),
-              platform: t("platform"),
-              brokers: t("brokers"),
+              imports: t("imports"),
+              intelligence: t("intelligence"),
               product: t("product"),
               pricing: t("pricing"),
               faq: t("faq"),

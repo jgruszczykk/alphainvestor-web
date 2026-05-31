@@ -285,6 +285,21 @@ export function ScreenshotShowcase() {
             </button>
           </div>
         </div>
+
+        <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center justify-center gap-3 px-4 sm:flex-row sm:px-6">
+          <a
+            href="#pricing"
+            className="inline-flex h-11 items-center justify-center rounded-xl bg-[var(--brand)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-colors hover:bg-[var(--brand-hover)]"
+          >
+            {t("screensCta")}
+          </a>
+          <a
+            href="#waitlist"
+            className="inline-flex h-11 items-center justify-center rounded-xl border border-[var(--border)] px-6 text-sm font-semibold text-[var(--heading)] transition-colors hover:bg-white/[0.04]"
+          >
+            {t("screensCtaSecondary")}
+          </a>
+        </div>
       </div>
     </section>
   );
