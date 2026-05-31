@@ -8,13 +8,11 @@ import { ScreenshotShowcase } from "@/components/marketing/ScreenshotShowcase";
 import { PlatformPillars } from "@/components/marketing/PlatformPillars";
 import { IntelligenceEngine } from "@/components/marketing/IntelligenceEngine";
 import { PortfolioImports } from "@/components/marketing/PortfolioImports";
-import { WhyNowBand } from "@/components/marketing/WhyNowBand";
 import { DataInfrastructure } from "@/components/marketing/DataInfrastructure";
-import { WhyInvestorsBand } from "@/components/marketing/WhyInvestorsBand";
+import { WhyNowBand } from "@/components/marketing/WhyNowBand";
 import { TrustLayer } from "@/components/marketing/TrustLayer";
 import { BuiltForScale } from "@/components/marketing/BuiltForScale";
-import { StepTimeline } from "@/components/marketing/StepTimeline";
-import { DifferentiationBand } from "@/components/marketing/DifferentiationBand";
+import { WhyInvestorsBand } from "@/components/marketing/WhyInvestorsBand";
 import { RoadmapBand } from "@/components/marketing/RoadmapBand";
 import { PricingBand } from "@/components/marketing/PricingBand";
 import { CtaBand } from "@/components/marketing/CtaBand";
@@ -57,28 +55,26 @@ export async function MarketingHome({ locale }: Props) {
           <PlatformPillars />
           <IntelligenceEngine />
           <PortfolioImports />
-          <WhyNowBand />
           <DataInfrastructure />
-          <WhyInvestorsBand />
+          <WhyNowBand />
           <TrustLayer />
           <BuiltForScale />
-          <StepTimeline />
-          <DifferentiationBand />
+          <WhyInvestorsBand />
           <RoadmapBand />
+          <PricingBand />
 
           <section
             id="faq"
-            className="mx-auto mt-12 w-full max-w-6xl scroll-mt-24 sm:mt-16"
+            className="mx-auto mt-10 w-full max-w-6xl scroll-mt-24 sm:mt-12"
           >
             <h2 className="text-center text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--heading)] sm:text-3xl">
               {t("faqTitle")}
             </h2>
-            <div className="mt-8">
+            <div className="mt-6 sm:mt-8">
               <FaqAccordion />
             </div>
           </section>
 
-          <PricingBand />
           <CtaBand />
         </div>
       </main>

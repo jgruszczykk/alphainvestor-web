@@ -9,7 +9,7 @@ export async function PricingBand() {
   return (
     <section
       id="pricing"
-      className="relative mx-auto mt-12 w-full max-w-6xl scroll-mt-24 sm:mt-16"
+      className="relative mx-auto mt-10 w-full max-w-6xl scroll-mt-24 sm:mt-12"
     >
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
         {t("pricingEyebrow")}
