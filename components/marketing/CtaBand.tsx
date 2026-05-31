@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { AppStoreBadge } from "@/components/marketing/AppStoreBadge";
 import { EarlyAccessForm } from "@/components/EarlyAccessForm";
 
 export async function CtaBand() {
@@ -20,16 +19,8 @@ export async function CtaBand() {
         </p>
       </div>
 
-      <div className="flex w-full max-w-md flex-col items-stretch gap-4 sm:max-w-none sm:flex-row sm:items-start sm:justify-center">
-        <AppStoreBadge
-          smallLabel={t("appStoreBadgeSmall")}
-          largeLabel={t("appStoreBadgeLarge")}
-          ariaLabel={t("appStoreBadgeAria")}
-          className="w-full shrink-0 sm:w-auto"
-        />
-        <div className="w-full min-w-0 flex-1 sm:max-w-md">
-          <EarlyAccessForm variant="embedded" />
-        </div>
+      <div className="w-full max-w-md">
+        <EarlyAccessForm variant="embedded" />
       </div>
 
       <p className="max-w-md text-center text-xs text-[var(--muted)]">

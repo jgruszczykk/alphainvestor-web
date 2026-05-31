@@ -20,7 +20,7 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
  *     and Tailwind's runtime CSS variables; without per-request nonces these
  *     trigger blocked-source warnings.
  *   - We rely on Cloudflare Turnstile (loads from challenges.cloudflare.com)
- *     and optionally Vercel Web Analytics — both require allowlisting.
+ *     and optionally Vercel Web Analytics  -  both require allowlisting.
  *   - Report-Only lets us land a baseline policy now, monitor real reports,
  *     then promote to enforced once the violation log is empty.
  *

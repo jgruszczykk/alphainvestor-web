@@ -10,7 +10,7 @@
  * Store" badge layout (Apple glyph + two-line label). When the marketing
  * team wants the *official* badge artwork, drop the PNG into
  * `public/brand/app-store-badge.png` and swap the SVG for an `<Image>`.
- * Per Apple's brand guidelines we MUST not modify the official badge —
+ * Per Apple's brand guidelines we MUST not modify the official badge  - 
  * this homemade one is intentionally distinct so we don't infringe.
  */
 type Props = {

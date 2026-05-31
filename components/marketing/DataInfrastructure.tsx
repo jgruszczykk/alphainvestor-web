@@ -5,7 +5,7 @@ import {
   MarketingSection,
 } from "@/components/marketing/MarketingSection";
 
-const GRID_IDS = [1, 2, 3, 4, 5] as const;
+const GRID_IDS = [1, 2, 3, 4, 5, 6] as const;
 const PARTNERS_EMAIL = "partners@alphainvestor.app";
 
 export async function DataInfrastructure() {

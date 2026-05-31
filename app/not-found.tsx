@@ -6,7 +6,7 @@ import Link from "next/link";
  * Most 404s are served by `app/[locale]/not-found.tsx` (translated, with
  * site chrome). This file only catches edge cases where the proxy didn't
  * resolve a locale (e.g. a request for a missing static asset), so we keep
- * it minimal and English-only — adding `getTranslations()` here would
+ * it minimal and English-only  -  adding `getTranslations()` here would
  * require a locale, which by definition we don't have.
  */
 export default function GlobalNotFound() {

@@ -31,6 +31,8 @@ const homePl = {
     "Licencjonowane API zasilają notowania, fundamenty i walidację dla każdego portfela.",
   dataGrid3Title: "Metadane ETF",
   dataGrid3Body: "Klasyfikacja pozycji akcji i funduszy.",
+  dataGrid6Title: "Pokrycie rynkowe",
+  dataGrid6Body: "Pod zdywersyfikowane portfele i skalę wraz z liczbą użytkowników.",
   benefitsTitle: "Dlaczego inwestorzy wybierają Alpha Investor",
   benefitsIntro:
     "Dla długoterminowych inwestorów zarządzających realnym kapitałem u wielu brokerów.",
@@ -38,14 +40,14 @@ const homePl = {
   trustIntro: "",
   trustSecurityTitle: "Bez danych logowania do brokera",
   trustSecurityBody:
-    "Import z plików eksportu—nigdy nie prosimy o hasła do handlu.",
+    "Import z plików eksportu - nigdy nie prosimy o hasła do handlu.",
   trustPrivacyTitle: "Architektura privacy-first",
   trustPrivacyBody: "Dane portfela pozostają w zakresie Twojego konta.",
   trustProcessingTitle: "Licencjonowane dane rynkowe",
   trustProcessingBody:
-    "Notowania i dane referencyjne od licencjonowanych dostawców—not ze stron brokerów.",
+    "Notowania i dane referencyjne od licencjonowanych dostawców - not ze stron brokerów.",
   trustPrivacyCta: "Polityka prywatności",
-  whyNowIntro: "Więcej aplikacji i notowań—księga bez kontekstu pozostaje rozproszona.",
+  whyNowIntro: "Więcej aplikacji i notowań - księga bez kontekstu pozostaje rozproszona.",
   whyNowProblem1Body: "Więcej ekranów. Pozycje nadal rozproszone między kontami.",
   whyNowResolution:
     "Alpha Investor łączy importy, dane rynkowe i wyjaśnioną analitykę na Twojej księdze.",
@@ -64,17 +66,14 @@ const homePl = {
     "Dziś główne notowania USA i Europy, z szerszym pokryciem w miarę rozwoju importów i walidacji symboli.",
   faq4Q: "Czy będzie wersja na Androida?",
   faq4A:
-    "iOS jest dostępny. Android jest w planach—dołącz do wczesnego dostępu po aktualizacje.",
+    "iOS jest dostępny. Android jest w planach - dołącz do wczesnego dostępu po aktualizacje.",
   faq5Q: "Jak działa cennik?",
   faq5A:
     "Free obejmuje portfele, notowania i wykresy. Alpha Pro to 10 USD/mies. w App Store za pełną warstwę wyjaśnionych wniosków.",
-  ctaSub: "Pobierz na iOS lub dołącz do wczesnego dostępu po aktualizacje.",
+  ctaSub: "Dołącz do wczesnego dostępu po aktualizacje produktu.",
   roadmapPhase4Title: "Workflow badawczy",
   roadmapPhase4Body:
-    "Głębszy research na Twoim portfelu—not generyczne ekrany.",
-  appStoreBadgeSmall: "Pobierz w",
-  appStoreBadgeLarge: "App Store",
-  appStoreBadgeAria: "Pobierz Alpha Investor z App Store",
+    "Głębszy research na Twoim portfelu - not generyczne ekrany.",
 };
 
 pl.Home = homePl;

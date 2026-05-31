@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 
-import { AppStoreBadge } from "@/components/marketing/AppStoreBadge";
 import { HeroDeck } from "@/components/marketing/HeroDeck";
 
 export async function Hero() {
@@ -22,19 +21,13 @@ export async function Hero() {
           <p className="max-w-2xl text-balance text-sm leading-relaxed text-[var(--muted)] sm:text-base">
             {t("subheadBenefit")}
           </p>
-          <div className="mt-1 flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="mt-1">
             <a
               href="#waitlist"
               className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-[var(--brand)] px-7 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-colors hover:bg-[var(--brand-hover)] sm:w-auto"
             >
               {t("ctaPrimary")}
             </a>
-            <AppStoreBadge
-              smallLabel={t("appStoreBadgeSmall")}
-              largeLabel={t("appStoreBadgeLarge")}
-              ariaLabel={t("appStoreBadgeAria")}
-              className="w-full sm:w-auto"
-            />
           </div>
           <a
             href="#product-proof"

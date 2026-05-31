@@ -51,7 +51,7 @@ async function incrementAndReadHits(
 }
 
 /**
- * Fixed-window counters in Postgres (e.g. Neon — free tier, no card for signup).
+ * Fixed-window counters in Postgres (e.g. Neon  -  free tier, no card for signup).
  * No-op when `WAITLIST_RATE_LIMIT_DATABASE_URL` is unset.
  */
 export async function assertWaitlistRateLimits(
