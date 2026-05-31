@@ -18,6 +18,9 @@ export async function RoadmapBand() {
         <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-[var(--muted)]">
           {t("roadmapIntro")}
         </p>
+        <p className="mx-auto mt-2 max-w-xl text-center text-[11px] leading-relaxed text-[var(--muted)]">
+          {t("roadmapFootnote")}
+        </p>
 
         <ol className="mx-auto mt-10 max-w-2xl list-none space-y-0 p-0">
           {PHASE_IDS.map((id, index) => (

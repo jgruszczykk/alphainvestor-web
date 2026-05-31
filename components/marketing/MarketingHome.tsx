@@ -3,14 +3,21 @@ import { JsonLd } from "@/components/marketing/JsonLd";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { FaqAccordion } from "@/components/marketing/FaqAccordion";
 import { Hero } from "@/components/marketing/Hero";
-import { AiHighlights } from "@/components/marketing/AiHighlights";
-import { PricingBand } from "@/components/marketing/PricingBand";
+import { TrustBar } from "@/components/marketing/TrustBar";
+import { PlatformPillars } from "@/components/marketing/PlatformPillars";
+import { DataInfrastructure } from "@/components/marketing/DataInfrastructure";
+import { BrokerConnectivity } from "@/components/marketing/BrokerConnectivity";
+import { IntelligenceEngine } from "@/components/marketing/IntelligenceEngine";
+import { ScreenshotShowcase } from "@/components/marketing/ScreenshotShowcase";
+import { WhyInvestorsBand } from "@/components/marketing/WhyInvestorsBand";
+import { SecurityBand } from "@/components/marketing/SecurityBand";
+import { BuiltForScale } from "@/components/marketing/BuiltForScale";
 import { StepTimeline } from "@/components/marketing/StepTimeline";
+import { PricingBand } from "@/components/marketing/PricingBand";
 import { RoadmapBand } from "@/components/marketing/RoadmapBand";
 import { CtaBand } from "@/components/marketing/CtaBand";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { HomeHashScroll } from "@/components/marketing/HomeHashScroll";
-import { ScreenshotShowcase } from "@/components/marketing/ScreenshotShowcase";
 
 type Props = { locale: string };
 
@@ -42,13 +49,20 @@ export async function MarketingHome({ locale }: Props) {
       >
         <div className="px-4 sm:px-6">
           <Hero />
+          <TrustBar />
+          <PlatformPillars />
+          <DataInfrastructure />
+          <BrokerConnectivity />
+          <IntelligenceEngine />
         </div>
 
         <ScreenshotShowcase />
 
         <div className="px-4 sm:px-6">
+          <WhyInvestorsBand />
+          <SecurityBand />
+          <BuiltForScale />
           <StepTimeline />
-          <AiHighlights />
           <PricingBand />
 
           <section

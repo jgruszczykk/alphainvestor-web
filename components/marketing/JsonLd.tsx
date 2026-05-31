@@ -4,33 +4,67 @@ type Props = { locale: string };
 
 export function JsonLd({ locale }: Props) {
   const base = getSiteUrl().origin;
-  const name = "Alpha Investor";
-  const description =
-    locale === "pl"
-      ? "Alpha Investor na iOS: spokojniejszy widok portfela, krótkie podsumowania AI i pięć szybkich ocen na instrument."
-      : "Alpha Investor on iOS: a calmer portfolio view, short AI summaries tied to your holdings, and five quick scores per name.";
+  const isPl = locale === "pl";
 
-  const data = {
+  const description = isPl
+    ? "Śledzenie i analiza portfela akcji u wielu brokerów. Import pozycji, analityka portfela, dane na żywo i wyjaśnione AI na iOS."
+    : "Track and analyze your stock portfolio across brokers. Import holdings, portfolio analytics, live market data, and explained AI insights on iOS.";
+
+  const featureList = isPl
+    ? [
+        "Śledzenie portfela inwestycyjnego",
+        "Import z brokerów",
+        "Analityka portfela",
+        "Dane rynkowe na żywo",
+        "Wyjaśnione AI",
+      ]
+    : [
+        "Investment portfolio tracking",
+        "Multi-broker file imports",
+        "Portfolio analysis and analytics",
+        "Live market data",
+        "Explained AI investment insights",
+      ];
+
+  const software = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name,
+    name: "Alpha Investor",
     applicationCategory: "FinanceApplication",
     operatingSystem: "iOS",
     offers: {
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-      description: locale === "pl" ? "Wczesny dostęp" : "Early access",
+      description: isPl ? "Wczesny dostęp" : "Early access",
     },
     description,
-    inLanguage: [locale === "pl" ? "pl" : "en"],
+    featureList,
+    inLanguage: [isPl ? "pl" : "en"],
     url: `${base}/`,
   };
 
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Alpha Investor",
+    url: `${base}/`,
+    email: "privacy@alphainvestor.app",
+    description: isPl
+      ? "Platforma analizy portfela dla inwestorów detalicznych."
+      : "Portfolio intelligence platform for retail investors.",
+  };
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(software) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+      />
+    </>
   );
 }

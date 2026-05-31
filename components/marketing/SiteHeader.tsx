@@ -28,11 +28,12 @@ export async function SiteHeader() {
           </span>
         </HeaderLogoLink>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium text-[var(--muted)] md:flex">
+        <nav className="hidden items-center gap-5 text-sm font-medium text-[var(--muted)] lg:flex">
           <HeaderMarketingSectionLinks
-            features={t("features")}
+            platform={t("platform")}
+            brokers={t("brokers")}
+            product={t("product")}
             pricing={t("pricing")}
-            howItWorks={t("howItWorks")}
             faq={t("faq")}
           />
         </nav>
@@ -45,9 +46,10 @@ export async function SiteHeader() {
           <MobileNavDrawer
             labels={{
               toggle: t("menuToggle"),
-              features: t("features"),
+              platform: t("platform"),
+              brokers: t("brokers"),
+              product: t("product"),
               pricing: t("pricing"),
-              howItWorks: t("howItWorks"),
               faq: t("faq"),
               joinWaitlist: t("joinWaitlist"),
             }}

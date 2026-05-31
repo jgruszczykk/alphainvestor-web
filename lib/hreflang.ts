@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { getSiteUrl } from "@/lib/site-url";
 
-type LocalizedPath = "/" | "/privacy" | "/terms";
+type LocalizedPath = "/" | "/privacy" | "/terms" | "/partners";
 
 /**
  * Builds `alternates.canonical` + `alternates.languages` for a route that

@@ -5,17 +5,19 @@ import { usePathname } from "@/i18n/navigation";
 
 export type MobileNavDrawerLabels = {
   toggle: string;
-  features: string;
+  platform: string;
+  brokers: string;
+  product: string;
   pricing: string;
-  howItWorks: string;
   faq: string;
   joinWaitlist: string;
 };
 
 const sectionAnchors = [
-  { id: "features", labelKey: "features" as const },
+  { id: "platform", labelKey: "platform" as const },
+  { id: "brokers", labelKey: "brokers" as const },
+  { id: "product-proof", labelKey: "product" as const },
   { id: "pricing", labelKey: "pricing" as const },
-  { id: "how", labelKey: "howItWorks" as const },
   { id: "faq", labelKey: "faq" as const },
 ];
 
@@ -30,7 +32,6 @@ export function MobileNavDrawer({ labels }: { labels: MobileNavDrawerLabels }) {
   const panelId = useId();
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
-  // Lock body scroll while open and focus the close button.
   useEffect(() => {
     if (!open) return;
     const previousOverflow = document.body.style.overflow;
@@ -49,7 +50,7 @@ export function MobileNavDrawer({ labels }: { labels: MobileNavDrawerLabels }) {
   const sectionHref = (id: string) => (onHome ? `#${id}` : `/#${id}`);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-expanded={open}

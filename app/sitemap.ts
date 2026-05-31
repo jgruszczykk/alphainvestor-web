@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/site-url";
 /** One URL per page; locale is cookie-driven (no `/en` in public URLs). */
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl().origin;
-  const paths = ["", "/privacy", "/terms"] as const;
+  const paths = ["", "/privacy", "/terms", "/partners"] as const;
 
   return paths.map((path) => ({
     url: `${base}${path}`,

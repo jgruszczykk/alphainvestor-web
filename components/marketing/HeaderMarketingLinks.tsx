@@ -31,9 +31,10 @@ function SectionNavItem({ id, children }: { id: string; children: ReactNode }) {
 }
 
 export type HeaderMarketingSectionLabels = {
-  features: string;
+  platform: string;
+  brokers: string;
+  product: string;
   pricing: string;
-  howItWorks: string;
   faq: string;
 };
 
@@ -41,9 +42,10 @@ export type HeaderMarketingSectionLabels = {
 export function HeaderMarketingSectionLinks(labels: HeaderMarketingSectionLabels) {
   return (
     <>
-      <SectionNavItem id="features">{labels.features}</SectionNavItem>
+      <SectionNavItem id="platform">{labels.platform}</SectionNavItem>
+      <SectionNavItem id="brokers">{labels.brokers}</SectionNavItem>
+      <SectionNavItem id="product-proof">{labels.product}</SectionNavItem>
       <SectionNavItem id="pricing">{labels.pricing}</SectionNavItem>
-      <SectionNavItem id="how">{labels.howItWorks}</SectionNavItem>
       <SectionNavItem id="faq">{labels.faq}</SectionNavItem>
     </>
   );

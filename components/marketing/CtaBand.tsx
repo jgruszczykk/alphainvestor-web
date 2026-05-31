@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { AppStoreBadge } from "@/components/marketing/AppStoreBadge";
 import { EarlyAccessForm } from "@/components/EarlyAccessForm";
 
 export async function CtaBand() {
@@ -8,7 +9,7 @@ export async function CtaBand() {
   return (
     <section
       id="waitlist"
-      className="anim-fade-rise mx-auto mt-20 flex w-full max-w-6xl scroll-mt-28 flex-col items-center gap-6 rounded-2xl border border-[var(--border)] bg-transparent px-5 py-10 sm:gap-8 sm:px-10 sm:py-12 lg:mt-28 dark:bg-white/[0.025]"
+      className="anim-fade-rise mx-auto mt-20 flex w-full max-w-6xl scroll-mt-28 flex-col items-center gap-8 rounded-2xl border border-[var(--border)] bg-transparent px-5 py-10 sm:px-10 sm:py-12 lg:mt-28 dark:bg-white/[0.025]"
       style={{ animationDelay: "840ms" }}
     >
       <div className="text-center">
@@ -19,7 +20,19 @@ export async function CtaBand() {
           {t("ctaSub")}
         </p>
       </div>
-      <EarlyAccessForm variant="embedded" />
+
+      <div className="flex w-full max-w-md flex-col items-stretch gap-4 sm:max-w-none sm:flex-row sm:items-start sm:justify-center">
+        <AppStoreBadge
+          smallLabel={t("appStoreBadgeSmall")}
+          largeLabel={t("appStoreBadgeLarge")}
+          ariaLabel={t("appStoreBadgeAria")}
+          className="w-full shrink-0 sm:w-auto"
+        />
+        <div className="w-full min-w-0 flex-1 sm:max-w-md">
+          <EarlyAccessForm variant="embedded" />
+        </div>
+      </div>
+
       <p className="max-w-md text-center text-xs text-[var(--muted)]">
         {t("formConsent")}{" "}
         <Link

@@ -11,19 +11,46 @@ export async function SiteFooter() {
       style={{ animationDelay: "920ms" }}
     >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <FooterColumn heading={tFooter("legalHeading")}>
             <FooterLink href="/privacy">{tFooter("privacy")}</FooterLink>
             <FooterLink href="/terms">{tFooter("terms")}</FooterLink>
+            <FooterLink href="/partners">{tFooter("partners")}</FooterLink>
           </FooterColumn>
 
           <FooterColumn heading={tFooter("navHeading")}>
-            <FooterAnchor href="/#ai">{tFooter("ai")}</FooterAnchor>
-            <FooterAnchor href="/#features">{tFooter("features")}</FooterAnchor>
+            <FooterAnchor href="/#platform">{tFooter("platform")}</FooterAnchor>
+            <FooterAnchor href="/#data">{tFooter("data")}</FooterAnchor>
+            <FooterAnchor href="/#brokers">{tFooter("brokers")}</FooterAnchor>
+            <FooterAnchor href="/#security">{tFooter("security")}</FooterAnchor>
+            <FooterAnchor href="/#product-proof">{tFooter("product")}</FooterAnchor>
             <FooterAnchor href="/#pricing">{tFooter("pricing")}</FooterAnchor>
             <FooterAnchor href="/#faq">{tFooter("faq")}</FooterAnchor>
           </FooterColumn>
 
+          <FooterColumn heading={tFooter("contactHeading")}>
+            <li>
+              <a
+                href={`mailto:${tFooter("contactEmail")}`}
+                className="rounded-md text-[var(--muted)] transition-colors duration-200 hover:text-[var(--heading)]"
+              >
+                {tFooter("contactEmail")}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`mailto:${tFooter("partnersEmail")}`}
+                className="rounded-md text-[var(--muted)] transition-colors duration-200 hover:text-[var(--heading)]"
+              >
+                {tFooter("partnersEmail")}
+              </a>
+            </li>
+            <FooterAnchor href="/#waitlist">{tFooter("contactWaitlist")}</FooterAnchor>
+          </FooterColumn>
+
+          <div className="sm:col-span-2 lg:col-span-1">
+            <p className="text-[11px] leading-relaxed text-[var(--muted)]">{tFooter("companyLine")}</p>
+          </div>
         </div>
 
         <div className="mt-8 border-t border-[var(--border)] pt-6 text-center">
@@ -48,7 +75,13 @@ function FooterColumn({ heading, children }: { heading: string; children: React.
   );
 }
 
-function FooterLink({ href, children }: { href: "/privacy" | "/terms"; children: React.ReactNode }) {
+function FooterLink({
+  href,
+  children,
+}: {
+  href: "/privacy" | "/terms" | "/partners";
+  children: React.ReactNode;
+}) {
   return (
     <li>
       <Link

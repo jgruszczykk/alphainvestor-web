@@ -24,34 +24,16 @@ const GALLERY = [
     tintClass: "[--card-tint:rgba(59,130,246,0.08)] [--glow-tint:rgba(59,130,246,0.19)]",
   },
   {
-    src: "/marketing/screens/fundamentals.png",
-    titleKey: "galleryFundamentalsTitle" as const,
-    kickerKey: "galleryFundamentalsKicker" as const,
-    tintClass: "[--card-tint:rgba(148,163,184,0.07)] [--glow-tint:rgba(148,163,184,0.16)]",
-  },
-  {
-    src: "/marketing/screens/portfolio-optimizer.png",
-    titleKey: "galleryOptimizerTitle" as const,
-    kickerKey: "galleryOptimizerKicker" as const,
-    tintClass: "[--card-tint:rgba(45,212,191,0.08)] [--glow-tint:rgba(45,212,191,0.18)]",
-  },
-  {
-    src: "/marketing/screens/wallet-value.png",
-    titleKey: "galleryWalletValueTitle" as const,
-    kickerKey: "galleryWalletValueKicker" as const,
-    tintClass: "[--card-tint:rgba(125,211,252,0.08)] [--glow-tint:rgba(125,211,252,0.18)]",
-  },
-  {
     src: "/marketing/screens/portfolio-insight.png",
     titleKey: "galleryPortfolioInsightTitle" as const,
     kickerKey: "galleryPortfolioInsightKicker" as const,
     tintClass: "[--card-tint:rgba(96,165,250,0.085)] [--glow-tint:rgba(96,165,250,0.2)]",
   },
   {
-    src: "/marketing/screens/news.png",
-    titleKey: "galleryNewsTitle" as const,
-    kickerKey: "galleryNewsKicker" as const,
-    tintClass: "[--card-tint:rgba(96,165,250,0.07)] [--glow-tint:rgba(96,165,250,0.17)]",
+    src: "/marketing/screens/fundamentals.png",
+    titleKey: "galleryFundamentalsTitle" as const,
+    kickerKey: "galleryFundamentalsKicker" as const,
+    tintClass: "[--card-tint:rgba(148,163,184,0.07)] [--glow-tint:rgba(148,163,184,0.16)]",
   },
 ] as const;
 
@@ -185,7 +167,7 @@ export function ScreenshotShowcase() {
 
   return (
     <section
-      id="features"
+      id="product-proof"
       className="anim-fade-rise mt-10 w-full overflow-x-hidden scroll-mt-24 sm:mt-14"
       style={{ animationDelay: "300ms" }}
     >
