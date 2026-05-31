@@ -9,8 +9,7 @@ export async function RoadmapBand() {
   return (
     <section
       id="roadmap"
-      className="anim-fade-rise mx-auto mt-20 w-full max-w-6xl scroll-mt-24 lg:mt-28"
-      style={{ animationDelay: "0ms" }}
+      className="mx-auto mt-12 w-full max-w-6xl scroll-mt-24 sm:mt-16"
     >
       <div className="rounded-2xl border border-[var(--border)] bg-transparent px-5 py-8 sm:px-8 sm:py-10 dark:bg-white/[0.02]">
         <h2 className="text-center text-sm font-semibold uppercase tracking-wide text-[var(--muted)]">
@@ -52,7 +51,7 @@ export async function RoadmapBand() {
                   <span className="block h-1 shrink-0" aria-hidden />
                 )}
               </div>
-              <div className={`min-w-0 ${index < last ? "pb-8" : ""}`}>
+              <div className={`min-w-0 ${index < last ? "pb-5 sm:pb-8" : ""}`}>
                 <h3 className="flex flex-wrap items-center gap-2 text-base font-semibold leading-snug tracking-[-0.015em] text-[var(--heading)]">
                   <span>{t(`roadmapPhase${id}Title`)}</span>
                   {id === 1 ? (
@@ -74,7 +73,7 @@ export async function RoadmapBand() {
             href="#waitlist"
             className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px]"
           >
-            {t("roadmapCta")}
+            {t("ctaPrimary")}
           </a>
         </p>
       </div>

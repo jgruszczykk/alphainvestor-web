@@ -12,7 +12,7 @@ export async function DataInfrastructure() {
   const t = await getTranslations("Home");
 
   return (
-    <MarketingSection id="data" className="mt-20 lg:mt-24" animationDelay="0ms">
+    <MarketingSection id="data" className="mt-12 sm:mt-16">
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
         {t("dataEyebrow")}
       </p>
@@ -22,11 +22,7 @@ export async function DataInfrastructure() {
       <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-relaxed text-[var(--muted)] sm:text-base">
         {t("dataIntro")}
       </p>
-      <p className="mx-auto mt-4 max-w-2xl text-center text-xs font-medium text-[var(--foreground)]">
-        {t("dataStatLine")}
-      </p>
-
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {GRID_IDS.map((id) => (
           <MarketingCard key={id}>
             <h3 className="text-sm font-semibold tracking-[-0.01em] text-[var(--heading)]">

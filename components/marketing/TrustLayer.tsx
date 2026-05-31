@@ -10,17 +10,15 @@ const TRUST_BLOCKS = [
   { titleKey: "trustSecurityTitle", bodyKey: "trustSecurityBody" },
   { titleKey: "trustPrivacyTitle", bodyKey: "trustPrivacyBody" },
   { titleKey: "trustProcessingTitle", bodyKey: "trustProcessingBody" },
-  { titleKey: "trustInfrastructureTitle", bodyKey: "trustInfrastructureBody" },
-  { titleKey: "trustComplianceTitle", bodyKey: "trustComplianceBody" },
 ] as const;
 
 export async function TrustLayer() {
   const t = await getTranslations("Home");
 
   return (
-    <MarketingSection id="trust" className="mt-20 lg:mt-24" animationDelay="0ms">
+    <MarketingSection id="trust" className="mt-12 sm:mt-16">
       <MarketingSectionHeader title={t("trustTitle")} intro={t("trustIntro")} />
-      <div className="mt-10 grid gap-4 sm:grid-cols-2">
+      <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {TRUST_BLOCKS.map(({ titleKey, bodyKey }) => (
           <MarketingCard key={titleKey}>
             <h3 className="text-sm font-semibold text-[var(--heading)]">{t(titleKey)}</h3>
@@ -28,10 +26,10 @@ export async function TrustLayer() {
           </MarketingCard>
         ))}
       </div>
-      <p className="mt-8 text-center">
+      <p className="mt-6 text-center">
         <Link
           href="/privacy"
-          className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px] transition-colors hover:text-[var(--brand-hover)]"
+          className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px]"
         >
           {t("trustPrivacyCta")}
         </Link>

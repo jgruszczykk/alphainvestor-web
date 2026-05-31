@@ -7,7 +7,7 @@ export async function WhyNowBand() {
   const t = await getTranslations("Home");
 
   return (
-    <MarketingSection id="why-now" className="mt-20 lg:mt-24" animationDelay="0ms">
+    <MarketingSection id="why-now" className="mt-12 sm:mt-16">
       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
         {t("whyNowEyebrow")}
       </p>
@@ -38,14 +38,6 @@ export async function WhyNowBand() {
         {t("whyNowResolution")}
       </p>
 
-      <p className="mt-6">
-        <a
-          href="#engine"
-          className="text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px] transition-colors hover:text-[var(--brand-hover)]"
-        >
-          {t("whyNowCta")}
-        </a>
-      </p>
     </MarketingSection>
   );
 }

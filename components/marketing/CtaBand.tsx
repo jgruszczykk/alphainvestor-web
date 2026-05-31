@@ -9,8 +9,7 @@ export async function CtaBand() {
   return (
     <section
       id="waitlist"
-      className="anim-fade-rise mx-auto mt-20 flex w-full max-w-6xl scroll-mt-28 flex-col items-center gap-8 rounded-2xl border border-[var(--border)] bg-transparent px-5 py-10 sm:px-10 sm:py-12 lg:mt-28 dark:bg-white/[0.025]"
-      style={{ animationDelay: "840ms" }}
+      className="mx-auto mt-12 flex w-full max-w-6xl scroll-mt-28 flex-col items-center gap-8 rounded-2xl border border-[var(--border)] bg-transparent px-5 py-10 sm:mt-16 sm:px-10 sm:py-12 dark:bg-white/[0.025]"
     >
       <div className="text-center">
         <h2 className="text-2xl font-semibold leading-snug tracking-[-0.02em] text-[var(--heading)] sm:text-3xl">

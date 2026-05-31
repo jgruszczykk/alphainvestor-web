@@ -8,8 +8,7 @@ export async function TrustBar() {
   return (
     <section
       id="trust-bar"
-      className="anim-fade-rise mx-auto mt-8 w-full max-w-6xl border-y border-[var(--border)] py-6 sm:mt-10"
-      style={{ animationDelay: "260ms" }}
+      className="mx-auto mt-6 w-full max-w-6xl border-y border-[var(--border)] py-4 sm:mt-8"
     >
       <ul className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-center text-xs font-medium text-[var(--muted)] sm:gap-x-6 sm:text-sm">
         {TRUST_KEYS.map((key, index) => (
@@ -23,9 +22,6 @@ export async function TrustBar() {
           </li>
         ))}
       </ul>
-      <p className="mx-auto mt-4 max-w-3xl text-center text-[11px] leading-relaxed text-[var(--muted)] sm:text-xs">
-        {t("trustBrokersLine")}
-      </p>
     </section>
   );
 }

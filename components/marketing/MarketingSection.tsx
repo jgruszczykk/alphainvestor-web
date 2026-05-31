@@ -17,7 +17,7 @@ export function MarketingSection({
     <section
       id={id}
       className={[
-        "anim-fade-rise mx-auto w-full max-w-6xl scroll-mt-24",
+        "mx-auto w-full max-w-6xl scroll-mt-24",
         className,
       ].join(" ")}
       style={{ animationDelay }}
@@ -60,7 +60,7 @@ export function MarketingCard({
   return (
     <div
       className={[
-        "rounded-2xl border border-[var(--border)] bg-transparent p-6 transition-colors duration-200 dark:bg-white/[0.025]",
+        "rounded-2xl border border-[var(--border)] bg-transparent p-5 transition-colors duration-200 dark:bg-white/[0.025] sm:p-6",
         className,
       ].join(" ")}
     >

@@ -168,20 +168,21 @@ export function ScreenshotShowcase() {
   return (
     <section
       id="product-proof"
-      className="anim-fade-rise mt-10 w-full overflow-x-hidden scroll-mt-24 sm:mt-14"
-      style={{ animationDelay: "300ms" }}
+      className="mt-4 w-full overflow-x-hidden scroll-mt-24 sm:mt-6"
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
         <header className="mx-auto max-w-2xl text-center">
-          <h2 className="text-balance text-3xl font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--heading)] sm:text-4xl sm:leading-[1.12]">
+          <h2 className="text-balance text-2xl font-semibold leading-[1.15] tracking-[-0.03em] text-[var(--heading)] sm:text-3xl">
             {t("screensTitle")}
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-pretty text-sm leading-relaxed text-[var(--muted)] sm:text-base">
-            {t("screensIntro")}
-          </p>
+          {t("screensIntro") ? (
+            <p className="mx-auto mt-3 max-w-xl text-pretty text-sm leading-relaxed text-[var(--muted)]">
+              {t("screensIntro")}
+            </p>
+          ) : null}
         </header>
 
-        <div className="mt-10 sm:mt-12">
+        <div className="mt-6 sm:mt-8">
           <div className="mr-[calc(50%-50vw)] overflow-visible">
             <div
               ref={viewportRef}
@@ -284,21 +285,6 @@ export function ScreenshotShowcase() {
               </svg>
             </button>
           </div>
-        </div>
-
-        <div className="mx-auto mt-10 flex max-w-6xl flex-col items-center justify-center gap-3 px-4 sm:flex-row sm:px-6">
-          <a
-            href="#pricing"
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-[var(--brand)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-colors hover:bg-[var(--brand-hover)]"
-          >
-            {t("screensCta")}
-          </a>
-          <a
-            href="#waitlist"
-            className="inline-flex h-11 items-center justify-center rounded-xl border border-[var(--border)] px-6 text-sm font-semibold text-[var(--heading)] transition-colors hover:bg-white/[0.04]"
-          >
-            {t("screensCtaSecondary")}
-          </a>
         </div>
       </div>
     </section>

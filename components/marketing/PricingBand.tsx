@@ -9,8 +9,7 @@ export async function PricingBand() {
   return (
     <section
       id="pricing"
-      className="anim-fade-rise relative mx-auto mt-24 w-full max-w-6xl scroll-mt-24 lg:mt-28"
-      style={{ animationDelay: "600ms" }}
+      className="relative mx-auto mt-12 w-full max-w-6xl scroll-mt-24 sm:mt-16"
     >
       <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
         {t("pricingEyebrow")}
@@ -88,13 +87,13 @@ export async function PricingBand() {
           href="#waitlist"
           className="inline-flex h-12 items-center justify-center rounded-xl bg-[var(--brand)] px-7 text-sm font-semibold text-white shadow-[var(--shadow-elevated)] transition-[transform,background-color] duration-200 hover:bg-[var(--brand-hover)] active:scale-[0.98] sm:h-13 sm:min-w-[200px] sm:text-base"
         >
-          {t("pricingCtaPrimary")}
+          {t("ctaPrimary")}
         </a>
         <a
           href="#product-proof"
           className="inline-flex h-12 items-center justify-center rounded-xl border border-[var(--border)] bg-transparent px-7 text-sm font-medium text-[var(--heading)] transition-[transform,background-color] duration-200 hover:bg-[var(--pill-bg)] active:scale-[0.98] sm:h-13 sm:min-w-[180px] sm:text-base"
         >
-          {t("pricingCtaSecondary")}
+          {t("ctaSecondary")}
         </a>
       </div>
 
