@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { setRequestLocale } from "next-intl/server";
-import { MarketingHome } from "@/components/marketing/MarketingHome";
+import { SiteHome } from "@/components/site/SiteHome";
 import { buildHreflangAlternates } from "@/lib/hreflang";
 type Props = { params: Promise<{ locale: string }> };
 
@@ -32,5 +32,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <MarketingHome locale={locale} />;
+  return <SiteHome locale={locale} />;
 }

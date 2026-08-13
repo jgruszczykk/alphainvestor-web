@@ -1,28 +1,49 @@
 @import "tailwindcss";
 
 :root {
+  /* Brand */
   --brand: #0a84ff;
   --brand-hover: #2493ff;
   --brand-soft: #94b4e0;
   --brand-tint: rgba(96, 165, 250, 0.14);
+  --ai: #bf5af2; /* AI premium purple (mobile iosBrand.aiPurple) */
+  --ai-soft: #d9a6ff;
+
+  /* Text */
   --heading: #f8fafc;
   --foreground: #cbd5e1;
   --muted: #94a3b8;
-  --surface: #020617;
+  --faint: #64748b;
+
+  /* Surfaces */
+  --surface: #030712;
+  --surface-2: #070c1a;
   --card: #0b1222;
-  --border: rgba(226, 232, 240, 0.13);
+  --border: rgba(226, 232, 240, 0.1);
+  --border-strong: rgba(226, 232, 240, 0.16);
+
+  /* App-accurate palette (used inside phone mockups — matches iOS app) */
+  --app-bg: #000000;
+  --app-card: #1c1c1e;
+  --app-card-2: #2c2c2e;
+  --gain: #30d158;
+  --loss: #ff453a;
+  --amber: #ff9f0a;
+  --sector-1: #ff453a; /* technology / red */
+  --sector-2: #64d2ff; /* financials / cyan */
+  --sector-3: #5e5ce6; /* consumer defensive / indigo */
+  --sector-4: #ffd60a; /* real estate / yellow */
+  --sector-5: #30d158; /* energy / green */
+  --sector-6: #0a84ff; /* consumer cyclical / blue */
+
   --pill-bg: rgba(148, 163, 184, 0.14);
   --pill-text: #f1f5f9;
   --ring: #64748b;
   --underline: rgba(148, 163, 184, 0.46);
+
   --hero-glow: rgba(59, 130, 246, 0.28);
-  --hero-backdrop: radial-gradient(
-    ellipse 100% 64% at 50% 0%,
-    rgba(10, 132, 255, 0.17),
-    rgba(59, 130, 246, 0.06) 35%,
-    transparent 72%
-  );
   --shadow-elevated: 0 16px 42px -24px rgba(15, 23, 42, 0.85);
+  --shadow-phone: 0 40px 90px -30px rgba(0, 0, 0, 0.85), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
 }
 
 @theme inline {
@@ -30,8 +51,11 @@
   --color-foreground: var(--foreground);
   --color-heading: var(--heading);
   --color-brand: var(--brand);
+  --color-ai: var(--ai);
   --color-muted: var(--muted);
   --color-card: var(--card);
+  --color-gain: var(--gain);
+  --color-loss: var(--loss);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -49,12 +73,154 @@ body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
+/* ------------------------------------------------------------------ */
+/* Aurora Glass utilities                                              */
+/* ------------------------------------------------------------------ */
+
+/* Glass card surface — frosted, thin border, soft depth. */
+.glass {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.055),
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(255, 255, 255, 0.008)
+  );
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+}
+
+.glass-strong {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.025) 50%,
+    rgba(255, 255, 255, 0.012)
+  );
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+}
+
+/* Gradient headline text. */
+.gradient-text {
+  background: linear-gradient(100deg, #ffffff 0%, #cfe1ff 45%, #8fb6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-ai {
+  background: linear-gradient(100deg, #e9d5ff 0%, #bf5af2 55%, #7aa8ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Thin hairline separators used between glass cards. */
+.hairline {
+  border-color: var(--border);
+}
+
+/* Aurora blobs — decorative radial glows behind sections. */
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.55;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Eyebrow pill above section titles. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: rgba(148, 163, 184, 0.08);
+  padding: 0.3rem 0.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-soft);
+}
+
+/* Subtle grid texture overlay. */
+.grid-texture {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Keyframes                                                          */
+/* ------------------------------------------------------------------ */
+
+@keyframes header-enter {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-only {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes aurora-drift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(6%, -4%, 0) scale(1.08); }
+  66% { transform: translate3d(-5%, 5%, 0) scale(0.96); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.35); }
+  70% { box-shadow: 0 0 0 12px rgba(10, 132, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(10, 132, 255, 0); }
+}
+
+.anim-header-in { animation: header-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-rise { animation: fade-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-fade-only { animation: fade-only 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-float { animation: float-y 7s ease-in-out infinite; }
+.anim-aurora { animation: aurora-drift 22s ease-in-out infinite; }
+.anim-marquee { animation: marquee 26s linear infinite; }
+
+/* ------------------------------------------------------------------ */
+/* Reduced motion                                                     */
+/* ------------------------------------------------------------------ */
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+  html { scroll-behavior: auto; }
 
   *,
   *::before,
@@ -66,57 +232,14 @@ body {
 
   .anim-header-in,
   .anim-fade-rise,
-  .anim-fade-only {
+  .anim-fade-only,
+  .anim-float,
+  .anim-aurora,
+  .anim-marquee {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 
-  .faq-accordion-panel {
-    transition: none !important;
-  }
-}
-
-@keyframes header-enter {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-rise {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-only {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.anim-header-in {
-  animation: header-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.anim-fade-rise {
-  animation: fade-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/** Opacity-only entrance - use around layered / rotated UI so parent `transform` does not break stacking. */
-.anim-fade-only {
-  animation: fade-only 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  .faq-accordion-panel { transition: none !important; }
 }

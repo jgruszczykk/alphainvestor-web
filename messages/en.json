@@ -451,6 +451,7 @@
     "languageHint": "Use EN / PL in the header."
   },
   "Footer": {
+    "product": "Product",
     "rights": "All rights reserved.",
     "notAdvice": "Not financial advice.",
     "legalHeading": "Legal",
