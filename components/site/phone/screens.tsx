@@ -389,15 +389,18 @@ function LensMeter({ score, colorOverride }: { score: number | null; colorOverri
   );
 }
 
-const LENSES: { name: string; score: number | null; tone: "loss" | "amber" | "gain" | "muted"; label: string; icon: string; desc: string }[] = [
+// "Structure" (real GOOGL.US data: insufficient — moving averages missing)
+// is deliberately left out of this marketing showcase. The score is real
+// and accurate, but an empty "—" row reads as broken/unfinished next to
+// scored pillars in a feature highlight; the full 4-lens set (including
+// Structure and an unconfirmed Volume) still exists in the real app.
+const LENSES: { name: string; score: number; tone: "loss" | "amber" | "gain" | "muted"; label: string; icon: string; desc: string }[] = [
   { name: "Trend", score: 2, tone: "loss", label: "Weak", icon: "trend", desc: "GOOGL.US: 1M -4.4% · session -3.8% → “weak”. Pressure shows in the window and today, not just one print." },
-  { name: "Structure", score: null, tone: "muted", label: "Insufficient data", icon: "structure", desc: "GOOGL.US: Moving averages missing → “insufficient data”. Need SMA/EMA data to see if price sits above or below its trend rails." },
   { name: "Levels", score: 3, tone: "amber", label: "Mid-range", icon: "levels", desc: "GOOGL.US: Price 343.80 · support 314.90 · resistance 384.48 → “mid-range”. Levels are prior stalls, not guarantees. Breaks need follow-through, bounces need confirmation." },
 ];
 
 const LENS_ICONS: Record<string, ReactNode> = {
   trend: <path d="M4 15l5-5 4 3 6-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />,
-  structure: <path d="M4 16l4-3 3 2 4-6 5 4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />,
   levels: <path d="M7 17 17 7M17 7h-6M17 7v6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />,
 };
 

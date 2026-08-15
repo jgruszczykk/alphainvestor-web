@@ -42,11 +42,16 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
       ref={sectionRef}
       // Per-step scroll distance — shorter on mobile (was 90vh, dragged on
       // touch scroll) and tightened on desktop too (was 90vh, felt slow).
-      className="relative [--tour-step:50vh] lg:[--tour-step:65vh]"
-      style={{ height: `calc(${steps} * var(--tour-step) + 40vh)` }}
+      // Uses dvh, not vh: on real mobile browsers vh is sized against the
+      // viewport with the address bar collapsed, so a static vh figure runs
+      // taller than what's actually visible once the bar is showing — the
+      // sticky phone view ends up clipped at the bottom. dvh tracks the
+      // real, current visible viewport instead.
+      className="relative [--tour-step:50dvh] lg:[--tour-step:65dvh]"
+      style={{ height: `calc(${steps} * var(--tour-step) + 40dvh)` }}
     >
       {/* Mobile-only intro: scrolls past normally, above the sticky-pinned
-          phone+tile view below — it must not eat into that view's h-screen
+          phone+tile view below — it must not eat into that view's h-dvh
           budget or stay in the viewport while stepping through mockups.
           Desktop keeps the eyebrow/heading inside the pinned copy column
           (unchanged, see `hidden lg:*` below). */}
@@ -57,7 +62,7 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
         </h2>
       </div>
 
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+      <div className="sticky top-0 flex h-dvh items-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10">
           {/* Copy column */}
           <div className="order-2 lg:order-1">
