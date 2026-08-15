@@ -1,351 +1,450 @@
 import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { C } from "./theme";
-import { DetailHeader, GlassCard, TabHeader } from "./ui";
+import { DetailHeader, GlassCard, SegmentControl, TabHeader } from "./ui";
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
-function Title({ children }: { children: string }) {
+/* Every screen below is a frame-driven port of the matching component in
+   components/site/phone/{screens,moreScreens,primitives}.tsx — same data,
+   same Tailwind values converted to their literal px equivalents (the
+   canvas here is the site's native 300px design width; Phone in ./ui.tsx
+   scales the whole thing up for video, so nothing here is hand-estimated). */
+
+function InfoDot() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden style={{ color: "rgba(255,255,255,0.35)" }}>
+      <circle cx="12" cy="12" r="9.5" />
+      <path strokeLinecap="round" d="M12 11v5.5M12 8v.01" />
+    </svg>
+  );
+}
+
+/** LineChart clone — draws in via pathLength, optional dashed ref line at
+ * today's value. Matches primitives.tsx's LineChart exactly (gridlines,
+ * area fill, stroke width), driven by useCurrentFrame instead of useInView. */
+function LineChart({ points, color = C.gain, refLineY, height = 110 }: { points: [number, number][]; color?: string; refLineY?: number; height?: number }) {
   const f = useCurrentFrame();
-  const op = interpolate(f, [0, 10], [0, 1], clamp);
-  return <div style={{ fontSize: 62, fontWeight: 800, color: "#fff", letterSpacing: -1.5, padding: "8px 4px 18px", opacity: op }}>{children}</div>;
+  const width = 260; // 300 canvas - 2*20 card padding margin, matches AppCard content width closely enough for a chart
+  const px = (p: [number, number]) => [p[0] * width, p[1] * height] as const;
+  const d = points.map((p, i) => { const [x, y] = px(p); return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`; }).join(" ");
+  const areaD = `${d} L ${width} ${height} L 0 ${height} Z`;
+  const drawLen = interpolate(f, [0, 36], [0, 1], clamp);
+  const areaOp = interpolate(f, [24, 40], [0, 1], clamp);
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} width="100%" height={height} aria-hidden>
+      <defs>
+        <linearGradient id="lc-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} stopOpacity="0.22" />
+          <stop offset="100%" stopColor={color} stopOpacity="0" />
+        </linearGradient>
+      </defs>
+      {[0.25, 0.5, 0.75].map((g) => (
+        <line key={g} x1="0" y1={g * height} x2={width} y2={g * height} stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
+      ))}
+      {typeof refLineY === "number" && (
+        <line x1="0" y1={refLineY * height} x2={width} y2={refLineY * height} stroke={C.brand} strokeWidth="1.5" strokeOpacity="0.9" />
+      )}
+      <path d={areaD} fill="url(#lc-fill)" opacity={areaOp} />
+      <path d={d} fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - drawLen} />
+    </svg>
+  );
 }
 
 /* ---------------- Wallet ---------------- */
+/* Matches WalletValueScreen in components/site/phone/screens.tsx exactly:
+   same flat-accumulation-then-breakout curve, same real KPI numbers. */
 
-const PTS = [
-  [0, 0.42], [0.16, 0.62], [0.32, 0.66], [0.5, 0.64], [0.66, 0.5], [0.82, 0.32], [1, 0.16],
-] as const;
+const WALLET_POINTS: [number, number][] = [
+  [0, 0.88], [0.08, 0.91], [0.15, 0.9], [0.22, 0.84], [0.3, 0.79], [0.38, 0.78], [0.46, 0.77],
+  [0.55, 0.69], [0.63, 0.58], [0.72, 0.47], [0.8, 0.39], [0.88, 0.29], [0.94, 0.19], [1, 0.06],
+];
 
 export function WalletScreen() {
   const f = useCurrentFrame();
-  const W = 468, H = 200;
-  const d = PTS.map((p, i) => `${i === 0 ? "M" : "L"} ${(p[0] * W).toFixed(1)} ${(p[1] * H).toFixed(1)}`).join(" ");
-  const dash = interpolate(f, [8, 52], [1, 0], clamp);
-  const areaOp = interpolate(f, [40, 60], [0, 1], clamp);
-  const pl = Math.round(interpolate(f, [10, 46], [0, 1098], clamp));
+  const pl = Math.round(interpolate(f, [10, 46], [0, 18701], clamp));
   const plp = interpolate(f, [10, 46], [0, 12.48], clamp);
-  const mv = interpolate(f, [16, 58], [0, 9890.34], clamp);
-
+  const mv = interpolate(f, [16, 58], [0, 168492.23], clamp);
   return (
-    <>
-      <TabHeader />
-      <Title>Wallet</Title>
-      <GlassCard>
-        <div style={{ fontSize: 30, fontWeight: 800, letterSpacing: 1, color: "#fff" }}>WALLET VALUE</div>
-        <div style={{ fontSize: 23, color: "rgba(255,255,255,0.45)", marginTop: 4 }}>Historical portfolio value · 1W</div>
-        <div style={{ display: "flex", gap: 12, marginTop: 20 }}>
-          {["1W", "1M", "3M", "1Y", "5Y"].map((o, i) => (
-            <span key={o} style={{ padding: "8px 18px", borderRadius: 999, fontSize: 22, fontWeight: 700, color: i === 0 ? "#fff" : "rgba(235,235,245,0.8)", background: i === 0 ? `linear-gradient(180deg,${C.brandHi},${C.brand})` : "rgba(255,255,255,0.08)", boxShadow: i === 0 ? "inset 0 1px 0 rgba(255,255,255,0.4)" : "none" }}>{o}</span>
-          ))}
-        </div>
-        <div style={{ marginTop: 22, borderRadius: 20, border: "1px solid rgba(255,255,255,0.06)", padding: 16 }}>
-          <div style={{ textAlign: "right", fontSize: 20, color: "rgba(255,255,255,0.4)" }}>8 492</div>
-          <svg width={W} height={H} style={{ display: "block" }}>
-            <line x1="0" y1={H * 0.16} x2={W} y2={H * 0.16} stroke={C.brand} strokeWidth={2.5} opacity={0.9} />
-            <path d={`${d} L ${W} ${H} L 0 ${H} Z`} fill="url(#g)" opacity={areaOp} />
-            <path d={d} fill="none" stroke={C.gain} strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={dash} />
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={C.gain} stopOpacity={0.25} />
-                <stop offset="100%" stopColor={C.gain} stopOpacity={0} />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 20, marginTop: 6 }}>
-            <span style={{ color: "rgba(255,255,255,0.4)" }}>24/4</span>
-            <span style={{ color: C.brand, fontWeight: 700 }}>8 492.23 USD</span>
-            <span style={{ color: "rgba(255,255,255,0.4)" }}>4/5</span>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <TabHeader big />
+      <div style={{ padding: "4px 16px 0" }}>
+        <h1 style={{ margin: 0, fontSize: 24, fontWeight: 800, letterSpacing: -0.5, color: "#fff" }}>Wallet</h1>
+      </div>
+      <div style={{ flex: 1, overflow: "hidden", padding: "4px 16px 96px" }}>
+        <GlassCard style={{ marginTop: 8 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 0.3, color: "#fff" }}>WALLET VALUE</div>
+          <div style={{ marginTop: 2, fontSize: 10, color: "rgba(255,255,255,0.45)" }}>Historical portfolio value for 1Y.</div>
+          <div style={{ marginTop: 12 }}><SegmentControl options={["1W", "1M", "3M", "1Y", "5Y"]} activeIndex={3} /></div>
+          <div style={{ marginTop: 12, borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 8 }}>
+            <div style={{ textAlign: "right", fontSize: 9, color: "rgba(255,255,255,0.4)" }}>159 100</div>
+            <LineChart points={WALLET_POINTS} refLineY={WALLET_POINTS[WALLET_POINTS.length - 1][1]} />
+            <div style={{ textAlign: "right", fontSize: 9, color: "rgba(255,255,255,0.4)" }}>123 700</div>
+            <div style={{ marginTop: 4, display: "flex", justifyContent: "space-between", fontSize: 9 }}>
+              <span style={{ color: "rgba(255,255,255,0.4)" }}>May 2025</span>
+              <span style={{ fontWeight: 600, color: C.brand }}>144 660.23 USD</span>
+              <span style={{ color: "rgba(255,255,255,0.4)" }}>May 2026</span>
+            </div>
           </div>
-        </div>
-      </GlassCard>
-      <div style={{ display: "flex", gap: 20, marginTop: 20 }}>
-        <GlassCard style={{ flex: 1, padding: 26 }}>
-          <div style={{ fontSize: 22, color: "rgba(255,255,255,0.45)" }}>Total P/L</div>
-          <div style={{ fontSize: 40, fontWeight: 800, color: C.gain, marginTop: 6 }}>≈ {pl.toLocaleString("en-US")} USD</div>
+          <div style={{ marginTop: 8, fontSize: 8, lineHeight: 1.3, color: "rgba(255,255,255,0.35)" }}>Market data may be delayed and is for informational purposes only.</div>
         </GlassCard>
-        <GlassCard style={{ flex: 1, padding: 26 }}>
-          <div style={{ fontSize: 22, color: "rgba(255,255,255,0.45)" }}>Total P/L %</div>
-          <div style={{ fontSize: 40, fontWeight: 800, color: C.gain, marginTop: 6 }}>{plp.toFixed(2)}%</div>
+
+        <div style={{ marginTop: 12, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+          <GlassCard>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10, color: "rgba(255,255,255,0.45)" }}><span>Total P/L</span><InfoDot /></div>
+            <div style={{ marginTop: 4, fontSize: 12, fontWeight: 700, color: C.gain, whiteSpace: "nowrap" }}>≈ {pl.toLocaleString("en-US").replace(/,/g, " ")} USD</div>
+          </GlassCard>
+          <GlassCard>
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10, color: "rgba(255,255,255,0.45)" }}><span>Total P/L %</span><InfoDot /></div>
+            <div style={{ marginTop: 4, fontSize: 13, fontWeight: 700, color: C.gain, whiteSpace: "nowrap" }}>{plp.toFixed(2)}%</div>
+          </GlassCard>
+        </div>
+
+        <GlassCard style={{ marginTop: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10, color: "rgba(255,255,255,0.45)" }}><span>Market value</span><InfoDot /></div>
+          <div style={{ marginTop: 4, fontSize: 16, fontWeight: 700, color: "#fff", whiteSpace: "nowrap" }}>{mv.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/,/g, " ")} USD</div>
         </GlassCard>
       </div>
-      <GlassCard style={{ marginTop: 20, padding: 26 }}>
-        <div style={{ fontSize: 22, color: "rgba(255,255,255,0.45)" }}>Total wealth</div>
-        <div style={{ fontSize: 50, fontWeight: 800, color: "#fff", marginTop: 6 }}>{mv.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} USD</div>
-      </GlassCard>
-    </>
+    </div>
   );
 }
 
 /* ---------------- Allocation ---------------- */
+/* Matches AllocationScreen exactly: real accounts BY WALLET, BY ASSET CLASS,
+   LARGEST HOLDINGS with wallet chip + company name. */
 
-const SECTORS = [
-  { name: "Technology", pct: 68, color: C.s1 },
-  { name: "Financial Services", pct: 14, color: C.s2 },
-  { name: "Consumer Defensive", pct: 11, color: C.s3 },
-  { name: "Real Estate", pct: 4, color: C.s4 },
-  { name: "Energy", pct: 2, color: C.s5 },
+const WALLETS = [
+  { name: "IKE", pct: 40, color: C.gain },
+  { name: "PLN", pct: 22, color: C.brand },
+  { name: "USD", pct: 13, color: C.amber },
+  { name: "mBank", pct: 13, color: C.ai },
+  { name: "IBKR", pct: 5, color: "#ff375f" },
+  { name: "Metals", pct: 4, color: C.s2 },
+  { name: "Crypto", pct: 3, color: C.s3 },
 ];
-const HOLD = [{ s: "ADBE", p: 39 }, { s: "ASML", p: 14 }, { s: "COKE", p: 11 }];
-
-export function AllocationScreen() {
-  const f = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const grow = interpolate(f, [8, 40], [0, 1], clamp);
-  const ring = interpolate(f, [6, 40], [0, 50], clamp);
-  const rC = 2 * Math.PI * 78;
-  return (
-    <>
-      <TabHeader />
-      <Title>Allocation</Title>
-      <GlassCard style={{ display: "flex", alignItems: "center", gap: 28 }}>
-        <div style={{ position: "relative", width: 176, height: 176 }}>
-          <svg width={176} height={176} style={{ transform: "rotate(-90deg)" }}>
-            <circle cx={88} cy={88} r={78} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth={12} />
-            <circle cx={88} cy={88} r={78} fill="none" stroke={C.amber} strokeWidth={12} strokeLinecap="round" strokeDasharray={rC} strokeDashoffset={rC * (1 - ring / 100)} />
-          </svg>
-          <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-            <div style={{ fontSize: 52, fontWeight: 800, color: "#fff" }}>{Math.round(ring)}</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: C.amber }}>WATCH</div>
-          </div>
-        </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 30, fontWeight: 800, color: "#fff", display: "flex", alignItems: "center", gap: 10 }}><span style={{ color: C.loss }}>♥</span> HEALTH SCORE</div>
-          <div style={{ fontSize: 24, color: "rgba(255,255,255,0.55)", marginTop: 8, lineHeight: 1.35 }}>A few names can move the whole profile — worth a quick check.</div>
-        </div>
-      </GlassCard>
-      <GlassCard style={{ marginTop: 20 }}>
-        <div style={{ fontSize: 26, fontWeight: 700, color: "rgba(255,255,255,0.4)", letterSpacing: 1 }}>BY SECTOR</div>
-        <div style={{ display: "flex", height: 18, borderRadius: 999, overflow: "hidden", marginTop: 14, background: "rgba(255,255,255,0.05)" }}>
-          {SECTORS.map((s) => (
-            <div key={s.name} style={{ width: `${s.pct * grow}%`, background: s.color }} />
-          ))}
-        </div>
-        <div style={{ marginTop: 18 }}>
-          {SECTORS.map((s, i) => {
-            const op = interpolate(f, [12 + i * 4, 24 + i * 4], [0, 1], clamp);
-            return (
-              <div key={s.name} style={{ display: "flex", justifyContent: "space-between", padding: "8px 0", fontSize: 26, opacity: op }}>
-                <span style={{ color: "rgba(255,255,255,0.78)", display: "flex", alignItems: "center", gap: 12 }}><span style={{ width: 16, height: 16, borderRadius: 4, background: s.color }} /> {s.name}</span>
-                <span style={{ color: "rgba(255,255,255,0.5)" }}>{s.pct}%</span>
-              </div>
-            );
-          })}
-        </div>
-        <div style={{ fontSize: 26, fontWeight: 700, color: "rgba(255,255,255,0.4)", letterSpacing: 1, marginTop: 20 }}>LARGEST HOLDINGS</div>
-        <div style={{ marginTop: 12 }}>
-          {HOLD.map((h, i) => {
-            const x = interpolate(spring({ frame: f - (18 + i * 6), fps, config: { damping: 16 } }), [0, 1], [40, 0]);
-            const op = interpolate(f, [18 + i * 6, 30 + i * 6], [0, 1], clamp);
-            return (
-              <div key={h.s} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", opacity: op, transform: `translateX(${x}px)` }}>
-                <span style={{ fontSize: 32, fontWeight: 800, color: "#fff" }}>{h.s}</span>
-                <span style={{ fontSize: 28, fontWeight: 700, color: "rgba(255,255,255,0.7)" }}>{h.p}%</span>
-              </div>
-            );
-          })}
-        </div>
-      </GlassCard>
-    </>
-  );
-}
-
-/* ---------------- Five lenses ---------------- */
-
-/* Exact copy from public/marketing/screens/five-lenses.png (symbol TTD). */
-const LENS = [
-  { name: "Trend", score: 1, tone: C.loss, label: "Bearish", icon: "trend", desc: "TTD: 3M -39.9%, session -0.6% both down (Bearish)—pressure shows in the window and today, not just one print." },
-  { name: "Valuation", score: 3, tone: C.amber, label: "Fairly valued", icon: "val", desc: "TTD: P/E 26.1, EV/EBITDA 15.3, P/B 4.66 → our quick read: “fairly valued”." },
-  { name: "Growth", score: 3, tone: C.amber, label: "Moderate growth", icon: "growth", desc: "TTD: rev/sh 6.03, NI/sh 0.92 → “moderate growth” on a coarse scale." },
-  { name: "Risk", score: 3, tone: C.amber, label: "Moderate risk", icon: "risk", desc: "TTD: D/E 0.18, ROE 16.9%, gross margin 78.6% → “moderate risk” (education only)." },
-  { name: "Momentum", score: 4, tone: C.gain, label: "Neutral", icon: "mom", desc: "TTD: RSI 54 middle-ish, histogram +0.314 positive—slight buyer edge, no clear stretch yet." },
+const ASSET_CLASSES = [
+  { name: "Stock", pct: 73, color: C.gain },
+  { name: "ETF", pct: 20, color: C.brand },
+  { name: "Commodity", pct: 4, color: C.amber },
+  { name: "forex", pct: 3, color: C.ai },
+];
+const HOLDINGS = [
+  { sym: "CSPX.UK", pct: 10, wallet: "IKE", name: "Core S&P 500" },
+  { sym: "PKN.PL", pct: 6, wallet: "IKE", name: "Orlen" },
+  { sym: "MSFT.US", pct: 6, wallet: "IKE", name: "Microsoft" },
 ];
 
-const LENS_ICONS: Record<string, React.ReactNode> = {
-  trend: <path d="M4 15l5-5 4 3 6-7" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />,
-  val: <><rect x="3" y="6" width="18" height="12" rx="2" fill="none" stroke="currentColor" strokeWidth={1.8} /><circle cx="12" cy="12" r="2.4" fill="currentColor" /></>,
-  growth: <path d="M13 3l-8 10h6l-1 8 8-10h-6l1-8Z" fill="currentColor" />,
-  risk: <path d="M12 4l9 15H3l9-15Zm0 6v4m0 3h.01" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />,
-  mom: <path d="M13 3l-8 10h6l-1 8 8-10h-6l1-8Z" fill="currentColor" />,
-};
-
-function LensMeter({ score, tone }: { score: number; tone: string }) {
+function SectorBar({ segments, atFrame = 0 }: { segments: { pct: number; color: string }[]; atFrame?: number }) {
+  const f = useCurrentFrame() - atFrame;
+  const grow = interpolate(f, [0, 32], [0, 1], clamp);
   return (
-    <div style={{ display: "flex", gap: 5, alignItems: "center" }}>
-      {[1, 2, 3, 4, 5].map((i) => (
-        <span key={i} style={{ width: 12, height: 12, borderRadius: 3, background: i <= score ? tone : "rgba(255,255,255,0.12)" }} />
-      ))}
-      <span style={{ fontSize: 24, fontWeight: 800, color: tone, marginLeft: 6 }}>{score}/5</span>
+    <div style={{ display: "flex", height: 10, width: "100%", overflow: "hidden", borderRadius: 999, background: "rgba(255,255,255,0.05)" }}>
+      {segments.map((s, i) => <div key={i} style={{ width: `${s.pct * grow}%`, background: s.color }} />)}
     </div>
   );
 }
+function Chip({ children }: { children: string }) {
+  return <span style={{ borderRadius: 6, background: "rgba(255,255,255,0.08)", padding: "2px 8px", fontSize: 8, fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>{children}</span>;
+}
+
+export function AllocationScreen() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <TabHeader title="Portfolio" />
+      <div style={{ flex: 1, overflow: "hidden", padding: "4px 16px 96px" }}>
+        <GlassCard style={{ marginTop: 8 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 0.3, color: "#fff" }}>ALLOCATION</div>
+
+          <div style={{ marginTop: 12, fontSize: 9, fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>BY WALLET</div>
+          <div style={{ marginTop: 6 }}><SectorBar segments={WALLETS.map((w) => ({ pct: w.pct, color: w.color }))} /></div>
+          <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+            {WALLETS.map((w) => (
+              <div key={w.name} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10 }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 6, color: "rgba(255,255,255,0.75)" }}><span style={{ width: 8, height: 8, borderRadius: 999, background: w.color }} />{w.name}</span>
+                <span style={{ color: "rgba(255,255,255,0.5)" }}>{w.pct}%</span>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 16, display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 9, fontWeight: 600 }}>
+            <span style={{ color: "rgba(255,255,255,0.4)" }}>BY ASSET CLASS</span>
+            <span style={{ color: C.brand }}>By sector</span>
+          </div>
+          <div style={{ marginTop: 6 }}><SectorBar segments={ASSET_CLASSES.map((a) => ({ pct: a.pct, color: a.color }))} atFrame={8} /></div>
+          <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 6 }}>
+            {ASSET_CLASSES.map((a) => (
+              <div key={a.name} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 10 }}>
+                <span style={{ display: "flex", alignItems: "center", gap: 6, color: "rgba(255,255,255,0.75)" }}><span style={{ width: 8, height: 8, borderRadius: 999, background: a.color }} />{a.name}</span>
+                <span style={{ color: "rgba(255,255,255,0.5)" }}>{a.pct}%</span>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 16, fontSize: 9, fontWeight: 600, color: "rgba(255,255,255,0.4)" }}>LARGEST HOLDINGS</div>
+          <div style={{ marginTop: 8, display: "flex", flexDirection: "column", gap: 8 }}>
+            {HOLDINGS.map((h) => (
+              <div key={h.sym}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: "#fff" }}>{h.sym}</span>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <Chip>{h.wallet}</Chip>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: "rgba(255,255,255,0.7)" }}>{h.pct}%</span>
+                  </div>
+                </div>
+                <div style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>{h.name}</div>
+              </div>
+            ))}
+          </div>
+        </GlassCard>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------- Instrument chart ---------------- */
+/* Matches InstrumentScreen exactly: CHART eyebrow + help icon, real
+   NVDA.US 1Y series, ref line at today's price, Volume/RSI/MACD, AI callout. */
+
+const IPTS: [number, number][] = [
+  [0, 0.86], [0.06, 0.72], [0.12, 0.78], [0.18, 0.66], [0.24, 0.7], [0.3, 0.58], [0.36, 0.62],
+  [0.42, 0.5], [0.48, 0.54], [0.54, 0.44], [0.6, 0.46], [0.66, 0.36], [0.72, 0.32], [0.78, 0.38],
+  [0.84, 0.26], [0.9, 0.22], [0.95, 0.16], [1, 0.06],
+];
+
+function MiniVolume({ seed }: { seed: number }) {
+  const f = useCurrentFrame();
+  const bars = Array.from({ length: 40 }).map((_, i) => 6 + ((i * (37 + seed * 5) + seed * 11) % 29));
+  return (
+    <svg viewBox="0 0 400 34" width="100%" height={26} preserveAspectRatio="none" aria-hidden>
+      {bars.map((h, i) => {
+        const g = interpolate(f, [i * 0.6, 12 + i * 0.6], [0, 1], clamp);
+        return <rect key={i} x={i * 10} y={34 - h * g} width="6" height={h * g} fill="rgba(255,255,255,0.32)" />;
+      })}
+    </svg>
+  );
+}
+function MiniLine({ color, seed }: { color: string; seed: number }) {
+  const f = useCurrentFrame();
+  const drawLen = interpolate(f, [0, 30], [0, 1], clamp);
+  const pts = Array.from({ length: 30 }).map((_, i) => 17 + Math.sin(i / 2.6 + seed) * 12 * (((i * 53) % 17) / 17 + 0.4));
+  const d = pts.map((v, i) => `${i === 0 ? "M" : "L"} ${((i / (pts.length - 1)) * 400).toFixed(1)} ${(34 - v).toFixed(1)}`).join(" ");
+  return (
+    <svg viewBox="0 0 400 34" width="100%" height={26} preserveAspectRatio="none" aria-hidden>
+      <path d={d} fill="none" stroke={color} strokeWidth="2" pathLength={1} strokeDasharray={1} strokeDashoffset={1 - drawLen} />
+    </svg>
+  );
+}
+function MiniHist({ seed }: { seed: number }) {
+  const f = useCurrentFrame();
+  const bars = Array.from({ length: 40 }).map((_, i) => ({ v: Math.sin(i / 4.2 + seed) * (((i * 29) % 13) / 13 * 0.7 + 0.3), up: Math.sin(i / 4.2 + seed) >= 0 }));
+  return (
+    <svg viewBox="0 0 400 28" width="100%" height={22} preserveAspectRatio="none" aria-hidden>
+      {bars.map((b, i) => {
+        const h = Number((Math.abs(b.v) * 13).toFixed(2));
+        const g = interpolate(f, [i * 0.5, 10 + i * 0.5], [0, 1], clamp);
+        return <rect key={i} x={i * 10} y={b.up ? 14 - h * g : 14} width="6" height={h * g} fill={b.up ? C.gain : C.loss} />;
+      })}
+    </svg>
+  );
+}
+function MiniRow({ label, value, children }: { label: string; value: string; children: React.ReactNode }) {
+  // Slightly tighter than the site's mt-3 (12px) — the video has no scroll,
+  // so this card must fit the fixed screen height in one shot.
+  return (
+    <div style={{ marginTop: 6 }}>
+      {children}
+      <div style={{ marginTop: 4, display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 8, color: "rgba(255,255,255,0.4)" }}>
+        <span>{label}</span><span>{value}</span>
+      </div>
+    </div>
+  );
+}
+
+export function InstrumentScreen() {
+  const f = useCurrentFrame();
+  const calloutOp = interpolate(f, [58, 72], [0, 1], clamp);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <DetailHeader title="NVDA.US" right="share" />
+      <div style={{ flex: 1, overflow: "hidden", padding: "8px 16px 0" }}>
+        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, letterSpacing: -0.3, color: "#fff" }}>NVIDIA Corp.</h1>
+        <GlassCard style={{ marginTop: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 0.3, color: "#fff" }}>CHART</div>
+            <span style={{ display: "flex", height: 24, width: 24, alignItems: "center", justifyContent: "center", borderRadius: 999, background: "rgba(255,255,255,0.08)", fontSize: 9, color: "rgba(255,255,255,0.5)" }}>?</span>
+          </div>
+          <div style={{ marginTop: 8 }}><SegmentControl options={["1W", "1M", "3M", "1Y", "5Y"]} activeIndex={3} /></div>
+          <div style={{ marginTop: 8, display: "flex", alignItems: "baseline", gap: 8 }}>
+            <span style={{ fontSize: 12, fontWeight: 700, color: C.gain }}>+91.20 (+128.4%)</span>
+            <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>↑ past 1Y</span>
+          </div>
+          <div style={{ fontSize: 8, color: "rgba(255,255,255,0.35)" }}>Closed: 12 Aug at 02:00 · Disclaimer</div>
+
+          <div style={{ marginTop: 8, borderRadius: 12, border: "1px solid rgba(255,255,255,0.06)", padding: 8 }}>
+            <div style={{ textAlign: "right", fontSize: 9, color: "rgba(255,255,255,0.4)" }}>163.90</div>
+            <LineChart points={IPTS} color={C.gain} refLineY={IPTS[IPTS.length - 1][1]} height={78} />
+            <div style={{ textAlign: "right", fontSize: 9, color: "rgba(255,255,255,0.4)" }}>71.51</div>
+            <div style={{ marginTop: 4, display: "flex", justifyContent: "space-between", fontSize: 9 }}>
+              <span style={{ color: "rgba(255,255,255,0.4)" }}>Aug 2025</span>
+              <span style={{ fontWeight: 600, color: C.brand }}>163.14</span>
+              <span style={{ color: "rgba(255,255,255,0.4)" }}>Aug 2026</span>
+            </div>
+          </div>
+
+          <MiniRow label="Volume" value=""><MiniVolume seed={2} /></MiniRow>
+          <MiniRow label="RSI (14)" value="62.0"><MiniLine color={C.brand} seed={5} /></MiniRow>
+          <MiniRow label="MACD (12,26,9)" value="+2.155"><MiniHist seed={9} /></MiniRow>
+
+          <div style={{ marginTop: 8, borderRadius: 12, border: "1px solid rgba(10,132,255,0.25)", background: "rgba(10,132,255,0.08)", padding: 8, opacity: calloutOp }}>
+            <div style={{ fontSize: 10, lineHeight: 1.35, color: "rgba(255,255,255,0.85)" }}>
+              <span style={{ color: C.brand }}>💡 </span>
+              NVDA.US: RSI 62 · MACD histogram +2.155 → &ldquo;orderly upside&rdquo; momentum, no exhaustion signal yet.
+            </div>
+          </div>
+        </GlassCard>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------- Portfolio Insight (Alpha Pro) ---------------- */
+/* Matches PortfolioInsightScreen exactly: wallet-level Tape / Diversification
+   / Concentration / Breadth pillars, scored on the wallet's real weights. */
+
+const INSIGHT_PILLARS = [
+  { name: "Tape", score: 4, label: "Risk-on tape", icon: "tape" },
+  { name: "Diversification", score: 5, label: "Well spread", icon: "div" },
+  { name: "Concentration", score: 2, label: "Lower concentration", icon: "conc" },
+  { name: "Breadth", score: 5, label: "Many drivers", icon: "breadth" },
+];
+const INSIGHT_ICONS: Record<string, React.ReactNode> = {
+  tape: <path d="M3 12h3l2-6 4 12 3-9 2 5h4" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" />,
+  div: <><circle cx="6" cy="6" r="2.2" fill="currentColor" /><circle cx="18" cy="6" r="2.2" fill="currentColor" /><circle cx="12" cy="18" r="2.2" fill="currentColor" /><path d="M7.6 7.4 10.4 16M16.4 7.4 13.6 16M8 6h8" stroke="currentColor" strokeWidth={1.6} /></>,
+  conc: <path d="M4 5h16v3H4V5Zm0 5.5h16v3H4v-3ZM4 16h16v3H4v-3Z" fill="currentColor" />,
+  breadth: <><rect x="3" y="3" width="7" height="7" rx="1.6" /><rect x="14" y="3" width="7" height="7" rx="1.6" /><rect x="3" y="14" width="7" height="7" rx="1.6" /><rect x="14" y="14" width="7" height="7" rx="1.6" /></>,
+};
+function LensMeter({ score, color = C.gain }: { score: number; color?: string }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+      <div style={{ display: "flex", gap: 4 }}>
+        {[1, 2, 3, 4, 5].map((i) => <span key={i} style={{ width: 10, height: 10, borderRadius: 3, background: i <= score ? color : "rgba(255,255,255,0.12)" }} />)}
+      </div>
+      <span style={{ fontSize: 10, fontWeight: 700, color }}>{score}/5</span>
+    </div>
+  );
+}
+const proTint = { background: "color-mix(in srgb, #bf5af2 9%, #1c1c1e)", borderColor: "color-mix(in srgb, #bf5af2 30%, transparent)" };
 
 export function LensesScreen() {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const chip = spring({ frame: f, fps, config: { damping: 12 } });
   return (
-    <>
-      <DetailHeader title="TTD" right="share" />
-      <div style={{ marginTop: 8 }}>
-        {LENS.map((l, i) => {
-          const s = spring({ frame: f - (6 + i * 7), fps, config: { damping: 17 } });
-          const op = interpolate(s, [0, 1], [0, 1]);
-          const y = interpolate(s, [0, 1], [16, 0]);
-          return (
-            <div key={l.name} style={{ display: "flex", gap: 16, padding: "20px 0", borderBottom: i < LENS.length - 1 ? "1px solid #2c2c2e" : "none", opacity: op, transform: `translateY(${y}px)` }}>
-              <div style={{ width: 56, height: 56, borderRadius: 16, flexShrink: 0, background: `${l.tone}26`, color: l.tone, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <svg width={26} height={26} viewBox="0 0 24 24">{LENS_ICONS[l.icon]}</svg>
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  <span style={{ fontSize: 30, fontWeight: 800, color: "#fff" }}>{l.name}</span>
-                  <LensMeter score={l.score} tone={l.tone} />
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <TabHeader title="Portfolio" />
+      <div style={{ flex: 1, overflow: "hidden", padding: "4px 16px 96px" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "8px 4px 0" }}>
+          <h1 style={{ margin: 0, fontSize: 15, fontWeight: 800, letterSpacing: -0.2, color: "#fff" }}>PORTFOLIO INSIGHT</h1>
+          <span style={{ display: "flex", height: 24, width: 24, alignItems: "center", justifyContent: "center", borderRadius: 999, background: "rgba(255,255,255,0.08)", fontSize: 9, color: "rgba(255,255,255,0.5)" }}>?</span>
+        </div>
+
+        <div style={{ marginTop: 12, borderRadius: 20, border: `1px solid ${proTint.borderColor}`, background: proTint.background, padding: 16 }}>
+          <div style={{ transform: `scale(${interpolate(chip, [0, 1], [0.7, 1])})`, transformOrigin: "left center" }}>
+            <span style={{ display: "inline-block", borderRadius: 12, padding: "8px 16px", fontSize: 14, fontWeight: 700, background: "rgba(255,159,10,0.16)", color: C.amber }}>Mixed signals</span>
+          </div>
+          <p style={{ marginTop: 12, fontSize: 10, lineHeight: 1.35, color: "rgba(255,255,255,0.8)" }}>The portfolio exhibits strong diversification with moderate volatility and lower concentration risk.</p>
+          <p style={{ marginTop: 8, fontSize: 10, lineHeight: 1.35, color: "rgba(255,255,255,0.5)" }}>• Daily movements indicate a calm market environment.</p>
+        </div>
+
+        <div style={{ marginTop: 12, borderRadius: 20, border: `1px solid ${proTint.borderColor}`, background: proTint.background, padding: 16 }}>
+          {INSIGHT_PILLARS.map((p, i) => {
+            const s = spring({ frame: f - i * 8, fps, config: { damping: 17 } });
+            const op = interpolate(s, [0, 1], [0, 1]);
+            const y = interpolate(s, [0, 1], [8, 0]);
+            return (
+              <div key={p.name} style={{ display: "flex", gap: 12, padding: "12px 0", borderTop: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none", opacity: op, transform: `translateY(${y}px)` }}>
+                <div style={{ marginTop: 2, display: "flex", height: 36, width: 36, flexShrink: 0, alignItems: "center", justifyContent: "center", borderRadius: 10, background: "rgba(74,222,128,0.16)", color: C.gain }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>{INSIGHT_ICONS[p.icon]}</svg>
                 </div>
-                <div style={{ fontSize: 22, fontWeight: 600, color: "rgba(255,255,255,0.6)", marginTop: 4 }}>{l.label}</div>
-                <div style={{ fontSize: 19, color: "rgba(255,255,255,0.42)", marginTop: 8, lineHeight: 1.4 }}>{l.desc}</div>
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
+                    <span style={{ fontSize: 12, fontWeight: 700, color: "#fff" }}>{p.name}</span>
+                    <LensMeter score={p.score} />
+                  </div>
+                  <div style={{ marginTop: 2, fontSize: 10, fontWeight: 500, color: "rgba(255,255,255,0.6)" }}>{p.label}</div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
-/* ---------------- AI insight ---------------- */
+/* ---------------- Alpha Score (Alpha Pro) ---------------- */
+/* Matches AlphaScoreScreen exactly: real GOOGL.US data — Quality/Distress/
+   Profitability/Leverage pillars on a /100 scale, 9-segment meter. */
 
-const BULLETS = [
-  "Top 3 positions ≈ 63.1% of value — concentration risk.",
-  "Diversification score 51/100 — moderate spread.",
-  "Daily volatility ≈ 1.60% — normal fluctuation.",
+const SCORE_PILLARS = [
+  { name: "Quality", score: 78, label: "strong financial quality" },
+  { name: "Distress", score: 85, label: "low bankruptcy risk" },
+  { name: "Profitability", score: 90, label: "solid returns" },
+  { name: "Leverage", score: 88, label: "conservative balance sheet" },
 ];
+function ScoreMeter({ score, grow }: { score: number; grow: number }) {
+  const segs = 9;
+  const filled = Math.round((score / 100) * segs * grow);
+  return (
+    <div style={{ display: "flex", gap: 4 }}>
+      {Array.from({ length: segs }).map((_, i) => <span key={i} style={{ width: 10, height: 10, borderRadius: 3, background: i < filled ? C.gain : "rgba(255,255,255,0.12)" }} />)}
+    </div>
+  );
+}
 
 export function AiScreen() {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const chip = spring({ frame: f - 14, fps, config: { damping: 12 } });
+  const scoreGrow = interpolate(f, [10, 40], [0, 1], clamp);
+  const score = Math.round(85 * scoreGrow);
   return (
-    <>
-      <DetailHeader title="" right="grid" />
-      <Title>Long Term Portfolio</Title>
-      <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: 1, color: "rgba(255,255,255,0.5)", marginTop: -14, marginBottom: 10 }}>PORTFOLIO INSIGHT</div>
-      <GlassCard
-        style={{
-          // Real "pro" variant: aurora wash (purple→blue) layered OVER the
-          // normal charcoal glass base — matches AppCard.tsx's ProCardOverlay
-          // + iosBrand.auroraWash.dark, not a solid purple replacement.
-          background:
-            "linear-gradient(100deg, rgba(124,58,237,0.16), rgba(59,130,246,0.11)), linear-gradient(155deg, rgba(46,46,50,0.92), rgba(28,28,30,0.88) 55%, rgba(20,20,22,0.85))",
-          border: "1.5px solid rgba(167,139,250,0.40)",
-        }}
-      >
-        <div style={{ fontSize: 30, fontWeight: 800, letterSpacing: 1, color: "#fff", display: "flex", alignItems: "center", gap: 12 }}>
-          <span style={{ color: C.ai, fontSize: 34 }}>✦</span> SIGNAL READOUT
-        </div>
-        <div style={{ marginTop: 22, transform: `scale(${chip})`, transformOrigin: "left center" }}>
-          <span style={{ display: "inline-block", padding: "16px 30px", borderRadius: 22, fontSize: 40, fontWeight: 800, color: C.amber, background: "rgba(255,159,10,0.16)" }}>Mixed signals</span>
-        </div>
-        <div style={{ fontSize: 27, color: "rgba(255,255,255,0.8)", marginTop: 24, lineHeight: 1.4 }}>Moderate risk and average diversification. Key holdings drive most of the value — potential headline risk.</div>
-        <div style={{ marginTop: 22 }}>
-          {BULLETS.map((b, i) => {
-            const op = interpolate(f, [26 + i * 8, 38 + i * 8], [0, 1], clamp);
-            const x = interpolate(f, [26 + i * 8, 38 + i * 8], [-20, 0], clamp);
-            return <div key={b} style={{ fontSize: 25, color: "rgba(255,255,255,0.55)", padding: "8px 0", opacity: op, transform: `translateX(${x}px)`, lineHeight: 1.35 }}>• {b}</div>;
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <DetailHeader title="GOOGL.US" right="share" />
+      <div style={{ flex: 1, overflow: "hidden", padding: "12px 16px 0" }}>
+        <GlassCard>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: 0.3, color: "#fff" }}>ALPHA SCORE</div>
+            <span style={{ display: "flex", height: 24, width: 24, alignItems: "center", justifyContent: "center", borderRadius: 999, background: "rgba(255,255,255,0.08)", fontSize: 9, color: "rgba(255,255,255,0.5)" }}>?</span>
+          </div>
+          <div style={{ marginTop: 4, fontSize: 10, color: "rgba(255,255,255,0.45)" }}>Balanced · Fundamental read</div>
+          <div style={{ marginTop: 8, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+              <span style={{ fontSize: 30, fontWeight: 700, color: C.gain }}>{score}</span>
+              <span style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>/100</span>
+            </div>
+            <span style={{ borderRadius: 999, padding: "4px 10px", fontSize: 9, fontWeight: 600, background: "rgba(74,222,128,0.16)", color: C.gain }}>Strong</span>
+          </div>
+          <div style={{ marginTop: 6, fontSize: 9, color: "rgba(255,255,255,0.45)" }}>Strongest pillar: profitability (90/100)</div>
+        </GlassCard>
+
+        <div style={{ marginTop: 12, display: "flex", flexDirection: "column", gap: 12 }}>
+          {SCORE_PILLARS.map((p, i) => {
+            const s = spring({ frame: f - i * 7, fps, config: { damping: 17 } });
+            const op = interpolate(s, [0, 1], [0, 1]);
+            const y = interpolate(s, [0, 1], [10, 0]);
+            const grow = interpolate(f, [i * 7, 18 + i * 7], [0, 1], clamp);
+            return (
+              <GlassCard key={p.name} style={{ opacity: op, transform: `translateY(${y}px)` }}>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: "#fff" }}>{p.name}</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: C.gain }}>{p.score}/100</span>
+                </div>
+                <div style={{ marginTop: 6 }}><ScoreMeter score={p.score} grow={grow} /></div>
+                <div style={{ marginTop: 4, fontSize: 10, fontWeight: 500, color: "rgba(255,255,255,0.55)" }}>{p.label}</div>
+              </GlassCard>
+            );
           })}
         </div>
-      </GlassCard>
-    </>
-  );
-}
-
-/* ---------------- Instrument chart — matches real app exactly ---------------- */
-/* Real screen: symbol name, red/green %-change line, segmented range, line
-   chart w/ hi-lo + date labels, then Volume bars + RSI line + MACD histogram
-   stacked below in the SAME card (see public/marketing/screens/instrument-chart.png). */
-
-const IPTS = [0.14, 0.28, 0.22, 0.34, 0.3, 0.42, 0.5, 0.44, 0.38, 0.46, 0.55, 0.5, 0.62, 0.7, 0.66, 0.78, 0.74, 0.86, 0.94];
-export function InstrumentScreen() {
-  const f = useCurrentFrame();
-  const W = 468, H = 170;
-  const dash = interpolate(f, [8, 44], [1, 0], clamp);
-  const areaOp = interpolate(f, [36, 50], [0, 1], clamp);
-  const d = IPTS.map((v, i) => `${i === 0 ? "M" : "L"} ${((i / (IPTS.length - 1)) * W).toFixed(1)} ${(H - v * H).toFixed(1)}`).join(" ");
-  return (
-    <>
-      <DetailHeader title="NVDA" right="share" />
-      <div style={{ fontSize: 40, fontWeight: 800, color: "#fff", padding: "14px 0 10px" }}>NVIDIA Corp.</div>
-      <GlassCard>
-        <div style={{ display: "flex", gap: 10 }}>
-          {["1W", "1M", "3M", "1Y", "5Y"].map((o, i) => (
-            <span key={o} style={{ padding: "8px 16px", borderRadius: 999, fontSize: 21, fontWeight: 700, color: i === 3 ? "#fff" : "rgba(235,235,245,0.8)", background: i === 3 ? `linear-gradient(180deg,${C.brandHi},${C.brand})` : "rgba(255,255,255,0.08)" }}>{o}</span>
-          ))}
-        </div>
-        <div style={{ fontSize: 30, fontWeight: 800, color: C.gain, marginTop: 16 }}>+91.20 (+128.4%) <span style={{ fontWeight: 700 }}>↑ past 1Y</span></div>
-        <div style={{ fontSize: 20, color: "rgba(255,255,255,0.4)", marginTop: 4 }}>Closed: today at 4:00 PM</div>
-        <div style={{ marginTop: 14, borderRadius: 18, border: "1px solid rgba(255,255,255,0.06)", padding: 14 }}>
-          <div style={{ textAlign: "right", fontSize: 19, color: "rgba(255,255,255,0.4)" }}>163.90</div>
-          <svg width={W} height={H} style={{ display: "block" }}>
-            <line x1="0" y1={H * 0.62} x2={W} y2={H * 0.62} stroke={C.brand} strokeWidth={1.5} strokeDasharray="4 4" opacity={0.7} />
-            <path d={`${d} L ${W} ${H} L 0 ${H} Z`} fill="url(#ig)" opacity={areaOp} />
-            <path d={d} fill="none" stroke={C.gain} strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round" pathLength={1} strokeDasharray={1} strokeDashoffset={dash} />
-            <defs><linearGradient id="ig" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor={C.gain} stopOpacity={0.22} /><stop offset="100%" stopColor={C.gain} stopOpacity={0} /></linearGradient></defs>
-          </svg>
-          <div style={{ textAlign: "right", fontSize: 19, color: "rgba(255,255,255,0.4)" }}>71.51</div>
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 19, marginTop: 4 }}>
-            <span style={{ color: "rgba(255,255,255,0.4)" }}>Aug 2025</span>
-            <span style={{ color: C.brand, fontWeight: 700 }}>163.14</span>
-            <span style={{ color: "rgba(255,255,255,0.4)" }}>Aug 2026</span>
-          </div>
-        </div>
-        <MiniVolume seed={2} />
-        <MiniLine label="RSI (14)" value="61.4" seed={5} color={C.brand} />
-        <MiniHist label="MACD (12,26,9)" value="0.842" seed={9} />
-      </GlassCard>
-    </>
-  );
-}
-
-function MiniVolume({ seed }: { seed: number }) {
-  const f = useCurrentFrame();
-  return (
-    <div style={{ marginTop: 14 }}>
-      <svg width={468} height={38}>
-        {Array.from({ length: 46 }).map((_, i) => {
-          const h = 4 + rand(i + seed) * 30;
-          const g = interpolate(f, [10 + i * 0.6, 22 + i * 0.6], [0, 1], clamp);
-          return <rect key={i} x={i * 10.2} y={38 - h * g} width={6} height={h * g} fill="rgba(255,255,255,0.35)" />;
-        })}
-      </svg>
-      <div style={{ fontSize: 19, color: "rgba(255,255,255,0.4)", marginTop: 2 }}>Volume</div>
+      </div>
     </div>
   );
 }
-function MiniLine({ label, value, seed, color }: { label: string; value: string; seed: number; color: string }) {
-  const f = useCurrentFrame();
-  const dash = interpolate(f, [16, 42], [1, 0], clamp);
-  const pts = Array.from({ length: 30 }).map((_, i) => 0.5 + Math.sin(i / 3 + seed) * 0.3 * (rand(i + seed) * 0.6 + 0.4));
-  const d = pts.map((v, i) => `${i === 0 ? "M" : "L"} ${((i / (pts.length - 1)) * 468).toFixed(1)} ${(38 - v * 38).toFixed(1)}`).join(" ");
-  return (
-    <div style={{ marginTop: 14 }}>
-      <svg width={468} height={38}><path d={d} fill="none" stroke={color} strokeWidth={2.5} pathLength={1} strokeDasharray={1} strokeDashoffset={dash} /></svg>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 19, color: "rgba(255,255,255,0.4)", marginTop: 2 }}><span>{label}</span><span>{value}</span></div>
-    </div>
-  );
-}
-function MiniHist({ label, value, seed }: { label: string; value: string; seed: number }) {
-  const f = useCurrentFrame();
-  return (
-    <div style={{ marginTop: 14 }}>
-      <svg width={468} height={30}>
-        {Array.from({ length: 46 }).map((_, i) => {
-          const v = Math.sin(i / 4 + seed) * (0.4 + rand(i + seed) * 0.6);
-          const up = v >= 0;
-          const h = Math.abs(v) * 13;
-          const g = interpolate(f, [16 + i * 0.5, 26 + i * 0.5], [0, 1], clamp);
-          return <rect key={i} x={i * 10.2} y={up ? 15 - h * g : 15} width={6} height={h * g} fill={up ? C.gain : C.loss} />;
-        })}
-      </svg>
-      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 19, color: "rgba(255,255,255,0.4)", marginTop: 2 }}><span>{label}</span><span>{value}</span></div>
-    </div>
-  );
-}
-function rand(i: number) { const x = Math.sin(i * 127.1 + 43.7) * 43758.5453; return x - Math.floor(x); }

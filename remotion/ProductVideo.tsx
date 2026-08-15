@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 import { AbsoluteFill, interpolate, Sequence, spring, useCurrentFrame, useVideoConfig } from "remotion";
-import { AllocationScreen, AiScreen, LensesScreen, WalletScreen } from "./screens";
+import { AllocationScreen, InstrumentScreen, LensesScreen, WalletScreen } from "./screens";
 import { C, fontFamily } from "./theme";
 import { Aurora, Caption, Phone } from "./ui";
 
@@ -34,12 +34,14 @@ function Scene({
   eyebrow,
   title,
   first = false,
+  showTabBar = true,
 }: {
   Screen: ComponentType;
   tab: string;
   eyebrow: string;
   title: string;
   first?: boolean;
+  showTabBar?: boolean;
 }) {
   const f = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
@@ -53,7 +55,7 @@ function Scene({
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", opacity: op }}>
       <div style={{ transform: `translateY(${y - 70}px) scale(${push})` }}>
-        <Phone tab={tab}>
+        <Phone tab={tab} showTabBar={showTabBar}>
           <Screen />
         </Phone>
       </div>
@@ -90,7 +92,7 @@ function Outro() {
 
 /* ---------------- Composition ---------------- */
 
-export const VIDEO = { width: 1080, height: 1920, fps: 30, durationInFrames: 660 };
+export const VIDEO = { width: 1080, height: 1920, fps: 30, durationInFrames: 682 };
 
 export function ProductVideo() {
   return (
@@ -99,9 +101,9 @@ export function ProductVideo() {
       <Sequence durationInFrames={62}><Intro /></Sequence>
       <Sequence from={56} durationInFrames={158}><Scene first Screen={WalletScreen} tab="wallet" eyebrow="Wallet" title="Track every portfolio" /></Sequence>
       <Sequence from={206} durationInFrames={128}><Scene Screen={AllocationScreen} tab="wallet" eyebrow="Allocation" title="See how you're split" /></Sequence>
-      <Sequence from={326} durationInFrames={128}><Scene Screen={LensesScreen} tab="watchlist" eyebrow="Five Lenses" title="One honest scale" /></Sequence>
-      <Sequence from={446} durationInFrames={140}><Scene Screen={AiScreen} tab="wallet" eyebrow="Alpha Pro" title="AI that explains" /></Sequence>
-      <Sequence from={578} durationInFrames={82}><Outro /></Sequence>
+      <Sequence from={326} durationInFrames={150}><Scene Screen={InstrumentScreen} tab="watchlist" showTabBar={false} eyebrow="Chart" title="Every signal, explained" /></Sequence>
+      <Sequence from={468} durationInFrames={140}><Scene Screen={LensesScreen} tab="wallet" eyebrow="Alpha Pro" title="AI that explains" /></Sequence>
+      <Sequence from={600} durationInFrames={82}><Outro /></Sequence>
     </AbsoluteFill>
   );
 }

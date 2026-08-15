@@ -1,13 +1,12 @@
 "use client";
 
 /**
- * Five more accurate/grounded app screens for the Apple-style deep-dive
- * sections. NewsScreen and OptimizerScreen are traced from real screenshots
- * (public/marketing/screens/{news,portfolio-optimizer}.png). Scanner/Compare/
- * AlphaScore have no reference screenshot — built from the exact feature
- * specs in docs/free-vs-pro-v1.md (result counts, metric counts) rather than
- * invented, using the same primitives/tone language already validated
- * against real screens elsewhere in this file set.
+ * Accurate/grounded app screens for the Apple-style deep-dive sections.
+ * Every screen here is traced from a real device screenshot — News,
+ * Optimizer, Scanner, Watchlist and AlphaScore from live app captures;
+ * Compare is the one exception still awaiting a reference screenshot (its
+ * List/Scan/Compare sibling tabs are confirmed real, its own detail content
+ * is not yet verified).
  */
 
 import { motion } from "motion/react";
@@ -20,46 +19,123 @@ const clampReveal = (play: boolean, i: number) => ({
 });
 
 /* ============================ News ============================ */
+/* Real data traced from live screenshots of both tabs. Headlines has no
+   thumbnail images — text-only cards, date-grouped, with a sentiment badge.
+   Brief is the personalized tab: a Morning Brief summary card followed by
+   per-symbol "For you" cards tied to the user's own portfolio/watchlist. */
 
-const ARTICLES = [
+const HEADLINES = [
   {
-    title: "Pimco's Stracke Sees Client Diversification Away From US",
-    excerpt: "Pimco President Christian Stracke discusses the firm's expansion of its international business. Speaking at the Milken Institute Global Conference in Beverly Hills, Califor…",
-    src: "youtube.com",
-    time: "2026-05-04 17:02:13",
-    grad: "linear-gradient(135deg,#1e3a8a,#0f172a)",
+    dateGroup: "TUESDAY, JUN 30",
+    title: "Children's Miracle Network Welcomes DICK'S Sporting Goods Foundation as New National Partner",
+    excerpt: "Salt Lake City, UT, June 30, 2026 (GLOBE NEWSWIRE) -- Children's Miracle Network announced the DICK'S Sporting Goods Foundation as a new national partner, marking the beginning of a strategic relationship focused on helping children thrive through access to…",
+    src: "Globenewswire",
+    time: "6/30/2026, 6:04:00 PM",
+    sentiment: "Positive",
   },
   {
-    title: "Markets Look Past War Risks as Earnings Remain Strong",
-    excerpt: "S&P 500 Posts Best Month Since November 2020 Despite lingering geopolitical tensions, higher oil prices, and renewed inflation concerns, equities moved higher in April…",
-    src: "bloomberg.com",
-    time: "2026-05-04 13:44:02",
-    grad: "linear-gradient(135deg,#14532d,#022c22)",
-  },
-  {
-    title: "Fed Officials Signal Patience on Rate Cuts Through Q3",
-    excerpt: "Several regional presidents reiterated a wait-and-see approach on policy, citing sticky core inflation and a resilient labor market heading into summer…",
-    src: "reuters.com",
-    time: "2026-05-04 09:18:47",
-    grad: "linear-gradient(135deg,#7c2d12,#1c1917)",
+    title: "Vanguard and i3 Product Development Partner to Simplify Battery Integration for Commercial OEMs",
+    excerpt: "Milwaukee, WI, June 30, 2026 (GLOBE NEWSWIRE) -- Vanguard has welcomed i3 Product Development as the newest member of its Battery Technology Partner program. The strategic partnership brings together industry-leading Vanguard® commercial-grade lithiu…",
+    src: "Globenewswire",
+    time: "6/30/2026, 5:00:00 PM",
+    sentiment: "Positive",
   },
 ];
 
-export function NewsScreen({ play = true }: { play?: boolean }) {
+const BRIEF_ITEMS = [
+  { tag: "JSW", time: "8/12/2026, 6:03:03 PM", title: "JSW.WA: uptrend meets low profitability", forYou: "The positive trend may enhance your portfolio's performance, but the financial risks wa…" },
+  { tag: "ABAT", time: "8/11/2026, 6:04:30 PM", title: "ABAT.US: uptrend meets low profitability", forYou: "The uptrend may offer short-term gains, but low profitability raises concerns. Monitor for p…" },
+  { tag: "ARM", time: "8/11/2026, 9:12:09 PM", title: "ARM.US moved -5.2%", forYou: "The decline may impact your overall portfolio performance significantly. Consider mon…" },
+];
+
+function NewsTabHeader({ active }: { active: "Headlines" | "Brief" }) {
   return (
-    <div className="relative flex h-full flex-col bg-black text-white">
-      <StatusBar time="9:41" />
+    <>
       <div className="px-4 pt-2">
         <h1 className="text-[24px] font-bold tracking-tight">News</h1>
       </div>
+      <div className="px-4 pt-3">
+        <div className="flex gap-1 rounded-2xl bg-white/[0.05] p-1">
+          {(["Headlines", "Brief"] as const).map((t) => (
+            <span
+              key={t}
+              className="flex-1 rounded-xl py-1.5 text-center text-[10px] font-semibold"
+              style={t === active ? { background: "rgba(255,255,255,0.10)", color: "#fff" } : { color: "rgba(235,235,245,0.5)" }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export function NewsScreen({ play = true, tab = "brief" }: { play?: boolean; tab?: "headlines" | "brief" }) {
+  if (tab === "headlines") {
+    return (
+      <div className="relative flex h-full flex-col bg-black text-white">
+        <StatusBar time="9:41" />
+        <NewsTabHeader active="Headlines" />
+        <div className="flex-1 overflow-hidden px-4 pt-3">
+          {HEADLINES.map((a, i) => (
+            <motion.div key={a.title} {...clampReveal(play, i)}>
+              {a.dateGroup && <div className="mb-2 text-[9px] font-bold tracking-wide text-white/40">{a.dateGroup}</div>}
+              <AppCard className="mb-3">
+                <div className="text-[11px] font-bold leading-snug">{a.title}</div>
+                <div className="mt-1.5 text-[9px] leading-snug text-white/45">{a.excerpt}</div>
+                <div className="mt-1.5 text-[9px] text-white/40">{a.src} · {a.time}</div>
+                <span className="mt-2 inline-block rounded-md px-2 py-0.5 text-[8px] font-semibold" style={{ background: "rgba(74,222,128,0.16)", color: "var(--gain)" }}>{a.sentiment}</span>
+              </AppCard>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="relative flex h-full flex-col bg-black text-white">
+      <StatusBar time="9:41" />
+      <NewsTabHeader active="Brief" />
       <div className="flex-1 overflow-hidden px-4 pt-3">
-        <div className="divide-y divide-white/[0.06]">
-          {ARTICLES.map((a, i) => (
-            <motion.div key={a.title} className="py-3" {...clampReveal(play, i)}>
-              <div className="h-24 w-full rounded-xl" style={{ background: a.grad }} />
-              <div className="mt-2 text-[11px] font-bold leading-snug">{a.title}</div>
-              <div className="mt-1 text-[9px] leading-snug text-white/45">{a.excerpt}</div>
-              <div className="mt-1 text-[9px] text-white/40">{a.src} · {a.time}</div>
+        <p className="text-[9px] text-white/40">Personalized updates for your portfolio and watchlist.</p>
+
+        <div
+          className="mt-2 rounded-[20px] border p-4"
+          style={{ background: "color-mix(in srgb, var(--ai) 9%, var(--app-card))", borderColor: "color-mix(in srgb, var(--ai) 30%, transparent)" }}
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-[13px] font-bold">
+              <span style={{ color: "var(--ai)" }}>✦</span> Morning Brief
+            </div>
+            <span className="text-[10px] font-semibold" style={{ color: "var(--brand)" }}>Weekly</span>
+          </div>
+          <div className="mt-0.5 text-[9px] text-white/40">2026-08-13</div>
+          <p className="mt-2 text-[10px] leading-snug text-white/85">
+            Good morning. Today&apos;s market opens with mixed signals as some stocks exhibit positive trends while others face declines. Notably, JSW.WA and ABAT.US show upward momen…
+          </p>
+          <div className="mt-2 space-y-1 text-[9px] leading-snug text-white/55">
+            <div>• JSW.WA shows positive momentum but carries financial risks due to high debt.</div>
+            <div>• ABAT.US has seen a significant price increase, yet low profitability may impact long-term confidence.</div>
+            <div>• ARM.US&apos;s recent decline raises concerns, despite a favorable growth outlook.</div>
+          </div>
+        </div>
+
+        <div className="mt-3 space-y-2">
+          {BRIEF_ITEMS.map((it, i) => (
+            <motion.div key={it.tag} {...clampReveal(play, i)}>
+              <AppCard>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-1.5">
+                    <span className="rounded-md px-1.5 py-0.5 text-[8px] font-semibold" style={{ background: "rgba(255,159,10,0.16)", color: "var(--amber)" }}>Price</span>
+                    <span className="text-[9px] text-white/40">{it.tag} · {it.time}</span>
+                  </div>
+                  <span className="text-white/30">⌄</span>
+                </div>
+                <div className="mt-1.5 text-[11px] font-bold leading-snug">{it.title}</div>
+                <div className="mt-1 text-[9px] leading-snug text-white/45">For you: {it.forYou}</div>
+              </AppCard>
             </motion.div>
           ))}
         </div>
@@ -167,47 +243,164 @@ export function OptimizerScreen({ play = true }: { play?: boolean }) {
   );
 }
 
-/* ============================ Market Scanner ============================ */
+/* ============================ Watchlist tabs (shared) ============================ */
+/* Real "Watchlist" screen has a List/Scan/Compare pill switcher right below
+   the title — shared here so Scanner/Compare/Watchlist all show it. */
 
+export function WatchlistTabHeader({ active }: { active: "List" | "Scan" | "Compare" }) {
+  const tabs = ["List", "Scan", "Compare"] as const;
+  return (
+    <>
+      <div className="px-4 pt-2">
+        <h1 className="text-[24px] font-bold tracking-tight">Watchlist</h1>
+      </div>
+      <div className="px-4 pt-3">
+        <div className="flex gap-1 rounded-2xl bg-white/[0.05] p-1">
+          {tabs.map((t) => (
+            <span
+              key={t}
+              className="flex-1 rounded-xl py-1.5 text-center text-[10px] font-semibold"
+              style={t === active ? { background: "rgba(255,255,255,0.10)", color: "#fff" } : { color: "rgba(235,235,245,0.5)" }}
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ============================ Instrument Scanner ============================ */
+/* Real data traced from a live "Watchlist → Scan" screenshot. */
+
+const SCAN_PRESETS = ["Balanced", "Value", "Quality", "Growth", "Low risk"];
+const SCAN_WEIGHTS = [
+  { name: "Quality", pct: 20 },
+  { name: "Distress", pct: 20 },
+  { name: "Profitability", pct: 20 },
+  { name: "Leverage", pct: 20 },
+  { name: "Cash flow", pct: 20 },
+];
 const SCAN_ROWS = [
-  { s: "NVDA", sig: "Strong buy", sc: 92 },
-  { s: "ASML", sig: "Accumulate", sc: 81 },
-  { s: "MSFT", sig: "Hold", sc: 67 },
-  { s: "TSLA", sig: "Caution", sc: 41 },
-  { s: "COIN", sig: "High risk", sc: 28 },
+  { rank: 1, s: "TSM.US", pillar: "Strongest pillar: profitability (90/100)", sc: 88, chg: "1.68%", up: true },
+  { rank: 2, s: "GOOGL.US", pillar: "Strong profitability · score 85", sc: 85, chg: "-0.08%", up: false },
+  { rank: 3, s: "ISRG", pillar: "Strong leverage · score 83", sc: 83, chg: "0.01%", up: true },
 ];
 
 export function ScannerScreen({ play = true }: { play?: boolean }) {
   return (
     <div className="relative flex h-full flex-col bg-black text-white">
       <StatusBar time="9:41" />
-      <div className="px-4 pt-2">
-        <h1 className="text-[24px] font-bold tracking-tight">Scanner</h1>
-      </div>
+      <WatchlistTabHeader active="Scan" />
       <div className="flex-1 overflow-hidden px-4 pt-3">
         <AppCard>
-          <div className="flex items-center justify-between">
-            <div className="text-[10px] font-bold tracking-wide text-white/45">500 RESULTS · PORTFOLIO-AWARE</div>
-            <Chip>PRO</Chip>
+          <div className="text-[12px] font-bold tracking-wide">INSTRUMENT SCANNER</div>
+          <div className="mt-1 text-[10px] text-white/45">Rank your watchlist with a scoring preset.</div>
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {SCAN_PRESETS.map((p) => (
+              <span
+                key={p}
+                className="rounded-full px-2.5 py-1 text-[9px] font-semibold"
+                style={
+                  p === "Balanced"
+                    ? { border: "1px solid var(--brand)", color: "var(--brand)", background: "rgba(10,132,255,0.12)" }
+                    : { border: "0.5px solid rgba(255,255,255,0.14)", color: "rgba(235,235,245,0.7)" }
+                }
+              >
+                {p}
+              </span>
+            ))}
           </div>
-          <div className="mt-2 divide-y divide-white/[0.06]">
-            {SCAN_ROWS.map((r, i) => {
-              const col = r.sc >= 70 ? "var(--gain)" : r.sc >= 50 ? "var(--amber)" : "var(--loss)";
-              return (
-                <motion.div key={r.s} className="flex items-center justify-between py-2.5" {...clampReveal(play, i)}>
-                  <div className="flex items-center gap-2.5">
-                    <span className="w-14 text-[13px] font-bold">{r.s}</span>
-                    <span className="text-[10px] text-white/55">{r.sig}</span>
+
+          <div className="mt-4 text-[10px] font-bold tracking-wide text-white/45">CUSTOM MODEL WEIGHTS</div>
+          <div className="mt-1 text-[9px] leading-snug text-white/40">Adjust how each fundamental pillar contributes to Alpha Score.</div>
+          <div className="mt-2 space-y-1.5">
+            {SCAN_WEIGHTS.map((w) => (
+              <div key={w.name} className="flex items-center justify-between text-[10px]">
+                <span className="text-white/75">{w.name}</span>
+                <span className="font-semibold text-white/90">{w.pct}%</span>
+              </div>
+            ))}
+          </div>
+        </AppCard>
+
+        <div
+          className="mt-3 rounded-[20px] border p-4"
+          style={{ background: "color-mix(in srgb, var(--ai) 9%, var(--app-card))", borderColor: "color-mix(in srgb, var(--ai) 30%, transparent)" }}
+        >
+          <div className="text-[11px] font-bold tracking-wide">WHY THIS RESULT?</div>
+          <div className="mt-1 text-[11px] font-bold">TSM.US tops your balanced scan</div>
+          <div className="mt-1 text-[9px] leading-snug text-white/50">Strongest pillar: profitability (90/100). Educational ranking of 62 instruments—not buy/sell advice.</div>
+        </div>
+
+        <div className="mt-3 space-y-2">
+          {SCAN_ROWS.map((r, i) => (
+            <motion.div key={r.s} {...clampReveal(play, i)}>
+              <AppCard className="flex flex-row items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full text-[9px] font-bold" style={{ background: "rgba(74,222,128,0.16)", color: "var(--gain)" }}>#{r.rank}</span>
+                  <div>
+                    <div className="text-[12px] font-bold">{r.s}</div>
+                    <div className="text-[8px] text-white/40">{r.pillar}</div>
                   </div>
-                  <span
-                    className="rounded-lg px-2 py-0.5 text-[11px] font-bold"
-                    style={{ color: col, background: `color-mix(in srgb, ${col} 16%, transparent)` }}
-                  >
-                    {r.sc}
-                  </span>
-                </motion.div>
-              );
-            })}
+                </div>
+                <div className="text-right">
+                  <div className="text-[13px] font-bold" style={{ color: "var(--gain)" }}>{r.sc}</div>
+                  <div className="text-[9px]" style={{ color: r.up ? "var(--gain)" : "var(--loss)" }}>{r.chg}</div>
+                </div>
+              </AppCard>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================ Watchlist (List) ============================ */
+/* Real data traced from a live "Watchlist → List" screenshot. */
+
+const WATCH_ROWS = [
+  { sym: "VZ.US", ex: "US", price: "47.27 USD", chg: "0.51%", up: true },
+  { sym: "PZU.WA", ex: "WA", price: "72.80 USD", chg: "-0.36%", up: false },
+  { sym: "TTD.US", ex: "US", price: "13.56 USD", chg: "1.27%", up: true },
+  { sym: "MSFT.US", ex: "US", price: "503.81 USD", chg: "-0.44%", up: false },
+];
+
+export function WatchlistScreen({ play = true }: { play?: boolean }) {
+  return (
+    <div className="relative flex h-full flex-col bg-black text-white">
+      <StatusBar time="9:41" />
+      <WatchlistTabHeader active="List" />
+      <div className="flex-1 overflow-hidden px-4 pt-3">
+        <AppCard>
+          <div className="text-[12px] font-bold tracking-wide">SEARCH</div>
+          <p className="mt-1 text-[10px] leading-snug text-white/45">Find by symbol or company name, then add to watchlist.</p>
+          <div className="mt-2 rounded-xl border border-white/[0.1] px-3 py-2 text-[10px] text-white/35">e.g. AAPL</div>
+        </AppCard>
+
+        <AppCard className="mt-3">
+          <div className="text-[12px] font-bold tracking-wide">WATCHLIST PREVIEW</div>
+          <p className="mt-1 text-[10px] leading-snug text-white/45">Manage your tracked symbols in one place.</p>
+          <div className="mt-2 divide-y divide-white/[0.06]">
+            {WATCH_ROWS.map((w, i) => (
+              <motion.div key={w.sym} className="flex items-center justify-between py-2.5" {...clampReveal(play, i)}>
+                <div>
+                  <div className="text-[12px] font-bold">{w.sym}</div>
+                  <div className="text-[8px] text-white/40">{w.ex}</div>
+                  <div className="mt-0.5 text-[9px]">
+                    <span className="text-white/60">{w.price}</span>{" "}
+                    <span style={{ color: w.up ? "var(--gain)" : "var(--loss)" }}>{w.chg}</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5 text-white/35">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-[9px]">︿</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-white/10 text-[9px]">﹀</span>
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[color:rgba(255,69,58,0.4)] text-[9px]" style={{ color: "var(--loss)" }}>🗑</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </AppCard>
       </div>
@@ -216,59 +409,11 @@ export function ScannerScreen({ play = true }: { play?: boolean }) {
 }
 
 /* ============================ Compare ============================ */
-
-const COMPARE_SYMS = ["ADBE", "ASML", "NVDA", "MSFT"];
-const COMPARE_ROWS = [
-  { label: "P/E", vals: ["31.2", "38.6", "58.2", "34.1"] },
-  { label: "Growth", vals: ["+18%", "+22%", "+61%", "+14%"] },
-  { label: "Margin", vals: ["42%", "31%", "56%", "38%"] },
-  { label: "Beta", vals: ["1.12", "1.24", "1.68", "0.94"] },
-];
-
-export function CompareScreen({ play = true }: { play?: boolean }) {
-  return (
-    <div className="relative flex h-full flex-col bg-black text-white">
-      <StatusBar time="9:41" />
-      <div className="px-4 pt-2">
-        <h1 className="text-[24px] font-bold tracking-tight">Compare</h1>
-      </div>
-      <div className="flex-1 overflow-hidden px-4 pt-3">
-        <AppCard>
-          <div className="text-[10px] font-bold tracking-wide text-white/45">4 INSTRUMENTS · ALL METRICS</div>
-          <div className="mt-3 grid grid-cols-5 gap-1 text-center">
-            <span />
-            {COMPARE_SYMS.map((s) => (
-              <span key={s} className="text-[10px] font-bold">{s}</span>
-            ))}
-          </div>
-          {COMPARE_ROWS.map((row, i) => (
-            <motion.div key={row.label} className="mt-2 grid grid-cols-5 gap-1 border-t border-white/[0.06] pt-2 text-center" {...clampReveal(play, i)}>
-              <span className="text-left text-[9px] text-white/45">{row.label}</span>
-              {row.vals.map((v, j) => (
-                <span key={j} className="text-[10px] text-white/80">{v}</span>
-              ))}
-            </motion.div>
-          ))}
-        </AppCard>
-
-        <AppCard className="mt-3">
-          <div className="text-[10px] font-bold tracking-wide text-white/45">CORRELATION MATRIX</div>
-          <div className="mt-2 grid grid-cols-4 gap-1">
-            {[0.62, 0.71, 0.44, 0.58, 0.39, 0.67].map((v, i) => (
-              <div
-                key={i}
-                className="flex aspect-square items-center justify-center rounded-md text-[9px] font-semibold"
-                style={{ background: `rgba(10,132,255,${0.15 + v * 0.35})`, color: "white" }}
-              >
-                {v.toFixed(2)}
-              </div>
-            ))}
-          </div>
-        </AppCard>
-      </div>
-    </div>
-  );
-}
+/* Deliberately not built: the List/Scan/Compare tab bar is confirmed real,
+   but no reference screenshot of the Compare tab's actual content exists.
+   An earlier version fabricated a metrics table + correlation matrix here —
+   removed per the "no invented renders" rule. Rebuild this once a real
+   screenshot of the Compare tab is available. */
 
 /* ============================ Alpha Score ============================ */
 /* Real data traced from a live GOOGL.US screenshot — pillar names, /100
@@ -348,19 +493,95 @@ export function AlphaScoreScreen({ play = true }: { play?: boolean }) {
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[12px]" style={{ background: "rgba(74,222,128,0.16)", color: "var(--gain)" }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>{p.icon}</svg>
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-2">
                     <span className="text-[13px] font-bold">{p.name}</span>
-                    <ScoreMeter score={p.score} />
-                    <span className="text-[11px] font-bold" style={{ color: "var(--gain)" }}>{p.score}/100</span>
+                    <span className="shrink-0 text-[11px] font-bold" style={{ color: "var(--gain)" }}>{p.score}/100</span>
                   </div>
-                  <div className="mt-0.5 text-[10px] font-medium text-white/55">{p.label}</div>
+                  <div className="mt-1.5">
+                    <ScoreMeter score={p.score} />
+                  </div>
+                  <div className="mt-1 text-[10px] font-medium text-white/55">{p.label}</div>
                   <p className="mt-1 text-[9px] leading-snug text-white/40">{p.desc}</p>
                 </div>
               </AppCard>
             </motion.div>
           ))}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ============================ Instrument Overview + Fundamentals ============================ */
+/* Real data traced from a live MSFT.US screenshot. */
+
+const OVERVIEW_ROWS: [string, string, string?][] = [
+  ["Symbol", "MSFT.US"],
+  ["Exchange", "US"],
+  ["Currency", "USD"],
+  ["Type", "stock"],
+  ["Last", "503.81 USD"],
+  ["Day Δ", "-2.25 (-0.44%)", "var(--loss)"],
+  ["Last update:", "13 Aug 2026 at 02:00"],
+];
+
+const FUNDAMENTALS_ROWS: [string, string][] = [
+  ["Market cap", "3.66T USD"],
+  ["P/E", "27.45"],
+  ["EPS", "17.94"],
+  ["P/B", "8.49"],
+  ["Enterprise value", "3.72T USD"],
+  ["EV / EBITDA", "18.01"],
+  ["PEG", "1.65"],
+  ["Revenue (TTM)", "331.84B USD"],
+  ["Net income (TTM)", "133.75B USD"],
+  ["ROE", "34.0%"],
+  ["ROA", "14.1%"],
+  ["Gross margin", "67.9%"],
+  ["Debt / equity", "0.71"],
+  ["Current ratio", "1.23"],
+  ["Dividend yield", "0.72%"],
+  ["Dividend / share", "3.64"],
+  ["Beta", "1.10"],
+  ["52-week range", "349.2 – 550.24"],
+  ["Sector", "Technology"],
+  ["Industry", "Software - Infrastructure"],
+];
+
+export function InstrumentOverviewScreen({ play = true }: { play?: boolean }) {
+  return (
+    <div className="relative flex h-full flex-col bg-black text-white">
+      <StatusBar time="9:41" />
+      <DetailHeaderRow title="MSFT.US" right="share" />
+      <div className="flex-1 overflow-hidden px-4 pt-3">
+        <AppCard>
+          <div className="text-[12px] font-bold tracking-wide">OVERVIEW</div>
+          <div className="mt-1 text-[9px] text-white/45">Instrument identity and market context.</div>
+          <div className="mt-3 space-y-1.5">
+            {OVERVIEW_ROWS.map(([label, value, color], i) => (
+              <motion.div key={label} className="flex items-center justify-between text-[10px]" {...clampReveal(play, i)}>
+                <span className="text-white/50">{label}</span>
+                <span className="font-semibold" style={{ color: color ?? "#fff" }}>{value}</span>
+              </motion.div>
+            ))}
+          </div>
+        </AppCard>
+
+        <AppCard className="mt-3">
+          <div className="flex items-center justify-between">
+            <div className="text-[12px] font-bold tracking-wide">FUNDAMENTALS</div>
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/[0.08] text-[9px] text-white/50">?</span>
+          </div>
+          <div className="mt-3 space-y-1.5">
+            {FUNDAMENTALS_ROWS.map(([label, value], i) => (
+              <motion.div key={label} className="flex items-center justify-between text-[10px]" {...clampReveal(play, i)}>
+                <span className="text-white/50">{label}</span>
+                <span className="font-semibold text-white">{value}</span>
+              </motion.div>
+            ))}
+          </div>
+        </AppCard>
       </div>
     </div>
   );

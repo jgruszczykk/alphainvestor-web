@@ -3,10 +3,10 @@ import { Aurora } from "@/components/site/Aurora";
 import { Hero } from "@/components/site/Hero";
 import {
   AlphaScoreScreen,
-  CompareScreen,
   NewsScreen,
   OptimizerScreen,
   ScannerScreen,
+  WatchlistScreen,
 } from "@/components/site/phone/moreScreens";
 import { TechnicalLensesScreen } from "@/components/site/phone/screens";
 import { ProductTour } from "@/components/site/ProductTour";
@@ -20,12 +20,10 @@ import { FinalCta } from "@/components/site/sections/FinalCta";
 import { Imports } from "@/components/site/sections/Imports";
 import { MoreFeatures } from "@/components/site/sections/MoreFeatures";
 import { Pricing } from "@/components/site/sections/Pricing";
+import { VideoSection } from "@/components/site/sections/VideoSection";
 import { getSiteContent } from "@/content/site";
 
-// VideoSection is deliberately not wired in: the rendered demo video
-// (public/media/demo.mp4) predates the AppCard/font-size/layout fidelity
-// fixes and its copy claims "real screen capture" when it's actually a
-// Remotion recreation — both need to be true before this comes back.
+const DEMO_VIDEO_SOURCES = [{ src: "/media/alphainvestor-ad-15s.mp4", type: "video/mp4" }];
 
 export function SiteHome({ locale }: { locale: string }) {
   const c = getSiteContent(locale);
@@ -41,6 +39,7 @@ export function SiteHome({ locale }: { locale: string }) {
         <Hero hero={c.hero} trust={c.trust} appStore={c.appStore} />
         <ProductTour tour={c.tour} />
         <Features features={c.features} />
+        <VideoSection video={c.video} sources={DEMO_VIDEO_SOURCES} poster="/media/demo-poster.jpg" />
 
         {/* Free-tier deep dives */}
         <FeatureShowcase
@@ -49,6 +48,15 @@ export function SiteHome({ locale }: { locale: string }) {
           body={s.optimizer.body}
           bullets={s.optimizer.bullets}
           screen={<OptimizerScreen />}
+        />
+        <FeatureShowcase
+          eyebrow={s.watchlist.eyebrow}
+          title={s.watchlist.title}
+          body={s.watchlist.body}
+          stat={s.watchlist.stat}
+          statLabel={s.watchlist.statLabel}
+          reverse
+          screen={<WatchlistScreen />}
         />
         <FeatureShowcase
           eyebrow={s.news.eyebrow}
@@ -73,16 +81,6 @@ export function SiteHome({ locale }: { locale: string }) {
           stat={s.scanner.stat}
           statLabel={s.scanner.statLabel}
           screen={<ScannerScreen />}
-        />
-        <FeatureShowcase
-          eyebrow={s.compare.eyebrow}
-          eyebrowColor="var(--ai-soft)"
-          title={s.compare.title}
-          body={s.compare.body}
-          stat={s.compare.stat}
-          statLabel={s.compare.statLabel}
-          reverse
-          screen={<CompareScreen />}
         />
         <FeatureShowcase
           eyebrow={s.alphaScore.eyebrow}

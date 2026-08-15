@@ -6,8 +6,10 @@ import { PhoneFrame } from "@/components/site/phone/PhoneFrame";
 import {
   AllocationScreen,
   InstrumentScreen,
+  WalletKpiScreen,
   WalletValueScreen,
 } from "@/components/site/phone/screens";
+import { InstrumentOverviewScreen } from "@/components/site/phone/moreScreens";
 import type { getSiteContent } from "@/content/site";
 
 type Content = ReturnType<typeof getSiteContent>;
@@ -15,7 +17,7 @@ type Content = ReturnType<typeof getSiteContent>;
 // Free-tier features only — Five Lenses and AI Insight are Pro, showcased
 // together in their own dedicated section (see AlphaPro.tsx), not duplicated
 // here in the free guided tour.
-const SCREENS = [WalletValueScreen, AllocationScreen, InstrumentScreen];
+const SCREENS = [WalletValueScreen, AllocationScreen, WalletKpiScreen, InstrumentOverviewScreen, InstrumentScreen];
 
 export function ProductTour({ tour }: { tour: Content["tour"] }) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -35,15 +37,49 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
   });
 
   return (
-    <section id="tour" ref={sectionRef} className="relative" style={{ height: `${steps * 90 + 40}vh` }}>
+    <section
+      id="tour"
+      ref={sectionRef}
+      // Per-step scroll distance — shorter on mobile (was 90vh, dragged on
+      // touch scroll) and tightened on desktop too (was 90vh, felt slow).
+      className="relative [--tour-step:50vh] lg:[--tour-step:65vh]"
+      style={{ height: `calc(${steps} * var(--tour-step) + 40vh)` }}
+    >
+      {/* Mobile-only intro: scrolls past normally, above the sticky-pinned
+          phone+tile view below — it must not eat into that view's h-screen
+          budget or stay in the viewport while stepping through mockups.
+          Desktop keeps the eyebrow/heading inside the pinned copy column
+          (unchanged, see `hidden lg:*` below). */}
+      <div className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:hidden">
+        <span className="eyebrow">{tour.eyebrow}</span>
+        <h2 className="mt-4 max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)]">
+          {tour.title}
+        </h2>
+      </div>
+
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10">
           {/* Copy column */}
           <div className="order-2 lg:order-1">
-            <span className="eyebrow">{tour.eyebrow}</span>
-            <h2 className="mt-4 max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)] sm:text-3xl lg:text-4xl">
+            <div className="hidden lg:block">
+              <span className="eyebrow">{tour.eyebrow}</span>
+            </div>
+            <h2 className="mt-4 hidden max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)] sm:text-3xl lg:block lg:text-4xl">
               {tour.title}
             </h2>
+
+            {/* Step progress dots — mobile only, since mobile shows one tile
+                at a time (see below) and needs a sense of "N of 5". */}
+            <div className="mt-6 flex items-center gap-2 lg:hidden">
+              {tour.steps.map((step, i) => (
+                <span
+                  key={step.tag}
+                  className="h-1.5 flex-1 rounded-full transition-colors duration-300"
+                  style={{ background: i === active ? "var(--brand)" : "var(--border)" }}
+                  aria-hidden
+                />
+              ))}
+            </div>
 
             <div className="mt-8 space-y-2">
               {tour.steps.map((step, i) => {
@@ -53,12 +89,18 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
                     key={step.tag}
                     type="button"
                     onClick={() => {
+                      // Instant feedback on tap — on mobile only the active
+                      // tile renders at all, so this is what switches it;
+                      // on desktop the scroll below still re-syncs `active`
+                      // every frame, so this just removes the lag before
+                      // the smooth-scroll animation catches up.
+                      setActive(i);
                       const el = sectionRef.current;
                       if (!el) return;
                       const top = el.offsetTop + (el.offsetHeight - window.innerHeight) * ((i + 0.5) / steps);
                       window.scrollTo({ top, behavior: "smooth" });
                     }}
-                    className="block w-full rounded-2xl border p-4 text-left transition-all duration-300"
+                    className={`w-full rounded-2xl border p-4 text-left transition-all duration-300 ${on ? "block" : "hidden lg:block"}`}
                     style={{
                       borderColor: on ? "color-mix(in srgb, var(--brand) 40%, transparent)" : "var(--border)",
                       background: on ? "color-mix(in srgb, var(--brand) 8%, transparent)" : "transparent",
@@ -96,7 +138,7 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
           </div>
 
           {/* Phone column */}
-          <div className="order-1 mx-auto w-full max-w-[260px] lg:order-2 lg:max-w-[300px]">
+          <div className="order-1 mx-auto w-full max-w-[210px] lg:order-2 lg:max-w-[300px]">
             <div className="relative">
               {SCREENS.map((Screen, i) => (
                 <motion.div

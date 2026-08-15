@@ -127,9 +127,11 @@ export function TabBar({ tabs }: { tabs: Tab[] }) {
 export function SegmentControl({
   options,
   activeIndex = 0,
+  onSelect,
 }: {
   options: string[];
   activeIndex?: number;
+  onSelect?: (index: number) => void;
 }) {
   return (
     // Equal-width grid columns (not a left-packed flex row) so the pills
@@ -137,9 +139,11 @@ export function SegmentControl({
     // each label's text width.
     <div className="grid w-full gap-2" style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}>
       {options.map((opt, i) => (
-        <span
+        <button
           key={opt}
-          className="rounded-full px-2 py-1 text-center text-[10px] font-semibold"
+          type="button"
+          onClick={onSelect ? () => onSelect(i) : undefined}
+          className={`rounded-full px-2 py-1 text-center text-[10px] font-semibold ${onSelect ? "cursor-pointer" : ""}`}
           style={
             i === activeIndex
               ? {
@@ -158,7 +162,7 @@ export function SegmentControl({
           }
         >
           {opt}
-        </span>
+        </button>
       ))}
     </div>
   );
@@ -196,6 +200,10 @@ export function CountUp({
 
   useEffect(() => {
     if (inView && play) spring.set(value);
+    // Reset when hidden (e.g. a tour step scrolls out of active view) so the
+    // count-up replays from 0 the next time this screen becomes active,
+    // instead of silently staying at its final value forever.
+    else if (!play) spring.jump(0);
   }, [inView, play, spring, value]);
 
   return (

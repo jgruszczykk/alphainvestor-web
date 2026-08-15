@@ -43,12 +43,22 @@ const en = {
       {
         tag: "Allocation",
         title: "See how you're really split",
-        body: "Allocation by portfolio and sector, a plain-language health score, and your largest holdings surfaced instantly.",
+        body: "Allocation by wallet and asset class — plus your largest holdings, surfaced instantly, no digging required.",
       },
       {
-        tag: "Instrument",
+        tag: "Health",
+        title: "One score for the whole portfolio",
+        body: "A single health score plus every KPI that matters — P/L, market value, cost basis, YTD — in the currency you think in.",
+      },
+      {
+        tag: "Fundamentals",
+        title: "Every instrument, fully profiled",
+        body: "Market cap, P/E, margins, leverage and dividend yield — the fundamentals behind every price, one tap away.",
+      },
+      {
+        tag: "Chart",
         title: "Every price, chart, and indicator",
-        body: "Full price history with RSI and MACD stacked right below the chart — the same read professionals use, explained in plain language.",
+        body: "Full price history with RSI and MACD stacked right below the chart, plus a plain-language read of what they mean — the same signals professionals use.",
       },
     ],
   },
@@ -82,7 +92,7 @@ const en = {
   video: {
     eyebrow: "See it move",
     title: "A minute inside Alpha Investor",
-    sub: "Real screen capture from the iOS app — import, wallet, allocation and insights in motion.",
+    sub: "An animated walkthrough built from the real app UI — wallet, allocation, instrument charts and AI insight, in motion.",
   },
   gallery: {
     eyebrow: "Real screens",
@@ -176,11 +186,11 @@ const en = {
   },
   showcase: {
     news: {
-      eyebrow: "Market news",
-      title: "Headlines, without the doomscroll",
-      body: "General market news with source and time, scrollable right in the app — tap through to read in your browser when a headline actually matters.",
-      stat: "Live",
-      statLabel: "feed, every session",
+      eyebrow: "News · Morning Brief",
+      title: "Headlines when you want them, a brief when you don't",
+      body: "Switch between raw market headlines and a personalized Morning Brief that ties each move back to your own portfolio and watchlist — “for you,” not for everyone.",
+      stat: "2",
+      statLabel: "modes: Headlines and personalized Brief",
     },
     optimizer: {
       eyebrow: "Portfolio Optimizer",
@@ -192,12 +202,19 @@ const en = {
         "“Why this matters” context on every step",
       ],
     },
+    watchlist: {
+      eyebrow: "Watchlist",
+      title: "Track the names you're actually watching",
+      body: "Search any symbol, add it to your list, and see live price and daily change at a glance — reorder or remove with a tap.",
+      stat: "1 tap",
+      statLabel: "from search to tracked",
+    },
     scanner: {
-      eyebrow: "Market Scanner · Alpha Pro",
-      title: "Scan the market with your portfolio in mind",
-      body: "500 ranked results, aware of what you already hold — not a generic screener. Save your own presets and revisit them anytime.",
-      stat: "500",
-      statLabel: "ranked results, portfolio-aware",
+      eyebrow: "Instrument Scanner · Alpha Pro",
+      title: "Rank your watchlist, your way",
+      body: "Five scoring presets — or build your own by weighting quality, distress, profitability, leverage and cash flow — then see exactly why an instrument ranks where it does.",
+      stat: "5",
+      statLabel: "presets, plus fully custom weights",
     },
     compare: {
       eyebrow: "Compare · Alpha Pro",
@@ -293,12 +310,22 @@ const pl: SiteContent = {
       {
         tag: "Alokacja",
         title: "Zobacz, jak naprawdę jesteś podzielony",
-        body: "Alokacja wg portfela i sektora, health score w prostych słowach oraz największe pozycje od razu na wierzchu.",
+        body: "Alokacja wg portfela i klasy aktywów — a do tego największe pozycje, widoczne od razu, bez szperania.",
       },
       {
-        tag: "Instrument",
+        tag: "Kondycja",
+        title: "Jeden wynik dla całego portfela",
+        body: "Jeden health score i wszystkie kluczowe KPI — P/L, wartość rynkowa, koszt nabycia, YTD — w walucie, w której myślisz.",
+      },
+      {
+        tag: "Fundamenty",
+        title: "Każdy instrument w pełnym profilu",
+        body: "Kapitalizacja, P/E, marże, dźwignia i stopa dywidendy — fundamenty stojące za każdą ceną, jedno dotknięcie dalej.",
+      },
+      {
+        tag: "Wykres",
         title: "Każda cena, wykres i wskaźnik",
-        body: "Pełna historia ceny z RSI i MACD tuż pod wykresem — ten sam odczyt, którego używają profesjonaliści, wyjaśniony prostym językiem.",
+        body: "Pełna historia ceny z RSI i MACD tuż pod wykresem, plus prosty odczyt tego, co oznaczają — ten sam sygnał, którego używają profesjonaliści.",
       },
     ],
   },
@@ -332,7 +359,7 @@ const pl: SiteContent = {
   video: {
     eyebrow: "Zobacz w ruchu",
     title: "Minuta wewnątrz Alpha Investor",
-    sub: "Prawdziwe nagranie ekranu z aplikacji iOS — import, portfel, alokacja i insighty w ruchu.",
+    sub: "Animowany spacer zbudowany z prawdziwego interfejsu aplikacji — portfel, alokacja, wykresy instrumentów i insight AI, w ruchu.",
   },
   gallery: {
     eyebrow: "Prawdziwe ekrany",
@@ -426,11 +453,11 @@ const pl: SiteContent = {
   },
   showcase: {
     news: {
-      eyebrow: "Wiadomości rynkowe",
-      title: "Nagłówki, bez doomscrollingu",
-      body: "Ogólne wiadomości rynkowe ze źródłem i czasem, przewijalne wprost w aplikacji — otwórz w przeglądarce, gdy nagłówek naprawdę ma znaczenie.",
-      stat: "Na żywo",
-      statLabel: "feed, w każdej sesji",
+      eyebrow: "News · Morning Brief",
+      title: "Nagłówki, kiedy chcesz, brief, kiedy nie masz czasu",
+      body: "Przełączaj się między surowymi nagłówkami rynkowymi a spersonalizowanym Morning Brief, który łączy każdy ruch z Twoim portfelem i watchlistą — „dla Ciebie”, nie dla wszystkich.",
+      stat: "2",
+      statLabel: "tryby: Headlines i spersonalizowany Brief",
     },
     optimizer: {
       eyebrow: "Portfolio Optimizer",
@@ -442,12 +469,19 @@ const pl: SiteContent = {
         "Kontekst „dlaczego to ważne” przy każdym kroku",
       ],
     },
+    watchlist: {
+      eyebrow: "Watchlist",
+      title: "Śledź nazwy, które naprawdę obserwujesz",
+      body: "Wyszukaj dowolny symbol, dodaj do listy i zobacz cenę oraz dzienną zmianę na pierwszy rzut oka — zmień kolejność lub usuń jednym dotknięciem.",
+      stat: "1 dotknięcie",
+      statLabel: "od wyszukania do śledzenia",
+    },
     scanner: {
-      eyebrow: "Skaner rynku · Alpha Pro",
-      title: "Skanuj rynek z Twoim portfelem w tle",
-      body: "500 rankowanych wyników, świadomych tego, co już masz — nie generyczny screener. Zapisuj własne presety i wracaj do nich kiedy chcesz.",
-      stat: "500",
-      statLabel: "rankowanych wyników, portfolio-aware",
+      eyebrow: "Skaner instrumentów · Alpha Pro",
+      title: "Rankinguj watchlistę po swojemu",
+      body: "Pięć gotowych presetów — albo zbuduj własny, ważąc jakość, zagrożenie upadłością, rentowność, dźwignię i przepływy pieniężne — a potem zobacz dokładnie dlaczego instrument zajmuje dane miejsce.",
+      stat: "5",
+      statLabel: "presetów, plus w pełni własne wagi",
     },
     compare: {
       eyebrow: "Porównywarka · Alpha Pro",
