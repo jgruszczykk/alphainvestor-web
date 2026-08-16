@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "homeTitle": "Alpha Investor | Śledzenie i analityka portfela",
-    "homeDescription": "Śledzenie i analityka portfela dla długoterminowych inwestorów. Import brokerów, wnioski i iOS.",
+    "homeDescription": "Tracker portfela inwestycyjnego z importem z brokera, analizą alokacji i ryzyka oraz wyjaśnionymi insightami AI na iOS.",
     "privacyTitle": "Prywatność",
     "privacyDescription": "Jak Alpha Investor przetwarza i chroni Twoje dane.",
     "termsTitle": "Warunki",
@@ -183,7 +183,7 @@
     "ctaSub": "Dołącz do wczesnego dostępu po aktualizacje produktu.",
     "formConsent": "By joining, you agree we may email you about the product. See",
     "formConsentLink": "Privacy",
-    "disclaimer": "Not investment, tax, or legal advice. Verify anything that would change your money.",
+    "disclaimer": "To nie jest porada inwestycyjna, podatkowa ani prawna. Zweryfikuj wszystko, co mogłoby wpłynąć na Twoje pieniądze.",
     "roadmapTitle": "Platform roadmap",
     "roadmapIntro": "Where the platform is heading.",
     "roadmapFootnote": "Direction only - not commitments or dates.",
@@ -335,7 +335,7 @@
     "backHome": "Powrót",
     "title": "Warunki korzystania",
     "lastUpdated": "Ostatnia aktualizacja: 7 maja 2026",
-    "intro": "Te warunki określają zasady korzystania ze strony i listy oczekujących Alpha Investor, prowadzonych przez Jakub Gruszczyk QBKSHOP (NIP 6423222018). Korzystając z usługi, akceptujesz te zasady.",
+    "intro": "Te warunki określają zasady korzystania ze strony i listy oczekujących Alpha Investor, prowadzonych przez Jakuba Gruszczyka, QBKSHOP (NIP 6423222018). Korzystając z usługi, akceptujesz te zasady.",
     "sections": [
       {
         "title": "1. Akceptacja",
