@@ -44,8 +44,14 @@ function MobileTour({ tour }: { tour: Content["tour"] }) {
 
   const handleScroll = () => {
     const el = carouselRef.current;
-    if (!el) return;
-    const idx = Math.round(el.scrollLeft / el.clientWidth);
+    const first = el?.firstElementChild as HTMLElement | null;
+    if (!el || !first) return;
+    // Cards are narrower than the container (neighbors peek at the edges —
+    // see the width/padding below) so the step size is card width + gap,
+    // not the container's own clientWidth.
+    const gap = parseFloat(getComputedStyle(el).columnGap || "0");
+    const step = first.offsetWidth + gap;
+    const idx = Math.round(el.scrollLeft / step);
     setActive(Math.min(steps - 1, Math.max(0, idx)));
   };
 
@@ -72,13 +78,21 @@ function MobileTour({ tour }: { tour: Content["tour"] }) {
       <div
         ref={carouselRef}
         onScroll={handleScroll}
-        className="mt-6 flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        // Cards are narrower than the viewport (86%) with matching side
+        // padding, so the next/previous card visibly peeks in at both
+        // edges — the standard "this is a carousel, swipe me" cue. Without
+        // it a single edge-to-edge card reads as a static screen.
+        className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-[7%] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {tour.steps.map((step, i) => {
           const Screen = SCREENS[i];
           const on = i === active;
           return (
-            <div key={step.tag} className="w-full flex-none snap-center px-4">
+            <div
+              key={step.tag}
+              className="w-[86%] flex-none snap-center transition-opacity duration-300"
+              style={{ opacity: on ? 1 : 0.4 }}
+            >
               <div className="mx-auto w-full max-w-[220px]">
                 <PhoneFrame glow={on}>
                   <Screen play={on} />
