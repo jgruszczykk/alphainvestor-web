@@ -91,7 +91,7 @@ const en = {
   },
   video: {
     eyebrow: "See it move",
-    title: "A minute inside Alpha Investor",
+    title: "A quick look inside Alpha Investor",
     sub: "An animated walkthrough built from the real app UI — wallet value, instrument charts, and AI-scored insight, in motion.",
   },
   gallery: {
@@ -358,7 +358,7 @@ const pl: SiteContent = {
   },
   video: {
     eyebrow: "Zobacz w ruchu",
-    title: "Minuta wewnątrz Alpha Investor",
+    title: "Krótkie spojrzenie na wnętrze Alpha Investor",
     sub: "Animowany spacer zbudowany z prawdziwego interfejsu aplikacji — wartość portfela, wykresy instrumentów i insight AI, w ruchu.",
   },
   gallery: {
