@@ -20,9 +20,99 @@ type Content = ReturnType<typeof getSiteContent>;
 const SCREENS = [WalletValueScreen, AllocationScreen, WalletKpiScreen, InstrumentOverviewScreen, InstrumentScreen];
 
 export function ProductTour({ tour }: { tour: Content["tour"] }) {
-  const sectionRef = useRef<HTMLElement>(null);
+  const steps = tour.steps.length;
+
+  return (
+    <section id="tour" className="relative">
+      <MobileTour tour={tour} />
+      <DesktopTour tour={tour} steps={steps} />
+    </section>
+  );
+}
+
+/** Mobile: a native horizontal scroll-snap carousel, one full-width card per
+ * step, natural document height. Deliberately NOT a vertical scroll-jacked
+ * pin like desktop — that approach relied on `dvh`, which tracks Mobile
+ * Safari's address bar as it shows/hides. Mid-pin, the bar can toggle and
+ * shrink the sticky container out from under content that was laid out for
+ * a taller state, clipping it. A horizontal carousel has no viewport-height
+ * dependency at all, so there's nothing for the browser chrome to break. */
+function MobileTour({ tour }: { tour: Content["tour"] }) {
+  const carouselRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const steps = tour.steps.length;
+
+  const handleScroll = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const idx = Math.round(el.scrollLeft / el.clientWidth);
+    setActive(Math.min(steps - 1, Math.max(0, idx)));
+  };
+
+  return (
+    <div className="lg:hidden">
+      <div className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
+        <span className="eyebrow">{tour.eyebrow}</span>
+        <h2 className="mt-4 max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)]">
+          {tour.title}
+        </h2>
+      </div>
+
+      <div className="mt-8 flex items-center gap-2 px-4">
+        {tour.steps.map((step, i) => (
+          <span
+            key={step.tag}
+            className="h-1.5 flex-1 rounded-full transition-colors duration-300"
+            style={{ background: i === active ? "var(--brand)" : "var(--border)" }}
+            aria-hidden
+          />
+        ))}
+      </div>
+
+      <div
+        ref={carouselRef}
+        onScroll={handleScroll}
+        className="mt-6 flex snap-x snap-mandatory overflow-x-auto scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {tour.steps.map((step, i) => {
+          const Screen = SCREENS[i];
+          const on = i === active;
+          return (
+            <div key={step.tag} className="w-full flex-none snap-center px-4">
+              <div className="mx-auto w-full max-w-[220px]">
+                <PhoneFrame glow={on}>
+                  <Screen play={on} />
+                </PhoneFrame>
+              </div>
+              <div className="mt-6">
+                <div className="flex items-center gap-3">
+                  <span
+                    className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold"
+                    style={{ background: "var(--brand)", color: "#fff" }}
+                  >
+                    {i + 1}
+                  </span>
+                  <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--brand-soft)" }}>
+                    {step.tag}
+                  </span>
+                </div>
+                <h3 className="mt-3 text-lg font-semibold text-[var(--heading)]">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{step.body}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/** Desktop: sticky-pinned tour, scroll position drives the active step.
+ * Unaffected by the mobile browser-chrome/dvh issue above — desktop browsers
+ * don't have a collapsing address bar eating into the viewport mid-scroll. */
+function DesktopTour({ tour, steps }: { tour: Content["tour"]; steps: number }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -37,54 +127,20 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
   });
 
   return (
-    <section
-      id="tour"
+    <div
       ref={sectionRef}
-      // Per-step scroll distance — shorter on mobile (was 90vh, dragged on
-      // touch scroll) and tightened on desktop too (was 90vh, felt slow).
-      // Uses dvh, not vh: on real mobile browsers vh is sized against the
-      // viewport with the address bar collapsed, so a static vh figure runs
-      // taller than what's actually visible once the bar is showing — the
-      // sticky phone view ends up clipped at the bottom. dvh tracks the
-      // real, current visible viewport instead.
-      className="relative [--tour-step:50dvh] lg:[--tour-step:65dvh]"
-      style={{ height: `calc(${steps} * var(--tour-step) + 40dvh)` }}
+      // Per-step scroll distance — tightened from 90vh (felt slow).
+      className="relative hidden [--tour-step:65vh] lg:block"
+      style={{ height: `calc(${steps} * var(--tour-step) + 40vh)` }}
     >
-      {/* Mobile-only intro: scrolls past normally, above the sticky-pinned
-          phone+tile view below — it must not eat into that view's h-dvh
-          budget or stay in the viewport while stepping through mockups.
-          Desktop keeps the eyebrow/heading inside the pinned copy column
-          (unchanged, see `hidden lg:*` below). */}
-      <div className="mx-auto max-w-6xl px-4 pt-20 sm:px-6 lg:hidden">
-        <span className="eyebrow">{tour.eyebrow}</span>
-        <h2 className="mt-4 max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)]">
-          {tour.title}
-        </h2>
-      </div>
-
-      <div className="sticky top-0 flex h-dvh items-center overflow-hidden">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:gap-10">
           {/* Copy column */}
           <div className="order-2 lg:order-1">
-            <div className="hidden lg:block">
-              <span className="eyebrow">{tour.eyebrow}</span>
-            </div>
-            <h2 className="mt-4 hidden max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)] sm:text-3xl lg:block lg:text-4xl">
+            <span className="eyebrow">{tour.eyebrow}</span>
+            <h2 className="mt-4 max-w-lg text-2xl font-bold leading-tight tracking-[-0.02em] text-[var(--heading)] sm:text-3xl lg:text-4xl">
               {tour.title}
             </h2>
-
-            {/* Step progress dots — mobile only, since mobile shows one tile
-                at a time (see below) and needs a sense of "N of 5". */}
-            <div className="mt-6 flex items-center gap-2 lg:hidden">
-              {tour.steps.map((step, i) => (
-                <span
-                  key={step.tag}
-                  className="h-1.5 flex-1 rounded-full transition-colors duration-300"
-                  style={{ background: i === active ? "var(--brand)" : "var(--border)" }}
-                  aria-hidden
-                />
-              ))}
-            </div>
 
             <div className="mt-8 space-y-2">
               {tour.steps.map((step, i) => {
@@ -94,18 +150,13 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
                     key={step.tag}
                     type="button"
                     onClick={() => {
-                      // Instant feedback on tap — on mobile only the active
-                      // tile renders at all, so this is what switches it;
-                      // on desktop the scroll below still re-syncs `active`
-                      // every frame, so this just removes the lag before
-                      // the smooth-scroll animation catches up.
                       setActive(i);
                       const el = sectionRef.current;
                       if (!el) return;
                       const top = el.offsetTop + (el.offsetHeight - window.innerHeight) * ((i + 0.5) / steps);
                       window.scrollTo({ top, behavior: "smooth" });
                     }}
-                    className={`w-full rounded-2xl border p-4 text-left transition-all duration-300 ${on ? "block" : "hidden lg:block"}`}
+                    className="block w-full rounded-2xl border p-4 text-left transition-all duration-300"
                     style={{
                       borderColor: on ? "color-mix(in srgb, var(--brand) 40%, transparent)" : "var(--border)",
                       background: on ? "color-mix(in srgb, var(--brand) 8%, transparent)" : "transparent",
@@ -143,7 +194,7 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
           </div>
 
           {/* Phone column */}
-          <div className="order-1 mx-auto w-full max-w-[210px] lg:order-2 lg:max-w-[300px]">
+          <div className="order-1 mx-auto w-full max-w-[300px] lg:order-2">
             <div className="relative">
               {SCREENS.map((Screen, i) => (
                 <motion.div
@@ -169,6 +220,6 @@ export function ProductTour({ tour }: { tour: Content["tour"] }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
