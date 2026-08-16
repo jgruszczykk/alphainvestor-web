@@ -34,6 +34,24 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // The page has a global `scroll-behavior: smooth`, which is fine for short
+  // hops but breaks down for nav links: the guided-tour section right below
+  // the hero is a scroll-jacked sticky pin ~3-4 screens tall, and a smoothly
+  // animated jump to e.g. Pricing scrolls straight through it — visibly
+  // "steering" the tour's step animation as a side effect of merely passing
+  // by. Jump instantly instead so nav links go directly to their target.
+  const jumpTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const el = document.querySelector(href);
+    if (!el) return;
+    e.preventDefault();
+    // `behavior: "auto"` would NOT force an instant jump here — per spec it
+    // means "defer to the element's CSS `scroll-behavior` property", which
+    // is globally `smooth` on this site (see globals.css), so it would still
+    // animate straight through the tour. `"instant"` is what actually
+    // bypasses that.
+    el.scrollIntoView({ behavior: "instant", block: "start" });
+  };
+
   return (
     <header
       className={`anim-header-in fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
@@ -49,7 +67,7 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
 
         <nav className="hidden items-center gap-6 text-sm font-medium text-[var(--muted)] lg:flex">
           {LINKS.map((l) => (
-            <a key={l.id} href={l.href} className="transition-colors duration-200 hover:text-white">
+            <a key={l.id} href={l.href} onClick={(e) => jumpTo(e, l.href)} className="transition-colors duration-200 hover:text-white">
               {nav[l.id]}
             </a>
           ))}
@@ -59,6 +77,7 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
           <LanguageSwitcher />
           <a
             href="#waitlist"
+            onClick={(e) => jumpTo(e, "#waitlist")}
             className="hidden rounded-full px-4 py-2 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 md:inline-flex"
             style={{ background: "linear-gradient(180deg,var(--brand-hover),var(--brand))", boxShadow: "0 8px 22px -10px rgba(10,132,255,0.6)" }}
           >
@@ -85,7 +104,10 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
               <a
                 key={l.id}
                 href={l.href}
-                onClick={() => setOpen(false)}
+                onClick={(e) => {
+                  setOpen(false);
+                  jumpTo(e, l.href);
+                }}
                 className="rounded-lg px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover:bg-white/5"
               >
                 {nav[l.id]}
@@ -93,7 +115,10 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
             ))}
             <a
               href="#waitlist"
-              onClick={() => setOpen(false)}
+              onClick={(e) => {
+                setOpen(false);
+                jumpTo(e, "#waitlist");
+              }}
               className="mt-1 rounded-lg px-3 py-2.5 text-center text-sm font-semibold text-white"
               style={{ background: "linear-gradient(180deg,var(--brand-hover),var(--brand))" }}
             >

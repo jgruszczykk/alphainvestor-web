@@ -11,7 +11,7 @@ const en = {
   nav: {
     features: "Features",
     tour: "Product",
-    lenses: "Five Lenses",
+    lenses: "Alpha Pro",
     pricing: "Pricing",
     faq: "FAQ",
     cta: "Join Early Access",
@@ -278,7 +278,7 @@ const pl: SiteContent = {
   nav: {
     features: "Funkcje",
     tour: "Produkt",
-    lenses: "Pięć soczewek",
+    lenses: "Alpha Pro",
     pricing: "Cennik",
     faq: "FAQ",
     cta: "Dołącz do Early Access",
