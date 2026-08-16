@@ -291,7 +291,7 @@ export function Caption({ eyebrow, title, atFrame = 0 }: { eyebrow: string; titl
   const op = interpolate(f, [0, 12], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   const y = interpolate(f, [0, 16], [40, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
   return (
-    <div style={{ position: "absolute", left: 90, right: 90, bottom: 150, textAlign: "center", opacity: op, transform: `translateY(${y}px)`, fontFamily }}>
+    <div style={{ position: "absolute", left: 90, right: 90, bottom: 340, textAlign: "center", opacity: op, transform: `translateY(${y}px)`, fontFamily }}>
       <div style={{ display: "inline-block", padding: "10px 22px", borderRadius: 999, border: "1px solid rgba(148,163,184,0.3)", background: "rgba(148,163,184,0.1)", color: C.brandHi, fontSize: 26, fontWeight: 600, letterSpacing: 2, textTransform: "uppercase" }}>{eyebrow}</div>
       <div style={{ marginTop: 22, color: C.heading, fontSize: 66, fontWeight: 800, lineHeight: 1.05, letterSpacing: -1.5 }}>{title}</div>
     </div>

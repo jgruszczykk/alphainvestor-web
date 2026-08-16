@@ -50,11 +50,17 @@ function Scene({
   const op = fadeIn * fadeOut;
   const enter = first ? spring({ frame: f, fps, config: { damping: 15, stiffness: 90 } }) : 1;
   const y = interpolate(enter, [0, 1], [first ? 520 : 0, 0]);
-  // slow cinematic push-in across the scene
-  const push = interpolate(f, [0, durationInFrames], [0.83, 0.9], clamp);
+  // Slightly smaller + shifted further up than the phone alone would need,
+  // to leave clearance below for the caption once it moves out of
+  // Instagram's Reels UI dead zone (username/audio ticker/action bar cover
+  // roughly the bottom 320px, and can run higher when captions wrap) — see
+  // Caption's `bottom` offset in ui.tsx. Verified empirically by rendering
+  // stills and checking pixel position against that zone, not by CSS math
+  // alone.
+  const push = interpolate(f, [0, durationInFrames], [0.74, 0.8], clamp);
   return (
     <AbsoluteFill style={{ alignItems: "center", justifyContent: "center", opacity: op }}>
-      <div style={{ transform: `translateY(${y - 70}px) scale(${push})` }}>
+      <div style={{ transform: `translateY(${y - 130}px) scale(${push})` }}>
         <Phone tab={tab} showTabBar={showTabBar}>
           <Screen />
         </Phone>

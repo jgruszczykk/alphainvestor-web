@@ -11,16 +11,20 @@ function PhoneStage({ Screen, tab, slam = false, showTabBar = true }: { Screen: 
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
   let y: number, scale: number, rot = 0, blur = 0;
+  // Smaller + shifted further up than the phone alone would need, to leave
+  // clearance below for LowerLine once it moves out of Instagram's Reels UI
+  // dead zone (bottom ~320px+, more once a two-line caption wraps). Verified
+  // empirically against rendered stills, not CSS math alone.
   if (slam) {
     const s = spring({ frame: f, fps, config: { damping: 14, stiffness: 120, mass: 0.9 } });
-    y = interpolate(s, [0, 1], [420, -46]);
-    scale = interpolate(s, [0, 1], [0.5, 0.84]);
+    y = interpolate(s, [0, 1], [420, -110]);
+    scale = interpolate(s, [0, 1], [0.5, 0.76]);
     rot = interpolate(s, [0, 1], [-6, 0]);
     blur = interpolate(f, [0, 12], [14, 0], clamp);
   } else {
     const p = spring({ frame: f, fps, config: { damping: 16, stiffness: 220, mass: 0.6 } });
-    scale = interpolate(p, [0, 1], [0.79, 0.84]);
-    y = -46;
+    scale = interpolate(p, [0, 1], [0.72, 0.76]);
+    y = -110;
     blur = interpolate(f, [0, 6], [6, 0], clamp);
   }
   const float = Math.sin(f / 22) * 8;
@@ -37,7 +41,7 @@ function PhoneStage({ Screen, tab, slam = false, showTabBar = true }: { Screen: 
 
 function LowerLine({ text }: { text: string }) {
   return (
-    <div style={{ position: "absolute", left: 70, right: 70, bottom: 120, textAlign: "center" }}>
+    <div style={{ position: "absolute", left: 70, right: 70, bottom: 400, textAlign: "center" }}>
       <Kinetic text={text} size={70} delay={4} stagger={3} color="#0b1220" />
     </div>
   );
