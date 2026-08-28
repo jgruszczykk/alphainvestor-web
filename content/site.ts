@@ -147,11 +147,13 @@ const en = {
       ],
       cta: "Join Early Access",
     },
+    // TEMPORARY — 2026-08-28: yearly plan paused, monthly-only for now (mirrors
+    // the mobile app's SubscriptionOffer.tsx ONLY_MONTHLY_FOR_NOW flag). No
+    // `yearly` field here on purpose — Pricing.tsx no longer expects one.
     pro: {
       name: "Alpha Pro",
       price: "$9.99",
       period: "/ month",
-      yearly: "or $59.99 / year — save 50%",
       badge: "Full AI",
       features: [
         "Full portfolio & instrument AI insight",
@@ -162,7 +164,7 @@ const en = {
       cta: "Join Early Access",
     },
     footnote: "7-day free trial. Subscribe in the iOS app; cancel anytime in device settings.",
-    trialNote: "Free trial on both plans",
+    trialNote: "7-day free trial",
   },
   faq: {
     eyebrow: "FAQ",
@@ -173,7 +175,7 @@ const en = {
       { q: "Is the AI financial advice?", a: "No. AI outputs are educational and informational — context on your own holdings. Always do your own research or consult a professional." },
       { q: "How is my portfolio data handled?", a: "Imports are privacy-first and scoped to your account. We don't train public models on your holdings. See our Privacy policy for details." },
       { q: "Which markets are supported?", a: "Major US and European listings today, plus crypto and metals, with broader coverage as imports and symbol validation expand." },
-      { q: "How does pricing work?", a: "Free covers portfolios, quotes and charts. Alpha Pro is $9.99/month (or $59.99/year) in the App Store for the full explained intelligence layer, with a 7-day trial." },
+      { q: "How does pricing work?", a: "Free covers portfolios, quotes and charts. Alpha Pro is $9.99/month in the App Store for the full explained intelligence layer, with a 7-day trial." },
       { q: "Is Android coming?", a: "iOS is first. Android is on the roadmap — join early access for timing." },
     ],
   },
@@ -418,7 +420,6 @@ const pl: SiteContent = {
       name: "Alpha Pro",
       price: "44,99 zł",
       period: "/ mies.",
-      yearly: "lub 269,99 zł / rok — oszczędzasz 50%",
       badge: "Pełne AI",
       features: [
         "Pełny insight AI portfela i instrumentu",
@@ -429,7 +430,7 @@ const pl: SiteContent = {
       cta: "Dołącz do Early Access",
     },
     footnote: "7 dni za darmo. Subskrypcja w aplikacji iOS; anuluj kiedy chcesz w ustawieniach urządzenia.",
-    trialNote: "Okres próbny w obu planach",
+    trialNote: "7 dni okresu próbnego za darmo",
   },
   faq: {
     eyebrow: "FAQ",
@@ -440,7 +441,7 @@ const pl: SiteContent = {
       { q: "Czy AI to porada finansowa?", a: "Nie. Wyniki AI są edukacyjne i informacyjne — kontekst na Twoich własnych pozycjach. Zawsze zrób własną analizę lub skonsultuj się z profesjonalistą." },
       { q: "Jak traktowane są dane mojego portfela?", a: "Importy są prywatne i przypisane do Twojego konta. Nie trenujemy publicznych modeli na Twoich pozycjach. Szczegóły w Polityce prywatności." },
       { q: "Jakie rynki są wspierane?", a: "Największe rynki USA i Europy, a także krypto i metale, z szerszym pokryciem w miarę rozwoju importów i walidacji symboli." },
-      { q: "Jak działa cennik?", a: "Darmowy obejmuje portfele, notowania i wykresy. Alpha Pro to 44,99 zł/mies. (lub 269,99 zł/rok) w App Store za pełną warstwę wyjaśnień, z 7-dniowym okresem próbnym." },
+      { q: "Jak działa cennik?", a: "Darmowy obejmuje portfele, notowania i wykresy. Alpha Pro to 44,99 zł/mies. w App Store za pełną warstwę wyjaśnień, z 7-dniowym okresem próbnym." },
       { q: "Czy będzie Android?", a: "iOS jest pierwszy. Android jest w planach — dołącz do early access, żeby otrzymać informację o terminie." },
     ],
   },

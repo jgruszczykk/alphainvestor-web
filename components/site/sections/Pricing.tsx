@@ -74,7 +74,6 @@ export function Pricing({ pricing, appStore }: { pricing: Content["pricing"]; ap
               <span className="text-4xl font-bold text-[var(--heading)]">{pro.price}</span>
               <span className="text-sm text-[var(--muted)]">{pro.period}</span>
             </div>
-            <div className="mt-1 text-xs text-[var(--ai-soft)]">{pro.yearly}</div>
             <ul className="mt-6 flex-1 space-y-3">
               {pro.features.map((f) => (
                 <li key={f} className="flex items-start gap-3 text-sm text-[var(--foreground)]">
