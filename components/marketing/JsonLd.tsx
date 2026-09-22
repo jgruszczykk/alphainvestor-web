@@ -50,7 +50,7 @@ export function JsonLd({ locale }: Props) {
     "@type": "Organization",
     name: "Alpha Investor",
     url: `${base}/`,
-    email: "privacy@alphainvestor.app",
+    email: "help@unicorn-code.com",
     description: isPl
       ? "Platforma portfolio intelligence i analityki inwestycyjnej."
       : "Portfolio intelligence and investment analytics platform.",

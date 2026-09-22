@@ -3,7 +3,8 @@ import { Link } from "@/i18n/navigation";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 
-const PARTNERS_EMAIL = "partners@alphainvestor.app";
+// Single consolidated contact address for the whole site (was partners@alphainvestor.app).
+const CONTACT_EMAIL = "help@unicorn-code.com";
 
 export async function PartnersPage() {
   const t = await getTranslations("Partners");
@@ -36,10 +37,10 @@ export async function PartnersPage() {
             <h2 className="text-lg font-semibold text-[var(--heading)]">{t("contactTitle")}</h2>
             <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{t("contactBody")}</p>
             <a
-              href={`mailto:${PARTNERS_EMAIL}`}
+              href={`mailto:${CONTACT_EMAIL}`}
               className="mt-3 inline-block text-sm font-semibold text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px]"
             >
-              {PARTNERS_EMAIL}
+              {CONTACT_EMAIL}
             </a>
           </div>
         </section>
