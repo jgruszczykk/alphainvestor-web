@@ -12,6 +12,7 @@ type NavCopy = {
   pricing: string;
   faq: string;
   cta: string;
+  download: string;
   menu: string;
 };
 
@@ -26,6 +27,12 @@ const LINKS: { id: keyof NavCopy; href: string }[] = [
 export function SiteHeader({ nav }: { nav: NavCopy }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  // Launch-aware CTA: once the App Store listing is live (env var set), the
+  // header CTA becomes a real "Get the app" link to the store; pre-launch it
+  // scrolls to the waitlist form.
+  const storeUrl = process.env.NEXT_PUBLIC_APP_STORE_URL?.trim();
+  const ctaLabel = storeUrl ? nav.download : nav.cta;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -76,12 +83,14 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           <a
-            href="#waitlist"
-            onClick={(e) => jumpTo(e, "#waitlist")}
+            href={storeUrl || "#waitlist"}
+            onClick={storeUrl ? undefined : (e) => jumpTo(e, "#waitlist")}
+            target={storeUrl ? "_blank" : undefined}
+            rel={storeUrl ? "noreferrer" : undefined}
             className="hidden rounded-full px-4 py-2 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 md:inline-flex"
             style={{ background: "linear-gradient(180deg,var(--brand-hover),var(--brand))", boxShadow: "0 8px 22px -10px rgba(10,132,255,0.6)" }}
           >
-            {nav.cta}
+            {ctaLabel}
           </a>
           <button
             type="button"
@@ -114,15 +123,17 @@ export function SiteHeader({ nav }: { nav: NavCopy }) {
               </a>
             ))}
             <a
-              href="#waitlist"
+              href={storeUrl || "#waitlist"}
               onClick={(e) => {
                 setOpen(false);
-                jumpTo(e, "#waitlist");
+                if (!storeUrl) jumpTo(e, "#waitlist");
               }}
+              target={storeUrl ? "_blank" : undefined}
+              rel={storeUrl ? "noreferrer" : undefined}
               className="mt-1 rounded-lg px-3 py-2.5 text-center text-sm font-semibold text-white"
               style={{ background: "linear-gradient(180deg,var(--brand-hover),var(--brand))" }}
             >
-              {nav.cta}
+              {ctaLabel}
             </a>
           </nav>
         </div>

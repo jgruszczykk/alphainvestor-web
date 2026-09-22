@@ -6,7 +6,8 @@ import {
 } from "@/components/marketing/MarketingSection";
 
 const GRID_IDS = [1, 2, 3, 4, 5, 6] as const;
-const PARTNERS_EMAIL = "partners@alphainvestor.app";
+// Single consolidated contact address for the whole site (was partners@alphainvestor.app).
+const CONTACT_EMAIL = "help@unicorn-code.com";
 
 export async function DataInfrastructure() {
   const t = await getTranslations("Home");
@@ -38,7 +39,7 @@ export async function DataInfrastructure() {
 
       <div className="mt-5 flex flex-wrap items-center justify-center gap-4 text-sm font-semibold">
         <a
-          href={`mailto:${PARTNERS_EMAIL}`}
+          href={`mailto:${CONTACT_EMAIL}`}
           className="text-[var(--brand)] underline decoration-[var(--brand)]/30 underline-offset-[3px] transition-colors hover:text-[var(--brand-hover)]"
         >
           {t("dataPartnerCta")}

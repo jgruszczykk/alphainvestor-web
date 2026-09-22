@@ -200,14 +200,14 @@
     "roadmapPhase5Body": "Multi-broker tracking and analysis built to scale."
   },
   "Form": {
-    "title": "Wczesny dostęp",
+    "title": "Bądź na bieżąco",
     "subtitle": "iOS jest dostępny. Dołącz po termin Androida i większe aktualizacje.",
     "email": "Email",
     "name": "Imię",
     "nameOptional": "(opcjonalnie)",
     "emailPlaceholder": "you@company.com",
     "namePlaceholder": "Jan Kowalski",
-    "submit": "Dołącz do wczesnego dostępu",
+    "submit": "Powiadom mnie",
     "submitting": "Wysyłanie…",
     "errorNotConfigured": "Spróbuj później.",
     "errorGeneric": "Coś poszło nie tak.",
@@ -229,7 +229,7 @@
         "title": "1. Administrator danych",
         "paragraphs": [
           "Administratorem danych osobowych jest Jakub Gruszczyk QBKSHOP (NIP 6423222018).",
-          "W sprawach dotyczących prywatności skontaktuj się z nami pod adresem privacy@alphainvestor.app."
+          "W sprawach dotyczących prywatności skontaktuj się z nami pod adresem help@unicorn-code.com."
         ]
       },
       {
@@ -436,8 +436,8 @@
     "faq": "FAQ",
     "contactHeading": "Kontakt",
     "contactWaitlist": "Wczesny dostęp",
-    "contactEmail": "privacy@alphainvestor.app",
-    "partnersEmail": "partners@alphainvestor.app",
+    "contactEmail": "help@unicorn-code.com",
+    "partnersEmail": "help@unicorn-code.com",
     "companyLine": "Operatorem jest Jakub Gruszczyk QBKSHOP (NIP 6423222018).",
     "platform": "Platforma",
     "data": "Dane",

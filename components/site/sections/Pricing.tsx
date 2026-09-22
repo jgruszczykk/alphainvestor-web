@@ -22,6 +22,9 @@ function Check({ ai = false }: { ai?: boolean }) {
 
 export function Pricing({ pricing, appStore }: { pricing: Content["pricing"]; appStore: Content["appStore"] }) {
   const { free, pro } = pricing;
+  // Free tier lives inside the app, so post-launch its CTA is a real App Store
+  // link ("Download free"); pre-launch it falls back to the waitlist anchor.
+  const storeUrl = process.env.NEXT_PUBLIC_APP_STORE_URL?.trim();
   return (
     <section id="pricing" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 lg:py-28">
       <SectionHeading eyebrow={pricing.eyebrow} title={pricing.title} sub={pricing.sub} />
@@ -42,10 +45,12 @@ export function Pricing({ pricing, appStore }: { pricing: Content["pricing"]; ap
               ))}
             </ul>
             <a
-              href="#waitlist"
+              href={storeUrl || "#waitlist"}
+              target={storeUrl ? "_blank" : undefined}
+              rel={storeUrl ? "noreferrer" : undefined}
               className="mt-7 inline-flex h-12 items-center justify-center rounded-full border border-[var(--border-strong)] bg-white/[0.03] text-sm font-semibold text-[var(--foreground)] transition-colors hover:border-[var(--brand)]/50 hover:text-white"
             >
-              {free.cta}
+              {storeUrl ? free.ctaLaunched : free.cta}
             </a>
           </div>
         </Reveal>

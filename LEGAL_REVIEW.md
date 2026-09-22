@@ -15,7 +15,7 @@ This file tracks the open items the lawyer needs to confirm or replace.
 - [ ] EN terms reviewed by counsel
 - [ ] PL terms reviewed by counsel
 - [x] Operator legal entity name and address recorded below
-- [x] Privacy contact channel verified (privacy@alphainvestor.app)
+- [x] Privacy contact channel verified (help@unicorn-code.com)
 - [ ] DPO appointed if required by Article 37 GDPR
 - [ ] Cookie banner / consent UX reviewed (current site uses cookies for locale + bot mitigation only)
 - [x] Policy scope limited to web + waitlist (no mobile-app section)
@@ -31,8 +31,8 @@ actual operator details below, in BOTH `en.json` and `pl.json` under the
 Operator legal name:        Jakub Gruszczyk QBKSHOP
 Registered address:         Not listed (owner requested no address in public legal copy)
 Registration number / NIP:  6423222018
-Privacy contact:            privacy@alphainvestor.app
-General contact:            privacy@alphainvestor.app
+Privacy contact:            help@unicorn-code.com
+General contact:            help@unicorn-code.com
 Data Protection Officer:    Not appointed (owner confirmed)
 Governing law:              Poland (confirmed)
 ```

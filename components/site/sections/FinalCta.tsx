@@ -1,11 +1,15 @@
 import { EarlyAccessForm } from "@/components/EarlyAccessForm";
+import { AppStoreBadge } from "@/components/marketing/AppStoreBadge";
 import { Link } from "@/i18n/navigation";
 import type { getSiteContent } from "@/content/site";
 import { Reveal } from "./shared";
 
 type Content = ReturnType<typeof getSiteContent>;
 
-export function FinalCta({ finalCta }: { finalCta: Content["finalCta"] }) {
+export function FinalCta({ finalCta, appStore }: { finalCta: Content["finalCta"]; appStore: Content["appStore"] }) {
+  // Post-launch the primary action is downloading the app; the email form
+  // stays as a secondary "Android + updates" capture below it.
+  const storeUrl = process.env.NEXT_PUBLIC_APP_STORE_URL?.trim();
   return (
     <section id="waitlist" className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6">
       <Reveal>
@@ -20,6 +24,12 @@ export function FinalCta({ finalCta }: { finalCta: Content["finalCta"] }) {
               {finalCta.title}
             </h2>
             <p className="mt-3 max-w-md text-base text-[var(--muted)]">{finalCta.sub}</p>
+
+            {storeUrl ? (
+              <div className="mt-8 flex justify-center">
+                <AppStoreBadge smallLabel={appStore.small} largeLabel={appStore.large} ariaLabel={appStore.aria} />
+              </div>
+            ) : null}
 
             <div className="mt-8 w-full max-w-md">
               <EarlyAccessForm variant="embedded" />
