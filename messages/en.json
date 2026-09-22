@@ -196,14 +196,14 @@
     "roadmapPhase5Body": "Multi-broker tracking and analysis built to scale."
   },
   "Form": {
-    "title": "Join Early Access",
+    "title": "Stay in the loop",
     "subtitle": "iOS is live. Join for Android timing and major releases.",
     "email": "Email",
     "name": "Name",
     "nameOptional": "(optional)",
     "emailPlaceholder": "you@company.com",
     "namePlaceholder": "Ada Lovelace",
-    "submit": "Join Early Access",
+    "submit": "Notify me",
     "submitting": "Submitting…",
     "errorNotConfigured": "Try again later.",
     "errorGeneric": "Something went wrong.",
@@ -225,7 +225,7 @@
         "title": "1. Who is responsible for your data?",
         "paragraphs": [
           "The controller of your personal data is Jakub Gruszczyk QBKSHOP (NIP 6423222018).",
-          "For privacy-related requests, contact us at privacy@alphainvestor.app.",
+          "For privacy-related requests, contact us at help@unicorn-code.com.",
           "This policy supplements notices shown on this website (for example, cookie consent prompts)."
         ]
       },
@@ -302,7 +302,7 @@
         "title": "12. Your rights and choices",
         "paragraphs": [
           "Depending on your location, you may have rights to access, rectify, erase, restrict, or object to certain processing, and to data portability. You may also have the right to lodge a complaint with a supervisory authority.",
-          "To exercise rights, contact us at privacy@alphainvestor.app. We may need to verify your request. If you are in the EEA/UK, you may also contact your local data protection authority."
+          "To exercise rights, contact us at help@unicorn-code.com. We may need to verify your request. If you are in the EEA/UK, you may also contact your local data protection authority."
         ]
       },
       {
@@ -431,7 +431,7 @@
         "title": "15. Miscellaneous",
         "paragraphs": [
           "These Terms constitute the entire agreement between you and Alpha Investor regarding the subject matter and supersede prior understandings on the same subject. If any provision is unenforceable, the remaining provisions remain in effect. Our failure to enforce a provision is not a waiver. You may not assign these Terms without our consent; we may assign them in connection with a merger, acquisition, or sale of assets.",
-          "Contact us at privacy@alphainvestor.app for questions about these Terms."
+          "Contact us at help@unicorn-code.com for questions about these Terms."
         ]
       }
     ],
@@ -464,8 +464,8 @@
     "faq": "FAQ",
     "contactHeading": "Contact",
     "contactWaitlist": "Join Early Access",
-    "contactEmail": "privacy@alphainvestor.app",
-    "partnersEmail": "partners@alphainvestor.app",
+    "contactEmail": "help@unicorn-code.com",
+    "partnersEmail": "help@unicorn-code.com",
     "companyLine": "Operated by Jakub Gruszczyk QBKSHOP (NIP 6423222018).",
     "platform": "Platform",
     "data": "Data",

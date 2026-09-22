@@ -103,7 +103,7 @@ export function SiteHome({ locale }: { locale: string }) {
         <MoreFeatures more={c.more} />
         <Pricing pricing={c.pricing} appStore={c.appStore} />
         <Faq faq={c.faq} />
-        <FinalCta finalCta={c.finalCta} />
+        <FinalCta finalCta={c.finalCta} appStore={c.appStore} />
       </main>
 
       <SiteFooter locale={locale} />
