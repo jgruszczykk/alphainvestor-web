@@ -64,6 +64,10 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
   margin: 0;
+  /* Decorative glows (negative insets) and the scroll-snap carousels can leak a
+     few px past the viewport; clipping at the root prevents a horizontal page
+     scroll on mobile without creating a scroll container (unlike `hidden`). */
+  overflow-x: clip;
 }
 
 body {
